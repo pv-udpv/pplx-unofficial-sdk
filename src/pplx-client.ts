@@ -99,7 +99,7 @@ export function formatMetricName(name: string): string {
 /**
  * Detect the current execution environment
  */
-export function detectEnvironment(): 'production' | 'testing' | 'localhost' {
+export function detectEnvironment(): 'production' | 'localhost' {
   if (typeof window === 'undefined') return 'production';
   
   const hostname = window.location.hostname;
@@ -136,9 +136,13 @@ export class DebugLogger {
       const timestamp = new Date(datetime).getTime();
       const windowMs = 1000 * 60 * 20; // 20 minutes
       
-      console.log('Datadog Logs:', 
-        `https://app.datadoghq.com/logs?query=%40request_id%3A"${request_id}"` +
-        `&from_ts=${timestamp - windowMs}&to_ts=${timestamp + windowMs}&live=false`);
+      const logsUrl = new URL('https://app.datadoghq.com/logs');
+      logsUrl.searchParams.set('query', `@request_id:"${request_id}"`);
+      logsUrl.searchParams.set('from_ts', String(timestamp - windowMs));
+      logsUrl.searchParams.set('to_ts', String(timestamp + windowMs));
+      logsUrl.searchParams.set('live', 'false');
+      
+      console.log('Datadog Logs:', logsUrl.toString());
     }
     
     console.groupEnd();

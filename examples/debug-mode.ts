@@ -5,7 +5,7 @@
  * and log Datadog APM and Logs URLs for debugging purposes.
  */
 
-import { createPplxClient } from '@pplx-unofficial/sdk';
+import { createPplxClient } from '../src/index';
 
 async function main() {
   const client = createPplxClient();
