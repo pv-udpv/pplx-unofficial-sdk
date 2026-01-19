@@ -12,6 +12,7 @@
 - ✅ **REST API** - Complete CRUD for threads, entries, and collections
 - ✅ **OAuth Connectors** - 9 integrations (Google Drive, Notion, OneDrive, etc.)
 - ✅ **Type-Safe** - Full TypeScript types for all operations
+- ✅ **Debug Mode** - Datadog APM/Logs integration for debugging
 - ✅ **JSON Patch** - RFC-6902 compliant differential updates
 - ✅ **Rate Limiting** - Built-in rate limit management
 - ✅ **Pagination** - AsyncGenerator-based pagination
@@ -159,6 +160,36 @@ const files = await connectors.listFiles("google_drive", { limit: 100 });
 
 // Sync files to Space
 await connectors.syncFiles("google_drive", fileIds, spaceUuid);
+```
+
+### Debug Mode
+
+```typescript
+import { createPplxClient } from "@pplx-unofficial/sdk";
+
+const client = createPplxClient();
+
+// Enable debug mode to automatically log Datadog APM and Logs URLs
+for await (const entry of client.search("quantum computing", { debug: true })) {
+  // Automatically logs Datadog Trace/Logs URLs in console
+  // Look for [DEBUG] groups in the console output
+  
+  if (entry.debug_data) {
+    // Debug data includes:
+    // - dd_trace_id: Datadog APM trace ID
+    // - dd_request_id: Request ID with timestamp for log correlation
+    console.log("Debug data:", entry.debug_data);
+  }
+  
+  if (entry.final) break;
+}
+```
+
+**Debug Output Example:**
+```
+[DEBUG] Entry abc-123-def
+  Datadog Trace: https://app.datadoghq.com/apm/trace/1234567890abcdef
+  Datadog Logs: https://app.datadoghq.com/logs?query=%40request_id%3A"req-abc123"&from_ts=...
 ```
 
 ## 🏗️ Architecture
