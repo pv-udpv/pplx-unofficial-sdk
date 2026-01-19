@@ -17,11 +17,13 @@ export class PplxBot {
     // Note: This assumes the SDK will be available
     // For now, we'll use a placeholder until the SDK is implemented
     try {
-      // Dynamic import to avoid build-time dependency
+      // Try to load the SDK if available (using CommonJS require for simplicity)
+      // In production, the SDK would be properly installed as a dependency
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { createPplxSDK } = require('@pplx-unofficial/sdk');
       this.sdk = createPplxSDK(config);
     } catch (error) {
-      // Fallback for development/testing
+      // Fallback for development/testing when SDK is not available
       console.warn('⚠️  SDK not available, using mock SDK');
       this.sdk = this.createMockSDK();
     }
@@ -99,8 +101,11 @@ export class PplxBot {
     try {
       const followUps: string[] = [];
       
+      // Sanitize topic input to prevent query injection
+      const sanitizedTopic = topic.replace(/[^\w\s-]/g, '').trim();
+      
       // Use SDK to generate related queries
-      for await (const entry of this.sdk.stream.search(`related questions about ${topic}`)) {
+      for await (const entry of this.sdk.stream.search(`related questions about ${sanitizedTopic}`)) {
         if (entry.related_queries && Array.isArray(entry.related_queries)) {
           followUps.push(...entry.related_queries.slice(0, depth));
         }

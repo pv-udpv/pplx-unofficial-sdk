@@ -39,7 +39,10 @@ export class ConnectorsAgent {
         sources: connectorIds,
         focus: 'writing'
       })) {
-        process.stdout.write('.');
+        // Progress indicator (only if running in a TTY)
+        if (process.stdout.isTTY) {
+          process.stdout.write('.');
+        }
         
         if (entry.sources_list) {
           this.displayConnectorResults(entry.sources_list);

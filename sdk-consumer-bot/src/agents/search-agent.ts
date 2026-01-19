@@ -20,8 +20,10 @@ export class SearchAgent {
     
     try {
       for await (const entry of this.sdk.stream.search(query, options)) {
-        // Progress indicator
-        process.stdout.write('.');
+        // Progress indicator (only if running in a TTY)
+        if (process.stdout.isTTY) {
+          process.stdout.write('.');
+        }
         
         // Yield incremental updates
         yield {
@@ -76,7 +78,10 @@ export class SearchAgent {
       
       try {
         for await (const entry of this.sdk.stream.followUp(followUp, contextUuid)) {
-          process.stdout.write('.');
+          // Progress indicator (only if running in a TTY)
+          if (process.stdout.isTTY) {
+            process.stdout.write('.');
+          }
           
           if (entry.final) {
             console.log('\n');
