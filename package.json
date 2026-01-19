@@ -1,10 +1,28 @@
 {
   "name": "@pplx-unofficial/sdk",
   "version": "1.0.0",
-  "description": "Unofficial TypeScript SDK for Perplexity AI - SSE Streaming, REST API, OAuth Connectors",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "description": "Unofficial TypeScript SDK for Perplexity AI - Reverse engineered SSE streaming, REST API, and OAuth connectors",
+  "keywords": [
+    "perplexity",
+    "perplexity-ai",
+    "sdk",
+    "typescript",
+    "sse",
+    "streaming",
+    "oauth",
+    "reverse-engineering"
+  ],
+  "homepage": "https://github.com/pv-udpv/pplx-unofficial-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/pv-udpv/pplx-unofficial-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pv-udpv/pplx-unofficial-sdk.git"
+  },
+  "license": "MIT",
+  "author": "pv-udpv",
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -27,6 +45,9 @@
       "types": "./dist/pplx-connectors-client.d.ts"
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "README.md",
@@ -35,39 +56,32 @@
   "scripts": {
     "build": "tsup src/index.ts src/pplx-client.ts src/pplx-rest-client.ts src/pplx-connectors-client.ts --format cjs,esm --dts --clean",
     "dev": "tsup src/index.ts --watch",
-    "test": "vitest",
-    "lint": "eslint src --ext .ts",
-    "format": "prettier --write \"src/**/*.ts\"",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
-  },
-  "keywords": [
-    "perplexity",
-    "perplexity-ai",
-    "ai-search",
-    "sse",
-    "streaming",
-    "rest-api",
-    "oauth",
-    "typescript",
-    "sdk",
-    "unofficial"
-  ],
-  "author": {
-    "name": "pv-udpv",
-    "url": "https://github.com/pv-udpv"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pv-udpv/pplx-unofficial-sdk.git"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=18.0.0"
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "bun run build && bun test",
+    "version": "npm version"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
+    "@types/node": "^22.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.2",
+    "msw": "^2.8.5",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

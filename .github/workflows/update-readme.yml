@@ -1,0 +1,49 @@
+name: Update README Stats
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'package.json'
+  schedule:
+    - cron: '0 0 * * 0'  # Every Sunday at midnight
+  workflow_dispatch:
+
+jobs:
+  update-stats:
+    name: Update README Statistics
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Calculate LOC
+        id: stats
+        run: |
+          TOTAL_LOC=$(find src -name '*.ts' -exec wc -l {} + | tail -1 | awk '{print $1}')
+          MODULES=$(find src -name '*.ts' | wc -l)
+          echo "total_loc=$TOTAL_LOC" >> $GITHUB_OUTPUT
+          echo "modules=$MODULES" >> $GITHUB_OUTPUT
+
+      - name: Update README
+        run: |
+          sed -i "s/Total LOC: [0-9,]*/Total LOC: ${{ steps.stats.outputs.total_loc }}/g" README.md
+          sed -i "s/Modules: [0-9]*/Modules: ${{ steps.stats.outputs.modules }}/g" README.md
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet && git diff --staged --quiet || (
+            git add README.md
+            git commit -m "docs: Update README statistics [skip ci]"
+            git push
+          )
