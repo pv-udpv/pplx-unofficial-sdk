@@ -1,0 +1,73 @@
+{
+  "name": "@pplx-unofficial/sdk",
+  "version": "1.0.0",
+  "description": "Unofficial TypeScript SDK for Perplexity AI - SSE Streaming, REST API, OAuth Connectors",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./stream": {
+      "import": "./dist/pplx-client.mjs",
+      "require": "./dist/pplx-client.js",
+      "types": "./dist/pplx-client.d.ts"
+    },
+    "./rest": {
+      "import": "./dist/pplx-rest-client.mjs",
+      "require": "./dist/pplx-rest-client.js",
+      "types": "./dist/pplx-rest-client.d.ts"
+    },
+    "./connectors": {
+      "import": "./dist/pplx-connectors-client.mjs",
+      "require": "./dist/pplx-connectors-client.js",
+      "types": "./dist/pplx-connectors-client.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts src/pplx-client.ts src/pplx-rest-client.ts src/pplx-connectors-client.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts --watch",
+    "test": "vitest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "perplexity",
+    "perplexity-ai",
+    "ai-search",
+    "sse",
+    "streaming",
+    "rest-api",
+    "oauth",
+    "typescript",
+    "sdk",
+    "unofficial"
+  ],
+  "author": {
+    "name": "pv-udpv",
+    "url": "https://github.com/pv-udpv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pv-udpv/pplx-unofficial-sdk.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}
