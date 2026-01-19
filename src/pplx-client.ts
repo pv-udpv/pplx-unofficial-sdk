@@ -284,9 +284,15 @@ export class PplxClient {
   }
 
   /**
-   * Generate UUID
+   * Generate UUID using crypto.randomUUID() or fallback
    */
   private generateUuid(): string {
+    // Use crypto.randomUUID() if available (Node.js 15.6.0+, modern browsers)
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
+    
+    // Fallback for older environments
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
       const r = (Math.random() * 16) | 0;
       const v = c === 'x' ? r : (r & 0x3) | 0x8;

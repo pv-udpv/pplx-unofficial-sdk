@@ -93,11 +93,17 @@ export class StreamStore {
   getReconnectableStreams(): SSEEntry[] {
     const reconnectable: SSEEntry[] = [];
     
+    // Reconnectable streams are tracked but may have been removed from active
+    // We need to check the thread history to find them
     for (const uuid of this.state.reconnectableStreams) {
       if (!this.isStreamActive(uuid) && !this.isStreamAborted(uuid)) {
-        const stream = this.state.activeStreams.get(uuid);
-        if (stream) {
-          reconnectable.push(stream);
+        // Try to find the stream in thread history
+        for (const history of this.state.threadHistory.values()) {
+          const stream = history.find(entry => entry.uuid === uuid);
+          if (stream && stream.reconnectable && !stream.final) {
+            reconnectable.push(stream);
+            break;
+          }
         }
       }
     }

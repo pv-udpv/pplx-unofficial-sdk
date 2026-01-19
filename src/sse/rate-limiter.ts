@@ -89,24 +89,16 @@ export class RateLimiter {
     const currentMinute = Math.floor(now / 60000);
     const currentHour = Math.floor(now / 3600000);
 
+    let minuteRemaining = this.minuteLimit - this.minuteCount;
+    let hourRemaining = this.hourLimit - this.hourCount;
+
     // Check if windows need reset
     if (currentMinute !== this.minuteWindow) {
-      return {
-        allowed: true,
-        minuteRemaining: this.minuteLimit,
-        hourRemaining: this.hourLimit - this.hourCount,
-      };
+      minuteRemaining = this.minuteLimit;
     }
     if (currentHour !== this.hourWindow) {
-      return {
-        allowed: true,
-        minuteRemaining: this.minuteLimit - this.minuteCount,
-        hourRemaining: this.hourLimit,
-      };
+      hourRemaining = this.hourLimit;
     }
-
-    const minuteRemaining = this.minuteLimit - this.minuteCount;
-    const hourRemaining = this.hourLimit - this.hourCount;
 
     return {
       allowed: minuteRemaining > 0 && hourRemaining > 0,
