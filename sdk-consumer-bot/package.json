@@ -1,0 +1,45 @@
+{
+  "name": "@pplx-bot/cli",
+  "version": "1.0.0",
+  "description": "Perplexity SDK Consumer Bot - Demonstrates full SDK capabilities",
+  "main": "dist/bot.js",
+  "types": "dist/bot.d.ts",
+  "bin": {
+    "pplx-bot": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsup src/cli.ts src/bot.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/cli.ts src/bot.ts --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'No linting configured'",
+    "start": "node dist/cli.js"
+  },
+  "keywords": [
+    "perplexity",
+    "cli",
+    "bot",
+    "sdk-consumer",
+    "ai-search"
+  ],
+  "author": {
+    "name": "pv-udpv",
+    "url": "https://github.com/pv-udpv"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.0.0",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.1"
+  },
+  "optionalDependencies": {
+    "@pplx-unofficial/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
