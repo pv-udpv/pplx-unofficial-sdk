@@ -70,6 +70,7 @@ const rest = createRestClient();
 const connectors = createConnectorsClient();
 ```
 
+> Note: These modular import paths represent the planned API design and may not be available in the current release.
 ## 📚 Documentation
 
 - [SSE Streaming Guide](docs/DEOBFUSCATION-SUMMARY.md) - Protocol analysis and streaming architecture
