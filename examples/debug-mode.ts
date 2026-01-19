@@ -3,6 +3,9 @@
  * 
  * This example demonstrates how to use debug mode to collect
  * and log Datadog APM and Logs URLs for debugging purposes.
+ * 
+ * Note: This example uses relative imports for development.
+ * In production usage, import from '@pplx-unofficial/sdk' instead.
  */
 
 import { createPplxClient } from '../src/index';

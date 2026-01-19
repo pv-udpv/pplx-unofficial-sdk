@@ -85,15 +85,23 @@ const UPPERCASE_METRICS = ['llm', 'mhe'];
 const LOWERCASE_METRICS = ['ms'];
 
 /**
+ * Debug logger constants
+ */
+const DEBUG_LOG_WINDOW_MS = 20 * 60 * 1000; // 20 minutes
+
+/**
  * Format a metric name from snake_case to Title Case
  * @example formatMetricName("llm_latency_ms") // "LLM Latency ms"
  */
 export function formatMetricName(name: string): string {
-  return name.split('.').at(-1)?.split('_').map(part => {
+  const lastPart = name.split('.').at(-1);
+  if (!lastPart) return name;
+  
+  return lastPart.split('_').map(part => {
     if (UPPERCASE_METRICS.includes(part)) return part.toUpperCase();
     if (LOWERCASE_METRICS.includes(part)) return part.toLowerCase();
     return part.charAt(0).toUpperCase() + part.slice(1);
-  }).join(' ') ?? name;
+  }).join(' ');
 }
 
 /**
@@ -134,12 +142,11 @@ export class DebugLogger {
     if (entry.debug_data.dd_request_id) {
       const { request_id, datetime } = entry.debug_data.dd_request_id;
       const timestamp = new Date(datetime).getTime();
-      const windowMs = 1000 * 60 * 20; // 20 minutes
       
       const logsUrl = new URL('https://app.datadoghq.com/logs');
       logsUrl.searchParams.set('query', `@request_id:"${request_id}"`);
-      logsUrl.searchParams.set('from_ts', String(timestamp - windowMs));
-      logsUrl.searchParams.set('to_ts', String(timestamp + windowMs));
+      logsUrl.searchParams.set('from_ts', String(timestamp - DEBUG_LOG_WINDOW_MS));
+      logsUrl.searchParams.set('to_ts', String(timestamp + DEBUG_LOG_WINDOW_MS));
       logsUrl.searchParams.set('live', 'false');
       
       console.log('Datadog Logs:', logsUrl.toString());
