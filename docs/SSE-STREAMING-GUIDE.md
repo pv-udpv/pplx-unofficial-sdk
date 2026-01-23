@@ -382,24 +382,18 @@ try {
 #### Cancellation
 
 ```typescript
-const client = createPplxClient();
-
-// Cancel after 10 seconds
-const abortController = new AbortController();
-setTimeout(() => abortController.abort(), 10000);
+const client = createPplxClient({ timeout: 10000 }); // 10 second timeout
 
 try {
   for await (const entry of client.search('long query')) {
-    // Check if cancelled
-    if (abortController.signal.aborted) {
-      break;
-    }
     console.log(entry.blocks);
     if (entry.final) break;
   }
 } catch (error) {
-  if (error.name === 'AbortError') {
-    console.log('Search cancelled');
+  if (error instanceof PplxStreamError && error.message.includes('timeout')) {
+    console.log('Search cancelled due to timeout');
+  } else {
+    throw error;
   }
 }
 ```

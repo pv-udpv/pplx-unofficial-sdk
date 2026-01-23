@@ -47,12 +47,10 @@ export async function multiTurnConversation() {
 
   // First question
   let contextUuid: string | undefined;
-  let firstEntryUuid: string | undefined;
 
   console.log("Question 1: What are neural networks?");
   for await (const entry of sseClient.search("What are neural networks?")) {
     if (entry.context_uuid) contextUuid = entry.context_uuid;
-    if (entry.backend_uuid) firstEntryUuid = entry.backend_uuid;
     if (entry.final) {
       console.log("Answer received:", entry.blocks?.[0] || "...");
       break;

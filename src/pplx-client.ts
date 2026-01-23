@@ -67,6 +67,7 @@ export interface SSERequest {
   mode?: SearchMode;
   focus?: SearchFocus;
   model?: ModelPreference;
+  sources?: string[];
   context_uuid?: string;
   backend_uuid?: string;
   frontend_uuid?: string;
@@ -173,7 +174,8 @@ class SSEParser {
           currentEvent.event = value;
           break;
         case "data":
-          currentEvent.data = (currentEvent.data || "") + value;
+          // Join multiple data lines with a newline as required by the SSE spec
+          currentEvent.data = currentEvent.data ? currentEvent.data + "\n" + value : value;
           break;
         case "id":
           currentEvent.id = value;
