@@ -1,0 +1,17 @@
+# Text files should have normalized line endings (most general first)
+*.md text eol=lf
+*.json text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+
+# Archive formats
+*.har binary
+*.gz binary
+*.zip binary
+
+# Git LFS tracking for large SPA assets (more specific rules override general)
+spa-assets/**/*.json filter=lfs diff=lfs merge=lfs -text
+spa-assets/**/*.js filter=lfs diff=lfs merge=lfs -text
+
+# Exclude small metadata files from LFS (most specific, overrides above)
+spa-assets/metadata/*.json !filter !diff !merge text

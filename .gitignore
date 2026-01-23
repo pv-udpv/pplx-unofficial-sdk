@@ -6,3 +6,15 @@ dist/
 *.log
 .DS_Store
 package-lock.json
+
+# Temporary HAR files (keep processed snapshots only)
+*.har
+*.har.json
+
+# Large unprocessed files
+/perplexity_spa_full_spec.json
+/endpoints_ast_extracted_full.json
+
+# Temporary processing files
+/tmp/
+*.tmp
