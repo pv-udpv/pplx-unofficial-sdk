@@ -142,9 +142,28 @@ export class PplxSDK {
     model?: any;
     sources?: string[];
   }) {
-    throw new Error(
-      "PplxSDK.quickSearch is a preview feature and requires SSE stream.search implementation (see Issue #1)."
-    );
+    const entries = [];
+    
+    // Stream search
+    for await (const entry of this.stream.search(query, options)) {
+      entries.push(entry);
+      if (entry.final) break;
+    }
+
+    // Handle case where no entries were produced
+    if (entries.length === 0) {
+      return { entries, thread: null };
+    }
+
+    const finalEntry = entries[entries.length - 1];
+
+    // Get full thread details if available
+    if (finalEntry?.context_uuid) {
+      const thread = await this.rest.getThread(finalEntry.context_uuid);
+      return { entries, thread };
+    }
+
+    return { entries, thread: null };
   }
 
   /**

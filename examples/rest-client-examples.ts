@@ -52,7 +52,7 @@ export async function collectionsExample() {
   });
 
   // Create threads and add to collection
-  void await restClient.createThread({
+  await restClient.createThread({
     title: "Attention mechanisms",
     collection_uuid: collection.uuid,
   });
@@ -74,22 +74,25 @@ export async function collectionsExample() {
 // ===========================================================================
 
 export async function forkExample() {
-  // Get existing entry (requires a valid backend_uuid from a real entry)
-  // const entry = await restClient.getEntry("some-backend-uuid");
+  // Get existing entry
+  const entry = await restClient.getEntry("some-backend-uuid");
 
   // Fork to new thread
-  // const forkResult = await restClient.forkEntry({
-  //   backend_uuid: entry.backend_uuid,
-  //   title: "Forked Discussion",
-  // });
+  const forkResult = await restClient.forkEntry({
+    backend_uuid: entry.backend_uuid,
+    title: "Forked Discussion",
+  });
 
-  // console.log("New thread:", forkResult.new_context_uuid);
-  // console.log("New entry:", forkResult.new_backend_uuid);
+  console.log("New thread:", forkResult.new_context_uuid);
+  console.log("New entry:", forkResult.new_backend_uuid);
 
-  // NOTE: To continue the conversation in the forked thread,
-  // use the SSE client (to be implemented in Issue #1)
-  
-  console.log("Fork example requires existing entries. See comments for usage.");
+  // Continue conversation in forked thread with SSE
+  for await (const newEntry of sseClient.search("Follow-up question", {
+    context_uuid: forkResult.new_context_uuid,
+  })) {
+    console.log("New response:", newEntry.blocks);
+    if (newEntry.final) break;
+  }
 }
 
 // ===========================================================================
@@ -121,7 +124,7 @@ export async function paginationExample() {
 // EXAMPLE 5: Thread management
 // ===========================================================================
 
-export async function threadManagementExample() {
+export async function threadManagement() {
   // Get thread by slug (from URL)
   const thread = await restClient.getThreadBySlug("machine-learning-basics");
 
