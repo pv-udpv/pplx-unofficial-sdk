@@ -1,0 +1,87 @@
+{
+  "extraction_method": "regex + existing CSVs",
+  "total_unique_endpoints": 0,
+  "endpoints": [],
+  "sample_modules": [
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/VisRefresh2026FontsEffect-BtzCQRBd.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/VisRefresh2026FontsEffect-BtzCQRBd.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    },
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DebugStreamSideEffects-BVDZrs4-.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/DebugStreamSideEffects-BVDZrs4-.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    },
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DebugDisplay-C6EiDsGZ.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/DebugDisplay-C6EiDsGZ.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    },
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DebugModeActivator-BpXQcojR.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/DebugModeActivator-BpXQcojR.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    },
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SidebarMenu-C1J2B_Sq.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/SidebarMenu-C1J2B_Sq.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    },
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SidebarNotifications-jV80Fpon.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/SidebarNotifications-jV80Fpon.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    },
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useAppNotificationsVariation-D72N3IHB.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/useAppNotificationsVariation-D72N3IHB.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    },
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getUserTask-C7eFwHJ6.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/getUserTask-C7eFwHJ6.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    },
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useTasksSettingsUiRedesignVariation-BUC51vFR.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/useTasksSettingsUiRedesignVariation-BUC51vFR.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    },
+    {
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/updateUserTask-DjsYd4tS.js",
+      "domain": "pplx-next-static-public.perplexity.ai",
+      "path": "/_spa/assets/updateUserTask-DjsYd4tS.js",
+      "status": "200",
+      "size": "-1",
+      "mime_type": "text/javascript"
+    }
+  ]
+}
