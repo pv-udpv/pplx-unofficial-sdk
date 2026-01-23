@@ -1,0 +1,74 @@
+name: Verify SPA Assets
+
+on:
+  push:
+    paths:
+      - 'spa-assets/**'
+      - 'scripts/verify_integrity.py'
+      - 'scripts/update_asset_index.py'
+  pull_request:
+    paths:
+      - 'spa-assets/**'
+      - 'scripts/verify_integrity.py'
+      - 'scripts/update_asset_index.py'
+  workflow_dispatch:
+
+jobs:
+  verify-assets:
+    name: Verify Asset Integrity
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Verify asset integrity
+        run: |
+          echo "## 🔒 Asset Integrity Verification" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          python3 scripts/verify_integrity.py spa-assets/metadata/integrity.json | tee -a $GITHUB_STEP_SUMMARY
+      
+      - name: Check asset index
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 📊 Asset Index Status" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          python3 scripts/update_asset_index.py --verify | tee -a $GITHUB_STEP_SUMMARY
+      
+      - name: Generate asset statistics
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 📈 Asset Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Snapshots" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          jq -r '.assets[] | select(.type == "snapshot") | "Date: \(.date), Endpoints: \(.files."metadata.json".endpoints_count // "N/A"), Modules: \(.files."metadata.json".modules_count // "N/A")"' \
+            spa-assets/metadata/asset-index.json >> $GITHUB_STEP_SUMMARY || echo "No snapshots" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Storage" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          du -sh spa-assets/snapshots/ spa-assets/workbox/ spa-assets/vite-chunks/ spa-assets/diffs/ 2>/dev/null || echo "N/A"
+          echo '```' >> $GITHUB_STEP_SUMMARY
+      
+      - name: Detect changes in endpoints
+        if: github.event_name == 'push'
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔍 Recent Changes" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Latest snapshot: $(ls -t spa-assets/snapshots/ | head -1)" >> $GITHUB_STEP_SUMMARY
+          
+          # Get version history
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Version History" >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          jq '.statistics' spa-assets/metadata/version-history.json >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
