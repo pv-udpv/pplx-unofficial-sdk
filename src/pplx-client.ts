@@ -19,7 +19,7 @@ export enum StreamStatus {
   BLOCKED = 7
 }
 
-// Search Model Enum (60+ models from production vite-5mULU2Sf.js)
+// Search Model Enum (60+ models from production frontend bundles)
 export enum SearchModel {
   // Primary models
   DEFAULT = "turbo",
