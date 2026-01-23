@@ -145,6 +145,11 @@ export class PplxSDK {
       if (entry.final) break;
     }
 
+    // Handle case where no entries were produced
+    if (entries.length === 0) {
+      return { entries, thread: null };
+    }
+
     const finalEntry = entries[entries.length - 1];
 
     // Get full thread details if available

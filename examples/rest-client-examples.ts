@@ -54,7 +54,7 @@ async function fullConversationFlow() {
 // EXAMPLE 2: Collections (Spaces)
 // ===========================================================================
 
-async function collectionsExample() {
+export async function collectionsExample() {
   // Create collection
   const collection = await restClient.createCollection({
     name: "ML Research",
@@ -63,7 +63,7 @@ async function collectionsExample() {
   });
 
   // Create threads and add to collection
-  const thread1 = await restClient.createThread({
+  await restClient.createThread({
     title: "Attention mechanisms",
     collection_uuid: collection.uuid,
   });
@@ -84,7 +84,7 @@ async function collectionsExample() {
 // EXAMPLE 3: Fork and modify
 // ===========================================================================
 
-async function forkExample() {
+export async function forkExample() {
   // Get existing entry
   const entry = await restClient.getEntry("some-backend-uuid");
 
@@ -99,7 +99,7 @@ async function forkExample() {
 
   // Continue conversation in forked thread with SSE
   for await (const newEntry of sseClient.search("Follow-up question", {
-    // Use forked context
+    context_uuid: forkResult.new_context_uuid,
   })) {
     console.log("New response:", newEntry.blocks);
     if (newEntry.final) break;
@@ -110,7 +110,7 @@ async function forkExample() {
 // EXAMPLE 4: Pagination
 // ===========================================================================
 
-async function paginationExample() {
+export async function paginationExample() {
   let cursor: string | undefined;
   let allThreads: any[] = [];
 
@@ -135,7 +135,7 @@ async function paginationExample() {
 // EXAMPLE 5: Thread management
 // ===========================================================================
 
-async function threadManagement() {
+export async function threadManagement() {
   // Get thread by slug (from URL)
   const thread = await restClient.getThreadBySlug("machine-learning-basics");
 
