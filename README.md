@@ -83,7 +83,7 @@ const serviceWorker = createServiceWorkerClient();
 - [SSE Streaming Guide](docs/DEOBFUSCATION-SUMMARY.md) - Protocol analysis and streaming architecture
 - [REST API Reference](docs/REST-API-GUIDE.md) - All endpoints and usage examples
 - [Connectors Guide](docs/CONNECTORS-GUIDE.md) - OAuth flow and file integrations
-- [Service Worker Guide](docs/SERVICE-WORKER-GUIDE.md) - Fetch and analyze chunk manifest
+- [Service Worker Guide](docs/SERVICE-WORKER-GUIDE.md) - Fetch and analyze chunk manifest from the Perplexity AI service. 
 - [Project Setup](docs/PROJECT-SETUP.md) - Development environment setup
 
 ## 🔌 Supported Connectors
@@ -194,11 +194,20 @@ console.log(`Restricted features: ${stats.byCategory.restricted}`);
 
 ```
 @pplx-unofficial/sdk
-├── stream (pplx-client.ts)               - SSE streaming engine
-├── rest (pplx-rest-client.ts)            - REST API for CRUD
-├── connectors (pplx-connectors-client.ts) - OAuth & file sync
-├── service-worker (pplx-service-worker-client.ts) - Chunk manifest analysis
-└── index.ts                              - Unified SDK
+├── src/
+│   ├── stream (pplx-client.ts)          - SSE streaming engine
+│   ├── rest (pplx-rest-client.ts)       - REST API for CRUD
+│   ├── connectors (pplx-connectors-client.ts) - OAuth & file sync
+│   └── index.ts                         - Unified SDK
+├── spa-assets/                           - Tracked SPA assets & versions
+│   ├── snapshots/                       - HAR-extracted snapshots by date
+│   ├── workbox/                         - Service worker chunks
+│   ├── vite-chunks/                     - Vite build artifacts
+│   ├── diffs/                           - Version-to-version differences
+│   └── metadata/                        - Asset index & integrity checksums
+├── docs/                                 - Documentation
+├── examples/                             - Usage examples
+└── har_agent.py                          - HAR analysis toolkit
 
 Protocol: 2.18
 Endpoints: 38 total (2 SSE + 24 REST + 11 Connectors + 1 Service Worker)
