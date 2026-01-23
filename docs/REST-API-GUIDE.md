@@ -128,7 +128,7 @@ export function useCreateThread() {
 
 ## Files Generated
 
-1. **pplx-rest-client.ts** (410 LOC)
+1. **pplx-rest-client.ts** (409 LOC)
    - Full REST API client
    - Type-safe interfaces
    - Error handling

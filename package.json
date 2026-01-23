@@ -7,24 +7,24 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./stream": {
+      "types": "./dist/pplx-client.d.ts",
       "import": "./dist/pplx-client.mjs",
-      "require": "./dist/pplx-client.js",
-      "types": "./dist/pplx-client.d.ts"
+      "require": "./dist/pplx-client.js"
     },
     "./rest": {
+      "types": "./dist/pplx-rest-client.d.ts",
       "import": "./dist/pplx-rest-client.mjs",
-      "require": "./dist/pplx-rest-client.js",
-      "types": "./dist/pplx-rest-client.d.ts"
+      "require": "./dist/pplx-rest-client.js"
     },
     "./connectors": {
+      "types": "./dist/pplx-connectors-client.d.ts",
       "import": "./dist/pplx-connectors-client.mjs",
-      "require": "./dist/pplx-connectors-client.js",
-      "types": "./dist/pplx-connectors-client.d.ts"
+      "require": "./dist/pplx-connectors-client.js"
     }
   },
   "files": [
