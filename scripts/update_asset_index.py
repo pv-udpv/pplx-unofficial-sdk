@@ -10,23 +10,9 @@ Usage:
 """
 
 import json
-import os
-import hashlib
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 import sys
-
-def get_file_hash(filepath):
-    """Calculate SHA-256 hash of a file."""
-    sha256 = hashlib.sha256()
-    try:
-        with open(filepath, 'rb') as f:
-            for block in iter(lambda: f.read(4096), b''):
-                sha256.update(block)
-        return sha256.hexdigest()
-    except Exception as e:
-        print(f"Warning: Could not hash {filepath}: {e}", file=sys.stderr)
-        return None
 
 def scan_snapshots(spa_assets_dir):
     """Scan snapshots directory for asset information."""
@@ -166,7 +152,7 @@ def update_asset_index(repo_root, verify=False):
     
     # Create index
     index = {
-        "last_updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "total_snapshots": sum(1 for a in assets if a["type"] == "snapshot"),
         "total_workbox_versions": sum(1 for a in assets if a["type"] == "workbox"),
         "total_vite_versions": sum(1 for a in assets if a["type"] == "vite-chunks"),
@@ -185,9 +171,34 @@ def update_asset_index(repo_root, verify=False):
         with open(index_path, 'r') as f:
             existing = json.load(f)
         
-        # Compare asset counts
-        if existing["total_snapshots"] != index["total_snapshots"]:
-            print(f"Warning: Snapshot count mismatch: {existing['total_snapshots']} vs {index['total_snapshots']}")
+        # Compare all asset counts
+        ok = True
+
+        if existing.get("total_snapshots") != index["total_snapshots"]:
+            print(f"Warning: Snapshot count mismatch: {existing.get('total_snapshots')} vs {index['total_snapshots']}")
+            ok = False
+
+        if existing.get("total_workbox_versions") != index["total_workbox_versions"]:
+            print(f"Warning: Workbox version count mismatch: {existing.get('total_workbox_versions')} vs {index['total_workbox_versions']}")
+            ok = False
+
+        if existing.get("total_vite_versions") != index["total_vite_versions"]:
+            print(f"Warning: Vite version count mismatch: {existing.get('total_vite_versions')} vs {index['total_vite_versions']}")
+            ok = False
+
+        if existing.get("total_diffs") != index["total_diffs"]:
+            print(f"Warning: Diff count mismatch: {existing.get('total_diffs')} vs {index['total_diffs']}")
+            ok = False
+
+        existing_assets = existing.get("assets", [])
+        if len(existing_assets) != len(index["assets"]):
+            print(f"Warning: Asset list length mismatch: {len(existing_assets)} vs {len(index['assets'])}")
+            ok = False
+        elif "assets" in existing and existing_assets != index["assets"]:
+            print("Warning: Asset list contents differ from current scan")
+            ok = False
+
+        if not ok:
             return False
         
         print("✓ Asset index is up to date")

@@ -23,6 +23,7 @@ Complete catalog of all tracked assets:
   "last_updated": "2026-01-23T13:00:00Z",
   "total_snapshots": 5,
   "total_workbox_versions": 2,
+  "total_vite_versions": 1,
   "total_diffs": 4,
   "assets": [
     {
@@ -31,18 +32,16 @@ Complete catalog of all tracked assets:
       "path": "spa-assets/snapshots/2026-01-21/",
       "files": {
         "full_spec.json": {
-          "size": 2007087,
-          "sha256": "abc123...",
-          "endpoints_count": 96,
-          "modules_count": 752
+          "size": 2007087
         },
         "endpoints.json": {
-          "size": 28249,
-          "sha256": "def456..."
+          "size": 28249
         },
         "metadata.json": {
           "size": 245,
-          "sha256": "ghi789..."
+          "endpoints_count": 96,
+          "modules_count": 752,
+          "protocol_version": "2.18"
         }
       }
     },
@@ -52,8 +51,17 @@ Complete catalog of all tracked assets:
       "path": "spa-assets/workbox/versions/v7.0.0/",
       "files": {
         "manifest.json": {
-          "size": 5432,
-          "sha256": "jkl012..."
+          "size": 5432
+        }
+      }
+    },
+    {
+      "type": "vite-chunks",
+      "version": "2026-01-21",
+      "path": "spa-assets/vite-chunks/versions/2026-01-21/",
+      "files": {
+        "app-chunks/spa-shell-Cc8l94kf.js": {
+          "size": 245678
         }
       }
     },
@@ -62,9 +70,7 @@ Complete catalog of all tracked assets:
       "from": "2026-01-20",
       "to": "2026-01-21",
       "path": "spa-assets/diffs/2026-01-20_to_2026-01-21.json",
-      "size": 12456,
-      "sha256": "mno345...",
-      "breaking_changes": false
+      "size": 12456
     }
   ]
 }
@@ -206,10 +212,14 @@ jq '.statistics.total_endpoints_added / .statistics.total_versions_tracked' \
 
 Location: `/scripts/`
 
+**Available:**
 - `update_asset_index.py` - Update asset-index.json
 - `verify_integrity.py` - Verify file checksums
+
+**Planned:**
 - `generate_version_history.py` - Create/update version-history.json
 - `check_asset_health.py` - Validate asset structure
+- `generate_diff.py` - Generate version-to-version diffs
 
 ## CI/CD Integration
 

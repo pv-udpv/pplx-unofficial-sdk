@@ -138,22 +138,23 @@ python scripts/update_asset_index.py
 
 ### Generating Diffs
 
+Automated diff generation between snapshots is planned but not yet implemented.
+The `scripts/generate_diff.py` helper will be added in a future iteration.
+
 ```bash
+# Planned usage (script not yet available)
 # Compare two versions
-python scripts/generate_diff.py \
-  spa-assets/snapshots/2026-01-20/full_spec.json \
-  spa-assets/snapshots/2026-01-21/full_spec.json \
-  > spa-assets/diffs/2026-01-20_to_2026-01-21.json
+# python scripts/generate_diff.py \
+#   spa-assets/snapshots/2026-01-20/full_spec.json \
+#   spa-assets/snapshots/2026-01-21/full_spec.json \
+#   > spa-assets/diffs/2026-01-20_to_2026-01-21.json
 ```
 
 ### Verifying Integrity
 
 ```bash
-# Check all checksums
+# Check all checksums from JSON metadata
 python scripts/verify_integrity.py spa-assets/metadata/integrity.json
-
-# Verify specific snapshot
-sha256sum -c spa-assets/metadata/integrity.json
 ```
 
 ## 🚀 CI/CD Integration
