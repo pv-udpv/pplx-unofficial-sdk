@@ -3,17 +3,15 @@
 // ============================================================================
 
 import { createRestClient } from "../src/pplx-rest-client";
-import { createPplxClient } from "../src/pplx-client";
 
-// Initialize clients
+// Initialize REST client
 const restClient = createRestClient();
-const sseClient = createPplxClient();
 
 // ===========================================================================
-// EXAMPLE 1: Full conversation flow
+// EXAMPLE 1: Thread and Entry Management
 // ===========================================================================
 
-async function fullConversationFlow() {
+export async function threadAndEntryExample() {
   // 1. Create a new thread
   const thread = await restClient.createThread({
     title: "Machine Learning Discussion",
@@ -21,40 +19,31 @@ async function fullConversationFlow() {
   });
   console.log("Created thread:", thread.uuid);
 
-  // 2. Start SSE search and get first entry
-  let firstEntryUuid: string | undefined;
-  for await (const entry of sseClient.search("Explain transformers in ML")) {
-    console.log("Streaming:", entry.status);
-    if (entry.backend_uuid) {
-      firstEntryUuid = entry.backend_uuid;
-    }
-    if (entry.final) break;
-  }
-
-  // 3. Get full entry details
-  if (firstEntryUuid) {
-    const entry = await restClient.getEntry(firstEntryUuid);
-    console.log("Entry details:", entry.query_str);
-
-    // 4. Like the entry
-    const social = await restClient.likeEntry(firstEntryUuid);
-    console.log("Likes:", social.like_count);
-
-    // 5. Get related queries
-    const related = await restClient.getRelatedQueries(firstEntryUuid);
-    console.log("Related queries:", related);
-  }
-
-  // 6. List all entries in thread
+  // 2. List all entries in thread (initially empty)
   const entries = await restClient.listThreadEntries(thread.uuid);
   console.log("Total entries:", entries.length);
+
+  // NOTE: To add entries to a thread, use the SSE streaming client
+  // which will be implemented in Issue #1. Once entries exist, you can:
+  
+  // 3. Get specific entry details
+  // const entry = await restClient.getEntry(entryUuid);
+  // console.log("Entry details:", entry.query_str);
+
+  // 4. Like the entry
+  // const social = await restClient.likeEntry(entryUuid);
+  // console.log("Likes:", social.like_count);
+
+  // 5. Get related queries
+  // const related = await restClient.getRelatedQueries(entryUuid);
+  // console.log("Related queries:", related);
 }
 
 // ===========================================================================
 // EXAMPLE 2: Collections (Spaces)
 // ===========================================================================
 
-async function collectionsExample() {
+export async function collectionsExample() {
   // Create collection
   const collection = await restClient.createCollection({
     name: "ML Research",
@@ -63,7 +52,7 @@ async function collectionsExample() {
   });
 
   // Create threads and add to collection
-  const thread1 = await restClient.createThread({
+  void await restClient.createThread({
     title: "Attention mechanisms",
     collection_uuid: collection.uuid,
   });
@@ -81,36 +70,33 @@ async function collectionsExample() {
 }
 
 // ===========================================================================
-// EXAMPLE 3: Fork and modify
+// EXAMPLE 3: Fork entry
 // ===========================================================================
 
-async function forkExample() {
-  // Get existing entry
-  const entry = await restClient.getEntry("some-backend-uuid");
+export async function forkExample() {
+  // Get existing entry (requires a valid backend_uuid from a real entry)
+  // const entry = await restClient.getEntry("some-backend-uuid");
 
   // Fork to new thread
-  const forkResult = await restClient.forkEntry({
-    backend_uuid: entry.backend_uuid,
-    title: "Forked Discussion",
-  });
+  // const forkResult = await restClient.forkEntry({
+  //   backend_uuid: entry.backend_uuid,
+  //   title: "Forked Discussion",
+  // });
 
-  console.log("New thread:", forkResult.new_context_uuid);
-  console.log("New entry:", forkResult.new_backend_uuid);
+  // console.log("New thread:", forkResult.new_context_uuid);
+  // console.log("New entry:", forkResult.new_backend_uuid);
 
-  // Continue conversation in forked thread with SSE
-  for await (const newEntry of sseClient.search("Follow-up question", {
-    // Use forked context
-  })) {
-    console.log("New response:", newEntry.blocks);
-    if (newEntry.final) break;
-  }
+  // NOTE: To continue the conversation in the forked thread,
+  // use the SSE client (to be implemented in Issue #1)
+  
+  console.log("Fork example requires existing entries. See comments for usage.");
 }
 
 // ===========================================================================
 // EXAMPLE 4: Pagination
 // ===========================================================================
 
-async function paginationExample() {
+export async function paginationExample() {
   let cursor: string | undefined;
   let allThreads: any[] = [];
 
@@ -135,7 +121,7 @@ async function paginationExample() {
 // EXAMPLE 5: Thread management
 // ===========================================================================
 
-async function threadManagement() {
+export async function threadManagementExample() {
   // Get thread by slug (from URL)
   const thread = await restClient.getThreadBySlug("machine-learning-basics");
 
@@ -149,7 +135,7 @@ async function threadManagement() {
   // Get entries
   const entries = await restClient.listThreadEntries(thread.uuid);
 
-  // Update first entry
+  // Update first entry (if exists)
   if (entries[0]) {
     await restClient.updateEntry({
       backend_uuid: entries[0].backend_uuid,
@@ -157,18 +143,21 @@ async function threadManagement() {
     });
   }
 
-  // Delete thread
+  // Delete thread (commented out for safety)
   // await restClient.deleteThread(thread.uuid);
 }
 
-// Run examples
+// Run examples (modify as needed)
 (async () => {
   try {
-    await fullConversationFlow();
+    // Uncomment the example you want to run:
+    // await threadAndEntryExample();
     // await collectionsExample();
     // await forkExample();
     // await paginationExample();
-    // await threadManagement();
+    // await threadManagementExample();
+    
+    console.log("Examples are ready to run. Uncomment the function calls above.");
   } catch (error) {
     console.error("Error:", error);
   }

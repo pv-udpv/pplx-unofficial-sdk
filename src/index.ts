@@ -130,58 +130,52 @@ export class PplxSDK {
   }
 
   /**
-   * Quick search helper - combines SSE streaming and REST API
+   * Quick search helper - combines SSE streaming and REST API.
+   *
+   * NOTE: This is a preview feature and depends on the SSE `stream.search`
+   * implementation, which is currently not available (see Issue #1).
+   * Calling this method will throw until the SSE search implementation
+   * is completed.
    */
   async quickSearch(query: string, options?: {
     focus?: any;
     model?: any;
     sources?: string[];
   }) {
-    const entries = [];
-    
-    // Stream search
-    for await (const entry of this.stream.search(query, options)) {
-      entries.push(entry);
-      if (entry.final) break;
-    }
-
-    const finalEntry = entries[entries.length - 1];
-
-    // Get full thread details if available
-    if (finalEntry?.context_uuid) {
-      const thread = await this.rest.getThread(finalEntry.context_uuid);
-      return { entries, thread };
-    }
-
-    return { entries, thread: null };
+    throw new Error(
+      "PplxSDK.quickSearch is a preview feature and requires SSE stream.search implementation (see Issue #1)."
+    );
   }
 
   /**
-   * Search with connector sources
+   * Search with connector sources.
+   *
+   * NOTE: This is a preview feature and depends on the SSE `stream.search`
+   * implementation, which is currently not available (see Issue #1).
+   * Calling this method will throw until the SSE search implementation
+   * is completed.
    */
-  async *searchWithConnectors(
+  async searchWithConnectors(
     query: string,
     connectorIds: string[],
     options?: any
-  ) {
-    yield* this.stream.search(query, {
-      ...options,
-      sources: connectorIds,
-    });
+  ): Promise<never> {
+    throw new Error(
+      "PplxSDK.searchWithConnectors is a preview feature and requires SSE stream.search implementation (see Issue #1)."
+    );
   }
 
   /**
-   * Get connection status for all connectors
+   * Get connection status for all connectors.
+   *
+   * Note: The connectors client is not yet implemented. This method is
+   * currently a placeholder and will be enabled in a future release.
    */
   async getConnectorsStatus() {
-    const connectors = await this.connectors.listConnectors();
-    return connectors.map((c) => ({
-      id: c.id,
-      name: c.name,
-      connected: c.status === "connected",
-      lastSync: c.last_sync,
-      fileCount: c.file_count,
-    }));
+    throw new Error(
+      "getConnectorsStatus is not available: the connectors client is not yet implemented. " +
+      "This method is a placeholder in the unified SDK interface and will be enabled in a future release."
+    );
   }
 }
 
