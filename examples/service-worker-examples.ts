@@ -270,7 +270,5 @@ async function runAllExamples() {
   await example8_advancedFiltering();
 }
 
-// Run if executed directly
-if (require.main === module) {
-  runAllExamples().catch(console.error);
-}
+// Export for use as a module
+export { runAllExamples };

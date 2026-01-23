@@ -8,6 +8,15 @@
 // ============================================================================
 
 /**
+ * Constants for chunk categorization
+ */
+const CHUNK_CATEGORIES = {
+  RESTRICTED: "_restricted",
+  TRANSLATIONS: "translations",
+  MODAL: "modal",
+} as const;
+
+/**
  * Represents a single chunk/asset in the service worker precache manifest
  */
 export interface ServiceWorkerChunk {
@@ -148,13 +157,14 @@ export class PplxServiceWorkerClient {
    * Parses the service worker JavaScript to extract the precache manifest
    */
   private parseManifest(serviceWorkerJs: string): ServiceWorkerChunk[] {
-    // The manifest is in the format: He([{...chunks...}])
-    // We need to find and extract the array of chunk objects
+    // The manifest is in the format: He([{...chunks...}]) or precache([{...chunks...}])
+    // Note: 'He' is an obfuscated function name in Workbox that may change.
+    // We look for multiple patterns to be resilient to minification changes.
     
     // Look for the pattern: He([...]) or similar function call with manifest array
     const patterns = [
-      /He\(\s*\[([^\]]+\])\s*\)/s, // He([...])
-      /precache\(\s*\[([^\]]+\])\s*\)/s, // precache([...])
+      /He\(\s*\[([^\]]+\])\s*\)/s, // He([...]) - current Workbox pattern
+      /precache\(\s*\[([^\]]+\])\s*\)/s, // precache([...]) - alternative pattern
       /\[\s*\{\s*"?revision"?\s*:/s, // Direct array start
     ];
 
@@ -288,17 +298,17 @@ export class PplxServiceWorkerClient {
 
     // Filter restricted features
     if (filter.restrictedOnly) {
-      chunks = chunks.filter((chunk) => chunk.url.includes("_restricted"));
+      chunks = chunks.filter((chunk) => chunk.url.includes(CHUNK_CATEGORIES.RESTRICTED));
     }
 
     // Filter translations
     if (filter.translationsOnly) {
-      chunks = chunks.filter((chunk) => chunk.url.includes("translations"));
+      chunks = chunks.filter((chunk) => chunk.url.includes(CHUNK_CATEGORIES.TRANSLATIONS));
     }
 
     // Filter modals
     if (filter.modalsOnly) {
-      chunks = chunks.filter((chunk) => chunk.url.includes("modal"));
+      chunks = chunks.filter((chunk) => chunk.url.includes(CHUNK_CATEGORIES.MODAL));
     }
 
     return chunks;
@@ -334,11 +344,11 @@ export class PplxServiceWorkerClient {
       }
 
       // Count by category
-      if (chunk.url.includes("_restricted")) {
+      if (chunk.url.includes(CHUNK_CATEGORIES.RESTRICTED)) {
         restricted++;
-      } else if (chunk.url.includes("translations")) {
+      } else if (chunk.url.includes(CHUNK_CATEGORIES.TRANSLATIONS)) {
         translations++;
-      } else if (chunk.url.includes("modal")) {
+      } else if (chunk.url.includes(CHUNK_CATEGORIES.MODAL)) {
         modals++;
       } else {
         other++;
@@ -354,7 +364,7 @@ export class PplxServiceWorkerClient {
         modals,
         other,
       },
-      totalSize: "N/A", // Would require fetching each chunk
+      totalSize: "N/A", // Not calculated to avoid making additional HTTP requests for each chunk
     };
   }
 
