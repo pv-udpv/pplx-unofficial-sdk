@@ -4,4 +4,5 @@ dist/
 .env
 .env.local
 *.log
-.DS_Storepackage-lock.json
+.DS_Store
+package-lock.json
