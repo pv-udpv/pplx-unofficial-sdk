@@ -280,6 +280,7 @@ export class PplxClient {
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
+      // Create a new parser instance for this search to avoid shared state
       const parser = new SSEParser();
 
       let done = false;
@@ -337,10 +338,14 @@ export class PplxClient {
         }
       }
 
-      // If stream ended without a final entry, mark the last entry as final
+      // If stream ended without a final entry, yield a new final entry
       if (lastEntry && !lastEntry.final) {
-        lastEntry.final = true;
-        yield lastEntry;
+        const finalEntry: Entry = {
+          ...lastEntry,
+          final: true,
+          status: "completed",
+        };
+        yield finalEntry;
       }
 
       this.logger.info("Stream ended");
@@ -414,9 +419,11 @@ export class PplxClient {
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
+      // Create a new parser instance for this reconnect to avoid shared state
       const parser = new SSEParser();
 
       let done = false;
+      let lastEntry: Entry | null = null;
 
       while (!done) {
         const { value, done: streamDone } = await reader.read();
@@ -444,6 +451,7 @@ export class PplxClient {
                   text: data.text,
                 };
 
+                lastEntry = entry;
                 yield entry;
 
                 if (entry.final) {
@@ -457,6 +465,16 @@ export class PplxClient {
             }
           }
         }
+      }
+
+      // If stream ended without a final entry, yield a new final entry
+      if (lastEntry && !lastEntry.final) {
+        const finalEntry: Entry = {
+          ...lastEntry,
+          final: true,
+          status: "completed",
+        };
+        yield finalEntry;
       }
     } catch (error: any) {
       clearTimeout(timeoutId);
