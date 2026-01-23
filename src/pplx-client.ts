@@ -376,6 +376,51 @@ export class PplxClient {
     this.logger = config?.logger || this.createDefaultLogger();
   }
 
+  /**
+   * Normalize status value to handle both numeric enum values and string representations
+   */
+  private normalizeStatus(status: any): StreamStatus | string {
+    if (status === undefined || status === null) {
+      return StreamStatus.PENDING;
+    }
+
+    // If it's already a valid StreamStatus enum value (numeric)
+    if (typeof status === "number" && status in StreamStatus) {
+      return status;
+    }
+
+    // Map common string representations to enum values
+    const statusStr = String(status).toLowerCase();
+    switch (statusStr) {
+      case "pending":
+        return StreamStatus.PENDING;
+      case "completed":
+        return StreamStatus.COMPLETED;
+      case "failed":
+        return StreamStatus.FAILED;
+      case "staged":
+        return StreamStatus.STAGED;
+      case "rewriting":
+        return StreamStatus.REWRITING;
+      case "resuming":
+        return StreamStatus.RESUMING;
+      case "blocked":
+        return StreamStatus.BLOCKED;
+      default:
+        // Return the original value for unknown strings (e.g., "streaming", "error")
+        return status;
+    }
+  }
+
+  /**
+   * Check if status indicates completion
+   */
+  private isCompletedStatus(status: any): boolean {
+    return status === StreamStatus.COMPLETED || 
+           status === "completed" ||
+           String(status).toLowerCase() === "completed";
+  }
+
   private createDefaultLogger(): Logger {
     return {
       debug: () => {},
@@ -480,8 +525,8 @@ export class PplxClient {
                   context_uuid: data.context_uuid || "",
                   query_str: data.query_str || query,
                   blocks: data.blocks || [],
-                  status: data.status || "streaming",
-                  final: data.final || data.status === "completed" || false,
+                  status: this.normalizeStatus(data.status),
+                  final: data.final || this.isCompletedStatus(data.status) || false,
                   sources_list: data.sources_list || data.sources || [],
                   mode: data.mode,
                   role: data.role,
@@ -518,7 +563,7 @@ export class PplxClient {
         const finalEntry: Entry = {
           ...lastEntry,
           final: true,
-          status: "completed",
+          status: StreamStatus.COMPLETED,
         };
         yield finalEntry;
       }
@@ -619,8 +664,8 @@ export class PplxClient {
                   context_uuid: data.context_uuid || "",
                   query_str: data.query_str || query,
                   blocks: data.blocks || [],
-                  status: data.status || "streaming",
-                  final: data.final || data.status === "completed" || false,
+                  status: this.normalizeStatus(data.status),
+                  final: data.final || this.isCompletedStatus(data.status) || false,
                   sources_list: data.sources_list || data.sources || [],
                   mode: data.mode,
                   role: data.role,
@@ -654,7 +699,7 @@ export class PplxClient {
         const finalEntry: Entry = {
           ...lastEntry,
           final: true,
-          status: "completed",
+          status: StreamStatus.COMPLETED,
         };
         yield finalEntry;
       }
