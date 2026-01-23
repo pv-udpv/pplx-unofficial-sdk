@@ -25,6 +25,11 @@
       "import": "./dist/pplx-connectors-client.mjs",
       "require": "./dist/pplx-connectors-client.js",
       "types": "./dist/pplx-connectors-client.d.ts"
+    },
+    "./service-worker": {
+      "import": "./dist/pplx-service-worker-client.mjs",
+      "require": "./dist/pplx-service-worker-client.js",
+      "types": "./dist/pplx-service-worker-client.d.ts"
     }
   },
   "files": [
@@ -33,7 +38,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsup src/index.ts src/pplx-client.ts src/pplx-rest-client.ts src/pplx-connectors-client.ts --format cjs,esm --dts --clean",
+    "build": "tsup src/index.ts src/pplx-client.ts src/pplx-rest-client.ts src/pplx-connectors-client.ts src/pplx-service-worker-client.ts --format cjs,esm --dts --clean",
     "dev": "tsup src/index.ts --watch",
     "test": "vitest",
     "lint": "eslint src --ext .ts",

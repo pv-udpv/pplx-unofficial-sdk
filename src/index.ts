@@ -91,12 +91,31 @@ export type {
 } from "./pplx-connectors-client";
 
 // ============================================================================
+// SERVICE WORKER CLIENT
+// ============================================================================
+export {
+  PplxServiceWorkerClient,
+  createServiceWorkerClient,
+  ServiceWorkerError,
+  ServiceWorkerParseError,
+  ServiceWorkerFetchError,
+} from "./pplx-service-worker-client";
+
+export type {
+  ServiceWorkerChunk,
+  ServiceWorkerManifest,
+  ServiceWorkerClientConfig,
+  ChunkFilterOptions,
+} from "./pplx-service-worker-client";
+
+// ============================================================================
 // UNIFIED SDK CLIENT
 // ============================================================================
 
 import { PplxClient, PplxClientConfig } from "./pplx-client";
 import { PplxRestClient } from "./pplx-rest-client";
 import { PplxConnectorsClient } from "./pplx-connectors-client";
+import { PplxServiceWorkerClient } from "./pplx-service-worker-client";
 
 /**
  * Unified SDK configuration
@@ -108,7 +127,7 @@ export interface PplxSDKConfig extends PplxClientConfig {
 
 /**
  * Unified Perplexity SDK Client
- * Combines SSE streaming, REST API, and Connectors
+ * Combines SSE streaming, REST API, Connectors, and Service Worker analysis
  */
 export class PplxSDK {
   /** SSE streaming client */
@@ -120,6 +139,9 @@ export class PplxSDK {
   /** Connectors client */
   public readonly connectors: PplxConnectorsClient;
 
+  /** Service Worker client */
+  public readonly serviceWorker: PplxServiceWorkerClient;
+
   constructor(config?: PplxSDKConfig) {
     const baseUrl = config?.baseUrl || "https://www.perplexity.ai";
     const headers = config?.headers || {};
@@ -127,6 +149,7 @@ export class PplxSDK {
     this.stream = new PplxClient(config);
     this.rest = new PplxRestClient({ baseUrl, headers });
     this.connectors = new PplxConnectorsClient({ baseUrl, headers });
+    this.serviceWorker = new PplxServiceWorkerClient({ baseUrl, headers });
   }
 
   /**
