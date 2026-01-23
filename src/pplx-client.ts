@@ -7,23 +7,189 @@
 // TYPE DEFINITIONS
 // ============================================================================
 
+// Stream Status Enum (from production stream manager)
+export enum StreamStatus {
+  STATUS_UNSPECIFIED = 0,
+  PENDING = 1,
+  COMPLETED = 2,
+  FAILED = 3,
+  STAGED = 4,
+  REWRITING = 5,
+  RESUMING = 6,
+  BLOCKED = 7
+}
+
+// Search Model Enum (subset of models from production frontend bundles)
+export enum SearchModel {
+  // Primary models
+  DEFAULT = "turbo",
+  PPLX_PRO_UPGRADED = "pplx_pro_upgraded",
+  PRO = "pplx_pro",
+  SONAR = "experimental",
+  GPT_4o = "gpt4o",
+  GPT_4_1 = "gpt41",
+  GPT_5_1 = "gpt51",
+  GPT_5_2 = "gpt52",
+  CLAUDE_2 = "claude2",
+  GEMINI_2_5_PRO = "gemini25pro",
+  GEMINI_3_0_PRO = "gemini30pro",
+  GEMINI_3_0_FLASH = "gemini30flash",
+  GEMINI_3_0_FLASH_HIGH = "gemini30flash_high",
+  GROK = "grok",
+  PPLX_REASONING = "pplx_reasoning",
+  CLAUDE_3_7_SONNET_THINKING = "claude37sonnetthinking",
+  O4_MINI = "o4mini",
+  GPT_5_1_THINKING = "gpt51_thinking",
+  GPT_5_2_THINKING = "gpt52_thinking",
+  CLAUDE_4_0_OPUS = "claude40opus",
+  CLAUDE_4_1_OPUS = "claude41opus",
+  CLAUDE_4_5_OPUS = "claude45opus",
+  CLAUDE_4_0_OPUS_THINKING = "claude40opusthinking",
+  CLAUDE_4_1_OPUS_THINKING = "claude41opusthinking",
+  CLAUDE_4_5_OPUS_THINKING = "claude45opusthinking",
+  CLAUDE_4_5_SONNET = "claude45sonnet",
+  CLAUDE_4_5_SONNET_THINKING = "claude45sonnetthinking",
+  KIMI_K2_THINKING = "kimik2thinking",
+  GROK_4 = "grok4",
+  GROK_4_NON_THINKING = "grok4nonthinking",
+  GROK_4_1_REASONING = "grok41reasoning",
+  GROK_4_1_NON_REASONING = "grok41nonreasoning",
+  PPLX_ALPHA = "pplx_alpha",
+  PPLX_BETA = "pplx_beta",
+  PPLX_STUDY = "pplx_study",
+  PPLX_AGENTIC_RESEARCH = "pplx_agentic_research",
+  // Additional models from enum 's'
+  GPT_3_5_TURBO = "gpt35turbo",
+  GPT_4 = "gpt4",
+  GPT_4_TURBO = "gpt4turbo",
+  CLAUDE_3_OPUS = "claude3opus",
+  CLAUDE_3_SONNET = "claude3sonnet",
+  CLAUDE_3_HAIKU = "claude3haiku",
+  CLAUDE_3_5_SONNET = "claude35sonnet",
+  CLAUDE_3_5_HAIKU = "claude35haiku",
+  GEMINI_PRO = "geminipro",
+  GEMINI_FLASH = "geminiflash",
+  GEMINI_1_5_PRO = "gemini15pro",
+  GEMINI_1_5_FLASH = "gemini15flash",
+  LLAMA_3_1_8B = "llama318b",
+  LLAMA_3_1_70B = "llama3170b",
+  LLAMA_3_1_405B = "llama31405b",
+  MISTRAL_7B = "mistral7b",
+  MIXTRAL_8x7B = "mixtral8x7b",
+  MIXTRAL_8x22B = "mixtral8x22b",
+  DEEPSEEK_V2 = "deepseekv2",
+  QWEN_2_72B = "qwen272b",
+}
+
+// Search Mode Enum (from production enum 't')
+export enum SearchMode {
+  SEARCH = "search",
+  RESEARCH = "research",
+  AGENTIC_RESEARCH = "agentic_research",
+  STUDIO = "studio",
+  STUDY = "study",
+  BROWSER_AGENT = "browser_agent"
+}
+
+// Block Types (from stream analysis)
+export enum BlockType {
+  TEXT = "text",
+  CODE = "code",
+  IMAGE = "image",
+  VIDEO = "video",
+  CHART = "chart",
+  TABLE = "table",
+  QUOTE = "quote",
+  LIST = "list"
+}
+
+export interface Block {
+  type: BlockType;
+  content: string;
+  metadata?: Record<string, any>;
+}
+
+// Asset Types (from production)
+export enum AssetType {
+  CODE_ASSET = "code_asset",
+  CHART = "chart",
+  CODE_FILE = "code_file",
+  APP = "app",
+  GENERATED_IMAGE = "generated_image",
+  GENERATED_VIDEO = "generated_video",
+  PDF_FILE = "pdf_file",
+  SLIDES = "slides",
+  DOCX_FILE = "docx_file",
+  XLSX_FILE = "xlsx_file",
+  QUIZ = "quiz",
+  FLASHCARDS = "flashcards",
+  DOC_FILE = "doc_file"
+}
+
+export interface Asset {
+  type: AssetType;
+  url?: string;
+  data?: any;
+}
+
+// UX Placement Enum
+export enum UXPlacement {
+  IN_THREAD = "IN_THREAD",
+  SIDEBAR = "SIDEBAR",
+  MODAL = "MODAL"
+}
+
+// Call To Action interface
+export interface CallToAction {
+  type: string;
+  message: string;
+  action?: string;
+  url?: string;
+}
+
+// Recency Filter Type
+export type RecencyFilter = "hour" | "day" | "week" | "month" | "year";
+
+// Enhanced Entry interface matching production stream state
 export interface Entry {
-  uuid: string;
+  // Core identifiers
+  uuid: string;                    // frontend_uuid
   backend_uuid: string;
-  context_uuid: string;
+  context_uuid: string;            // thread_id
+  
+  // Query info
   query_str: string;
-  blocks: any[];
-  status: string;
+  thread_url_slug?: string;
+  
+  // Content
+  blocks: Block[];                 // Rich content blocks
+  status: StreamStatus | string;   // Support both enum and legacy string
   final: boolean;
-  sources_list?: any[];
-  mode?: string;
-  role?: string;
-  text?: string;
+  
+  // Sources
+  sources_list?: Source[];
+  
+  // Metadata
+  mode?: SearchMode | string;      // Support both enum and legacy string
+  model?: SearchModel | string;    // Support both enum and legacy string
+  role?: "user" | "assistant";
+  text?: string;                   // Plain text fallback
+  
+  // CTA & UI
+  ctas?: CallToAction[];           // Upgrade prompts, etc.
+  placement?: UXPlacement;         // IN_THREAD, SIDEBAR, MODAL
+  
+  // Assets
+  assets?: Asset[];                // CODE_ASSET, CHART, GENERATED_IMAGE
+  
+  // Error handling
+  error?: {
+    message: string;
+    code?: string;
+  };
 }
 
 export type UserPermission = "read" | "write" | "admin";
-export type StreamStatus = "STARTED" | "STREAMING" | "COMPLETED" | "ERROR";
-export type SearchMode = "concise" | "detailed" | "auto";
 export type SearchFocus = 
   | "internet" 
   | "scholar" 
@@ -33,7 +199,6 @@ export type SearchFocus =
   | "reddit"
   | "social"
   | "news";
-export type ModelPreference = "default" | "turbo" | "experimental";
 export type QuerySource = string;
 
 export interface PplxClientConfig {
@@ -51,22 +216,23 @@ export interface Logger {
 }
 
 export interface SSEClientOptions {
-  mode?: SearchMode;
+  mode?: SearchMode | string;
   focus?: SearchFocus;
-  model?: ModelPreference;
+  model?: SearchModel | string;
   sources?: string[];
   context_uuid?: string;
   backend_uuid?: string;
   frontend_uuid?: string;
   attachments?: any[];
   language?: string;
+  recency?: RecencyFilter;         // Added: hour, day, week, month, year
 }
 
 export interface SSERequest {
   query: string;
-  mode?: SearchMode;
+  mode?: SearchMode | string;
   focus?: SearchFocus;
-  model?: ModelPreference;
+  model?: SearchModel | string;
   sources?: string[];
   context_uuid?: string;
   backend_uuid?: string;
@@ -74,6 +240,7 @@ export interface SSERequest {
   attachments?: any[];
   source?: string;
   language?: string;
+  recency?: RecencyFilter;         // Added: hour, day, week, month, year
 }
 
 export interface SSERequestParams extends SSERequest {
@@ -209,6 +376,51 @@ export class PplxClient {
     this.logger = config?.logger || this.createDefaultLogger();
   }
 
+  /**
+   * Normalize status value to handle both numeric enum values and string representations
+   */
+  private normalizeStatus(status: any): StreamStatus | string {
+    if (status === undefined || status === null) {
+      return StreamStatus.PENDING;
+    }
+
+    // If it's already a valid StreamStatus enum value (numeric)
+    if (typeof status === "number" && status in StreamStatus) {
+      return status;
+    }
+
+    // Map common string representations to enum values
+    const statusStr = String(status).toLowerCase();
+    switch (statusStr) {
+      case "pending":
+        return StreamStatus.PENDING;
+      case "completed":
+        return StreamStatus.COMPLETED;
+      case "failed":
+        return StreamStatus.FAILED;
+      case "staged":
+        return StreamStatus.STAGED;
+      case "rewriting":
+        return StreamStatus.REWRITING;
+      case "resuming":
+        return StreamStatus.RESUMING;
+      case "blocked":
+        return StreamStatus.BLOCKED;
+      default:
+        // Return the original value for unknown strings (e.g., "streaming", "error")
+        return status;
+    }
+  }
+
+  /**
+   * Check if status indicates completion
+   */
+  private isCompletedStatus(status: any): boolean {
+    return status === StreamStatus.COMPLETED || 
+           status === "completed" ||
+           String(status).toLowerCase() === "completed";
+  }
+
   private createDefaultLogger(): Logger {
     return {
       debug: () => {},
@@ -240,7 +452,7 @@ export class PplxClient {
     query: string,
     options?: SSEClientOptions
   ): AsyncGenerator<Entry> {
-    const url = `${this.baseUrl}/rest/sse/perplexity_ask`;
+    const url = `${this.baseUrl}/sapi/platform`;
     
     const requestBody: SSERequestParams = {
       version: "2.18",
@@ -313,12 +525,18 @@ export class PplxClient {
                   context_uuid: data.context_uuid || "",
                   query_str: data.query_str || query,
                   blocks: data.blocks || [],
-                  status: data.status || "streaming",
-                  final: data.final || data.status === "completed" || false,
+                  status: this.normalizeStatus(data.status),
+                  final: data.final || this.isCompletedStatus(data.status) || false,
                   sources_list: data.sources_list || data.sources || [],
                   mode: data.mode,
                   role: data.role,
                   text: data.text,
+                  thread_url_slug: data.thread_url_slug,
+                  model: data.model,
+                  ctas: data.ctas,
+                  placement: data.placement,
+                  assets: data.assets,
+                  error: data.error,
                 };
 
                 lastEntry = entry;
@@ -345,7 +563,7 @@ export class PplxClient {
         const finalEntry: Entry = {
           ...lastEntry,
           final: true,
-          status: "completed",
+          status: StreamStatus.COMPLETED,
         };
         yield finalEntry;
       }
@@ -379,7 +597,7 @@ export class PplxClient {
     query: string,
     options?: SSEClientOptions
   ): AsyncGenerator<Entry> {
-    const url = `${this.baseUrl}/rest/sse/perplexity_ask/reconnect/${resumeEntryUuid}`;
+    const url = `${this.baseUrl}/sapi/platform/reconnect`;
     
     this.logger.info("Reconnecting to stream", { resumeEntryUuid, query });
 
@@ -389,6 +607,7 @@ export class PplxClient {
       source: "default",
       query: query,
       ...options,
+      backend_uuid: resumeEntryUuid,  // Resume from this entry
     };
 
     const controller = new AbortController();
@@ -445,12 +664,18 @@ export class PplxClient {
                   context_uuid: data.context_uuid || "",
                   query_str: data.query_str || query,
                   blocks: data.blocks || [],
-                  status: data.status || "streaming",
-                  final: data.final || data.status === "completed" || false,
+                  status: this.normalizeStatus(data.status),
+                  final: data.final || this.isCompletedStatus(data.status) || false,
                   sources_list: data.sources_list || data.sources || [],
                   mode: data.mode,
                   role: data.role,
                   text: data.text,
+                  thread_url_slug: data.thread_url_slug,
+                  model: data.model,
+                  ctas: data.ctas,
+                  placement: data.placement,
+                  assets: data.assets,
+                  error: data.error,
                 };
 
                 lastEntry = entry;
@@ -474,7 +699,7 @@ export class PplxClient {
         const finalEntry: Entry = {
           ...lastEntry,
           final: true,
-          status: "completed",
+          status: StreamStatus.COMPLETED,
         };
         yield finalEntry;
       }

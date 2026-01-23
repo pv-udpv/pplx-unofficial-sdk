@@ -15,18 +15,21 @@ export {
   PplxError,
   PplxStreamError,
   PplxFetchError,
+  StreamStatus,
+  SearchModel,
+  SearchMode,
+  BlockType,
+  AssetType,
+  UXPlacement,
 } from "./pplx-client";
 
 export type {
   Entry,
   Thread,
   Stream,
-  StreamStatus,
   StreamEvents,
   UserPermission,
-  SearchMode,
   SearchFocus,
-  ModelPreference,
   QuerySource,
   SSERequest,
   SSERequestParams,
@@ -38,6 +41,10 @@ export type {
   PplxClientConfig,
   Logger,
   SSEClientOptions,
+  Block,
+  Asset,
+  CallToAction,
+  RecencyFilter,
 } from "./pplx-client";
 
 // ============================================================================
