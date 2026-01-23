@@ -52,7 +52,7 @@ export async function collectionsExample() {
   });
 
   // Create threads and add to collection
-  await restClient.createThread({
+  void await restClient.createThread({
     title: "Attention mechanisms",
     collection_uuid: collection.uuid,
   });

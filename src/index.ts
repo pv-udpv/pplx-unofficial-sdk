@@ -155,11 +155,11 @@ export class PplxSDK {
    * Calling this method will throw until the SSE search implementation
    * is completed.
    */
-  async *searchWithConnectors(
+  async searchWithConnectors(
     query: string,
     connectorIds: string[],
     options?: any
-  ) {
+  ): Promise<never> {
     throw new Error(
       "PplxSDK.searchWithConnectors is a preview feature and requires SSE stream.search implementation (see Issue #1)."
     );
