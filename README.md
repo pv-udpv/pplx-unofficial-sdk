@@ -214,6 +214,36 @@ Endpoints: 38 total (2 SSE + 24 REST + 11 Connectors + 1 Service Worker)
 LOC: 2,050+ (excluding examples)
 ```
 
+## 🤖 SDK Consumer Bot
+
+A reference implementation demonstrating all SDK capabilities:
+
+```bash
+cd sdk-consumer-bot
+
+# Search with streaming
+pplx-bot search "quantum computing" --focus academic
+
+# Create conversation thread
+pplx-bot chat "ML Research" "explain transformers" --save "AI Papers"
+
+# Search with connectors
+pplx-bot connectors-search "team docs" -c google_drive notion
+
+# Automated research
+pplx-bot research "GraphQL vs REST" --depth 3
+```
+
+**Features:**
+- ✅ Real-time streaming search with progress indicators
+- ✅ Conversation management (threads, collections, likes)
+- ✅ OAuth connector integration (Google Drive, Notion, etc.)
+- ✅ CLI interface with 8+ commands
+- ✅ Programmatic API for Node.js apps
+- ✅ TypeScript examples and documentation
+
+See [sdk-consumer-bot/README.md](sdk-consumer-bot/README.md) for full documentation.
+
 ## 🔒 Security
 
 - **CSRF Protection** - State parameter in OAuth flow
@@ -252,6 +282,7 @@ Contributions welcome! Please open an issue or PR.
 | REST API | 🔄 In Development | - |
 | Connectors | 🔄 In Development | - |
 | Documentation | ✅ Complete | 100% |
+| SDK Consumer Bot | ✅ Complete | Demo/Example |
 
 ---
 
