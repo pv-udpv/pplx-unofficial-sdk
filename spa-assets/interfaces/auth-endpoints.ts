@@ -246,8 +246,14 @@ export interface AuthClient {
    *   source: 'default'
    * });
    * 
-   * const googleProvider = providers.providers.find(p => p.id === 'google');
-   * if (googleProvider?.enabled) {
+   * // Access provider directly
+   * if (providers.google) {
+   *   console.log('Google login available at:', providers.google.signinUrl);
+   * }
+   * 
+   * // Or find by ID
+   * const googleProvider = Object.values(providers).find(p => p?.id === 'google');
+   * if (googleProvider) {
    *   console.log('Google login available');
    * }
    * ```

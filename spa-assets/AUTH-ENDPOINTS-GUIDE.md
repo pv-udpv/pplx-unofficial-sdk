@@ -407,8 +407,6 @@ The endpoint is referenced in the following SPA modules:
 |----------|------|---------------|---------|
 | `/api/auth/providers` | GET | No | Get available auth providers |
 | `/rest/auth/get_special_profile` | GET | Yes | Get user special profile |
-3. **Document Edge Cases** - Document special scenarios and edge cases
-4. **Add More Auth Endpoints** - As more endpoints are discovered, add them here
 
 ## References
 
