@@ -177,6 +177,155 @@ console.log('OAuth providers:', oauthProviders.map(p => p?.name));
 
 ---
 
+### POST /rest/enterprise/organization/login/details
+
+Checks if an email address requires SSO authentication and returns organization configuration.
+
+**Source Module:** `LoginModalInner-DytY--wo.js`  
+**Category:** `auth`  
+**Authentication:** Not required (public endpoint, used before login)
+
+#### Request
+
+```http
+POST /rest/enterprise/organization/login/details HTTP/1.1
+Host: www.perplexity.ai
+Content-Type: application/json
+
+{
+  "email": "user@company.com"
+}
+```
+
+**Body Parameters:**
+- `email` (required, string) - Email address to check for SSO requirements
+
+#### Response
+
+```json
+{
+  "organization": {
+    "force_sso": true,
+    "workos_org_id": "org_123456",
+    "single_tenant": "company.perplexity.ai",
+    "initiate_web_sso_url": "https://company.perplexity.ai/sso/initiate"
+  }
+}
+```
+
+**Response when SSO is not required:**
+```json
+{
+  "organization": null
+}
+```
+
+#### TypeScript Interface
+
+```typescript
+import {
+  OrganizationLoginDetailsRequest,
+  OrganizationLoginDetailsResponse
+} from './interfaces/auth-endpoints';
+
+const request: OrganizationLoginDetailsRequest = {
+  email: 'user@company.com'
+};
+
+const response: OrganizationLoginDetailsResponse = await fetch(
+  '/rest/enterprise/organization/login/details',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(request)
+  }
+).then(r => r.json());
+
+if (response.organization?.force_sso) {
+  console.log('SSO required');
+  if (response.organization.workos_org_id) {
+    // Redirect to WorkOS SSO
+  }
+}
+```
+
+#### Use Cases
+
+1. **SSO Detection Before Login**
+   - Check if user's email domain requires SSO
+   - Show appropriate login UI (SSO vs email)
+
+2. **Automatic SSO Redirect**
+   - Redirect enterprise users to SSO automatically
+   - Skip password/magic link for SSO-required domains
+
+3. **Single Tenant Detection**
+   - Detect single-tenant organizations
+   - Redirect to custom domain
+
+4. **WorkOS Integration**
+   - Get WorkOS organization ID for SSO
+   - Pre-fill email in SSO form (login_hint)
+
+#### Example Usage
+
+```typescript
+// Check if email requires SSO
+async function checkSSORequired(email: string): Promise<boolean> {
+  const response = await fetch('/rest/enterprise/organization/login/details', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  });
+  
+  const data = await response.json();
+  return data.organization?.force_sso ?? false;
+}
+
+// Full SSO detection flow
+async function handleEmailLogin(email: string) {
+  const details = await fetch('/rest/enterprise/organization/login/details', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  }).then(r => r.json());
+
+  if (details.organization?.initiate_web_sso_url) {
+    // Direct SSO URL available
+    window.location.href = details.organization.initiate_web_sso_url;
+    return;
+  }
+
+  if (details.organization?.single_tenant) {
+    // Redirect to single tenant domain
+    window.location.href = `https://${details.organization.single_tenant}`;
+    return;
+  }
+
+  if (details.organization?.force_sso && details.organization?.workos_org_id) {
+    // Redirect to WorkOS SSO
+    const params = new URLSearchParams({
+      organization: details.organization.workos_org_id,
+      login_hint: email
+    });
+    window.location.href = `/api/auth/signin/workos?${params}`;
+    return;
+  }
+
+  // No SSO required, proceed with email/password login
+  // ... regular email login flow
+}
+```
+
+#### Implementation Notes
+
+1. **Caching**: The LoginModalInner component caches results for 30 seconds per email
+2. **Rate Limiting**: Check `/rest/rate-limit/status` for limits
+3. **Timeout**: Default timeout is 10 seconds (MEDIUM timeout)
+4. **Retries**: 1 retry on failure
+
+---
+
 ### GET /rest/auth/get_special_profile
 
 Retrieves special profile information for the authenticated user, including permissions, badges, and organizational affiliations.
