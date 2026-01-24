@@ -12,13 +12,13 @@
  */
 
 // Auth Endpoints
+// Export with convenient alias
 export type {
   SpecialProfileResponse,
-  SpecialProfile,
   GetSpecialProfileParams,
   AuthErrorResponse,
   AuthClient,
 } from './auth-endpoints';
 
-// Re-export all from submodules for convenience
-export * from './auth-endpoints';
+// Convenient alias for SpecialProfileResponse
+export type { SpecialProfileResponse as SpecialProfile } from './auth-endpoints';

@@ -74,6 +74,7 @@ export interface SpecialProfileResponse {
 
   /**
    * Organization affiliation (for enterprise users)
+   * All fields are required when organization object is present
    */
   organization?: {
     uuid: string;
@@ -149,5 +150,4 @@ export interface AuthClient {
 // ============================================================================
 // EXPORTS
 // ============================================================================
-
-export type { SpecialProfileResponse as SpecialProfile };
+// Note: SpecialProfile is an alias exported for convenience in index.ts
