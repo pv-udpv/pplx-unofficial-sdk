@@ -20,6 +20,9 @@ interfaces/
 
 Defines interfaces for authentication-related endpoints:
 
+- **`AuthProvider`** - Individual authentication provider configuration
+- **`AuthProvidersResponse`** - Response type for `GET /api/auth/providers`
+- **`AuthProvidersParams`** - Request parameters for getting auth providers
 - **`SpecialProfileResponse`** - Response type for `GET /rest/auth/get_special_profile`
 - **`GetSpecialProfileParams`** - Request parameters for getting special profile
 - **`AuthErrorResponse`** - Standard error response for auth endpoints
@@ -28,9 +31,23 @@ Defines interfaces for authentication-related endpoints:
 #### Example Usage
 
 ```typescript
-import { SpecialProfileResponse, AuthClient } from './interfaces/auth-endpoints';
+import { 
+  AuthProvidersResponse, 
+  SpecialProfileResponse, 
+  AuthClient 
+} from './interfaces/auth-endpoints';
 
-// Using the interface
+// Get authentication providers
+const providers: AuthProvidersResponse = await fetch(
+  '/api/auth/providers?version=2.18&source=default'
+).then(r => r.json());
+
+// Check if Google login is available
+if (providers.google) {
+  console.log('Google sign-in URL:', providers.google.signinUrl);
+}
+
+// Get user's special profile (requires auth)
 const profile: SpecialProfileResponse = await fetch('/rest/auth/get_special_profile')
   .then(r => r.json());
 
@@ -45,6 +62,7 @@ These interfaces are based on the following discovered endpoints:
 
 | Endpoint | Module | Category | Status |
 |----------|--------|----------|--------|
+| `/api/auth/providers` | Public API | auth | ✅ Documented |
 | `rest/auth/get_special_profile` | layout-sidebar-BPemXja1.js | auth | ✅ Documented |
 
 ## Related Files

@@ -7,11 +7,117 @@
  * Auth Endpoints Category
  * 
  * This module defines TypeScript interfaces for the authentication-related
- * endpoints discovered in the Perplexity AI SPA.
+ * endpoints discovered in the Perplexity AI SPA and API.
  * 
  * Source: layout-sidebar-BPemXja1.js module
- * Category: auth (1 endpoint)
+ * Category: auth (2 endpoints)
  */
+
+// ============================================================================
+// ENDPOINT: /api/auth/providers
+// ============================================================================
+
+/**
+ * Authentication providers configuration
+ * 
+ * This endpoint returns the list of available authentication providers
+ * (e.g., Google, Apple, Email, WorkOS) and their configuration for the current
+ * application version and source.
+ * 
+ * Endpoint: GET /api/auth/providers
+ * Authentication: Not required (public endpoint)
+ * Query Parameters:
+ *   - version: Application version (e.g., "2.18")
+ *   - source: Source context (e.g., "default")
+ */
+export interface AuthProvider {
+  /**
+   * Callback URL for the provider after authentication
+   * Example: "https://www.perplexity.ai/api/auth/callback/google"
+   */
+  callbackUrl: string;
+
+  /**
+   * Provider identifier (e.g., "google", "apple", "email", "workos")
+   */
+  id: string;
+
+  /**
+   * Display name for the provider
+   */
+  name: string;
+
+  /**
+   * Sign-in URL to initiate authentication
+   * Example: "https://www.perplexity.ai/api/auth/signin/google"
+   */
+  signinUrl: string;
+
+  /**
+   * Provider type
+   * - oauth: OAuth-based authentication (Google, Apple, WorkOS)
+   * - email: Email-based authentication
+   * - credentials: Credential-based authentication (Google One Tap, JWT)
+   */
+  type: "oauth" | "email" | "credentials";
+}
+
+/**
+ * Response from /api/auth/providers endpoint
+ * 
+ * Returns a map of provider IDs to provider configurations
+ */
+export interface AuthProvidersResponse {
+  /**
+   * Apple OAuth authentication
+   */
+  apple?: AuthProvider;
+
+  /**
+   * Email-based authentication
+   */
+  email?: AuthProvider;
+
+  /**
+   * Google OAuth authentication
+   */
+  google?: AuthProvider;
+
+  /**
+   * Google One Tap authentication
+   */
+  googleonetap?: AuthProvider;
+
+  /**
+   * Internal JWT to cookie conversion
+   */
+  "pplx-jwt-to-cookie"?: AuthProvider;
+
+  /**
+   * WorkOS SSO authentication (for enterprise)
+   */
+  workos?: AuthProvider;
+
+  /**
+   * Additional providers (dynamic)
+   */
+  [providerId: string]: AuthProvider | undefined;
+}
+
+/**
+ * Query parameters for /api/auth/providers
+ */
+export interface AuthProvidersParams {
+  /**
+   * Application version (e.g., "2.18")
+   */
+  version: string;
+
+  /**
+   * Source context (e.g., "default")
+   */
+  source: string;
+}
 
 // ============================================================================
 // ENDPOINT: rest/auth/get_special_profile
@@ -127,6 +233,27 @@ export interface AuthErrorResponse {
  * Defines the contract for interacting with authentication endpoints
  */
 export interface AuthClient {
+  /**
+   * Get available authentication providers
+   * 
+   * @param params - Required query parameters (version and source)
+   * @returns Promise resolving to providers configuration
+   * 
+   * @example
+   * ```typescript
+   * const providers = await authClient.getAuthProviders({
+   *   version: '2.18',
+   *   source: 'default'
+   * });
+   * 
+   * const googleProvider = providers.providers.find(p => p.id === 'google');
+   * if (googleProvider?.enabled) {
+   *   console.log('Google login available');
+   * }
+   * ```
+   */
+  getAuthProviders(params: AuthProvidersParams): Promise<AuthProvidersResponse>;
+
   /**
    * Get special profile information for the authenticated user
    * 

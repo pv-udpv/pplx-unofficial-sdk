@@ -2,9 +2,180 @@
 
 ## Overview
 
-This guide documents the authentication-related API endpoints discovered in the Perplexity AI SPA. These endpoints are used for retrieving user authentication status, profile information, and special permissions.
+This guide documents the authentication-related API endpoints discovered in the Perplexity AI SPA and API. These endpoints are used for retrieving authentication providers, user authentication status, profile information, and special permissions.
 
 ## Endpoints
+
+### GET /api/auth/providers
+
+Retrieves the list of available authentication providers and their configuration.
+
+**Category:** `auth`  
+**Authentication:** Not required (public endpoint)
+
+#### Request
+
+```http
+GET /api/auth/providers?version=2.18&source=default HTTP/1.1
+Host: www.perplexity.ai
+```
+
+**Query Parameters:**
+- `version` (required, string) - Application version (e.g., "2.18")
+- `source` (required, string) - Source context (e.g., "default")
+
+#### Response
+
+```json
+{
+  "apple": {
+    "callbackUrl": "https://www.perplexity.ai/api/auth/callback/apple",
+    "id": "apple",
+    "name": "Apple",
+    "signinUrl": "https://www.perplexity.ai/api/auth/signin/apple",
+    "type": "oauth"
+  },
+  "email": {
+    "callbackUrl": "https://www.perplexity.ai/api/auth/callback/email",
+    "id": "email",
+    "name": "Email",
+    "signinUrl": "https://www.perplexity.ai/api/auth/signin/email",
+    "type": "email"
+  },
+  "google": {
+    "callbackUrl": "https://www.perplexity.ai/api/auth/callback/google",
+    "id": "google",
+    "name": "Google",
+    "signinUrl": "https://www.perplexity.ai/api/auth/signin/google",
+    "type": "oauth"
+  },
+  "googleonetap": {
+    "callbackUrl": "https://www.perplexity.ai/api/auth/callback/googleonetap",
+    "id": "googleonetap",
+    "name": "google-one-tap",
+    "signinUrl": "https://www.perplexity.ai/api/auth/signin/googleonetap",
+    "type": "credentials"
+  },
+  "pplx-jwt-to-cookie": {
+    "callbackUrl": "https://www.perplexity.ai/api/auth/callback/pplx-jwt-to-cookie",
+    "id": "pplx-jwt-to-cookie",
+    "name": "pplx-jwt-to-cookie",
+    "signinUrl": "https://www.perplexity.ai/api/auth/signin/pplx-jwt-to-cookie",
+    "type": "credentials"
+  },
+  "workos": {
+    "callbackUrl": "https://www.perplexity.ai/api/auth/callback/workos",
+    "id": "workos",
+    "name": "WorkOS",
+    "signinUrl": "https://www.perplexity.ai/api/auth/signin/workos",
+    "type": "oauth"
+  }
+}
+```
+
+#### TypeScript Interface
+
+```typescript
+import { AuthProvidersResponse, AuthProvidersParams } from './interfaces/auth-endpoints';
+
+const params: AuthProvidersParams = {
+  version: '2.18',
+  source: 'default'
+};
+
+const providers: AuthProvidersResponse = await fetch(
+  `/api/auth/providers?version=${params.version}&source=${params.source}`
+).then(response => response.json());
+```
+
+#### Available Providers
+
+1. **Apple** (`apple`)
+   - Type: OAuth
+   - Sign-in: `https://www.perplexity.ai/api/auth/signin/apple`
+
+2. **Email** (`email`)
+   - Type: Email-based
+   - Sign-in: `https://www.perplexity.ai/api/auth/signin/email`
+
+3. **Google** (`google`)
+   - Type: OAuth
+   - Sign-in: `https://www.perplexity.ai/api/auth/signin/google`
+
+4. **Google One Tap** (`googleonetap`)
+   - Type: Credentials
+   - Sign-in: `https://www.perplexity.ai/api/auth/signin/googleonetap`
+
+5. **WorkOS** (`workos`)
+   - Type: OAuth (Enterprise SSO)
+   - Sign-in: `https://www.perplexity.ai/api/auth/signin/workos`
+
+6. **JWT to Cookie** (`pplx-jwt-to-cookie`)
+   - Type: Credentials (Internal)
+   - Sign-in: `https://www.perplexity.ai/api/auth/signin/pplx-jwt-to-cookie`
+
+#### Use Cases
+
+1. **Dynamic Login UI**
+   - Build login page with available providers
+   - Show/hide providers based on configuration
+
+2. **Provider Discovery**
+   - Detect available authentication methods
+   - Enable/disable SSO for enterprise
+
+3. **Authentication Flow**
+   - Direct users to appropriate sign-in URLs
+   - Handle callbacks after authentication
+
+#### Example Usage
+
+```typescript
+import { AuthClient, AuthProvidersResponse } from './interfaces/auth-endpoints';
+
+class PplxAuthClient implements AuthClient {
+  private baseUrl = 'https://www.perplexity.ai';
+
+  async getAuthProviders(params: { version: string; source: string }): Promise<AuthProvidersResponse> {
+    const url = new URL('/api/auth/providers', this.baseUrl);
+    url.searchParams.set('version', params.version);
+    url.searchParams.set('source', params.source);
+
+    const response = await fetch(url.toString());
+    if (!response.ok) {
+      throw new Error(`Failed to fetch auth providers: ${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  async getSpecialProfile(params?: { refresh?: boolean }): Promise<SpecialProfileResponse> {
+    // Implementation from previous section
+  }
+}
+
+// Usage
+const client = new PplxAuthClient();
+const providers = await client.getAuthProviders({
+  version: '2.18',
+  source: 'default'
+});
+
+// Check available providers
+if (providers.google) {
+  console.log('Google login available at:', providers.google.signinUrl);
+}
+
+if (providers.workos) {
+  console.log('Enterprise SSO available via WorkOS');
+}
+
+// Build login UI
+const oauthProviders = Object.values(providers).filter(p => p?.type === 'oauth');
+console.log('OAuth providers:', oauthProviders.map(p => p?.name));
+```
+
+---
 
 ### GET /rest/auth/get_special_profile
 
@@ -170,17 +341,37 @@ This endpoint is called by the `layout-sidebar-BPemXja1.js` module to:
 
 ## Related Endpoints
 
-While this is the only endpoint in the `auth` category, related user information can be obtained from:
+Auth-related endpoints documented in this guide:
+
+1. **`/api/auth/providers`** - Get available authentication providers (public)
+2. **`/rest/auth/get_special_profile`** - Get special user profile (authenticated)
+
+Related user information endpoints:
 
 - `/rest/user/info` - Basic user information
 - `/rest/user/settings` - User preferences and settings
 - `/rest/user/get_user_ai_profile` - AI-specific user profile
 - `/rest/enterprise/user/organization` - Enterprise organization details
+- `/rest/connections/oauth_callback` - OAuth connection callback
+- `/rest/connections/oauth_callback_merge` - OAuth merge callback
 
 ## Security Considerations
 
+### For /api/auth/providers
+
+1. **Public Endpoint**
+   - No authentication required
+   - Can be cached client-side
+   - Safe to call frequently
+
+2. **Version Management**
+   - Always use current application version
+   - Provider configuration may change between versions
+
+### For /rest/auth/get_special_profile
+
 1. **Session-Based Authentication**
-   - This endpoint requires valid session cookies
+   - Requires valid session cookies
    - No API key or token authentication supported
 
 2. **Rate Limiting**
@@ -206,7 +397,16 @@ The endpoint is referenced in the following SPA modules:
 ## Next Steps
 
 1. **Implement Client** - Create a complete auth client using the interfaces
-2. **Add Tests** - Write integration tests for the endpoint
+2. **Add Tests** - Write integration tests for both endpoints
+3. **Document Edge Cases** - Document special scenarios and edge cases
+4. **Add Authentication Flows** - Document complete login/logout flows
+
+## API Endpoints Summary
+
+| Endpoint | Type | Auth Required | Purpose |
+|----------|------|---------------|---------|
+| `/api/auth/providers` | GET | No | Get available auth providers |
+| `/rest/auth/get_special_profile` | GET | Yes | Get user special profile |
 3. **Document Edge Cases** - Document special scenarios and edge cases
 4. **Add More Auth Endpoints** - As more endpoints are discovered, add them here
 

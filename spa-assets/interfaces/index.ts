@@ -14,6 +14,9 @@
 // Auth Endpoints
 // Export with convenient alias
 export type {
+  AuthProvider,
+  AuthProvidersResponse,
+  AuthProvidersParams,
   SpecialProfileResponse,
   GetSpecialProfileParams,
   AuthErrorResponse,
