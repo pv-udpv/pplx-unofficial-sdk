@@ -531,6 +531,352 @@ Related user information endpoints:
    - Profile data is typically cached on the client
    - Use `refresh=true` only when necessary
 
+---
+
+## Bootstrap Sign-In Function
+
+### Overview
+
+The `signIn` function is exported from the `bootstrap-*.js` modules (e.g., `bootstrap-CptxcEgE.js`) and provides the core authentication functionality for Perplexity AI. It's a wrapper around NextAuth.js that handles various authentication methods including OAuth, email magic links, and SSO.
+
+**Source Module:** `bootstrap-CptxcEgE.js`  
+**Import Pattern:** `import { k as signIn } from "./bootstrap-CptxcEgE.js"`  
+**Used By:** `LoginModalInner-DytY--wo.js`, `LoginModal-CDu8fEYM.js`
+
+### Function Signature
+
+```typescript
+type SignInFunction = (
+  provider: AuthProviderType,
+  options: Partial<SignInParams>,
+  providerOptions?: SignInProviderOptions
+) => Promise<SignInResponse | undefined>;
+```
+
+### Parameters
+
+1. **provider** (`AuthProviderType`) - Authentication provider ID
+   - `"google"` - Google OAuth
+   - `"apple"` - Apple OAuth
+   - `"email"` - Email magic link / OTP
+   - `"workos"` - WorkOS SSO (Enterprise)
+   - `"googleonetap"` - Google One Tap
+   - `"pplx-jwt-to-cookie"` - Internal JWT conversion
+   - `"devlogin"` - Development/test logins
+
+2. **options** (`Partial<SignInParams>`) - Sign-in configuration
+   - `callbackUrl` (required) - Redirect URL after authentication
+   - `redirect` (optional) - Whether to redirect immediately (default: true)
+   - `email` (optional) - Email address (for email provider)
+   - `useNumericOtp` (optional) - Use numeric OTP instead of magic link
+   - `redirectOnError` (optional) - Redirect on error
+   - `pro`, `enterprise_member`, etc. - Special user flags for dev logins
+
+3. **providerOptions** (`SignInProviderOptions`) - Provider-specific options
+   - `organization` - WorkOS organization ID (for SSO)
+   - `login_hint` - Pre-fill email in SSO form
+
+### Usage Examples
+
+#### 1. Google OAuth Sign-In
+
+```typescript
+import { signIn } from './bootstrap-CptxcEgE.js';
+
+async function handleGoogleLogin() {
+  await signIn('google', {
+    callbackUrl: '/dashboard'
+  });
+}
+```
+
+#### 2. Apple OAuth Sign-In
+
+```typescript
+async function handleAppleLogin() {
+  await signIn('apple', {
+    callbackUrl: window.location.origin + '/dashboard'
+  });
+}
+```
+
+#### 3. Email Magic Link / OTP
+
+```typescript
+async function handleEmailLogin(email: string) {
+  try {
+    await signIn('email', {
+      email: email,
+      callbackUrl: '/auth/verify-request',
+      redirect: false,
+      useNumericOtp: 'true',
+      redirectOnError: false
+    });
+    
+    // Redirect to verification page
+    router.push(`/auth/verify-request?email=${encodeURIComponent(email)}`);
+  } catch (error) {
+    if (error.code === 'AUTH_SIGN_IN_ERROR' && error.status === 429) {
+      // Rate limited
+      router.push('/auth/email-rate-limited');
+    } else {
+      console.error('Email sign-in failed:', error);
+    }
+  }
+}
+```
+
+#### 4. WorkOS SSO (Enterprise)
+
+```typescript
+async function handleSSOLogin(email: string, orgId: string) {
+  await signIn('workos', {
+    callbackUrl: '/dashboard'
+  }, {
+    organization: orgId,
+    login_hint: email
+  });
+}
+```
+
+#### 5. Development Logins
+
+```typescript
+// Pro user
+await signIn('devlogin', {
+  callbackUrl: '/',
+  pro: 'true'
+});
+
+// Enterprise admin
+await signIn('devlogin', {
+  callbackUrl: '/',
+  enterprise_admin: 'true'
+});
+
+// Custom email handle
+await signIn('devlogin', {
+  callbackUrl: '/',
+  email_handle: 'test-user'
+});
+```
+
+### PKCE Flow (Desktop Apps)
+
+For Windows desktop app and other platforms requiring PKCE:
+
+```typescript
+// 1. Generate PKCE challenge
+async function generateCodeChallenge(): Promise<string> {
+  const verifier = generateRandomString(128);
+  
+  // Store verifier in cookie
+  setCookie('pkce_verifier', verifier, {
+    secure: true,
+    sameSite: 'Lax',
+    expires: 5 / 1440, // 5 minutes
+    path: '/'
+  });
+  
+  // Generate SHA-256 challenge
+  const encoder = new TextEncoder();
+  const data = encoder.encode(verifier);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  const challenge = btoa(String.fromCharCode(...new Uint8Array(hash)))
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
+  
+  return challenge;
+}
+
+// 2. Use in sign-in URL
+async function handleDesktopLogin(provider: string) {
+  const origin = window.location.origin;
+  const codeChallenge = await generateCodeChallenge();
+  const redirectUrl = encodeURIComponent('/dashboard');
+  const clientId = 'YOUR_CLIENT_ID';
+  
+  const url = `${origin}/auth/oauth/${provider}?code_challenge=${codeChallenge}&desktopRedirect=${redirectUrl}&client_id=${clientId}`;
+  
+  // Open in external browser
+  openExternalURL(url);
+}
+```
+
+### Error Handling
+
+```typescript
+import { SignInResponse } from './interfaces/auth-endpoints';
+
+async function handleSignIn(provider: string): Promise<boolean> {
+  try {
+    const response: SignInResponse = await signIn(provider, {
+      callbackUrl: '/dashboard',
+      redirect: false
+    });
+    
+    if (response?.error) {
+      console.error('Sign-in error:', response.error);
+      return false;
+    }
+    
+    if (response?.url) {
+      // Redirect to the URL
+      window.location.href = response.url;
+    }
+    
+    return response?.ok ?? false;
+  } catch (error) {
+    console.error('Sign-in exception:', error);
+    return false;
+  }
+}
+```
+
+### Integration with Login Modal
+
+The `LoginModalInner` component uses the bootstrap signIn function extensively:
+
+```typescript
+// From LoginModalInner-DytY--wo.js
+import { k as signIn } from "./bootstrap-CptxcEgE.js";
+
+const handleThirdPartySignIn = async (provider: string) => {
+  trackEvent('login with third party clicked', { thirdParty: provider });
+  
+  const origin = window.location.origin;
+  
+  if (isWindowsApp) {
+    // Desktop app with PKCE
+    const codeChallenge = await generateCodeChallenge();
+    const url = `${origin}/auth/${OAUTH_PATH}/${provider}?code_challenge=${codeChallenge}&desktopRedirect=${encodeURIComponent(redirectUrl)}&client_id=${CLIENT_ID}`;
+    openExternalURL(url);
+  } else {
+    // Web app
+    await signIn(provider, { callbackUrl: redirectUrl });
+  }
+};
+```
+
+### Common Patterns
+
+#### 1. SSO Detection and Automatic Redirect
+
+```typescript
+async function handleEmailSubmit(email: string) {
+  // Check if SSO is required
+  const details = await fetch('/rest/enterprise/organization/login/details', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  }).then(r => r.json());
+  
+  if (details.organization?.force_sso) {
+    // SSO required - use WorkOS
+    if (details.organization.workos_org_id) {
+      await signIn('workos', {
+        callbackUrl: '/dashboard'
+      }, {
+        organization: details.organization.workos_org_id,
+        login_hint: email
+      });
+    }
+  } else {
+    // Regular email login
+    await signIn('email', {
+      email: email,
+      callbackUrl: '/auth/verify-request',
+      redirect: false,
+      useNumericOtp: 'true'
+    });
+  }
+}
+```
+
+#### 2. Dynamic Provider Selection
+
+```typescript
+async function buildLoginUI() {
+  // Get available providers
+  const providers = await fetch('/api/auth/providers?version=2.18&source=default')
+    .then(r => r.json());
+  
+  // Filter OAuth providers
+  const oauthProviders = Object.values(providers)
+    .filter(p => p?.type === 'oauth');
+  
+  // Create login buttons
+  oauthProviders.forEach(provider => {
+    if (provider) {
+      createButton(provider.name, () => {
+        signIn(provider.id, { callbackUrl: '/dashboard' });
+      });
+    }
+  });
+}
+```
+
+#### 3. Rate Limiting Handling
+
+```typescript
+async function handleEmailLogin(email: string) {
+  try {
+    await signIn('email', {
+      email: email,
+      callbackUrl: '/verify',
+      redirect: false,
+      useNumericOtp: 'true',
+      redirectOnError: false
+    });
+  } catch (error) {
+    if (error?.code === 'AUTH_SIGN_IN_ERROR' && error?.details?.status === 429) {
+      // Rate limited - show appropriate message
+      router.push('/auth/email-rate-limited');
+    } else {
+      // Generic error
+      console.error('Sign-in failed:', error);
+    }
+  }
+}
+```
+
+### Security Considerations
+
+1. **PKCE for Desktop Apps**
+   - Always use PKCE flow for desktop/mobile apps
+   - Store verifier securely in HTTP-only cookie
+   - Set short expiration (5 minutes)
+
+2. **Callback URL Validation**
+   - Always use absolute URLs for callbacks
+   - Validate redirect URLs on the server
+   - Use allow-list for permitted domains
+
+3. **Rate Limiting**
+   - Email sign-in is rate limited (429 status)
+   - Implement exponential backoff
+   - Show user-friendly error messages
+
+4. **Error Handling**
+   - Never expose sensitive error details to users
+   - Log errors with trace IDs for debugging
+   - Provide fallback authentication methods
+
+5. **Session Security**
+   - Cookies are secure, HTTP-only, SameSite=Lax
+   - Session duration is limited (check expiration)
+   - Clear cookies on logout
+
+### TypeScript Interfaces
+
+See [auth-endpoints.ts](./interfaces/auth-endpoints.ts) for complete type definitions:
+- `SignInFunction` - Main function signature
+- `SignInParams` - Sign-in options
+- `SignInProviderOptions` - Provider-specific options
+- `SignInResponse` - Response interface
+- `AuthProviderType` - Supported providers
+
 ## Module Reference
 
 The endpoint is referenced in the following SPA modules:
@@ -542,6 +888,19 @@ The endpoint is referenced in the following SPA modules:
     - `rest/user/get_user_ai_profile`
     - `rest/enterprise/user/organization/seat-info`
     - `rest/user/site-instructions`
+
+- **LoginModalInner-DytY--wo.js** - Login modal implementation
+  - Imports: `import { k as signIn } from "./bootstrap-CptxcEgE.js"`
+  - Handles: Google, Apple, Email, WorkOS, DevLogin providers
+  - Features: PKCE for desktop, SSO detection, rate limiting
+
+- **LoginModal-CDu8fEYM.js** - Login modal wrapper
+  - Orchestrates login flow
+  - Manages modal state and callbacks
+
+- **bootstrap-CptxcEgE.js** - Core authentication module
+  - Exports: signIn function (NextAuth.js wrapper)
+  - Handles: All authentication provider integrations
 
 ## Next Steps
 
@@ -555,11 +914,15 @@ The endpoint is referenced in the following SPA modules:
 | Endpoint | Type | Auth Required | Purpose |
 |----------|------|---------------|---------|
 | `/api/auth/providers` | GET | No | Get available auth providers |
+| `/api/auth/signin/{provider}` | POST | No | Initiate authentication with provider |
+| `/api/auth/callback/{provider}` | GET/POST | No | OAuth callback handler |
+| `/rest/enterprise/organization/login/details` | POST | No | Check SSO requirements for email |
 | `/rest/auth/get_special_profile` | GET | Yes | Get user special profile |
 
 ## References
 
 - [TypeScript Interfaces](./interfaces/auth-endpoints.ts)
+- [Auth Client Example](./examples/auth-client-example.ts)
 - [Endpoint Catalog](./snapshots/2026-01-21/endpoints.json)
 - [SPA Assets README](./README.md)
 - [REST API Guide](../docs/REST-API-GUIDE.md)

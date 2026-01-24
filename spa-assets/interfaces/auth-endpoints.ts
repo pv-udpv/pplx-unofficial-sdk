@@ -352,6 +352,101 @@ export interface SignInParams {
   email_handle?: string;
 }
 
+/**
+ * Provider-specific options for sign-in
+ * Used as the third parameter in signIn() calls
+ */
+export interface SignInProviderOptions {
+  /**
+   * WorkOS organization ID (for WorkOS SSO)
+   */
+  organization?: string;
+
+  /**
+   * Pre-fill email in SSO form (for WorkOS SSO)
+   */
+  login_hint?: string;
+}
+
+/**
+ * Sign-in response from NextAuth.js/bootstrap module
+ */
+export interface SignInResponse {
+  /**
+   * Error message if sign-in failed
+   */
+  error?: string;
+
+  /**
+   * HTTP status code
+   */
+  status?: number;
+
+  /**
+   * Whether the operation was successful
+   */
+  ok?: boolean;
+
+  /**
+   * Redirect URL after successful sign-in
+   */
+  url?: string | null;
+}
+
+/**
+ * Authentication provider type
+ * Corresponds to the provider parameter in signIn()
+ */
+export type AuthProviderType =
+  | "google"
+  | "apple"
+  | "email"
+  | "workos"
+  | "googleonetap"
+  | "pplx-jwt-to-cookie"
+  | "devlogin";
+
+/**
+ * Bootstrap/SignIn function signature
+ * 
+ * This is the main authentication function exported from bootstrap-*.js
+ * modules. It's a wrapper around NextAuth.js signIn function.
+ * 
+ * Source: bootstrap-CptxcEgE.js (imported as { k as signIn } in LoginModalInner)
+ * 
+ * @param provider - Authentication provider ID
+ * @param options - Sign-in options (callback URL, email, etc.)
+ * @param providerOptions - Provider-specific options (WorkOS org ID, etc.)
+ * @returns Promise resolving to SignInResponse
+ * 
+ * @example
+ * ```typescript
+ * // Google OAuth sign-in
+ * await signIn('google', { callbackUrl: '/dashboard' });
+ * 
+ * // Email magic link
+ * await signIn('email', {
+ *   email: 'user@example.com',
+ *   callbackUrl: '/verify',
+ *   redirect: false,
+ *   useNumericOtp: 'true'
+ * });
+ * 
+ * // WorkOS SSO
+ * await signIn('workos', {
+ *   callbackUrl: '/dashboard'
+ * }, {
+ *   organization: 'org_123456',
+ *   login_hint: 'user@company.com'
+ * });
+ * ```
+ */
+export type SignInFunction = (
+  provider: AuthProviderType,
+  options: Partial<SignInParams>,
+  providerOptions?: SignInProviderOptions
+) => Promise<SignInResponse | undefined>;
+
 // ============================================================================
 // REQUEST/RESPONSE TYPES
 // ============================================================================

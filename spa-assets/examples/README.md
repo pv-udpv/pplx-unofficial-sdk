@@ -1,6 +1,6 @@
 # Auth Client Examples
 
-This directory contains practical examples demonstrating how to use the auth endpoint interfaces.
+This directory contains practical examples demonstrating how to use the auth endpoint interfaces and the bootstrap signIn function.
 
 ## Files
 
@@ -12,6 +12,19 @@ Complete implementation of an authentication client using the TypeScript interfa
 - Full `AuthClient` interface implementation
 - Error handling
 - 5 comprehensive usage examples
+
+### `bootstrap-signin-example.ts`
+
+Comprehensive examples for using the `signIn` function exported from `bootstrap-*.js` modules (e.g., `bootstrap-CptxcEgE.js`).
+
+**Features:**
+- 10 complete usage patterns
+- OAuth (Google, Apple), Email, and SSO examples
+- PKCE flow for desktop apps
+- SSO detection and auto-redirect
+- Error handling and rate limiting
+- React hook example
+- Testing utilities
 
 ## Running the Examples
 
@@ -26,6 +39,7 @@ npm install
 Import and use the examples in your TypeScript project:
 
 ```typescript
+// Auth Client examples
 import { 
   PplxAuthClient,
   buildLoginUI,
@@ -33,15 +47,240 @@ import {
   completeAuthFlow 
 } from './spa-assets/examples/auth-client-example';
 
+// Bootstrap signIn examples
+import {
+  handleGoogleLogin,
+  handleEmailLogin,
+  handleSSOLogin,
+  performLogin
+} from './spa-assets/examples/bootstrap-signin-example';
+
 // Example 1: Get authentication providers
 const providers = await buildLoginUI();
 
-// Example 2: Check user profile
-const profile = await checkUserProfile();
+// Example 2: Perform OAuth login
+await handleGoogleLogin('/dashboard');
 
-// Example 3: Complete auth flow
-const { providers, profile } = await completeAuthFlow();
+// Example 3: Email login with OTP
+await handleEmailLogin('user@example.com', {
+  useOTP: true,
+  redirectUrl: '/verify'
+});
+
+// Example 4: Complete login flow
+const result = await performLogin({
+  provider: 'google',
+  redirectUrl: '/dashboard'
+});
 ```
+
+## Bootstrap SignIn Examples
+
+### Overview
+
+The `bootstrap-signin-example.ts` file provides comprehensive examples for using the `signIn` function exported from the `bootstrap-*.js` modules. This function is the core authentication mechanism used throughout Perplexity AI.
+
+**Source:** `bootstrap-CptxcEgE.js`  
+**Import Pattern:** `import { k as signIn } from "./bootstrap-CptxcEgE.js"`
+
+### Examples Included
+
+#### 1. Basic OAuth Sign-In
+
+Simple OAuth authentication with Google or Apple.
+
+```typescript
+import { handleGoogleLogin, handleAppleLogin } from './bootstrap-signin-example';
+
+// Google login
+const success = await handleGoogleLogin('/dashboard');
+
+// Apple login
+const success = await handleAppleLogin('/dashboard');
+```
+
+#### 2. Email Magic Link / OTP
+
+Email-based authentication with magic links or numeric OTP codes.
+
+```typescript
+import { handleEmailLogin } from './bootstrap-signin-example';
+
+const result = await handleEmailLogin('user@example.com', {
+  useOTP: true,
+  redirectUrl: '/dashboard',
+  autoRedirect: false
+});
+
+if (result.success) {
+  // Redirect to verification page
+  console.log('Check your email for verification code');
+} else if (result.error === 'rate_limited') {
+  console.log('Too many requests. Please try again later.');
+}
+```
+
+#### 3. WorkOS SSO (Enterprise)
+
+Enterprise single sign-on via WorkOS.
+
+```typescript
+import { handleSSOLogin } from './bootstrap-signin-example';
+
+await handleSSOLogin(
+  'user@company.com',
+  'org_123456', // WorkOS organization ID
+  '/dashboard'
+);
+```
+
+#### 4. SSO Detection with Auto-Redirect
+
+Automatically detect if an email domain requires SSO and redirect appropriately.
+
+```typescript
+import { handleEmailSubmit, checkSSORequired } from './bootstrap-signin-example';
+
+// Automatic SSO detection and routing
+await handleEmailSubmit('user@company.com', '/dashboard');
+
+// Or check manually
+const ssoDetails = await checkSSORequired('user@company.com');
+if (ssoDetails.forceSSO) {
+  console.log('SSO required for this domain');
+}
+```
+
+#### 5. PKCE Flow for Desktop Apps
+
+Secure OAuth flow for desktop applications using PKCE (Proof Key for Code Exchange).
+
+```typescript
+import { handleDesktopLogin } from './bootstrap-signin-example';
+
+await handleDesktopLogin('google', {
+  redirectUrl: '/dashboard',
+  clientId: 'YOUR_CLIENT_ID',
+  openExternalURL: (url) => {
+    // Open URL in external browser
+    window.open(url, '_blank');
+  }
+});
+```
+
+#### 6. Development Logins
+
+Special login types for development and testing.
+
+```typescript
+import { handleDevLogin } from './bootstrap-signin-example';
+
+// Pro user
+await handleDevLogin('pro');
+
+// Enterprise admin
+await handleDevLogin('enterpriseAdmin');
+
+// Custom email handle
+await handleDevLogin('customEmail', 'test-user');
+```
+
+#### 7. Complete Login Flow with Error Handling
+
+Full login flow with comprehensive error handling and provider detection.
+
+```typescript
+import { performLogin } from './bootstrap-signin-example';
+
+const result = await performLogin({
+  provider: 'google',
+  redirectUrl: '/dashboard'
+});
+
+if (result.success) {
+  console.log('Login successful');
+  if (result.requiresVerification) {
+    console.log('Check your email for verification');
+  }
+} else {
+  console.error('Login failed:', result.error);
+  if (result.rateLimited) {
+    console.log('Too many attempts. Please try again later.');
+  }
+}
+```
+
+#### 8. React Hook for Authentication
+
+React hook example for managing authentication state.
+
+```typescript
+import { useAuthExample } from './bootstrap-signin-example';
+
+function LoginPage() {
+  const { handleGoogleLogin, handleEmailLogin } = useAuthExample();
+  
+  return (
+    <div>
+      <button onClick={() => handleGoogleLogin()}>Login with Google</button>
+      <button onClick={() => handleEmailLogin('user@example.com')}>
+        Login with Email
+      </button>
+    </div>
+  );
+}
+```
+
+#### 9. Provider Discovery and Dynamic UI
+
+Build a dynamic login UI based on available providers.
+
+```typescript
+import { buildLoginProviderList } from './bootstrap-signin-example';
+
+const providers = await buildLoginProviderList();
+
+// Render providers dynamically
+providers.forEach(provider => {
+  console.log(`${provider.name} (${provider.type})`);
+  // Create button that calls provider.handler()
+});
+```
+
+#### 10. Testing Utilities
+
+Mock signIn function for unit testing.
+
+```typescript
+import { createMockSignIn } from './bootstrap-signin-example';
+
+// Create mock that always succeeds
+const mockSignIn = createMockSignIn(true);
+
+// Use in tests
+const result = await mockSignIn('google', { callbackUrl: '/' });
+expect(result.ok).toBe(true);
+```
+
+### Error Handling Patterns
+
+The examples include robust error handling for common scenarios:
+
+- **Rate Limiting:** Detect 429 status and show appropriate messages
+- **SSO Not Available:** Handle cases where SSO is not configured
+- **Invalid Email:** Validate email format before submission
+- **Network Errors:** Handle connection failures gracefully
+- **Authentication Errors:** Display user-friendly error messages
+
+### Security Considerations
+
+The examples demonstrate important security practices:
+
+- **PKCE for Desktop Apps:** Secure OAuth flow without client secrets
+- **Secure Cookies:** HTTP-only, Secure, SameSite=Lax
+- **Rate Limiting:** Respect API rate limits
+- **Error Messages:** Don't expose sensitive information
+- **Callback URL Validation:** Use allow-lists for redirect URLs
 
 ## Examples Overview
 
