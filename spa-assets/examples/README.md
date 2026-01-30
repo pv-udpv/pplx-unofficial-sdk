@@ -6,10 +6,10 @@ This directory contains practical examples demonstrating how to use the auth end
 
 ### `auth-client-example.ts`
 
-Complete implementation of an authentication client using the TypeScript interfaces defined in `../interfaces/auth-endpoints.ts`.
+Example implementation of an authentication client using the TypeScript interfaces defined in `../interfaces/auth-endpoints.ts`.
 
 **Features:**
-- Full `AuthClient` interface implementation
+- Practical `AuthClient` interface implementation example
 - Error handling
 - 5 comprehensive usage examples
 
