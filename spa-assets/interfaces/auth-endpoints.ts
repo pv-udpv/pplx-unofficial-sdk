@@ -124,7 +124,7 @@ export interface AuthProvidersParams {
 }
 
 // ============================================================================
-// ENDPOINT: rest/auth/get_special_profile
+// ENDPOINT: /rest/auth/get_special_profile
 // ============================================================================
 
 /**
