@@ -63,7 +63,7 @@ These interfaces are based on the following discovered endpoints:
 | Endpoint | Module | Category | Status |
 |----------|--------|----------|--------|
 | `/api/auth/providers` | Public API | auth | ✅ Documented |
-| `rest/auth/get_special_profile` | layout-sidebar-BPemXja1.js | auth | ✅ Documented |
+| `/rest/auth/get_special_profile` | layout-sidebar-BPemXja1.js | auth | ✅ Documented |
 
 ## Related Files
 
