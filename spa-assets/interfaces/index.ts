@@ -26,6 +26,10 @@ export type {
   GetSpecialProfileParams,
   AuthErrorResponse,
   AuthClient,
+  SignInFunction,
+  SignInResponse,
+  AuthProviderType,
+  SignInProviderOptions,
 } from './auth-endpoints';
 
 // Convenient alias for SpecialProfileResponse
