@@ -90,7 +90,7 @@ This directory includes TypeScript interface definitions for discovered API endp
 
 - **Auth Endpoints** (`interfaces/auth-endpoints.ts`)
   - `/api/auth/providers` - Get available authentication providers (Apple, Google, Email, WorkOS, etc.)
-  - `rest/auth/get_special_profile` - Get special user profile information
+  - `/rest/auth/get_special_profile` - Get special user profile information
   - See [AUTH-ENDPOINTS-GUIDE.md](AUTH-ENDPOINTS-GUIDE.md) for complete documentation
 
 **Endpoint Statistics:**
