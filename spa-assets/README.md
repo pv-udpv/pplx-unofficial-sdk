@@ -91,13 +91,14 @@ This directory includes TypeScript interface definitions for discovered API endp
 - **Auth Endpoints** (`interfaces/auth-endpoints.ts`)
   - `/api/auth/providers` - Get available authentication providers (Apple, Google, Email, WorkOS, etc.)
   - `/rest/auth/get_special_profile` - Get special user profile information
+  - `/rest/enterprise/organization/login/details` - Get enterprise organization login details for SSO detection
   - See [AUTH-ENDPOINTS-GUIDE.md](AUTH-ENDPOINTS-GUIDE.md) for complete documentation
 
 **Endpoint Statistics:**
 - Total unique endpoints: 410
 - Categories: 59
-- Auth endpoints: 2 (1 public API, 1 REST)
-- Documented with interfaces: 2
+- Auth endpoints: 3 (1 public API, 2 REST including SSO detection)
+- Documented with interfaces: 3
 
 For complete endpoint catalog, see `snapshots/2026-01-21/endpoints.json`
 

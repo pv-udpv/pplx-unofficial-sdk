@@ -9,6 +9,8 @@ import {
   AuthProvidersParams,
   SpecialProfileResponse,
   GetSpecialProfileParams,
+  OrganizationLoginDetailsRequest,
+  OrganizationLoginDetailsResponse,
   AuthErrorResponse,
   AuthProvider,
 } from '../interfaces/auth-endpoints';
@@ -55,6 +57,32 @@ export class PplxAuthClient implements AuthClient {
       headers: {
         'Content-Type': 'application/json',
       },
+    });
+
+    if (!response.ok) {
+      throw await this.handleError(response);
+    }
+
+    return response.json();
+  }
+
+  /**
+   * Get organization login details for SSO detection
+   * 
+   * Implements POST /rest/enterprise/organization/login/details
+   */
+  async getOrganizationLoginDetails(
+    params: OrganizationLoginDetailsRequest
+  ): Promise<OrganizationLoginDetailsResponse> {
+    const url = new URL('/rest/enterprise/organization/login/details', this.baseUrl);
+
+    const response = await fetch(url.toString(), {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(params),
     });
 
     if (!response.ok) {

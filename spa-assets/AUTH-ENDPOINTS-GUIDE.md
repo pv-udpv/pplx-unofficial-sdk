@@ -131,7 +131,12 @@ const providers: AuthProvidersResponse = await fetch(
 #### Example Usage
 
 ```typescript
-import { AuthClient, AuthProvidersResponse } from './interfaces/auth-endpoints';
+import { 
+  AuthClient, 
+  AuthProvidersResponse, 
+  SpecialProfileResponse,
+  OrganizationLoginDetailsResponse 
+} from './interfaces/auth-endpoints';
 
 class PplxAuthClient implements AuthClient {
   private baseUrl = 'https://www.perplexity.ai';
@@ -149,8 +154,39 @@ class PplxAuthClient implements AuthClient {
     return response.json();
   }
 
+  async getOrganizationLoginDetails(params: { email: string }): Promise<OrganizationLoginDetailsResponse> {
+    const url = new URL('/rest/enterprise/organization/login/details', this.baseUrl);
+
+    const response = await fetch(url.toString(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to check organization details: ${response.status}`);
+    }
+
+    return response.json();
+  }
+
   async getSpecialProfile(params?: { refresh?: boolean }): Promise<SpecialProfileResponse> {
-    // Implementation from previous section
+    const url = new URL('/rest/auth/get_special_profile', this.baseUrl);
+    
+    if (params?.refresh) {
+      url.searchParams.set('refresh', 'true');
+    }
+
+    const response = await fetch(url.toString(), {
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch profile: ${response.status}`);
+    }
+
+    return response.json();
   }
 }
 
@@ -174,6 +210,8 @@ if (providers.workos) {
 const oauthProviders = Object.values(providers).filter(p => p?.type === 'oauth');
 console.log('OAuth providers:', oauthProviders.map(p => p?.name));
 ```
+
+**Note:** See `examples/auth-client-example.ts` for a complete, production-ready implementation with full error handling.
 
 ---
 

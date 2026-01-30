@@ -150,21 +150,49 @@ interface SSODetectionResult {
 }
 
 export async function checkSSORequired(email: string): Promise<SSODetectionResult> {
-  const response = await fetch('/rest/enterprise/organization/login/details', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email })
-  });
-
-  const data = await response.json();
-  const org = data.organization;
-
-  return {
-    forceSSO: org?.force_sso ?? false,
-    workOSOrgId: org?.workos_org_id ?? null,
-    singleTenantHost: org?.single_tenant ?? null,
-    initiateWebSSOUrl: org?.initiate_web_sso_url ?? null
+  const defaultResult: SSODetectionResult = {
+    forceSSO: false,
+    workOSOrgId: null,
+    singleTenantHost: null,
+    initiateWebSSOUrl: null
   };
+
+  try {
+    const response = await fetch('/rest/enterprise/organization/login/details', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+
+    if (!response.ok) {
+      console.error(
+        'Failed to check SSO requirements:',
+        response.status,
+        response.statusText
+      );
+      return defaultResult;
+    }
+
+    let data: any;
+    try {
+      data = await response.json();
+    } catch (parseError) {
+      console.error('Failed to parse SSO detection response JSON:', parseError);
+      return defaultResult;
+    }
+
+    const org = data?.organization;
+
+    return {
+      forceSSO: org?.force_sso ?? false,
+      workOSOrgId: org?.workos_org_id ?? null,
+      singleTenantHost: org?.single_tenant ?? null,
+      initiateWebSSOUrl: org?.initiate_web_sso_url ?? null
+    };
+  } catch (error) {
+    console.error('Error checking SSO requirements:', error);
+    return defaultResult;
+  }
 }
 
 export async function handleEmailSubmit(
