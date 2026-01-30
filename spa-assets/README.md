@@ -29,21 +29,32 @@ This will extract all files to current directory with proper structure:
 ### File Structure
 
 ```
-extracted/
-├── service-worker.js
-├── vendors-Czx2bdUR.js
-├── icons-C77LVPXu.js
-├── _restricted/
-│   ├── restricted-feature-health-C3bMKSvM.js
-│   └── restricted-feature-notes-BquE_m0a.js
-├── language parsers/
-│   ├── typescript-DXxCUjKb.js
-│   ├── python-CqkZVwNJ.js
-│   └── ...
-└── components/
-    ├── Calendar-DAHRSGY_.js
-    ├── Thread-BxL9mK2s.js
-    └── ...
+spa-assets/
+├── extracted/
+│   ├── service-worker.js
+│   ├── vendors-Czx2bdUR.js
+│   ├── icons-C77LVPXu.js
+│   ├── _restricted/
+│   │   ├── restricted-feature-health-C3bMKSvM.js
+│   │   └── restricted-feature-notes-BquE_m0a.js
+│   ├── language parsers/
+│   │   ├── typescript-DXxCUjKb.js
+│   │   ├── python-CqkZVwNJ.js
+│   │   └── ...
+│   └── components/
+│       ├── Calendar-DAHRSGY_.js
+│       ├── Thread-BxL9mK2s.js
+│       └── ...
+├── interfaces/
+│   ├── README.md
+│   ├── index.ts
+│   └── auth-endpoints.ts
+├── snapshots/
+│   └── 2026-01-21/
+│       ├── endpoints.json
+│       ├── full_spec.json
+│       └── metadata.json
+└── AUTH-ENDPOINTS-GUIDE.md
 ```
 
 ### Manifest
@@ -73,6 +84,24 @@ See `spa-assets-manifest.json` for complete file listing and metadata.
 - **`build_dep_graph.py`** - Generate Mermaid diagrams
 - **`extract_types.py`** - Extract TypeScript type definitions
 
+### API Endpoints & Interfaces
+
+This directory includes TypeScript interface definitions for discovered API endpoints:
+
+- **Auth Endpoints** (`interfaces/auth-endpoints.ts`)
+  - `/api/auth/providers` - Get available authentication providers (Apple, Google, Email, WorkOS, etc.)
+  - `/rest/auth/get_special_profile` - Get special user profile information
+  - `/rest/enterprise/organization/login/details` - Get enterprise organization login details for SSO detection
+  - See [AUTH-ENDPOINTS-GUIDE.md](AUTH-ENDPOINTS-GUIDE.md) for complete documentation
+
+**Endpoint Statistics:**
+- Total unique endpoints: 410
+- Categories: 59
+- Auth endpoints: 3 (1 public API, 2 REST including SSO detection)
+- Documented with interfaces: 3
+
+For complete endpoint catalog, see `snapshots/2026-01-21/endpoints.json`
+
 ### Statistics
 
 | Metric | Value |
@@ -93,6 +122,8 @@ See `spa-assets-manifest.json` for complete file listing and metadata.
 
 ### Related Files
 
+- `AUTH-ENDPOINTS-GUIDE.md` - Documentation for authentication endpoints
+- `interfaces/` - TypeScript interface definitions for API endpoints
 - `perplexity_spa_full_spec.json` - Full SPA specification
 - `endpoints_ast_extracted.json` - API endpoints catalog
 - `perplexity-openapi-v3.1.json` - OpenAPI specification
