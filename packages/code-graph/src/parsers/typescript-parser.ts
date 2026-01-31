@@ -15,6 +15,60 @@ export interface ParseResult {
 }
 
 /**
+ * Get callee name from call expression
+ */
+function getCalleeName(callee: any): string | null {
+  if (callee.type === 'Identifier') {
+    return callee.name;
+  }
+  if (callee.type === 'MemberExpression') {
+    const object = callee.object.type === 'Identifier' ? callee.object.name : '';
+    const property = callee.property.type === 'Identifier' ? callee.property.name : '';
+    return object && property ? `${object}.${property}` : null;
+  }
+  return null;
+}
+
+/**
+ * Get current function name from path
+ */
+function getCurrentFunction(path: any): string {
+  let current = path;
+  
+  while (current) {
+    if (current.node.type === 'FunctionDeclaration' && current.node.id) {
+      return current.node.id.name;
+    }
+    if (current.node.type === 'ArrowFunctionExpression' || 
+        current.node.type === 'FunctionExpression') {
+      const parent = current.parent;
+      if (parent.type === 'VariableDeclarator' && parent.id.type === 'Identifier') {
+        return parent.id.name;
+      }
+    }
+    current = current.parentPath;
+  }
+
+  return 'anonymous';
+}
+
+/**
+ * Check if string is an API endpoint
+ */
+function isEndpoint(value: string): boolean {
+  const patterns = [
+    /^\/rest\//,
+    /^\/api\//,
+    /^\/auth\//,
+    /^\/user\//,
+    /^\/analytics\//,
+    /^\/config\//,
+  ];
+
+  return patterns.some(pattern => pattern.test(value));
+}
+
+/**
  * TypeScript/JavaScript parser using Babel
  */
 export class TypeScriptParser {
@@ -67,12 +121,12 @@ export class TypeScriptParser {
         exports.push('default');
       },
 
-      CallExpression(path) {
+      CallExpression: (path: any) => {
         // Track function calls
-        const callee = this.getCalleeName(path.node.callee);
+        const callee = getCalleeName(path.node.callee);
         if (callee) {
           calls.push({
-            caller: this.getCurrentFunction(path),
+            caller: getCurrentFunction(path),
             callee,
             line: path.node.loc?.start.line || 0,
             column: path.node.loc?.start.column || 0,
@@ -85,7 +139,7 @@ export class TypeScriptParser {
         for (const arg of args) {
           if (arg.type === 'StringLiteral') {
             const value = arg.value;
-            if (this.isEndpoint(value)) {
+            if (isEndpoint(value)) {
               endpoints.push(value);
             }
           }
@@ -111,60 +165,6 @@ export class TypeScriptParser {
       imports: parseResult.imports,
       exports: parseResult.exports,
     };
-  }
-
-  /**
-   * Get callee name from call expression
-   */
-  private getCalleeName(callee: any): string | null {
-    if (callee.type === 'Identifier') {
-      return callee.name;
-    }
-    if (callee.type === 'MemberExpression') {
-      const object = callee.object.type === 'Identifier' ? callee.object.name : '';
-      const property = callee.property.type === 'Identifier' ? callee.property.name : '';
-      return object && property ? `${object}.${property}` : null;
-    }
-    return null;
-  }
-
-  /**
-   * Get current function name from path
-   */
-  private getCurrentFunction(path: any): string {
-    let current = path;
-    
-    while (current) {
-      if (current.node.type === 'FunctionDeclaration' && current.node.id) {
-        return current.node.id.name;
-      }
-      if (current.node.type === 'ArrowFunctionExpression' || 
-          current.node.type === 'FunctionExpression') {
-        const parent = current.parent;
-        if (parent.type === 'VariableDeclarator' && parent.id.type === 'Identifier') {
-          return parent.id.name;
-        }
-      }
-      current = current.parentPath;
-    }
-
-    return 'anonymous';
-  }
-
-  /**
-   * Check if string is an API endpoint
-   */
-  private isEndpoint(value: string): boolean {
-    const patterns = [
-      /^\/rest\//,
-      /^\/api\//,
-      /^\/auth\//,
-      /^\/user\//,
-      /^\/analytics\//,
-      /^\/config\//,
-    ];
-
-    return patterns.some(pattern => pattern.test(value));
   }
 
   /**
