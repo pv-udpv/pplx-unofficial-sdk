@@ -65,8 +65,17 @@ export class ServiceWorkerParser {
     const manifestMatch = content.match(manifestPattern);
     
     if (manifestMatch) {
-      // Parse similar to above
-      // ...
+      const manifestContent = manifestMatch[1];
+      const entryPattern = /\{\s*url:\s*["']([^"']+)["']\s*,\s*revision:\s*["']([a-f0-9]+)["']\s*\}/g;
+      let match;
+      
+      while ((match = entryPattern.exec(manifestContent)) !== null) {
+        assets.push({
+          url: match[1],
+          revision: match[2],
+          hash: match[2],
+        });
+      }
     }
     
     // Strategy 3: Inline chunk references (minified)
