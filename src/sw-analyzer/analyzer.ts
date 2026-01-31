@@ -1,7 +1,7 @@
 import { ServiceWorkerFetcher } from './fetcher';
 import { ServiceWorkerParser } from './parser';
 import { ChunkAnalyzer } from './chunk-analyzer';
-import type { AnalysisResult } from './types';
+import type { AnalysisResult, ChunkInfo } from './types';
 
 export interface AnalyzerOptions {
   userAgent?: string;
@@ -12,22 +12,24 @@ export class ServiceWorkerAnalyzer {
   private readonly fetcher: ServiceWorkerFetcher;
   private readonly parser: ServiceWorkerParser;
   private readonly chunkAnalyzer: ChunkAnalyzer;
+  private readonly defaultVersion?: string;
   
   constructor(options: AnalyzerOptions = {}) {
     this.fetcher = new ServiceWorkerFetcher(options.userAgent);
     this.parser = new ServiceWorkerParser();
     this.chunkAnalyzer = new ChunkAnalyzer();
+    this.defaultVersion = options.version;
   }
   
   /**
    * Analyze Service Worker
    * 
-   * @param version - Optional version hash
+   * @param version - Optional version hash (defaults to version from constructor options)
    * @returns Complete analysis result
    */
   async analyze(version?: string): Promise<AnalysisResult> {
     // Fetch SW content
-    const content = await this.fetcher.fetch(version);
+    const content = await this.fetcher.fetch(version ?? this.defaultVersion);
     
     // Parse manifest
     const manifest = this.parser.parse(content);
@@ -71,15 +73,15 @@ export class ServiceWorkerAnalyzer {
    * Get statistics summary
    */
   async getStats(version?: string): Promise<Record<string, number>> {
-    const result = await this.analyze(version);
+    const result = await this.analyze(version ?? this.defaultVersion);
     return this.chunkAnalyzer.getStats(result.chunks);
   }
   
   /**
    * Find chunks by pattern
    */
-  async findChunks(pattern: string | RegExp, version?: string): Promise<any[]> {
-    const result = await this.analyze(version);
+  async findChunks(pattern: string | RegExp, version?: string): Promise<ChunkInfo[]> {
+    const result = await this.analyze(version ?? this.defaultVersion);
     return this.chunkAnalyzer.findChunks(result.chunks, pattern);
   }
 }
