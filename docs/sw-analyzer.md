@@ -16,6 +16,7 @@ Analyze Perplexity.ai Service Worker configuration, precache manifest, and chunk
 ### Programmatic API
 
 ```typescript
+// Note: This import path will be available in a future release of pplx-unofficial-sdk.
 import { ServiceWorkerAnalyzer } from 'pplx-unofficial-sdk';
 
 const analyzer = new ServiceWorkerAnalyzer();
