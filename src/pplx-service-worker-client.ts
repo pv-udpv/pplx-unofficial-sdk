@@ -41,6 +41,23 @@ export interface ServiceWorkerManifest {
 }
 
 /**
+ * Disk cache mode for service-worker.js
+ */
+export type ServiceWorkerCacheMode = "auto" | "refresh" | "cache-only";
+
+/**
+ * Disk cache configuration (Node.js only)
+ */
+export interface ServiceWorkerDiskCacheConfig {
+  /** Enable disk cache (default: false). Only works in Node.js runtime. */
+  enabled?: boolean;
+  /** Cache directory (default: ".pplx/cache"). */
+  dir?: string;
+  /** Cache mode (default: "auto"). */
+  mode?: ServiceWorkerCacheMode;
+}
+
+/**
  * Configuration for the service worker client
  */
 export interface ServiceWorkerClientConfig {
@@ -50,6 +67,8 @@ export interface ServiceWorkerClientConfig {
   headers?: Record<string, string>;
   /** Timeout in milliseconds (default: 10000) */
   timeout?: number;
+  /** Optional disk cache for service-worker.js (Node.js only) */
+  cache?: ServiceWorkerDiskCacheConfig;
 }
 
 /**
@@ -94,6 +113,28 @@ export class ServiceWorkerFetchError extends ServiceWorkerError {
 }
 
 // ============================================================================
+// INTERNAL TYPES
+// ============================================================================
+
+type InternalConfig = {
+  baseUrl: string;
+  headers: Record<string, string>;
+  timeout: number;
+  cache: {
+    enabled: boolean;
+    dir: string;
+    mode: ServiceWorkerCacheMode;
+  };
+};
+
+type DiskCacheMetadata = {
+  etag?: string;
+  lastModified?: string;
+  sha256?: string;
+  fetchedAt?: number;
+};
+
+// ============================================================================
 // SERVICE WORKER CLIENT
 // ============================================================================
 
@@ -101,7 +142,7 @@ export class ServiceWorkerFetchError extends ServiceWorkerError {
  * Client for fetching and parsing Perplexity's service worker manifest
  */
 export class PplxServiceWorkerClient {
-  private config: Required<ServiceWorkerClientConfig>;
+  private config: InternalConfig;
   private cachedManifest?: ServiceWorkerManifest;
 
   constructor(config?: ServiceWorkerClientConfig) {
@@ -109,44 +150,197 @@ export class PplxServiceWorkerClient {
       baseUrl: config?.baseUrl || "https://www.perplexity.ai",
       headers: config?.headers || {},
       timeout: config?.timeout || 10000,
+      cache: {
+        enabled: Boolean(config?.cache?.enabled),
+        dir: config?.cache?.dir || ".pplx/cache",
+        mode: config?.cache?.mode || "auto",
+      },
     };
+  }
+
+  private isNodeRuntime(): boolean {
+    // Avoid bundler/static analysis surprises: do not import node builtins unless needed.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const g: any = globalThis as any;
+    return Boolean(g?.process?.versions?.node);
+  }
+
+  private getServiceWorkerUrl(): string {
+    return `${this.config.baseUrl}/service-worker.js`;
+  }
+
+  private getBaseHeaders(extra?: Record<string, string>): Record<string, string> {
+    return {
+      "User-Agent": "@pplx-unofficial/sdk",
+      ...this.config.headers,
+      ...(extra || {}),
+    };
+  }
+
+  private async computeSha256(text: string): Promise<string | undefined> {
+    if (!this.isNodeRuntime()) return undefined;
+    try {
+      const crypto = await import("node:crypto");
+      return crypto.createHash("sha256").update(text, "utf8").digest("hex");
+    } catch {
+      return undefined;
+    }
+  }
+
+  private async ensureCacheDir(cacheDir: string): Promise<void> {
+    if (!this.isNodeRuntime()) return;
+    const fs = await import("node:fs/promises");
+    await fs.mkdir(cacheDir, { recursive: true });
+  }
+
+  private async readTextIfExists(path: string): Promise<string | undefined> {
+    if (!this.isNodeRuntime()) return undefined;
+    try {
+      const fs = await import("node:fs/promises");
+      return await fs.readFile(path, "utf8");
+    } catch {
+      return undefined;
+    }
+  }
+
+  private async writeText(path: string, content: string): Promise<void> {
+    if (!this.isNodeRuntime()) return;
+    const fs = await import("node:fs/promises");
+    await fs.writeFile(path, content, "utf8");
+  }
+
+  private async readJsonIfExists<T>(path: string): Promise<T | undefined> {
+    const txt = await this.readTextIfExists(path);
+    if (!txt) return undefined;
+    try {
+      return JSON.parse(txt) as T;
+    } catch {
+      return undefined;
+    }
+  }
+
+  private async writeJson(path: string, value: unknown): Promise<void> {
+    await this.writeText(path, JSON.stringify(value, null, 2));
   }
 
   /**
    * Fetches the service worker JavaScript file
+   *
+   * - Memory cache: handled by getManifest() via this.cachedManifest
+   * - Optional disk cache (Node only): controlled by config.cache
    */
-  private async fetchServiceWorker(): Promise<string> {
-    const url = `${this.config.baseUrl}/service-worker.js`;
+  private async fetchServiceWorker(options?: { forceRefresh?: boolean }): Promise<string> {
+    const url = this.getServiceWorkerUrl();
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), this.config.timeout);
 
+    const cacheEnabled = this.config.cache.enabled && this.isNodeRuntime();
+    const cacheMode: ServiceWorkerCacheMode = options?.forceRefresh
+      ? "refresh"
+      : this.config.cache.mode;
+
+    // Default: no disk cache (current behavior)
+    if (!cacheEnabled) {
+      try {
+        const response = await fetch(url, {
+          headers: this.getBaseHeaders(),
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new ServiceWorkerFetchError(
+            `Failed to fetch service worker: ${response.status} ${response.statusText}`
+          );
+        }
+
+        return await response.text();
+      } catch (error) {
+        clearTimeout(timeoutId);
+        if (error instanceof Error) {
+          if (error.name === "AbortError") {
+            throw new ServiceWorkerFetchError(
+              `Service worker fetch timed out after ${this.config.timeout}ms`
+            );
+          }
+          throw new ServiceWorkerFetchError(`Failed to fetch service worker: ${error.message}`);
+        }
+        throw error;
+      }
+    }
+
+    // Disk cache pathing
+    const pathMod = await import("node:path");
+    const cacheDir = this.config.cache.dir;
+    const swPath = pathMod.join(cacheDir, "service-worker.js");
+    const metaPath = pathMod.join(cacheDir, "service-worker.metadata.json");
+
+    await this.ensureCacheDir(cacheDir);
+
+    const cachedSw = await this.readTextIfExists(swPath);
+    const meta = (await this.readJsonIfExists<DiskCacheMetadata>(metaPath)) || {};
+
+    if (cacheMode === "cache-only") {
+      if (cachedSw) return cachedSw;
+      clearTimeout(timeoutId);
+      throw new ServiceWorkerFetchError(
+        `cache-only mode: service-worker.js not found in cache at ${swPath}`
+      );
+    }
+
+    // auto mode: use conditional headers if we have something cached
+    const conditionalHeaders: Record<string, string> = {};
+    if (cacheMode === "auto" && cachedSw) {
+      if (meta.etag) conditionalHeaders["If-None-Match"] = meta.etag;
+      if (meta.lastModified) conditionalHeaders["If-Modified-Since"] = meta.lastModified;
+    }
+
     try {
       const response = await fetch(url, {
-        headers: {
-          "User-Agent": "@pplx-unofficial/sdk",
-          ...this.config.headers,
-        },
+        headers: this.getBaseHeaders(conditionalHeaders),
         signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
 
+      if (response.status === 304 && cachedSw) {
+        return cachedSw;
+      }
+
       if (!response.ok) {
+        // If refresh mode fails, do not silently fall back.
+        if (cacheMode !== "refresh" && cachedSw) {
+          return cachedSw;
+        }
         throw new ServiceWorkerFetchError(
           `Failed to fetch service worker: ${response.status} ${response.statusText}`
         );
       }
 
       const content = await response.text();
+      await this.writeText(swPath, content);
+
+      const newMeta: DiskCacheMetadata = {
+        etag: response.headers.get("etag") || undefined,
+        lastModified: response.headers.get("last-modified") || undefined,
+        sha256: await this.computeSha256(content),
+        fetchedAt: Date.now(),
+      };
+      await this.writeJson(metaPath, newMeta);
+
       return content;
     } catch (error) {
       clearTimeout(timeoutId);
       if (error instanceof Error) {
         if (error.name === "AbortError") {
+          // For non-refresh modes, allow stale SW if present.
+          if (cacheMode !== "refresh" && cachedSw) return cachedSw;
           throw new ServiceWorkerFetchError(
             `Service worker fetch timed out after ${this.config.timeout}ms`
           );
         }
+        if (cacheMode !== "refresh" && cachedSw) return cachedSw;
         throw new ServiceWorkerFetchError(`Failed to fetch service worker: ${error.message}`);
       }
       throw error;
@@ -160,7 +354,7 @@ export class PplxServiceWorkerClient {
     // The manifest is in the format: He([{...chunks...}]) or precache([{...chunks...}])
     // Note: 'He' is an obfuscated function name in Workbox that may change.
     // We look for multiple patterns to be resilient to minification changes.
-    
+
     // Look for the pattern: He([...]) or similar function call with manifest array
     const patterns = [
       /He\(\s*\[([^\]]+\])\s*\)/s, // He([...]) - current Workbox pattern
@@ -180,9 +374,7 @@ export class PplxServiceWorkerClient {
     }
 
     if (!manifestMatch) {
-      throw new ServiceWorkerParseError(
-        "Could not find chunk manifest in service worker"
-      );
+      throw new ServiceWorkerParseError("Could not find chunk manifest in service worker");
     }
 
     // Extract the JSON array
@@ -195,7 +387,7 @@ export class PplxServiceWorkerClient {
       const startIdx = manifestMatch.index!;
       let depth = 0;
       let endIdx = startIdx;
-      
+
       for (let i = startIdx; i < serviceWorkerJs.length; i++) {
         const char = serviceWorkerJs[i];
         if (char === "[") depth++;
@@ -207,19 +399,17 @@ export class PplxServiceWorkerClient {
           }
         }
       }
-      
+
       if (depth !== 0) {
-        throw new ServiceWorkerParseError(
-          "Malformed chunk manifest: unbalanced brackets"
-        );
+        throw new ServiceWorkerParseError("Malformed chunk manifest: unbalanced brackets");
       }
-      
+
       manifestText = serviceWorkerJs.substring(startIdx, endIdx);
     }
 
     try {
       const chunks = JSON.parse(manifestText) as ServiceWorkerChunk[];
-      
+
       if (!Array.isArray(chunks)) {
         throw new ServiceWorkerParseError("Manifest is not an array");
       }
@@ -240,9 +430,7 @@ export class PplxServiceWorkerClient {
         throw error;
       }
       if (error instanceof Error) {
-        throw new ServiceWorkerParseError(
-          `Failed to parse chunk manifest: ${error.message}`
-        );
+        throw new ServiceWorkerParseError(`Failed to parse chunk manifest: ${error.message}`);
       }
       throw error;
     }
@@ -257,8 +445,8 @@ export class PplxServiceWorkerClient {
       return this.cachedManifest;
     }
 
-    const serviceWorkerUrl = `${this.config.baseUrl}/service-worker.js`;
-    const serviceWorkerJs = await this.fetchServiceWorker();
+    const serviceWorkerUrl = this.getServiceWorkerUrl();
+    const serviceWorkerJs = await this.fetchServiceWorker({ forceRefresh: options?.forceRefresh });
     const chunks = this.parseManifest(serviceWorkerJs);
 
     const manifest: ServiceWorkerManifest = {
@@ -285,9 +473,7 @@ export class PplxServiceWorkerClient {
 
     // Filter by extension
     if (filter.extension) {
-      const ext = filter.extension.startsWith(".") 
-        ? filter.extension 
-        : `.${filter.extension}`;
+      const ext = filter.extension.startsWith(".") ? filter.extension : `.${filter.extension}`;
       chunks = chunks.filter((chunk) => chunk.url.endsWith(ext));
     }
 
