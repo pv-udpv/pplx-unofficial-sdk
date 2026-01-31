@@ -4,7 +4,7 @@
 // ============================================================================
 
 import type { UpdateInfo, ManifestDiff, PrecacheEntry } from '../types';
-import { ServiceWorkerVersionDetector } from '../analyzers/version-detector';
+import { ServiceWorkerVersionDetector, type BrowserInstance } from '../analyzers/version-detector';
 
 /**
  * Monitors Service Worker version changes
@@ -99,7 +99,7 @@ export class VersionMonitor {
   /**
    * Set browser instance for JS context detection
    */
-  setBrowser(browser: any): void {
+  setBrowser(browser: BrowserInstance): void {
     this.detector.setBrowser(browser);
   }
 }

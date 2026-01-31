@@ -12,6 +12,7 @@
 - ✅ **REST API** - Complete CRUD for threads, entries, and collections
 - ✅ **OAuth Connectors** - 9 integrations (Google Drive, Notion, OneDrive, etc.)
 - ✅ **Service Worker Analysis** - Fetch and parse application chunk manifest
+- ✅ **Code Graph Analysis** - Dependency graphs, call chains, and bootstrap analysis
 - ✅ **Type-Safe** - Full TypeScript types for all operations
 - ✅ **JSON Patch** - RFC-6902 compliant differential updates
 - ✅ **Rate Limiting** - Built-in rate limit management
@@ -83,7 +84,8 @@ const serviceWorker = createServiceWorkerClient();
 - [SSE Streaming Guide](docs/DEOBFUSCATION-SUMMARY.md) - Protocol analysis and streaming architecture
 - [REST API Reference](docs/REST-API-GUIDE.md) - All endpoints and usage examples
 - [Connectors Guide](docs/CONNECTORS-GUIDE.md) - OAuth flow and file integrations
-- [Service Worker Guide](docs/SERVICE-WORKER-GUIDE.md) - Fetch and analyze chunk manifest from the Perplexity AI service. 
+- [Service Worker Guide](docs/SERVICE-WORKER-GUIDE.md) - Fetch and analyze chunk manifest from the Perplexity AI service
+- [Code Graph Analysis](packages/code-graph/README.md) - Dependency graphs, call chains, and bootstrap analysis
 - [Project Setup](docs/PROJECT-SETUP.md) - Development environment setup
 
 ## 🔌 Supported Connectors

@@ -13,6 +13,21 @@ export interface BootstrapOptions {
 }
 
 /**
+ * Chunk identification patterns
+ */
+const CRITICAL_CHUNK_PATTERNS = [
+  'index',
+  'main',
+  'app',
+  'bootstrap',
+  'runtime',
+  'vendor',
+  'polyfill',
+  'platform',
+  'core',
+] as const;
+
+/**
  * Analyzes application bootstrap sequence
  */
 export class BootstrapAnalyzer {
@@ -84,21 +99,8 @@ export class BootstrapAnalyzer {
     for (const entry of manifest) {
       const url = entry.url.toLowerCase();
       
-      // Main entry points
-      if (
-        url.includes('index') ||
-        url.includes('main') ||
-        url.includes('app') ||
-        url.includes('bootstrap') ||
-        url.includes('runtime') ||
-        url.includes('vendor') ||
-        url.includes('polyfill')
-      ) {
-        critical.push(entry);
-      }
-      
-      // Platform core chunks
-      if (url.includes('platform') || url.includes('core')) {
+      // Check if URL matches any critical pattern
+      if (CRITICAL_CHUNK_PATTERNS.some(pattern => url.includes(pattern))) {
         critical.push(entry);
       }
     }

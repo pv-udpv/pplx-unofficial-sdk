@@ -6,13 +6,26 @@
 import type { VersionInfo } from '../types';
 
 /**
+ * Browser instance interface (Playwright/Puppeteer compatible)
+ */
+export interface BrowserInstance {
+  newPage(): Promise<PageInstance>;
+}
+
+export interface PageInstance {
+  goto(url: string): Promise<void>;
+  evaluate(fn: () => any): Promise<any>;
+  close(): Promise<void>;
+}
+
+/**
  * Service Worker version detector with multiple detection strategies
  */
 export class ServiceWorkerVersionDetector {
   private baseUrl: string;
-  private browser?: any; // Playwright browser instance (optional)
+  private browser?: BrowserInstance;
 
-  constructor(baseUrl: string = 'https://www.perplexity.ai', browser?: any) {
+  constructor(baseUrl: string = 'https://www.perplexity.ai', browser?: BrowserInstance) {
     this.baseUrl = baseUrl;
     this.browser = browser;
   }
@@ -88,12 +101,11 @@ export class ServiceWorkerVersionDetector {
       await page.goto(this.baseUrl);
 
       const version = await page.evaluate(() => {
-        // @ts-ignore - window globals may not exist
-        return window.__PPL_CONFIG__?.version ||
-          // @ts-ignore
-          window.__APP_CONFIG__?.swVersion ||
-          // @ts-ignore
-          window.__BUILD_ID__ ||
+        // Check various window globals for version info
+        const win = window as any;
+        return win.__PPL_CONFIG__?.version ||
+          win.__APP_CONFIG__?.swVersion ||
+          win.__BUILD_ID__ ||
           null;
       });
 
@@ -132,7 +144,7 @@ export class ServiceWorkerVersionDetector {
   /**
    * Set browser instance for JS context detection
    */
-  setBrowser(browser: any): void {
+  setBrowser(browser: BrowserInstance): void {
     this.browser = browser;
   }
 }

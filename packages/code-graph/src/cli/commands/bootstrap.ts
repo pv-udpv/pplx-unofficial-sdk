@@ -53,9 +53,16 @@ export async function bootstrapCommand(options: BootstrapOptions): Promise<void>
 
     // Save to file
     const outputPath = options.output || `bootstrap-analysis.${format}`;
-    await fs.writeFile(outputPath, output, 'utf-8');
+    
+    // Ensure output has correct extension
+    const expectedExt = format === 'json' ? '.json' : format === 'mermaid' ? '.mmd' : '.md';
+    const finalPath = outputPath.endsWith(expectedExt) 
+      ? outputPath 
+      : outputPath.replace(/\.[^.]*$/, '') + expectedExt;
+    
+    await fs.writeFile(finalPath, output, 'utf-8');
 
-    console.log(`\n💾 Analysis saved to: ${outputPath}`);
+    console.log(`\n💾 Analysis saved to: ${finalPath}`);
   } catch (error) {
     console.error('❌ Error:', error instanceof Error ? error.message : 'Unknown error');
     process.exit(1);
