@@ -1,0 +1,67 @@
+name: Update service worker manifest
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 3 * * *" # daily 03:23 UTC
+  push:
+    branches: ["main"]
+    paths:
+      - "src/**"
+      - "scripts/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json"
+      - "docs/SERVICE-WORKER-GUIDE.md"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Cache SW (node)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pplx-unofficial-sdk/sw
+          key: sw-cache-${{ runner.os }}-${{ github.ref_name }}
+          restore-keys: |
+            sw-cache-${{ runner.os }}-
+
+      - name: Fetch SW manifest
+        env:
+          PPLX_SW_CACHE_DIR: ~/.cache/pplx-unofficial-sdk/sw
+          PPLX_SW_CACHE_MODE: auto
+        run: node scripts/fetch-sw-manifest.mjs
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: automation/sw-manifest
+          delete-branch: true
+          title: "chore(spa-assets): update service worker manifest"
+          commit-message: "chore(spa-assets): update service worker manifest"
+          body: |
+            Automated update of Perplexity `service-worker.js` manifest snapshots.
+
+            - Updates: `spa-assets/metadata/service-worker-manifest.latest.json`
+            - Stats: `spa-assets/metadata/service-worker-manifest.stats.latest.json`
