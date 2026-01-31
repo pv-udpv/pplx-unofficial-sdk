@@ -38,7 +38,7 @@ export class ChunkAnalyzer {
     }
     
     // Translation files
-    if (path.match(/[a-z]{2}-[A-Z]{2}\.json/) || path.includes('/i18n/') || path.includes('/locale/')) {
+    if (path.match(/[a-z]{2}-[a-z]{2}\.json/) || path.includes('/i18n/') || path.includes('/locale/')) {
       return 'translation';
     }
     
