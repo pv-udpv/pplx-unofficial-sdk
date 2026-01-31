@@ -175,15 +175,15 @@ import {
 async function extractPerplexityChunks() {
   // 1️⃣ Analyze Service Worker
   console.log('🔍 Analyzing Service Worker...');
-  const analyzer = new ServiceWorkerAnalyzer();
-  const analysis = await analyzer.analyze('104241e');
+  const analyzer = new ServiceWorkerAnalyzer({ version: '104241e' });
+  const analysis = await analyzer.analyze();
   
   console.log(`\n📊 Analysis Results:`);
   console.log(`   Total Assets: ${analysis.meta.totalAssets}`);
   console.log(`   Workbox: v${analysis.manifest.version}`);
   console.log(`   File Size: ${(analysis.meta.fileSize / 1024).toFixed(2)} KB`);
   
-  // Get statistics by category
+  // Get statistics by category (reuses same version from constructor)
   const stats = await analyzer.getStats();
   console.log(`\n📈 Category Breakdown:`);
   for (const [category, count] of Object.entries(stats)) {

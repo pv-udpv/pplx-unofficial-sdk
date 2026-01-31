@@ -51,6 +51,7 @@ export class ChunkDownloader {
     result: AnalysisResult,
     options: DownloadOptions = {}
   ): Promise<DownloadResult> {
+    // Use version from options, result metadata, or 'unknown' as fallback
     const version = options.version || result.meta.version || 'unknown';
     const parallel = options.parallel || 5;
     const categories = options.categories || ['component', 'modal', 'translation', 'core', 'restricted'];
@@ -219,11 +220,18 @@ export class ChunkDownloader {
 
   /**
    * Download specific chunks by IDs
+   * 
+   * @param chunkIds - Array of chunk IDs to download
+   * @param version - Version identifier for directory structure
+   * @param dryRun - If true, simulate without downloading
+   * @param baseUrl - Optional base URL pattern for chunks (default: /spa/assets/)
+   * @returns Download statistics
    */
   async downloadChunksByIds(
     chunkIds: string[],
     version: string,
-    dryRun = false
+    dryRun = false,
+    baseUrl = '/spa/assets/'
   ): Promise<DownloadResult> {
     const downloadResult: DownloadResult = {
       version,
@@ -240,7 +248,7 @@ export class ChunkDownloader {
         const chunk: ChunkInfo = {
           id: chunkId,
           hash: 'unknown',
-          url: `/spa/assets/${chunkId}.js`,
+          url: `${baseUrl}${chunkId}.js`,
           category: 'unknown',
         };
 
