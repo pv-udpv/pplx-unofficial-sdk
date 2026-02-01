@@ -5,7 +5,6 @@ dist/
 .env.local
 *.log
 .DS_Store
-package-lock.json
 
 # Temporary HAR files (keep processed snapshots only)
 *.har
