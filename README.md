@@ -11,6 +11,7 @@
 - ✅ **SSE Streaming** - Real-time AI search responses with Server-Sent Events
 - ✅ **REST API** - Complete CRUD for threads, entries, and collections
 - ✅ **OAuth Connectors** - 9 integrations (Google Drive, Notion, OneDrive, etc.)
+- ✅ **Service Worker Analysis** - Fetch and parse application chunk manifest
 - ✅ **Type-Safe** - Full TypeScript types for all operations
 - ✅ **JSON Patch** - RFC-6902 compliant differential updates
 - ✅ **Rate Limiting** - Built-in rate limit management
@@ -55,6 +56,10 @@ console.log("Recent threads:", threads.items);
 // Connectors
 const connectors = await sdk.getConnectorsStatus();
 console.log("Connected:", connectors.filter(c => c.connected));
+
+// Service Worker Analysis
+const manifest = await sdk.serviceWorker.getManifest();
+console.log("Total chunks:", manifest.totalChunks);
 ```
 
 ### Modular Imports
@@ -64,10 +69,12 @@ console.log("Connected:", connectors.filter(c => c.connected));
 import { createPplxClient } from "@pplx-unofficial/sdk/stream";
 import { createRestClient } from "@pplx-unofficial/sdk/rest";
 import { createConnectorsClient } from "@pplx-unofficial/sdk/connectors";
+import { createServiceWorkerClient } from "@pplx-unofficial/sdk/service-worker";
 
 const stream = createPplxClient();
 const rest = createRestClient();
 const connectors = createConnectorsClient();
+const serviceWorker = createServiceWorkerClient();
 ```
 
 > Note: These modular import paths represent the planned API design and may not be available in the current release.
@@ -76,6 +83,7 @@ const connectors = createConnectorsClient();
 - [SSE Streaming Guide](docs/DEOBFUSCATION-SUMMARY.md) - Protocol analysis and streaming architecture
 - [REST API Reference](docs/REST-API-GUIDE.md) - All endpoints and usage examples
 - [Connectors Guide](docs/CONNECTORS-GUIDE.md) - OAuth flow and file integrations
+- [Service Worker Guide](docs/SERVICE-WORKER-GUIDE.md) - Fetch and analyze chunk manifest from the Perplexity AI service. 
 - [Project Setup](docs/PROJECT-SETUP.md) - Development environment setup
 
 ## 🔌 Supported Connectors
@@ -161,19 +169,80 @@ const files = await connectors.listFiles("google_drive", { limit: 100 });
 await connectors.syncFiles("google_drive", fileIds, spaceUuid);
 ```
 
+### Service Worker Analysis
+
+```typescript
+import { createServiceWorkerClient } from "@pplx-unofficial/sdk";
+
+const client = createServiceWorkerClient();
+
+// Fetch manifest
+const manifest = await client.getManifest();
+console.log(`Total chunks: ${manifest.totalChunks}`);
+
+// Filter chunks
+const jsChunks = await client.getChunks({ extension: "js" });
+const restrictedFeatures = await client.getChunks({ restrictedOnly: true });
+
+// Get statistics
+const stats = await client.getStatistics();
+console.log(`JavaScript files: ${stats.byExtension.js}`);
+console.log(`Restricted features: ${stats.byCategory.restricted}`);
+```
+
 ## 🏗️ Architecture
 
 ```
 @pplx-unofficial/sdk
-├── stream (pplx-client.ts)          - SSE streaming engine
-├── rest (pplx-rest-client.ts)       - REST API for CRUD
-├── connectors (pplx-connectors-client.ts) - OAuth & file sync
-└── index.ts                         - Unified SDK
+├── src/
+│   ├── stream (pplx-client.ts)          - SSE streaming engine
+│   ├── rest (pplx-rest-client.ts)       - REST API for CRUD
+│   ├── connectors (pplx-connectors-client.ts) - OAuth & file sync
+│   └── index.ts                         - Unified SDK
+├── spa-assets/                           - Tracked SPA assets & versions
+│   ├── snapshots/                       - HAR-extracted snapshots by date
+│   ├── workbox/                         - Service worker chunks
+│   ├── vite-chunks/                     - Vite build artifacts
+│   ├── diffs/                           - Version-to-version differences
+│   └── metadata/                        - Asset index & integrity checksums
+├── docs/                                 - Documentation
+├── examples/                             - Usage examples
+└── har_agent.py                          - HAR analysis toolkit
 
 Protocol: 2.18
-Endpoints: 37 total (2 SSE + 24 REST + 11 Connectors)
-LOC: 1,704 (excluding examples)
+Endpoints: 38 total (2 SSE + 24 REST + 11 Connectors + 1 Service Worker)
+LOC: 2,050+ (excluding examples)
 ```
+
+## 🤖 SDK Consumer Bot
+
+A reference implementation demonstrating all SDK capabilities:
+
+```bash
+cd sdk-consumer-bot
+
+# Search with streaming
+pplx-bot search "quantum computing" --focus academic
+
+# Create conversation thread
+pplx-bot chat "ML Research" "explain transformers" --save "AI Papers"
+
+# Search with connectors
+pplx-bot connectors-search "team docs" -c google_drive notion
+
+# Automated research
+pplx-bot research "GraphQL vs REST" --depth 3
+```
+
+**Features:**
+- ✅ Real-time streaming search with progress indicators
+- ✅ Conversation management (threads, collections, likes)
+- ✅ OAuth connector integration (Google Drive, Notion, etc.)
+- ✅ CLI interface with 8+ commands
+- ✅ Programmatic API for Node.js apps
+- ✅ TypeScript examples and documentation
+
+See [sdk-consumer-bot/README.md](sdk-consumer-bot/README.md) for full documentation.
 
 ## 🔒 Security
 
@@ -213,6 +282,7 @@ Contributions welcome! Please open an issue or PR.
 | REST API | 🔄 In Development | - |
 | Connectors | 🔄 In Development | - |
 | Documentation | ✅ Complete | 100% |
+| SDK Consumer Bot | ✅ Complete | Demo/Example |
 
 ---
 
