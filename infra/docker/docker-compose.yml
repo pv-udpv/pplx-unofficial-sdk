@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  gateway:
+    build:
+      context: ../..
+      dockerfile: infra/docker/gateway/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - GATEWAY_HOST=0.0.0.0
+      - GATEWAY_PORT=8000
+    networks:
+      - perplexity-net
+
+  auth-service:
+    build:
+      context: ../..
+      dockerfile: infra/docker/auth-service/Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - AUTH_HOST=0.0.0.0
+      - AUTH_PORT=8001
+    networks:
+      - perplexity-net
+
+  knowledge-api:
+    build:
+      context: ../..
+      dockerfile: infra/docker/knowledge-api/Dockerfile
+    ports:
+      - "8002:8002"
+    environment:
+      - KNOWLEDGE_API_HOST=0.0.0.0
+      - KNOWLEDGE_API_PORT=8002
+    networks:
+      - perplexity-net
+
+networks:
+  perplexity-net:
+    driver: bridge
