@@ -25,7 +25,7 @@ def extract_schema(input_file: Path, output_file: Path) -> None:
     logger.info(f"Extracting schema from {input_file}")
 
     with open(input_file) as f:
-        data: dict[str, Any] = json.load(f)
+        _data: dict[str, Any] = json.load(f)
 
     # Basic schema extraction logic
     # This is a placeholder - implement actual extraction based on your needs

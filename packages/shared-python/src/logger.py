@@ -2,10 +2,9 @@
 
 import logging
 import sys
-from typing import Optional
 
 
-def get_logger(name: str, level: Optional[int] = None) -> logging.Logger:
+def get_logger(name: str, level: int | None = None) -> logging.Logger:
     """Get a configured logger instance.
 
     Args:

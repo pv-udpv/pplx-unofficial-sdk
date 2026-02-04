@@ -4,7 +4,9 @@ import sys
 from pathlib import Path
 
 # Add packages to path
-sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent / "packages" / "shared-python" / "src"))
+sys.path.insert(
+    0, str(Path(__file__).parent.parent.parent.parent / "packages" / "shared-python" / "src")
+)
 
 from config import BaseSettings  # type: ignore
 
