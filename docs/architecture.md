@@ -15,37 +15,63 @@ The Perplexity AI Research & Development Workspace is designed as an enterprise-
 ## Architecture Layers
 
 ### 1. Gateway Layer
-- **API Gateway**: Central entry point for all API requests
-- **Rate Limiting**: Per-user/IP rate limits
-- **CORS Handling**: Configurable CORS policies
-- **Auth Injection**: Automatic authentication token injection
+
+**Implemented:**
+- API Gateway with FastAPI: Central entry point for all API requests
+- CORS Handling: Configurable CORS policies via settings
+- Health check endpoints
+
+**Planned:**
+- Rate Limiting: Per-user/IP rate limits
+- Auth Injection: Automatic authentication token injection
+- Request routing and load balancing
 
 ### 2. Service Layer
 
 #### Auth Service (Port 8001)
+
+**Implemented:**
+- FastAPI service foundation
+- Environment-based configuration
+- Health check endpoints
+
+**Planned:**
 - NextAuth flow implementation
 - Session pool management
 - Token rotation
 - Multi-account support
 
 #### Knowledge API (Port 8002)
+
+**Implemented:**
+- FastAPI service foundation
+- Environment-based configuration
+- Health check endpoints
+
+**Planned:**
 - SSE streaming endpoints
 - REST API for CRUD operations
 - Database integration
 - Cache layer
 
 #### Frontend (Port 3000)
+
+**Status:** Structure created, implementation planned
 - Next.js 14+ with App Router
 - React with hooks
 - SSE streaming support
 - Real-time updates
 
 #### Analysis Service (Port 8003)
+
+**Status:** Structure created, implementation planned
 - Tree-sitter AST analysis
 - Code graph generation
 - ML pipeline integration
 
 #### Asset Fetcher (Port 8004)
+
+**Status:** Structure created, implementation planned
 - Service worker parsing
 - Asset mirroring
 - Incremental updates

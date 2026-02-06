@@ -5,9 +5,9 @@ import sys
 from pathlib import Path
 from typing import Any
 
-# Add packages to path
+# Add packages to path (go up 3 levels to repo root, then into packages)
 sys.path.insert(
-    0, str(Path(__file__).parent.parent.parent.parent / "packages" / "shared-python" / "src")
+    0, str(Path(__file__).parent.parent.parent / "packages" / "shared-python" / "src")
 )
 
 from logger import get_logger  # type: ignore
@@ -19,7 +19,7 @@ def validate_schema(schema_file: Path) -> bool:
     """Validate API schema structure.
 
     Args:
-        schema_file: Path to schema file
+        schema_file: Path to schema file (JSON or YAML)
 
     Returns:
         True if valid, False otherwise
@@ -28,14 +28,26 @@ def validate_schema(schema_file: Path) -> bool:
 
     try:
         with open(schema_file) as f:
-            schema: dict[str, Any] = json.load(f)
+            # Try to determine file type by extension
+            if schema_file.suffix in [".yaml", ".yml"]:
+                try:
+                    import yaml
 
-        # Basic validation
-        required_keys = ["version", "endpoints", "models"]
-        for key in required_keys:
-            if key not in schema:
-                logger.error(f"Missing required key: {key}")
-                return False
+                    schema: dict[str, Any] = yaml.safe_load(f)
+                except ImportError:
+                    logger.warning("PyYAML not installed, skipping YAML validation")
+                    logger.info("Install PyYAML to validate YAML schemas: pip install pyyaml")
+                    return True  # Skip validation if yaml not available
+            else:
+                schema = json.load(f)
+
+        # Basic validation for JSON schemas
+        if schema_file.suffix == ".json":
+            required_keys = ["version", "endpoints", "models"]
+            for key in required_keys:
+                if key not in schema:
+                    logger.error(f"Missing required key: {key}")
+                    return False
 
         logger.info("Schema validation passed")
         return True

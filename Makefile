@@ -60,8 +60,16 @@ test-ts:
 
 codegen:
 	@echo "Generating code from schemas..."
-	@python schemas/tools/codegen/python.py
-	@python schemas/tools/codegen/typescript.py
+	@if [ -f schemas/tools/codegen/python.py ]; then \
+		python schemas/tools/codegen/python.py; \
+	else \
+		echo "⚠️  Python codegen not yet implemented (schemas/tools/codegen/python.py)"; \
+	fi
+	@if [ -f schemas/tools/codegen/typescript.py ]; then \
+		python schemas/tools/codegen/typescript.py; \
+	else \
+		echo "⚠️  TypeScript codegen not yet implemented (schemas/tools/codegen/typescript.py)"; \
+	fi
 
 clean:
 	@echo "Cleaning build artifacts..."

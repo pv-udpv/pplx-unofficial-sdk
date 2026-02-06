@@ -1,4 +1,4 @@
-"""Tests for Auth service."""
+"""Tests for Knowledge API service."""
 
 import sys
 from pathlib import Path
@@ -23,7 +23,7 @@ def test_root_endpoint(client: TestClient) -> None:
     """Test root endpoint."""
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"service": "auth-service", "status": "ok"}
+    assert response.json() == {"service": "knowledge-api", "status": "ok"}
 
 
 def test_health_endpoint(client: TestClient) -> None:

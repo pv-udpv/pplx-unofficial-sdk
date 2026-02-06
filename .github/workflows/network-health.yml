@@ -1,0 +1,75 @@
+name: Network Health Check
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main, develop]
+    paths:
+      - '.github/workflows/network-health.yml'
+
+jobs:
+  check-resources:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check Perplexity.ai availability
+        run: |
+          echo "Checking www.perplexity.ai..."
+          if curl -f -s -o /dev/null -w "%{http_code}" https://www.perplexity.ai | grep -q "200\|301\|302"; then
+            echo "✅ www.perplexity.ai is reachable"
+          else
+            echo "❌ www.perplexity.ai is not reachable"
+            exit 1
+          fi
+
+      - name: Check Perplexity API endpoint
+        run: |
+          echo "Checking Perplexity API..."
+          STATUS=$(curl -f -s -o /dev/null -w "%{http_code}" https://www.perplexity.ai/api/health 2>/dev/null || echo "000")
+          if [ "$STATUS" != "000" ]; then
+            echo "✅ Perplexity API responded with status: $STATUS"
+          else
+            echo "⚠️  Perplexity API health check endpoint not available (expected)"
+          fi
+
+      - name: Check GitHub availability
+        run: |
+          echo "Checking api.github.com..."
+          if curl -f -s -o /dev/null -w "%{http_code}" https://api.github.com | grep -q "200"; then
+            echo "✅ api.github.com is reachable"
+          else
+            echo "❌ api.github.com is not reachable"
+            exit 1
+          fi
+
+      - name: Check NPM registry
+        run: |
+          echo "Checking registry.npmjs.org..."
+          if curl -f -s -o /dev/null -w "%{http_code}" https://registry.npmjs.org | grep -q "200"; then
+            echo "✅ registry.npmjs.org is reachable"
+          else
+            echo "❌ registry.npmjs.org is not reachable"
+            exit 1
+          fi
+
+      - name: Check PyPI
+        run: |
+          echo "Checking pypi.org..."
+          if curl -f -s -o /dev/null -w "%{http_code}" https://pypi.org | grep -q "200"; then
+            echo "✅ pypi.org is reachable"
+          else
+            echo "❌ pypi.org is not reachable"
+            exit 1
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "================================================"
+          echo "Network Health Check Complete"
+          echo "================================================"
+          echo "All critical services checked."
+          echo "Check individual steps for detailed status."

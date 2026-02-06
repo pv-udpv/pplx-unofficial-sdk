@@ -13,18 +13,21 @@ fi
 # Source environment variables
 source .env
 
-# Start services in background
+# Start services in background using direct Python execution
 echo "Starting Gateway service..."
-python3 -m services.gateway.runtime.main &
+cd services/gateway && python3 runtime/main.py &
 GATEWAY_PID=$!
+cd ../..
 
 echo "Starting Auth service..."
-python3 -m services.auth-service.runtime.main &
+cd services/auth-service && python3 runtime/main.py &
 AUTH_PID=$!
+cd ../..
 
 echo "Starting Knowledge API service..."
-python3 -m services.knowledge-api.runtime.main &
+cd services/knowledge-api && python3 runtime/main.py &
 KNOWLEDGE_API_PID=$!
+cd ../..
 
 echo ""
 echo "✅ Development environment started!"

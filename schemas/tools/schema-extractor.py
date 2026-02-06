@@ -5,9 +5,9 @@ import sys
 from pathlib import Path
 from typing import Any
 
-# Add packages to path
+# Add packages to path (go up 3 levels to repo root, then into packages)
 sys.path.insert(
-    0, str(Path(__file__).parent.parent.parent.parent / "packages" / "shared-python" / "src")
+    0, str(Path(__file__).parent.parent.parent / "packages" / "shared-python" / "src")
 )
 
 from logger import get_logger  # type: ignore

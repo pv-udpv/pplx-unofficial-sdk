@@ -81,11 +81,17 @@ make codegen
 ### Service Management
 
 ```bash
-# Start individual service
-python3 -m services.gateway.runtime.main
+# Start individual service (gateway)
+cd services/gateway && python3 runtime/main.py
 
 # Or with environment
-GATEWAY_PORT=8000 python3 -m services.gateway.runtime.main
+cd services/gateway && GATEWAY_PORT=8000 python3 runtime/main.py
+
+# Start auth service
+cd services/auth-service && python3 runtime/main.py
+
+# Start knowledge API
+cd services/knowledge-api && python3 runtime/main.py
 ```
 
 ### Testing

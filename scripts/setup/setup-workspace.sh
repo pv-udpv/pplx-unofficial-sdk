@@ -6,8 +6,12 @@ echo "🚀 Setting up Perplexity AI Research Workspace..."
 
 # Check Python version
 echo "Checking Python version..."
-python_version=$(python3 --version | cut -d' ' -f2 | cut -d'.' -f1,2)
-if [[ $(echo "$python_version < 3.12" | bc) -eq 1 ]]; then
+python_version=$(python3 --version 2>&1 | cut -d' ' -f2)
+python_major=$(echo "$python_version" | cut -d'.' -f1)
+python_minor=$(echo "$python_version" | cut -d'.' -f2)
+
+# Use pure bash comparison instead of bc
+if [[ $python_major -lt 3 ]] || [[ $python_major -eq 3 && $python_minor -lt 12 ]]; then
     echo "❌ Python 3.12+ is required. Current version: $python_version"
     exit 1
 fi

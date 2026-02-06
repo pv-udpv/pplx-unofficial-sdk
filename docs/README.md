@@ -42,9 +42,9 @@ make lint
 
 ## Documentation
 
-- [Workspace Guide](docs/workspace.md)
-- [Architecture](docs/architecture.md)
-- [Contributing](CONTRIBUTING.md)
+- [Workspace Guide](workspace.md)
+- [Architecture](architecture.md)
+- [Contributing](../CONTRIBUTING.md)
 
 ## Technology Stack
 

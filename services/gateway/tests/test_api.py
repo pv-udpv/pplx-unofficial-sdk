@@ -1,14 +1,20 @@
 """Tests for Gateway service."""
 
+import sys
+from pathlib import Path
+
 import pytest
 from fastapi.testclient import TestClient
+
+# Add service directory to path
+service_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(service_dir))
 
 
 @pytest.fixture
 def client() -> TestClient:
     """Create test client."""
-    # Import here to avoid issues with path setup
-    from services.gateway.src.app import app
+    from src.app import app
 
     return TestClient(app)
 
