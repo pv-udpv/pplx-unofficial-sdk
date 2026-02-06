@@ -1,0 +1,14 @@
+[project]
+name = "perplexity-shared-python"
+version = "0.1.0"
+requires-python = ">=3.12"
+description = "Shared Python utilities for Perplexity AI workspace"
+
+dependencies = [
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.1.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
