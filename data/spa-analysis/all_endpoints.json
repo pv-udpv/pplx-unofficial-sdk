@@ -1,0 +1,70 @@
+{
+  "analysis_date": "2026-02-10",
+  "api_version": "2.18",
+  "method": "static_analysis_and_network_traffic",
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/rest/sse/perplexity_ask",
+      "description": "Primary SSE streaming endpoint for Perplexity search",
+      "module": "pplx-stream",
+      "event_types": ["open", "message", "error", "info"]
+    },
+    {
+      "method": "POST",
+      "path": "/rest/sse/perplexity_ask/reconnect/{resume_entry_uuid}",
+      "description": "Reconnect to an in-progress SSE stream",
+      "module": "pplx-stream",
+      "path_params": ["resume_entry_uuid"]
+    },
+    {
+      "method": "POST",
+      "path": "https://suggest.perplexity.ai/search/v3/navigate",
+      "description": "Navigation V3 suggest/navigate endpoint",
+      "module": "platform-core"
+    },
+    {
+      "method": "POST",
+      "path": "/rest/file-repository/get-file-upload-urls",
+      "description": "Get pre-signed S3 upload URLs for file attachments",
+      "module": "platform-core"
+    },
+    {
+      "method": "POST",
+      "path": "/rest/file-repository/uploads",
+      "description": "Register completed file uploads",
+      "module": "platform-core"
+    },
+    {
+      "method": "POST",
+      "path": "/rest/thread/export",
+      "description": "Export a thread to markdown/pdf/json",
+      "module": "platform-core"
+    },
+    {
+      "method": "PUT",
+      "path": "/rest/thread/mark_viewed/{thread_id}",
+      "description": "Mark a thread as viewed",
+      "module": "platform-core",
+      "path_params": ["thread_id"]
+    },
+    {
+      "method": "GET",
+      "path": "/rest/collections/list_user_collections",
+      "description": "List all collections for the authenticated user",
+      "module": "platform-core"
+    },
+    {
+      "method": "GET",
+      "path": "/rest/rate-limit/status",
+      "description": "Get current rate limit status for the authenticated user",
+      "module": "platform-core"
+    },
+    {
+      "method": "GET",
+      "path": "/rest/user/settings",
+      "description": "Get user settings and preferences",
+      "module": "platform-core"
+    }
+  ]
+}
