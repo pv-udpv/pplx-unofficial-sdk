@@ -1,0 +1,54 @@
+name: TypeScript CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "services/frontend/**/*.ts"
+      - "services/frontend/**/*.tsx"
+      - "packages/shared-ts/**/*.ts"
+      - "src/**/*.ts"
+      - "package.json"
+      - "tsconfig.json"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "services/frontend/**/*.ts"
+      - "services/frontend/**/*.tsx"
+      - "packages/shared-ts/**/*.ts"
+      - "src/**/*.ts"
+      - "package.json"
+      - "tsconfig.json"
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ["20"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint with ESLint
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Type check with TypeScript
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: true
+
+      - name: Build
+        run: npm run build

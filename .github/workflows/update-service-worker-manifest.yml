@@ -33,6 +33,19 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: Detect and restore lock files
+        run: |
+          if [ ! -f "package-lock.json" ] && [ -f "package.json" ]; then
+            echo "⚠️ package-lock.json not found, generating..."
+            npm install --package-lock-only
+            echo "✅ package-lock.json generated successfully"
+          elif [ -f "package-lock.json" ]; then
+            echo "✅ package-lock.json found"
+          else
+            echo "❌ package.json not found"
+            exit 1
+          fi
+
       - name: Install
         run: npm ci
 
