@@ -1,0 +1,67 @@
+{
+  "analysis_date": "2026-02-10",
+  "api_version": "2.18",
+  "modules": [
+    {
+      "name": "pplx-stream",
+      "size_kb": 80,
+      "role": "Stream management",
+      "key_findings": [
+        "18 custom hooks",
+        "SSE lifecycle management",
+        "Middleware pipeline",
+        "Custom EventSource (Xe class) with auto-reconnect",
+        "Exponential backoff reconnection strategy",
+        "SSE parser (Dr()) for event stream parsing",
+        "Events: open, message, error, info"
+      ]
+    },
+    {
+      "name": "platform-core",
+      "size_kb": 120,
+      "role": "Core infrastructure",
+      "key_findings": [
+        "Custom EventSource fetch wrapper",
+        "Full error hierarchy: PplxError -> FetcherError -> ApiClientsError/ParseError",
+        "Cloudflare 403 challenge detection",
+        "Offline / network-unreachable detection",
+        "Request ID tracking via x-request-id header"
+      ]
+    },
+    {
+      "name": "vendors",
+      "size_kb": 300,
+      "role": "External dependencies",
+      "key_findings": [
+        "React 18",
+        "DataDog RUM 6.21.2",
+        "Browser polyfills"
+      ]
+    },
+    {
+      "name": "spa-shell",
+      "size_kb": 150,
+      "role": "Application orchestrator",
+      "key_findings": [
+        "4 React contexts",
+        "20+ lazy-loaded modules",
+        "Browser tools integration (8+ actions)"
+      ]
+    }
+  ],
+  "browser_tool_actions": [
+    "browser_open_tab_content",
+    "search_browser_content",
+    "browser_close_tabs_content",
+    "get_url_content_content",
+    "browser_get_visible_tab_screenshot_content",
+    "browser_get_cookies_content",
+    "entropy_request_content"
+  ],
+  "performance_tracking": {
+    "rum_provider": "DataDog",
+    "rum_version": "6.21.2",
+    "custom_vitals": ["TTV (Time to Visual)"],
+    "metrics_api": "addDurationVital()"
+  }
+}

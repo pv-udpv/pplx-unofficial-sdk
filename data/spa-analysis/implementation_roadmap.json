@@ -1,0 +1,120 @@
+{
+  "analysis_date": "2026-02-10",
+  "api_version": "2.18",
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Core SSE Client",
+      "priority": "high",
+      "tasks": [
+        {
+          "id": "p1-1",
+          "description": "Fix SSE endpoint to /rest/sse/perplexity_ask",
+          "status": "completed",
+          "sdk_file": "src/pplx-client.ts"
+        },
+        {
+          "id": "p1-2",
+          "description": "Fix reconnect endpoint to /rest/sse/perplexity_ask/reconnect/{resume_entry_uuid}",
+          "status": "completed",
+          "sdk_file": "src/pplx-client.ts"
+        },
+        {
+          "id": "p1-3",
+          "description": "SSE message parser with JSON patch support",
+          "status": "completed",
+          "sdk_file": "src/pplx-client.ts"
+        },
+        {
+          "id": "p1-4",
+          "description": "StreamManager with middleware pipeline",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "API Clients",
+      "priority": "medium",
+      "tasks": [
+        {
+          "id": "p2-1",
+          "description": "Navigation V3 client (suggest.perplexity.ai/search/v3/navigate)",
+          "status": "completed",
+          "sdk_file": "src/pplx-rest-client.ts"
+        },
+        {
+          "id": "p2-2",
+          "description": "File repository upload/polling",
+          "status": "completed",
+          "sdk_file": "src/pplx-rest-client.ts"
+        },
+        {
+          "id": "p2-3",
+          "description": "Thread export functionality (/rest/thread/export)",
+          "status": "completed",
+          "sdk_file": "src/pplx-rest-client.ts"
+        },
+        {
+          "id": "p2-4",
+          "description": "Collections list_user_collections",
+          "status": "completed",
+          "sdk_file": "src/pplx-rest-client.ts"
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "Error Handling",
+      "priority": "medium",
+      "tasks": [
+        {
+          "id": "p3-1",
+          "description": "Port error hierarchy: PplxError -> FetcherError -> ApiClientsError/ParseError",
+          "status": "completed",
+          "sdk_file": "src/pplx-client.ts"
+        },
+        {
+          "id": "p3-2",
+          "description": "Cloudflare 403 detection via isCloudflareBlock flag",
+          "status": "completed",
+          "sdk_file": "src/pplx-client.ts"
+        },
+        {
+          "id": "p3-3",
+          "description": "Offline detection via isOffline flag",
+          "status": "completed",
+          "sdk_file": "src/pplx-client.ts"
+        },
+        {
+          "id": "p3-4",
+          "description": "Request ID tracking via x-request-id header",
+          "status": "completed",
+          "sdk_file": "src/pplx-client.ts"
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Advanced Features",
+      "priority": "low",
+      "tasks": [
+        {
+          "id": "p4-1",
+          "description": "Browser tools integration (8 actions)",
+          "status": "pending"
+        },
+        {
+          "id": "p4-2",
+          "description": "Performance metrics collection (DataDog RUM)",
+          "status": "pending"
+        },
+        {
+          "id": "p4-3",
+          "description": "Canvas/Preview contexts",
+          "status": "pending"
+        }
+      ]
+    }
+  ]
+}

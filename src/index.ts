@@ -13,6 +13,9 @@ export {
   createSSEStream,
   applyJsonPatch,
   PplxError,
+  FetcherError,
+  ApiClientsError,
+  ParseError,
   PplxStreamError,
   PplxFetchError,
   StreamStatus,
@@ -69,6 +72,14 @@ export type {
   ForkEntryParams,
   UpdateEntryParams,
   ListThreadsParams,
+  ThreadExportFormat,
+  ThreadExportParams,
+  ThreadExportResult,
+  FileUploadUrlRequest,
+  FileUploadUrlResponse,
+  FileUploadResult,
+  RateLimitStatus,
+  UserSettings,
 } from "./pplx-rest-client";
 
 // ============================================================================

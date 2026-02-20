@@ -268,6 +268,57 @@ export class PplxError extends Error {
   }
 }
 
+/**
+ * FetcherError — wraps low-level network / HTTP failures.
+ * Carries an optional requestId for correlating server-side logs.
+ */
+export class FetcherError extends PplxError {
+  constructor(
+    message: string,
+    public readonly requestId?: string
+  ) {
+    super(message);
+    this.name = "FetcherError";
+  }
+}
+
+/**
+ * ApiClientsError — raised when the server returns a non-2xx HTTP status.
+ * Cloudflare 403 challenges are detected and flagged via `isCloudflareBlock`.
+ * Offline / network-unreachable errors are flagged via `isOffline`.
+ */
+export class ApiClientsError extends FetcherError {
+  public readonly isCloudflareBlock: boolean;
+  public readonly isOffline: boolean;
+
+  constructor(
+    message: string,
+    public readonly statusCode: number,
+    options?: { requestId?: string; isCloudflareBlock?: boolean; isOffline?: boolean }
+  ) {
+    super(message, options?.requestId);
+    this.name = "ApiClientsError";
+    this.isCloudflareBlock = options?.isCloudflareBlock ?? false;
+    this.isOffline = options?.isOffline ?? false;
+  }
+}
+
+/**
+ * ParseError — raised when SSE event data cannot be parsed.
+ * Carries the raw data string that failed to parse.
+ */
+export class ParseError extends FetcherError {
+  constructor(
+    message: string,
+    public readonly rawData?: string,
+    requestId?: string
+  ) {
+    super(message, requestId);
+    this.name = "ParseError";
+  }
+}
+
+/** @deprecated Use FetcherError / ApiClientsError instead */
 export class PplxStreamError extends PplxError {
   constructor(message: string) {
     super(message);
@@ -275,11 +326,45 @@ export class PplxStreamError extends PplxError {
   }
 }
 
+/** @deprecated Use ApiClientsError instead */
 export class PplxFetchError extends PplxError {
   constructor(message: string, public statusCode?: number) {
     super(message);
     this.name = "PplxFetchError";
   }
+}
+
+// ============================================================================
+// ERROR DETECTION HELPERS
+// ============================================================================
+
+function isOfflineError(err: unknown): boolean {
+  if (err instanceof TypeError) {
+    const msg = err.message.toLowerCase();
+    return (
+      msg.includes("failed to fetch") ||
+      msg.includes("network request failed") ||
+      msg.includes("networkerror")
+    );
+  }
+  return false;
+}
+
+function buildApiClientsError(
+  statusCode: number,
+  statusText: string,
+  body: string,
+  requestId?: string
+): ApiClientsError {
+  // Cloudflare returns 403 with a distinctive challenge page
+  const isCloudflareBlock =
+    statusCode === 403 &&
+    (body.includes("cloudflare") || body.includes("Cloudflare") || body.includes("cf-ray"));
+  return new ApiClientsError(
+    `HTTP ${statusCode}: ${statusText}`,
+    statusCode,
+    { requestId, isCloudflareBlock }
+  );
 }
 
 // ============================================================================
@@ -452,7 +537,7 @@ export class PplxClient {
     query: string,
     options?: SSEClientOptions
   ): AsyncGenerator<Entry> {
-    const url = `${this.baseUrl}/sapi/platform`;
+    const url = `${this.baseUrl}/rest/sse/perplexity_ask`;
     
     const requestBody: SSERequestParams = {
       version: "2.18",
@@ -468,24 +553,33 @@ export class PplxClient {
     const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
     try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "text/event-stream",
-          ...this.headers,
-        },
-        body: JSON.stringify(requestBody),
-        signal: controller.signal,
-      });
+      let response: Response;
+      try {
+        response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "text/event-stream",
+            ...this.headers,
+          },
+          body: JSON.stringify(requestBody),
+          signal: controller.signal,
+        });
+      } catch (networkErr) {
+        clearTimeout(timeoutId);
+        if (isOfflineError(networkErr)) {
+          throw new ApiClientsError("Network is offline or unreachable", 0, { isOffline: true });
+        }
+        throw networkErr;
+      }
 
       clearTimeout(timeoutId);
 
+      const requestId = response.headers.get("x-request-id") ?? undefined;
+
       if (!response.ok) {
-        throw new PplxFetchError(
-          `HTTP ${response.status}: ${response.statusText}`,
-          response.status
-        );
+        const body = await response.text().catch(() => "");
+        throw buildApiClientsError(response.status, response.statusText, body, requestId);
       }
 
       if (!response.body) {
@@ -515,7 +609,7 @@ export class PplxClient {
                 // Handle different event types
                 if (data.status === "error") {
                   this.logger.error("Stream error", data);
-                  throw new PplxStreamError(data.message || "Stream error occurred");
+                  throw new FetcherError(data.message || "Stream error occurred");
                 }
 
                 // Construct Entry object
@@ -548,10 +642,17 @@ export class PplxClient {
                   return;
                 }
               } catch (parseError) {
+                if (parseError instanceof PplxError) {
+                  throw parseError;
+                }
                 this.logger.warn("Failed to parse SSE event data", { 
                   error: parseError, 
                   data: event.data 
                 });
+                throw new ParseError(
+                  `SSE parse error: ${(parseError as Error).message}`,
+                  event.data
+                );
               }
             }
           }
@@ -573,7 +674,7 @@ export class PplxClient {
       clearTimeout(timeoutId);
       
       if (error.name === "AbortError") {
-        throw new PplxStreamError(`Request timeout after ${this.timeout}ms`);
+        throw new FetcherError(`Request timeout after ${this.timeout}ms`);
       }
       
       if (error instanceof PplxError) {
@@ -581,7 +682,7 @@ export class PplxClient {
       }
       
       this.logger.error("Stream error", error);
-      throw new PplxStreamError(`Stream error: ${error.message}`);
+      throw new FetcherError(`Stream error: ${error.message}`);
     }
   }
 
@@ -597,7 +698,7 @@ export class PplxClient {
     query: string,
     options?: SSEClientOptions
   ): AsyncGenerator<Entry> {
-    const url = `${this.baseUrl}/sapi/platform/reconnect`;
+    const url = `${this.baseUrl}/rest/sse/perplexity_ask/reconnect/${resumeEntryUuid}`;
     
     this.logger.info("Reconnecting to stream", { resumeEntryUuid, query });
 
@@ -614,28 +715,37 @@ export class PplxClient {
     const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
     try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "text/event-stream",
-          ...this.headers,
-        },
-        body: JSON.stringify(requestBody),
-        signal: controller.signal,
-      });
+      let response: Response;
+      try {
+        response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "text/event-stream",
+            ...this.headers,
+          },
+          body: JSON.stringify(requestBody),
+          signal: controller.signal,
+        });
+      } catch (networkErr) {
+        clearTimeout(timeoutId);
+        if (isOfflineError(networkErr)) {
+          throw new ApiClientsError("Network is offline or unreachable", 0, { isOffline: true });
+        }
+        throw networkErr;
+      }
 
       clearTimeout(timeoutId);
 
+      const requestId = response.headers.get("x-request-id") ?? undefined;
+
       if (!response.ok) {
-        throw new PplxFetchError(
-          `HTTP ${response.status}: ${response.statusText}`,
-          response.status
-        );
+        const body = await response.text().catch(() => "");
+        throw buildApiClientsError(response.status, response.statusText, body, requestId);
       }
 
       if (!response.body) {
-        throw new PplxStreamError("Response body is null");
+        throw new FetcherError("Response body is null");
       }
 
       const reader = response.body.getReader();
@@ -685,9 +795,16 @@ export class PplxClient {
                   return;
                 }
               } catch (parseError) {
+                if (parseError instanceof PplxError) {
+                  throw parseError;
+                }
                 this.logger.warn("Failed to parse reconnect event data", { 
                   error: parseError 
                 });
+                throw new ParseError(
+                  `SSE reconnect parse error: ${(parseError as Error).message}`,
+                  event.data
+                );
               }
             }
           }
@@ -707,14 +824,14 @@ export class PplxClient {
       clearTimeout(timeoutId);
       
       if (error.name === "AbortError") {
-        throw new PplxStreamError(`Reconnect timeout after ${this.timeout}ms`);
+        throw new FetcherError(`Reconnect timeout after ${this.timeout}ms`);
       }
       
       if (error instanceof PplxError) {
         throw error;
       }
       
-      throw new PplxStreamError(`Reconnect error: ${error.message}`);
+      throw new FetcherError(`Reconnect error: ${error.message}`);
     }
   }
 }

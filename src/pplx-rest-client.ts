@@ -115,6 +115,60 @@ export interface ListThreadsParams {
   order?: "asc" | "desc";
 }
 
+// Thread export formats
+export type ThreadExportFormat = "markdown" | "pdf" | "json";
+
+export interface ThreadExportParams {
+  thread_id: string;
+  format?: ThreadExportFormat;
+}
+
+export interface ThreadExportResult {
+  export_url: string;
+  format: ThreadExportFormat;
+  expires_at?: string;
+}
+
+// File repository
+export interface FileUploadUrlRequest {
+  filename: string;
+  content_type: string;
+  size?: number;
+}
+
+export interface FileUploadUrlResponse {
+  upload_url: string;
+  file_uuid: string;
+  expires_at: string;
+}
+
+export interface FileUploadResult {
+  file_uuid: string;
+  filename: string;
+  url?: string;
+  status: "pending" | "processing" | "ready" | "error";
+}
+
+// Rate limit
+export interface RateLimitStatus {
+  requests_remaining: number;
+  requests_limit: number;
+  reset_at: string;
+  plan?: string;
+}
+
+// User settings
+export interface UserSettings {
+  uuid: string;
+  username?: string;
+  email?: string;
+  plan?: string;
+  language?: string;
+  default_model?: string;
+  default_mode?: string;
+  [key: string]: any;
+}
+
 // ============================================================================
 // REST API CLIENT
 // ============================================================================
@@ -392,6 +446,89 @@ export class PplxRestClient {
         method: "DELETE",
       }
     );
+  }
+
+  /**
+   * List user collections (dedicated endpoint)
+   */
+  async listUserCollections(): Promise<Collection[]> {
+    const data = await this.fetch<{ collections: Collection[] }>(
+      "/rest/collections/list_user_collections"
+    );
+    return data.collections;
+  }
+
+  // ==========================================================================
+  // THREAD OPERATIONS
+  // ==========================================================================
+
+  /**
+   * Export thread to a downloadable format
+   */
+  async exportThread(params: ThreadExportParams): Promise<ThreadExportResult> {
+    return this.fetch<ThreadExportResult>("/rest/thread/export", {
+      method: "POST",
+      body: JSON.stringify(params),
+    });
+  }
+
+  /**
+   * Mark thread as viewed
+   */
+  async markThreadViewed(threadId: string): Promise<{ success: boolean }> {
+    return this.fetch<{ success: boolean }>(
+      `/rest/thread/mark_viewed/${threadId}`,
+      { method: "PUT" }
+    );
+  }
+
+  // ==========================================================================
+  // FILE REPOSITORY
+  // ==========================================================================
+
+  /**
+   * Get pre-signed upload URLs for file attachments
+   */
+  async getFileUploadUrls(
+    files: FileUploadUrlRequest[]
+  ): Promise<FileUploadUrlResponse[]> {
+    return this.fetch<FileUploadUrlResponse[]>(
+      "/rest/file-repository/get-file-upload-urls",
+      {
+        method: "POST",
+        body: JSON.stringify({ files }),
+      }
+    );
+  }
+
+  /**
+   * Register completed file uploads
+   */
+  async registerFileUploads(
+    fileUuids: string[]
+  ): Promise<FileUploadResult[]> {
+    return this.fetch<FileUploadResult[]>("/rest/file-repository/uploads", {
+      method: "POST",
+      body: JSON.stringify({ file_uuids: fileUuids }),
+    });
+  }
+
+  // ==========================================================================
+  // RATE LIMITING & USER SETTINGS
+  // ==========================================================================
+
+  /**
+   * Get current rate limit status
+   */
+  async getRateLimitStatus(): Promise<RateLimitStatus> {
+    return this.fetch<RateLimitStatus>("/rest/rate-limit/status");
+  }
+
+  /**
+   * Get user settings
+   */
+  async getUserSettings(): Promise<UserSettings> {
+    return this.fetch<UserSettings>("/rest/user/settings");
   }
 }
 
