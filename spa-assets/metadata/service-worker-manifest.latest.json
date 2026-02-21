@@ -1,0 +1,4479 @@
+{
+  "chunks": [
+    {
+      "revision": "86f2fcd94d13da17c7d761e14867e98e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/__vite-browser-external-BIHI7g3E.js"
+    },
+    {
+      "revision": "f1e408ec6e0e9e0eb644c0b6683b457e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-debug-backend-flag-override-DK24jpor.js"
+    },
+    {
+      "revision": "0715bec71a4bec184705a9d6cf100dab",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-debug-CZqzrIZt.js"
+    },
+    {
+      "revision": "a8947146d89cf29630c96507bfe35236",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-debug-helper-BeEF9SnT.js"
+    },
+    {
+      "revision": "d9dddb0291c9332a146ab6ff39c7d9d2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-debug-render-toolbar-C5hi3an5.js"
+    },
+    {
+      "revision": "b41eb8fb69d1332e2a21bf1f2873b12a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-gamma-CNzYp05z.js"
+    },
+    {
+      "revision": "4baab22c5f40f44cefc8ce21b80d08bf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-health-CWfOmKS3.js"
+    },
+    {
+      "revision": "4ade5614e10a6c3ca6e41465315912d1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-loader-C6CRTu_1.js"
+    },
+    {
+      "revision": "55567abfae36fe884f01d6b7b7c935e0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-notes-D-G09J3N.js"
+    },
+    {
+      "revision": "40fc6cc87b7f3429b064244b857be340",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-pipedream-connectors-DvdR4Nax.js"
+    },
+    {
+      "revision": "0b25be2436e8381d64262a2a640ad33a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/_restricted/restricted-feature-workflow-redesign-CVf-tL2S.js"
+    },
+    {
+      "revision": "a11850a4ba92cdb9141e41dd1a4ea079",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/abap-D6hZxogz.js"
+    },
+    {
+      "revision": "66dadbc279ad3a313b3836b4adbc00e2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/abnf-BYU0RzGB.js"
+    },
+    {
+      "revision": "6785b4dd8059f98e09e0bb9a2ab78c2a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/academic-DxPS3nqG.js"
+    },
+    {
+      "revision": "fed5abc744c882eabb1007c2e5b784fa",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AcademicSidebar-kdcUyujJ.js"
+    },
+    {
+      "revision": "4d9d43270c4afab7d896df73edecbbb4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/access-C7NPEbWD.js"
+    },
+    {
+      "revision": "7ea9953833ae3b38547e8d9f06af8ddd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AccountHealthPage-DsiANLAy.js"
+    },
+    {
+      "revision": "212e14c726f5f1c383eeb6434edd0ef7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/actionscript-BdrVLGBt.js"
+    },
+    {
+      "revision": "338291d4c2aa3ccec5a24953be238f20",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ada-Gprd-Pad.js"
+    },
+    {
+      "revision": "304f03ef7bf774ca08f0e4c2928e6b90",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AddMoreCreditsModal-DvsulRYV.js"
+    },
+    {
+      "revision": "08ef0826995f15bbf5ae64c63dfb931a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AdminTips-CUNfW2nU.js"
+    },
+    {
+      "revision": "71e47e62bf14a45a023e93ff65d15d26",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/aether-core-BP424xxc.js"
+    },
+    {
+      "revision": "070553db7e2073f0b98329b0d67e0cca",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/agda-BlSuaU9i.js"
+    },
+    {
+      "revision": "46635405c380af3d3933cb356a40aa3d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/agent-CanrcUyB.js"
+    },
+    {
+      "revision": "e19857d946425505217094fe1b5a0623",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/al-C7QlM0VL.js"
+    },
+    {
+      "revision": "4a4c5fd861508488a85a2dcb08519da4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/analytics-CA6aeo-w.js"
+    },
+    {
+      "revision": "f6e1bbc3adcff8813bbf711a3d8f4e2f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AnalyticsPixels-BhT5h9tH.js"
+    },
+    {
+      "revision": "a1aa5e1ed21a425569080e004e5d93d5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AnimatedSlots-CatZPC6h.js"
+    },
+    {
+      "revision": "eec68f6af51584c492bf8599fe0ebfcd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AnimatedWorkflowHeader-HE7WRMZQ.js"
+    },
+    {
+      "revision": "2ae803618f63d0fff3ae2a490b27d1ea",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AnimateHeight-BfFE5gJh.js"
+    },
+    {
+      "revision": "4b7bb338079b21de8466d9d678340107",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AnnouncementImageModal-vjFA4sIO.js"
+    },
+    {
+      "revision": "f29f8774adde0f6e4ff517369e4a7211",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AnswerComparisonModal-D-lg8OEw.js"
+    },
+    {
+      "revision": "a6cf51bb3755f9c28ed7fb31d063ef0b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/antlr4-Ba44xF0_.js"
+    },
+    {
+      "revision": "0e9089f0238d50691ac0510828678ae8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/apacheconf-CZjEqjV5.js"
+    },
+    {
+      "revision": "a7c324aba1da2f3a54dcc407b43a4315",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/apex-CZXVNozk.js"
+    },
+    {
+      "revision": "e785fa93ac86474e0f3c120651ec0433",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ApiConsoleMigrationBanner-Dn5KeXn7.js"
+    },
+    {
+      "revision": "63fb671515edd9ed3dafa9f99e639dba",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/APIPortalBillingBanner-BtEg4pbB.js"
+    },
+    {
+      "revision": "e7e54143af5d3a541aa2ef537c143fdd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/apl-3lYEE-rp.js"
+    },
+    {
+      "revision": "976d9764e859d4cf66ef99956a5fb2f1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AppBanner-N2XGsGB4.js"
+    },
+    {
+      "revision": "81b7053423f340caa2aeff6654eefd87",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AppBannerUpsell-LeIlSMQ8.js"
+    },
+    {
+      "revision": "8c5385d6d9de5dcc4eaff1a3e4aed58b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AppDownloadQR-BUcucCC3.js"
+    },
+    {
+      "revision": "88c1d68602354a69369d005a777ef0f8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/applescript-Dpv70EBt.js"
+    },
+    {
+      "revision": "3fd70f1b336afb5744ea9b581fc4da61",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AppsMode-B8eIElen.js"
+    },
+    {
+      "revision": "1bec47b5b1658bdcbac0ecb7ad234f63",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/aql-k3o0apC7.js"
+    },
+    {
+      "revision": "90a229abc08b27483178384ac88d9995",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/arduino-DSC_GYvJ.js"
+    },
+    {
+      "revision": "84b160f1f6035ded36f8890693956e10",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AreaClosed-DwZPcq_O.js"
+    },
+    {
+      "revision": "868e1b7170d4ad7c50f211ea207d8164",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/arff-BiLlPHo-.js"
+    },
+    {
+      "revision": "e197c56043e44c78b1db7526b706dbb0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ArticleSectionMediaOnlyDesktop-D609IE7Q.js"
+    },
+    {
+      "revision": "ae76c288106691b66a19a5c2f0ec9545",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ArticleSectionMediaOnlyMobile-C4-ppjay.js"
+    },
+    {
+      "revision": "8753d93c0615fbedf860784c97106824",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ArticleUtils-CG6omRcz.js"
+    },
+    {
+      "revision": "1f9e0404eed5e04f8faed940fbba9a26",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/asciidoc-Cp8M_rbh.js"
+    },
+    {
+      "revision": "fda85da146cdb1e446221b32d5a8f78f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ask-input-D_YX8TLM.js"
+    },
+    {
+      "revision": "700f55d966f3079272d1343f95c44adf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AskPermissionsModal-CN3DsfMX.js"
+    },
+    {
+      "revision": "94cf3a011e2cf6718cec4dae9b690dbe",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/asm6502-Cv1fm6MY.js"
+    },
+    {
+      "revision": "75acbda155ac915eb0ca357cf59645df",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/asmatmel-BlY9sumO.js"
+    },
+    {
+      "revision": "8397033a51410141ae6551738a5856ae",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/aspnet-KDFzRo8x.js"
+    },
+    {
+      "revision": "31db2517920e2c4af14f11099edb7730",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AssetsMode-5xFRtlBT.js"
+    },
+    {
+      "revision": "b9953a34e4eaac58bf31ceb3fb3c5361",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/assistant-BvoaAPHw.js"
+    },
+    {
+      "revision": "7f80df726528f4e462b78d862bb5e1a0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/assistant-DcaUAbI4.js"
+    },
+    {
+      "revision": "2fd401369ae8c07da79fabfd57467d78",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/autohotkey-CmifWnB6.js"
+    },
+    {
+      "revision": "e360d347328e8b2ba742c88d4d2e1569",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/autoit-C0N5D5qB.js"
+    },
+    {
+      "revision": "21cf11b2f641b97ac9fd591bb43fe479",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AutomationModal-DXIqjgmd.js"
+    },
+    {
+      "revision": "5922d959ae4264c5e5712eb87cd3f484",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AvailabilityModal-DlreOxNg.js"
+    },
+    {
+      "revision": "27d7a2eac2d1f2d56cf505c7f00b5ec7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AvatarList-Bd_fjZSq.js"
+    },
+    {
+      "revision": "e489ad5bc99a23c36d95729abe39ee94",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/AvatarManagementModal-BBAJ6Ne0.js"
+    },
+    {
+      "revision": "949287aba2c9e7bc05cb2cb0c1ad6900",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/avisynth-BWjWBlbb.js"
+    },
+    {
+      "revision": "41c58298aaa4edce91a07884ac423db4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/avro-idl-BQ3RueQL.js"
+    },
+    {
+      "revision": "0aa8525b26a92af8fa5bc70e5e00b6db",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Badge-DpjfmlZx.js"
+    },
+    {
+      "revision": "ca3e39d8135419012c33ed015f21367d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/BaseSportsBracket-D3cqdAvc.js"
+    },
+    {
+      "revision": "42193e79f075fa73541abe1d34292852",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bash-CefCgV5_.js"
+    },
+    {
+      "revision": "6ca692f7b24adaaac7a52e6647df98d9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bash-j7SZZVXT.js"
+    },
+    {
+      "revision": "4d7d2255fefc3151f85bef8b9657f70a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/basic-CTZRUFjd.js"
+    },
+    {
+      "revision": "f9f4f793fc2a937447ec567fbe452189",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/basic-DBS9NaGG.js"
+    },
+    {
+      "revision": "241587638aa4a45fac31bdc18472245a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/batch-DgPY6Qaj.js"
+    },
+    {
+      "revision": "fb0234b20dd8d98df38bdf41f31a1702",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bbcode-DXJNFYw5.js"
+    },
+    {
+      "revision": "75b46973eb9e7cd96c5bed7f6c531d8a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bicep-BarHAk8R.js"
+    },
+    {
+      "revision": "3417dcf9bb743155fd05e6d5e5185459",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/billing-_65Catsc.js"
+    },
+    {
+      "revision": "68bf175a39bc693ffbe2053c922ef69d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/billing-DWGWz02u.js"
+    },
+    {
+      "revision": "16e866528d58520f44ba709f4927d843",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/billingKeys-u8MSApml.js"
+    },
+    {
+      "revision": "5ceb00786eb63fa54b8a81fb1f5b2b1d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/billingUtils-BwMwDwYt.js"
+    },
+    {
+      "revision": "88743706c59905cc8fdf525fd67c88cb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/birb-CH4hZJ3K.js"
+    },
+    {
+      "revision": "8fc44d49e56a1368f160694504119478",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bison-DPtV3EFJ.js"
+    },
+    {
+      "revision": "2031fd1ae809342c7bce86a074b22f7c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/blank.html-CjQAFjOU.js"
+    },
+    {
+      "revision": "e5d7d373b92927a2ca5a02882b8260bc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/BlazeHighlights-6IfIiL3A.js"
+    },
+    {
+      "revision": "0000af089acb23e1af7cc1059ecd429e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/BlazeProvider-CSUsI87x.js"
+    },
+    {
+      "revision": "384eb74eb1186cf445ec0dee6c1da878",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bnf-CgIuGlZf.js"
+    },
+    {
+      "revision": "872e321df83c17d1f591ad76de704f27",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/BookmarkButton-C4XkmMif.js"
+    },
+    {
+      "revision": "e53f88679c7ffdc885afce1259259335",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bootstrap-B7B0LeUq.js"
+    },
+    {
+      "revision": "9b3290f2114a9adb067bca2b29748a47",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bootstrap-CtFuytJs.css"
+    },
+    {
+      "revision": "7701fdce2aad998916846d4f29583df9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/BoxFilePickerModal-qSQuD5Ki.js"
+    },
+    {
+      "revision": "6c60b8404cdee066b336f57e8d427f61",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/brainfuck-CMntjFfS.js"
+    },
+    {
+      "revision": "82f72091f5a9c0ff14f3053ad8c025cd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/BraintreeSubscriptionModal-G_Dk3u86.js"
+    },
+    {
+      "revision": "2eb882d05996d65dafb2cb56cf646adb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/BrandPopoverContent-DeZDy0o7.js"
+    },
+    {
+      "revision": "dce25abbdf5e38b1ce12b9ec0ff9c970",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/brightscript-Bp7BwkWT.js"
+    },
+    {
+      "revision": "751b487176dddd5ea22ab63659a52fa5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bro-BcTaGkdU.js"
+    },
+    {
+      "revision": "eaed60be61c711aa5a7d72e2f4ec628a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/bsl-nqOl5Kvp.js"
+    },
+    {
+      "revision": "8030a909205906d523b7868899a15528",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/c-BUzR5mWF.js"
+    },
+    {
+      "revision": "08ebce7b1aeeb629a363b29672a5d867",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/c-kgVuzdLE.js"
+    },
+    {
+      "revision": "5ec82f87ddd3d1525ed15888e8b1745e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Calendar-BoWnVw4p.js"
+    },
+    {
+      "revision": "16bde652caa9ee4ccc9ad0bc340758c2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/calendarRecurrenceUtils-CJmqKqDV.js"
+    },
+    {
+      "revision": "010a4f4e7e38d0041ac0d49e5bd556aa",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CalendarSelectionModal-BowwTAj_.js"
+    },
+    {
+      "revision": "a3afdf7398ec7da323e0aec58d438f3a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CanonicalCard-L1Mn1p6E.js"
+    },
+    {
+      "revision": "3ef1fdd0dedcff2ce6613cce2ceddb3b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CanonicalContainer-QryP6VmM.js"
+    },
+    {
+      "revision": "98b6f0e27b4a740870d6922ba3d5fa22",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CanonicalHeader-CYt-An-F.js"
+    },
+    {
+      "revision": "d9c69870e7a8e40be3a6c63ea6dd1e0f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CanonicalLink-B6GjukYJ.js"
+    },
+    {
+      "revision": "1bc073dfeee8d749c617ec7e39f80ff8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CanonicalQuery-DTI6Qqxg.js"
+    },
+    {
+      "revision": "a10865c61738c95d1c8ae1cb086cef5a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CanonicalSection-B0M0UyeC.js"
+    },
+    {
+      "revision": "002bf25b55fb176a727363d40ec8160f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/capabilities-BVuvQB3C.js"
+    },
+    {
+      "revision": "0e2e002aa2bd2c5161c345ec4f7e87bc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CardCarouselV2-C1D30yCx.js"
+    },
+    {
+      "revision": "0e1493ab028ff597a4c383457509da58",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Carousel-Bq3TXJZr.js"
+    },
+    {
+      "revision": "7bf46f9bf61f50de6f221f2f6d2a2332",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CarouselPrimitives-uxX14JRO.js"
+    },
+    {
+      "revision": "1f73b5c572b863e829412887495aa51a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/cfscript-sPcPXfjq.js"
+    },
+    {
+      "revision": "8f17781ff570bdbd095f3740b586ba70",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/chaiscript-Cgqgizzh.js"
+    },
+    {
+      "revision": "81cce5babe4284dca3e19012fac83fdb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ChatBubble-Cww_oSZD.js"
+    },
+    {
+      "revision": "d293e8e782f505c88bab2d8deefde9da",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Checkbox-BGNX_neX.js"
+    },
+    {
+      "revision": "de49f40d282a981b20f16480a79e25d8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CheckSourcesSideSheet-C-qygAzF.js"
+    },
+    {
+      "revision": "4b291b22c747ca18d8bf1d1a145bd7ef",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Chip-CtrvIwt8.js"
+    },
+    {
+      "revision": "15de871dd0a0fbb3fbf9118e2ab6d6d2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ChipInput-9qvxnEBq.js"
+    },
+    {
+      "revision": "e42ff61f470b31a3b67cb08f6445e43a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/cil-CjyrgzOs.js"
+    },
+    {
+      "revision": "9523a9450064f22206eec60041b928a2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CitationCard-Ck0o4DqA.js"
+    },
+    {
+      "revision": "99644c2b1f9bd03175cd181075430eaa",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CitationDomain-DUyOCJBI.js"
+    },
+    {
+      "revision": "6504c480b0ec6bd5d9e8c4763bc6e780",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CitationFavicon-BlcSCkPu.js"
+    },
+    {
+      "revision": "f924485a91c11591db6ad28a9e8e3d37",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CitationListModal-DxOqdZkH.js"
+    },
+    {
+      "revision": "a62b31a4f841e6ed680dfdd048e83508",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CitationModal-CTOKibF_.js"
+    },
+    {
+      "revision": "23b59d35905f34a91128ff6ea637eafb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CitationPile-Bsx8FmYO.js"
+    },
+    {
+      "revision": "21663eaf256ea6c833393902b9230311",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CitationSideSheet-DUdXSu4e.js"
+    },
+    {
+      "revision": "81f4ad9f97d319dd993d833b74316fcd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CitationUpdatedAt-Dem0CWPd.js"
+    },
+    {
+      "revision": "b51f2811b83f8da9485b2e16faa65ca7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ClaimItemParts-DoBg2Jzk.js"
+    },
+    {
+      "revision": "f000d8b550e62da2557f75944f992826",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ClaimsSideSheet-z-2qU-Lg.js"
+    },
+    {
+      "revision": "6d8d60f8db3828c7582f09078410e0a4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/cleanPPLXActionLinks-C51qKX3V.js"
+    },
+    {
+      "revision": "5b7130b3824caec4b9bbce1ae9aa3296",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/clike-B5tY_8Hg.js"
+    },
+    {
+      "revision": "eaf47899418857832569b9b164b0c0d5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/clike-CshqcRcS.js"
+    },
+    {
+      "revision": "109622ca3682fde4e31d6bd81233f9d3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/clojure-Du7edhWY.js"
+    },
+    {
+      "revision": "b448d34e4b196bf704f33523e1e72cde",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/cmake-CV5J6zy6.js"
+    },
+    {
+      "revision": "ec05fac8f71b780ba4136e855e07a9b2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/cobol-DgXYozac.js"
+    },
+    {
+      "revision": "61f5124770b57e6a581bfdfd1f3887b4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CodeBlock-BscINF0h.js"
+    },
+    {
+      "revision": "59d0cde4bc6f49b0bd3276367fcc558f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/coffeescript-d0gABn7a.js"
+    },
+    {
+      "revision": "ad8b018acae4b664035d5182569d1633",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CollectionSelectModal-eh1NqVhr.js"
+    },
+    {
+      "revision": "c1c2b5979ff4ff8d4bb8b06507fd331e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CombinedPaywall-BmJQZaZ0.js"
+    },
+    {
+      "revision": "fd2767b371a1e5e794bc1e5e62f74160",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ComboBox-BHdOQ_o5.js"
+    },
+    {
+      "revision": "5cfc6d802708de92678237e497106028",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/comet-mOH4VPMi.js"
+    },
+    {
+      "revision": "d858515cde269dff46393815de25490b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/comet-telemetry-B3pmfbyI.js"
+    },
+    {
+      "revision": "f9bb244982e7c216210847fb75322f18",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CometDownloadInstructionsModal-MQGhlxUD.js"
+    },
+    {
+      "revision": "a4ce36b166bd7e6e8e4c4340ddad958a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CometUpsellFullscreenModal-BRjdIwKI.js"
+    },
+    {
+      "revision": "1948684741b85593e39117fef00f2d38",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CometZenMode-BWU-9Hrz.js"
+    },
+    {
+      "revision": "f59a5b9c28677b0458b5dc6f6d79d037",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/common-C3VMjerb.js"
+    },
+    {
+      "revision": "01a7d808c507629cf6ca70409a7e9400",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/concurnas-DAG5y7EX.js"
+    },
+    {
+      "revision": "76b0ea129e5b37bd97f25d2a665298df",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ConfirmationModal-Cw8vLxsV.js"
+    },
+    {
+      "revision": "83ccceb4de58c093e128a87d3419431e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ConfirmSettingModal-vNcNBxla.js"
+    },
+    {
+      "revision": "303a59cb45c023f595cbb7ff17f28fe8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ConnectorFeatures-DSkVLI4M.js"
+    },
+    {
+      "revision": "3cf6081112259905d190f7156bcfe69f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/connectors-B37gmKNS.js"
+    },
+    {
+      "revision": "657af4ba6d9e8bbd0b143bad1f1df57c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/connectors-B6HoXCg3.js"
+    },
+    {
+      "revision": "51ae24e044b1ee1762f5e7e4ff5b265b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ConnectorsConfigureModal-CJ03WiiL.js"
+    },
+    {
+      "revision": "654028a06d21b81fd684a8806a5090a6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ConnectorsEnableModal-CU6S1Sqy.js"
+    },
+    {
+      "revision": "e2fcaa7d3ec51954fb84df3d45fef898",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/connectorUtils-BkCyYabm.js"
+    },
+    {
+      "revision": "034b8882919bdde0fe52b189541a8888",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/const-DCn1E8TQ.js"
+    },
+    {
+      "revision": "fd46e6033c040c7d80b87eca565d8f1c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/constants-BlxNG-cB.js"
+    },
+    {
+      "revision": "329d502d839bed4c0f33302b1a344b06",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/constants-BU_wepH9.js"
+    },
+    {
+      "revision": "157418bb3bd07b359c6c7517762dc335",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/constants-DPVg-UxZ.js"
+    },
+    {
+      "revision": "622acc6aee8afd4adf1e901fa8366067",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/consts-CQC6WeYS.js"
+    },
+    {
+      "revision": "f42e0153dae53aa4738875b2f6b8861b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/consts-CtVL5_BO.js"
+    },
+    {
+      "revision": "2ec32fe1974c71ab049ea1fe92152970",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CookieConsentPopup-8rWzYiJy.js"
+    },
+    {
+      "revision": "bc32379cdc174aa95113c934beb36896",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CopyLinkButton-CoeuemiV.js"
+    },
+    {
+      "revision": "c29a8e1dc1e9678a90991495a21b2063",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CopyOutputButton-DyJq5zXZ.js"
+    },
+    {
+      "revision": "382be3d13eaca54fe96e9102856f870a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/copyUtils-DT1Hotnl.js"
+    },
+    {
+      "revision": "80880994423d652092a8344c1c360c2a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/coq-D-ovNub0.js"
+    },
+    {
+      "revision": "761c4cad418f86f19c8b5f5846f79319",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/core-CB2lVWyg.js"
+    },
+    {
+      "revision": "f0b05a023bb5a864aeb5eb840e08dd85",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CouncilResponseSideSheet-C6Q0Wcq4.js"
+    },
+    {
+      "revision": "8879233b86a09393876d0090faeb677c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/countries-aHElxBZT.js"
+    },
+    {
+      "revision": "fc617f20590fd64af2635a48e54d4430",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/country-C-rSPKWi.js"
+    },
+    {
+      "revision": "75adb5ce1f19e1ebfc74973a4cb02dd8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/cpp-BdJVwJpi.js"
+    },
+    {
+      "revision": "2a6c95b56936933612355bb91ac5ef7c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/cpp-C7JzHaB0.js"
+    },
+    {
+      "revision": "aaeffb6532ee533faae0e834a528a22f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CreateAPIGroupModal-DzqW_hB3.js"
+    },
+    {
+      "revision": "d5629986d4af797d1f3b9b36175f9b48",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/createApiGroupV2-KoxtflXU.js"
+    },
+    {
+      "revision": "2f6867f15aae81c2da9192f85a560c99",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/credits-D4BVSt54.js"
+    },
+    {
+      "revision": "a3222b36a8592bfcfb3cde8131c55837",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CricketMatchStats-DFre-hWQ.js"
+    },
+    {
+      "revision": "4f33c715bd59343fb9ec6b22185c390c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/crystal-Bvt0oKry.js"
+    },
+    {
+      "revision": "94bac91c739a41dc5ebe34550654a380",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/csharp-BtoiwMUv.js"
+    },
+    {
+      "revision": "7ed8d7e09bd1fe3e8c28bc84d447612e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/csharp-Cd5Udg29.js"
+    },
+    {
+      "revision": "2d4f8118c032c8e5adeca6fa9ad46225",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/cshtml-BnGuGL6R.js"
+    },
+    {
+      "revision": "94ae816e741c34cd3acbc56313b8cb08",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/csp-bkyb17fY.js"
+    },
+    {
+      "revision": "4c814f33375573d42446602e9a12e913",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/css-CF9HHZb0.js"
+    },
+    {
+      "revision": "a3bd44e749f068bb7e2eb5e7eea33019",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/css-CikdG9Mu.js"
+    },
+    {
+      "revision": "8564a3453020daa2a6ee1071c281782b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/css-extras-qX2fpGEc.js"
+    },
+    {
+      "revision": "719989663206cd24eb8109da524414d6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/csv-3UWiRkLa.js"
+    },
+    {
+      "revision": "64d796fae6bb5f3e9235813a5fc41665",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Cue-BgwFJQqK.js"
+    },
+    {
+      "revision": "92e614f89369b24da10eabdb715441ac",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/customerPortal-DQSvPtUG.js"
+    },
+    {
+      "revision": "db58999021440c92c14232a84f138561",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/CustomSelect-DXfoFn4w.js"
+    },
+    {
+      "revision": "7ba3cb551bde325cc9c3f00a2a81a04e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/cypher-C1KLlHfc.js"
+    },
+    {
+      "revision": "62e9e8a84fd07cfdde3e958d04311a2a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/d-CQ7KCDjI.js"
+    },
+    {
+      "revision": "cba29a47d881c542b8c565b43277f9ee",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DailyScheduleHeader-1vXzpato.js"
+    },
+    {
+      "revision": "82db0747f7479e8c01d850ff4f33e317",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/dart-CdtqGsbU.js"
+    },
+    {
+      "revision": "465a0b38af5667a2836bbeb145101bfc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/dataweave-CVokVGgI.js"
+    },
+    {
+      "revision": "8de9d18f54f67e967eb206b08dccfba0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DateInput-BfRf6EZ_.js"
+    },
+    {
+      "revision": "d086c2c94840e1d10000fbe7eeb1c89e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DateTimeUtils-CQlOtcb9.js"
+    },
+    {
+      "revision": "320cb63a92660f2c09576711eaa16195",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/dax-DLiLBt4L.js"
+    },
+    {
+      "revision": "203fb7faeb32adbd473aacdb92b5ce55",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/defaultLocale-Dt8Pf7TT.js"
+    },
+    {
+      "revision": "cb70c5e3f08c8f9d62b28bd6952a380a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DeleteAllMemoriesModal-DdowwR9W.js"
+    },
+    {
+      "revision": "67119d6d2315e70110d94c3894d0dc42",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DeleteAPIGroupModal-Bt07RKDo.js"
+    },
+    {
+      "revision": "47c34f2a1c2e8f89e4d092c085d37102",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/deleteConnectorFiles-Cy3fq_7f.js"
+    },
+    {
+      "revision": "e81f5334898bfe2f446dd8c9b5bc136b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DeleteMemoryModal-CAqq9b2R.js"
+    },
+    {
+      "revision": "5a05488ce2b063aee4c3670fbd469aef",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/deleteUserTask-CKpAcmmY.js"
+    },
+    {
+      "revision": "729c25d1aa61221d0d4e90b66609570a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/details-CRrx4vKe.js"
+    },
+    {
+      "revision": "87865699e49e60ed475badb20653a55a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/dhall-RR35Enw8.js"
+    },
+    {
+      "revision": "0674f855943d08a76dcd45ace57215e1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/diff-CaupFomz.js"
+    },
+    {
+      "revision": "b4ffe6b41cdf32a133784b6216a0b885",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DiscountCodeBanner-n0_H3SMU.js"
+    },
+    {
+      "revision": "d007e62c5ae1599b35fb066c5f5e99bc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/discover-DUt3RGa5.js"
+    },
+    {
+      "revision": "f1a5f1f2952e6383c74304efb96cdd50",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/discover-j5Q64xsP.js"
+    },
+    {
+      "revision": "f0df8d9855cbb9e1b7615612413892e5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/discoverKeys-tQ-_FEbI.js"
+    },
+    {
+      "revision": "ec12889e919a47f15c0175078840ed61",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DiscoverSidebar-CSzsUzQN.js"
+    },
+    {
+      "revision": "7dd8f2e0d85f419c128ddbd54cf1a5c4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DiscoverTrending-Cvs1q8Tg.js"
+    },
+    {
+      "revision": "0e5014031f51204dd8898b74fc73058b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/django-Cop5Yrce.js"
+    },
+    {
+      "revision": "5a7a7b6d18ee82093533e31a81f98255",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/dns-zone-file-WoPBVf3X.js"
+    },
+    {
+      "revision": "bfa8d5fe73751db0e622dacf4aef8d75",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/docker-IrnKGb44.js"
+    },
+    {
+      "revision": "5ccb4f691dc5de2409ec2f39cc846bd0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/dot-d2mUyhT-.js"
+    },
+    {
+      "revision": "7419ac29e4ea1c8e11ed91602e1a0223",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DotGrid-WT_1Tjn8.js"
+    },
+    {
+      "revision": "8f444a1a30edead7ed665ef38f55f98e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DowngradeModal-Y1KWzSNb.js"
+    },
+    {
+      "revision": "940f82c7d3af800ab546186225b9c4b7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/DropDownModal-DFlrv5Um.js"
+    },
+    {
+      "revision": "bd9bd13d64920756998a43ddaaba210e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ebnf-CGeBePRy.js"
+    },
+    {
+      "revision": "aed145aa80acdc06f6e84077d68ad07d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/editorconfig-DUKsB8Qp.js"
+    },
+    {
+      "revision": "93b86ccde9c0a4c9626d16d0ead2a147",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/eiffel-DC4qu5h-.js"
+    },
+    {
+      "revision": "add73ca85b6f287c60f17ef1a13f06e2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ejs-glqhhx_o.js"
+    },
+    {
+      "revision": "3be5f26d2f02bd4dec287d2b75e5dcdf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/elixir-B1yvC1tZ.js"
+    },
+    {
+      "revision": "b5d85a60a2be9e6a7b0ccd9ce2bf8d9d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/elm-zlISL7js.js"
+    },
+    {
+      "revision": "9913febdccf5cee3ee417e97bed064c1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EmailAssistantDisconnectWarningModal-3Ovabhxm.js"
+    },
+    {
+      "revision": "ba4f93f629e5374eabf92a8580ec19fd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/emailUtils-_jxwJ1Ij.js"
+    },
+    {
+      "revision": "570ffc916081b71483fd83fbccae2366",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/embla-carousel-react.esm-D4s7gBxN.js"
+    },
+    {
+      "revision": "c748db4a8b084e4fd99f083f55454a0b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/emoji-picker-react.esm-BN1Sr8-R.js"
+    },
+    {
+      "revision": "1b507d4c40c432b8a68385c552481839",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EmptyState-CfsYX2Nl.js"
+    },
+    {
+      "revision": "9d389cd0628f546e466befb2ba715f36",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EnterprisePremiumSecureUpgradeModal-Bhg8KC5d.js"
+    },
+    {
+      "revision": "156603c4024cffd9c927c7e09b4793c8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EntityChipWithData-CinDuJbZ.js"
+    },
+    {
+      "revision": "c626752d25871628bf9631fabf4e04c6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EntityItemGuidance-CkRJRSeo.js"
+    },
+    {
+      "revision": "03ed32cc869fca87d94fd3bf19886d6f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EntityItemImage-BwY6fvIs.js"
+    },
+    {
+      "revision": "bd822c16405916c2979d9d5372551622",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EntityItemImageCarousel-e5WvqjMp.js"
+    },
+    {
+      "revision": "fe042728071c3d7f04e46b14c174662a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EntityItemImageFadeCarousel-DN1XH4eP.js"
+    },
+    {
+      "revision": "b55497a35edd2274afac537f2870f2ae",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EntityItemMerchantInfo-CxCwKU9B.js"
+    },
+    {
+      "revision": "24c4fe0d14e5490e4876a60d03859ddd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EntityItemRating-CjD4lqKE.js"
+    },
+    {
+      "revision": "81b1b61c7f3a4449b0a1739702e740bf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EntityItemSourcePile-52pqv0KI.js"
+    },
+    {
+      "revision": "122f97e4daa479d10f540503527893ed",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/eppo-sdk-LsW9K3pB.js"
+    },
+    {
+      "revision": "865e48f632f0fc300afb61ffe99ce9a7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/erb-GGxZqWoA.js"
+    },
+    {
+      "revision": "1c7f15ee839422e2721a5755b0055d2f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/erlang-Cj5ZSjJ_.js"
+    },
+    {
+      "revision": "3682fae3c0301cb88e13b8f8b60e57e3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/etlua-Cs6cDxhl.js"
+    },
+    {
+      "revision": "b2e6b83e5502df24919d77efe2e0d7fc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/event-BDdMFqIJ.js"
+    },
+    {
+      "revision": "cdfb44b1d285a1ef75e3bf13e9897e88",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/event-Butv8eNj.js"
+    },
+    {
+      "revision": "12d432e6193908b5acc914964169e9c8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-B4oRomw8.js"
+    },
+    {
+      "revision": "b58e20a4abde7f5e59c1a837cc921cb6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-BdQVCBHw.js"
+    },
+    {
+      "revision": "876301b365738fa2ab9387caca75cf8a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-Biem9QCb.js"
+    },
+    {
+      "revision": "93c15ab7e09a66b17759f1fbc38b2e92",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-Bm6hMY2c.js"
+    },
+    {
+      "revision": "e5f2cabf6d0a1f56b9c808436396f9ee",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-C1FpnRsS.js"
+    },
+    {
+      "revision": "f388bdc5c0aa83bc88ea4ae76bb0e393",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-C2Csor6N.js"
+    },
+    {
+      "revision": "16a723ec4e0f3b2f834f42f283c01e0b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-C470vfQj.js"
+    },
+    {
+      "revision": "d06b4dba01eec99e18de3691003f8bbd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-C8mVBECK.js"
+    },
+    {
+      "revision": "5d2b66c7cf07813b71c991b801ac6bdd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-CCj_y2E4.js"
+    },
+    {
+      "revision": "781c1012a36b57a037409897d8da96c2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-CnoAGMoA.js"
+    },
+    {
+      "revision": "9130706ead385f0476e0060bf7bd54a9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-CTvRkv8P.js"
+    },
+    {
+      "revision": "1dae2b45292f0548afa6f298eabf6085",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/events-DyZddsEE.js"
+    },
+    {
+      "revision": "e7f76b4d79de312f2649e7db71914fa9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/EventV2LiveOdds-Drv-3Zjv.js"
+    },
+    {
+      "revision": "cbe6e6ccf0fbb9797456b0fe740744f5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/excel-formula-0VpkXrTy.js"
+    },
+    {
+      "revision": "f7aacf76817bdffbd5f1baddac3872a9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/experimentation-Bqyx6o4D.js"
+    },
+    {
+      "revision": "c45771300e76696e2d8e1ebf9e5408dc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/extends-CF3RwP-h.js"
+    },
+    {
+      "revision": "fbbd28349df4f73fe6ab02ec0ec438be",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/F1Header-LZ361LHw.js"
+    },
+    {
+      "revision": "5a24d1a9444ea937a22ff697a32f653c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/factor-DKov41OH.js"
+    },
+    {
+      "revision": "5cbc8c59fda433f7df8b86ad350d751a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/false-_y8Q8kJB.js"
+    },
+    {
+      "revision": "f05936e722a69f66049b73aa8d259c17",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/files-CANnJ1X7.js"
+    },
+    {
+      "revision": "5b0800596eb3671fe7a30ace1a46057c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/files-ClFK7d-v.js"
+    },
+    {
+      "revision": "edbc9c0ec3c491c19bbd60fdef478c9c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/files-CtWmxXYy.js"
+    },
+    {
+      "revision": "3f46138472b91c521b4f54b54847c135",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/files-repo-DwqVc1gJ.js"
+    },
+    {
+      "revision": "c9e72b843926a5466afef6b2530a08b9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FilesTableHeader-CM-R7RlT.js"
+    },
+    {
+      "revision": "88cd3c4eb830620cd22f0754e729b107",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/fileTypes-C5bw0kTb.js"
+    },
+    {
+      "revision": "15b9eb40024b99158d9a4646cbafbcb0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FileUploadModal-BGNX192p.js"
+    },
+    {
+      "revision": "56c0f174df674e88753077f36295bf6a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/final-pass-ClnAOMQH.js"
+    },
+    {
+      "revision": "9b6b0833029e98b949ad5613f28bfb04",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/finance-CRht3_wn.js"
+    },
+    {
+      "revision": "1582d88d70dd08c3a11242e000421f14",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FinanceAlertModal-DjFnNv0o.js"
+    },
+    {
+      "revision": "17bc9e6c68bc3af334a5c23c7cf1efa2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FinanceKeyTickersGroup-Dg90LsMa.js"
+    },
+    {
+      "revision": "8f5a861fa8cd1e800463106f9189f8f6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FinanceMover-Bf-gstRX.js"
+    },
+    {
+      "revision": "fe26a7ad2af64c76259ec3288c824366",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FinancePriceChange-K1gcDAEX.js"
+    },
+    {
+      "revision": "33e26eaf5a4f49c534c8ca90ae47f1f3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FinanceScreenshotBuilderModal-Cm8DgWzh.js"
+    },
+    {
+      "revision": "57ae3de574880ef17d55a1fc9e26534a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FinanceSearchBarWrapper-BJOwuvc_.js"
+    },
+    {
+      "revision": "79c284eb0c8145d9586529d4f284017f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FinanceSidebar-CHyqgIHy.js"
+    },
+    {
+      "revision": "fd0863318e2fa88b04e7865dd3f20dde",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/firestore-security-rules-CDX71Zsk.js"
+    },
+    {
+      "revision": "122ad103d195f0fb204feee801433db4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/floating-components-C3y2gBah.js"
+    },
+    {
+      "revision": "3ffba02a4588711f399383001f22e2f8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FloatingAppDownload-BFRJvICp.js"
+    },
+    {
+      "revision": "3ce4bae8018a2da38fde32079e45beda",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FloatingCardUpsell-BHsbXzmi.js"
+    },
+    {
+      "revision": "91fbd551577a6422cf9a6d6931bfe65f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FloatingSignup-B2DqPJrj.js"
+    },
+    {
+      "revision": "23536097d4a7bb2628d7de5cf0528f22",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/flow-DjsRoofb.js"
+    },
+    {
+      "revision": "f0f84b88c1ff75721699a0db511e4c81",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FollowConfirmationToast-CoTfuARB.js"
+    },
+    {
+      "revision": "338e35e0d4c00c4c5c31d5244282ffc4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FootballEventSchedule-3evrAT1o.js"
+    },
+    {
+      "revision": "2bbea0fded1dc2c6ab064e07e5ca7339",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FootballGameSummary-C736hCcs.js"
+    },
+    {
+      "revision": "3af3a866f0ed4df522e30ecc5974b4e5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FootballPlayByPlay-Re4wU4TW.js"
+    },
+    {
+      "revision": "39e5cde00e3b3005ad2b9af301cc5494",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/format-BNrmCwLq.js"
+    },
+    {
+      "revision": "bf3a1150cc0993486b4548d494a3f280",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/formatCurrency-jWcOLF5N.js"
+    },
+    {
+      "revision": "0f304148ef1b39003cac1b151585bcf4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FormButton-DEijBi_J.js"
+    },
+    {
+      "revision": "9b3706e6e9c20f63fc7cbc1ee6f01b91",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/fortran-BK5vwRl-.js"
+    },
+    {
+      "revision": "0be5a01a556ac59cf43a84790289391f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/framer-motion-D9nsEAqU.js"
+    },
+    {
+      "revision": "d6f48070a0f5cfb3a0a52c3e995b3290",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/fsharp-W-BHwxln.js"
+    },
+    {
+      "revision": "18d2a7bf76ed96b7280a568db8b04e0e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ftl-5r3dHofq.js"
+    },
+    {
+      "revision": "270a868642e2cbe88390b1d25332c201",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FullNameModal-CfkSj8_0.js"
+    },
+    {
+      "revision": "fa5b7fa9357b1771e049b410c4e8431f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/FullscreenUpsellModal-DIrwxGKD.js"
+    },
+    {
+      "revision": "ea793761d073757bb2ec2e20f4273405",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/fuse-DPyu62bB.js"
+    },
+    {
+      "revision": "3fd64598dca07fcde9bb36c96fb9cedb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Gallery-CV1fpEvO.js"
+    },
+    {
+      "revision": "cde15f3267b0973171503f7a4eb9fccc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/GammaNewSessionModal-Dau1mCSs.js"
+    },
+    {
+      "revision": "a65f0da36d04cfb2078291d260bd98d6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/GammaSpinner-B66l53_3.css"
+    },
+    {
+      "revision": "8eb8cdea9398b05b1151c9bf0ecfcf6f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/GammaSpinner-CYdC5gk8.js"
+    },
+    {
+      "revision": "1843c590f6d388440e119a5a83a1a246",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/gap-CnSdCslV.js"
+    },
+    {
+      "revision": "517719834d275246231f8ba538c1ecd7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/gcode-CNh5IPmG.js"
+    },
+    {
+      "revision": "2d184967ad9c2a829bc3c1f4f499ac36",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/gdscript-mbv3Te0m.js"
+    },
+    {
+      "revision": "7b0633b01d739733f1dde4ce208c4339",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/gedcom-DIpfzJOx.js"
+    },
+    {
+      "revision": "ab16b872148a000f51b5eda2f6843d1e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/GeneratedMediaLoader-CIZU-iG3.js"
+    },
+    {
+      "revision": "48d4c9f4dd9f54ec0816549e6d1007a7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/GeneratedVideoCard-CT9HjeXn.js"
+    },
+    {
+      "revision": "c3e99f378ffdcf5cb88e839ea7c15056",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getAPIGroupsV2-CXRz8QQF.js"
+    },
+    {
+      "revision": "3b534023296c9d310d9ef297e6d26e41",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getConnectorFiles-DTnLdEne.js"
+    },
+    {
+      "revision": "0308dd889ec72546ce9dc635a8877433",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getCustomerPortal-he7VM-JL.js"
+    },
+    {
+      "revision": "2f7510d1bc1f918c4ed4aaee81f553cc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getCustomerShoppingInfo-DFS0q328.js"
+    },
+    {
+      "revision": "7fb0735f7535515f77e574389de549b8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getDiscoverListFeed-CD34ydLX.js"
+    },
+    {
+      "revision": "760e8f3b07286795987941aea65b1fe9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getImagesSearchResults-BSYbPLuB.js"
+    },
+    {
+      "revision": "cc6e9fe111fd597e42a3bdaf9fa295b8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getMaybeTranslatedCollectionTitle-CTR2ojvf.js"
+    },
+    {
+      "revision": "7dc74b7703e73f9d57df4f051c2c4f9e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getNewswireDocumentByDocumentId-DTHknv6P.js"
+    },
+    {
+      "revision": "e5d4ca64ddab7aa132fe93995552bba4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getOrgSubscriptionInfo-CXd3dqeM.js"
+    },
+    {
+      "revision": "dffadae2ec68c4cd48459cc15cfe9785",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getPredictionMarkets-iIevuIxk.js"
+    },
+    {
+      "revision": "8bb49133a9acede7521eae9293f9a9d4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getQuote-ar0MwkN8.js"
+    },
+    {
+      "revision": "8e74a8c0561c34bcf9f94b2a6439845b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getQuote-BCuDe_ZD.js"
+    },
+    {
+      "revision": "e35267ea45dbf2218f12ff7f9de86877",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getUserTask-Dsq7nwpt.js"
+    },
+    {
+      "revision": "1ad456d91b18afe5b7d2b4805df051b5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/getWatchlistAutosuggestions-BqLIcHgk.js"
+    },
+    {
+      "revision": "f5a5c38ef092f3519ac2138cba4d5ad2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/gherkin-DKQ7ALLr.js"
+    },
+    {
+      "revision": "b15e0a5a41c21422cd3052984c5d8a60",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/git-Cytk66IB.js"
+    },
+    {
+      "revision": "8eab8966eceb3bcb1ee0fe4bdf74d52f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/glsl-Cnw0NgbT.js"
+    },
+    {
+      "revision": "ef8c19a1f19c9255a94e21b724bc2846",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/GmailModals-70zpPM-h.js"
+    },
+    {
+      "revision": "85e62fc27bf6a4a9a6f3f188adb35b6c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/gml-CZTvoMxh.js"
+    },
+    {
+      "revision": "dd97dcb69e51f0fa6a9640e7d1ef045d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/gn-Cb9MR8re.js"
+    },
+    {
+      "revision": "101c88560f8da04001b783759dc758b8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/go-DDiM5m_t.js"
+    },
+    {
+      "revision": "7a3afeb8b296f8680a162f4b54e8b53a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/go-module-Czd1O1Re.js"
+    },
+    {
+      "revision": "2e7be4733e8c7f1442c37627f41defa3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/GolfHeader-BdpusnWl.js"
+    },
+    {
+      "revision": "c20d3a3e286fc0db3c85f9b0a40d003c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/graphql-BUAcEKqP.js"
+    },
+    {
+      "revision": "9b0892b2b116efeaffffbe7a4fc4a990",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/groovy-DCnSw5ye.js"
+    },
+    {
+      "revision": "9dd4f39530ae1391957c5f3b494d12c8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/group-D7_GTaO1.js"
+    },
+    {
+      "revision": "46d2fe929629d3d4e6ba1488bbfdbe6d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/GroupedCitationModal--Lawx3MS.js"
+    },
+    {
+      "revision": "a2262003e755bbab325110d2c3f73d5d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/haml-Bjs0ao-A.js"
+    },
+    {
+      "revision": "375991cc26c81e43e26d43fda9d7a6ee",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleAllowBrowserAgentOnce-BNR5Pq9c.js"
+    },
+    {
+      "revision": "c5667632fc54ccd067a713eca032c6bc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleAlwaysAllowBrowserAgent-DmBmbpLE.js"
+    },
+    {
+      "revision": "d1e9d082c6c01aada45c0f4b56986348",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handlebars-YeR8cgwL.js"
+    },
+    {
+      "revision": "d2debf884fc6c54edb1cb46cca151c82",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleCometDownload-ExQiBgGI.js"
+    },
+    {
+      "revision": "bdaac37ff1ae677d8b6ad290f7f3191b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleCometDownload1moProIncentive-BHyyPTMS.js"
+    },
+    {
+      "revision": "f50a63c6f16c17538762552d1f31f30b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleConnector-BcIYoel8.js"
+    },
+    {
+      "revision": "4d8ef3f89f8996c974b95ce92663dea6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleContinueGeneration-CTXqRw6i.js"
+    },
+    {
+      "revision": "7c797446d3def0feb2646c4c47fa9be2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleFullscreenModal-DjiEifCE.js"
+    },
+    {
+      "revision": "92b5514e92c495bea14a6c353142a3d3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleImageAnnouncementModal-CZyhEo2K.js"
+    },
+    {
+      "revision": "a83ddd3f43a4b2ff150c086da83e2b04",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleMergeAuthConnector-DVdVAkvM.js"
+    },
+    {
+      "revision": "104bea679be718909573139435bbdc58",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleNoCanvasGeneration-DHhaFHBu.js"
+    },
+    {
+      "revision": "d974a75d3673f15c57557a3766899100",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleOpenSheerIdModal-CyjW8-nK.js"
+    },
+    {
+      "revision": "928e21d30f3cf5972af37f044a0a8dc4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handlePermalink-Cw3PpvSg.js"
+    },
+    {
+      "revision": "24d2d374bafbd684d971689f088f0de4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleProUpgrade-Kabw-1WA.js"
+    },
+    {
+      "revision": "c5fb580bb9017c9b75d1bef1c29fda27",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleRewriteAnswer-uJb5ejIQ.js"
+    },
+    {
+      "revision": "b13d17c7cda30c3972e92b468b2401a4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleSetDefaultBrowser-LdfImRuf.js"
+    },
+    {
+      "revision": "cfbd4fe0c9acf30b66fad9ca342c82ef",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleShareLocation-D7MX9y4y.js"
+    },
+    {
+      "revision": "cd68b475ca4e9d718056ac05d421e8ac",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleShortcutModal-BKRspnaY.js"
+    },
+    {
+      "revision": "5a4d50a92b3d73df7f64503676e507de",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleSignUpOrLogin-DGt-NbYg.js"
+    },
+    {
+      "revision": "61b11797dee7f71a929dcf955c22834c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleSkipBrowserAgent-Cm8MnjWm.js"
+    },
+    {
+      "revision": "18781e67e39a5b2265693b8f7f99a3a4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleSubscriptionPromo-CFoJcOpW.js"
+    },
+    {
+      "revision": "3b7b30cc5f34f6d67d19e08cc739598d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleThreadToSpace-Byg6gUWi.js"
+    },
+    {
+      "revision": "90c77b830775507b29d9076cc810923b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleToggleSources-DMTu1JFd.js"
+    },
+    {
+      "revision": "a6533b808ecf4653b21594605e349a58",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/handleVirtualTryOnOnboardingModal-gRjQQfa7.js"
+    },
+    {
+      "revision": "159b89a44b7d2c229b18cc38b7316e52",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HardPaywallGateModal-BG73zMLX.js"
+    },
+    {
+      "revision": "e57e26e41d5e00afd8f7894a7f937203",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/haskell-Ctom7mUz.js"
+    },
+    {
+      "revision": "93c4cf388ae6a08bb1b1a3f874e9506f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/haskell-Ds42Eazu.js"
+    },
+    {
+      "revision": "e3686bbcd5de0347731f819531fbd637",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/haxe-wiHGH3-2.js"
+    },
+    {
+      "revision": "ce03406f64461e4cd4c88f5ce291ae92",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/hcl-C2nYkKyY.js"
+    },
+    {
+      "revision": "d627ef9e0cdae59643a4d8cbb5eed69b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HeadshotImage-DXAdsRLb.js"
+    },
+    {
+      "revision": "4dd4cf722b06ca6fa83160a6698e20c7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HealthConnectorsModal-BPogQ0rW.js"
+    },
+    {
+      "revision": "65928687ee98948903e59cb57b5fcef7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HealthModal-D82Q8qcx.js"
+    },
+    {
+      "revision": "c00b6fc2c124ae366929a5762c8ff119",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HealthOnboardingModal-LRX37dqf.js"
+    },
+    {
+      "revision": "eec98960c6ab1691dd82b62b0ff549fe",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HealthOnboardingWidget-7tOPKGF6.js"
+    },
+    {
+      "revision": "2101fa34d132fdb4958b03fd333bd336",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HealthPageWrapper-BGqgVncr.js"
+    },
+    {
+      "revision": "8179e00521fce9534810714f353f24f6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HealthPersonalizationSettings-upv_RjsS.js"
+    },
+    {
+      "revision": "959b89dafc70f0f4a9efa4d3be3f5e4f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HealthProfileCardLayout-BClprHQf.js"
+    },
+    {
+      "revision": "6f0003f14e7fc2be06ebb50438f083ba",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HealthProfileEditModal-ljOUrjkj.js"
+    },
+    {
+      "revision": "84586d9a3e9a918d7045b3a333bcb312",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HealthProviderContent-pFYiadsP.js"
+    },
+    {
+      "revision": "e756f5467cba455d63f814bad406d2c0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/helpCenterLinks-BlXmslzP.js"
+    },
+    {
+      "revision": "934ec04a9081e3e2585effaccb1953cb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/helpers-Baud9eeo.js"
+    },
+    {
+      "revision": "34f2e6c1f983759c9b56b57923bd29d4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/hls.js-vieNF3GW.js"
+    },
+    {
+      "revision": "f87969b916576c7dfc1215a4cad4dde0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/hlsl-BsPmMET7.js"
+    },
+    {
+      "revision": "abf5347087e8aaad7228947ad76f4249",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HomeNotifications-u6j9cpw5.js"
+    },
+    {
+      "revision": "546f7040333eeb97c9d2f3629df4e012",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HomeProBadge-CeNbXbDU.js"
+    },
+    {
+      "revision": "4e95fd406b48e1fca609077a2a631e03",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HomeSidebar-BGESr6H-.js"
+    },
+    {
+      "revision": "f24b5b421d181a716295fabdff1eebd3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HomeSidebarConfigureOverlay-CIEgnYC3.js"
+    },
+    {
+      "revision": "7fb20fc4530d92f17a7d02d846260896",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HomeTopRightControls-C4PBvdU-.js"
+    },
+    {
+      "revision": "1fb2d600bf43165724310771c474f45f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/hoon-h3z1XCl9.js"
+    },
+    {
+      "revision": "11611e63412dd8a1cc88e1ef07825aa9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HotelBookingStateProvider-Ba3ZLG6j.js"
+    },
+    {
+      "revision": "a9fc95bedb2a52db42cb291ae3b386b6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HotelConfirmationPage-CX0gnM2n.js"
+    },
+    {
+      "revision": "6befecd94652eb5a1d3d1c8b924cddf3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HotelRoomBookingPage-CjUcYD4S.js"
+    },
+    {
+      "revision": "f46e81fedc1dacd591f15813f7b5b000",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HotelRoomDetailsModal-Df9p3H0c.js"
+    },
+    {
+      "revision": "d262bd8157e464f11a29adb8ffe06ed4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/hotels-_oZbCGh6.js"
+    },
+    {
+      "revision": "2bd4561c70941e3c8924f2420c634ac7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HotelsMode-DWC6aQls.js"
+    },
+    {
+      "revision": "313fde8625aa6ef9b1829421c5b57068",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/hotelUtils-Begk6pyf.js"
+    },
+    {
+      "revision": "63fccf2cc378d2e2838238388238b9f9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/HourlyTemperature-C2-1eY0d.js"
+    },
+    {
+      "revision": "2b5cb8361b21f13138c1c7a086d26363",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/hpkp-DcGtq4F9.js"
+    },
+    {
+      "revision": "cfbbc3c9588e0fba4a6272acec0214b8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/hsts-CsGTn3g4.js"
+    },
+    {
+      "revision": "dfc2f21859e4fb19229c307a135f58c8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/http-ClIG1ynN.js"
+    },
+    {
+      "revision": "a362cf2e78fd8365538e2078d31aa889",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/i18n--xHVQR2V.js"
+    },
+    {
+      "revision": "0bd3173d4c6aa3613a6d52e46802cbed",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ichigojam-DflQ7whm.js"
+    },
+    {
+      "revision": "82fa485af86d5771a8590a10e6c0aeed",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/icon-BuEjJWc8.js"
+    },
+    {
+      "revision": "f7626a5687daa82b64956436c7781283",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/icons-BiJeoTDC.js"
+    },
+    {
+      "revision": "b2f9edc7116ee2326d772512ffd44f14",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/icu-message-format-TnCNms_r.js"
+    },
+    {
+      "revision": "c873b66b3f407d7aedd18f9482211363",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/identity-DbFxnbeT.js"
+    },
+    {
+      "revision": "616e70aebc844dd28d576ade0b4de439",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/idris-Db39U_wF.js"
+    },
+    {
+      "revision": "17cd62ede6307194e8f57ea845c678fb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/iecst-BYskd1iJ.js"
+    },
+    {
+      "revision": "2812a6840c172c83badb50390ebb15b3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ignore-Gp5EchsZ.js"
+    },
+    {
+      "revision": "e86109c61e3bf6975e1d827edfa59a94",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/imageConfig-UVh0WOO9.js"
+    },
+    {
+      "revision": "04d3a1a2f3e0fd937148498c77fb80e2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ImageDisplayAsset-C6lnw7HF.js"
+    },
+    {
+      "revision": "88e702b889753b7f0bb81de21fe2c2f3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ImageGallery-GRpZsyLn.js"
+    },
+    {
+      "revision": "59aa7a7d793ac9b6baf2f7991a94ac4c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ImageGenerationUtils-BgUkB3bl.js"
+    },
+    {
+      "revision": "e25c49f4f838af82037e2121d46b627c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ImagePagedCarousel-2ebCm8Uh.js"
+    },
+    {
+      "revision": "555b94aeac2b92cc6c011e98e0dfa16e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ImagesMode-BRLNqZNc.js"
+    },
+    {
+      "revision": "22bb57431cd253a973a14f6062fe2c95",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/IncentiveProModal-BmZPrY2t.js"
+    },
+    {
+      "revision": "fd39c0f2175e513da34e6625b6b772ae",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/IncognitoToggleButton-Dv9Pr1M1.js"
+    },
+    {
+      "revision": "49f8f0154d3f6fe0e133314ca396f9f2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-79Zgk0BU.js"
+    },
+    {
+      "revision": "efc67c2194be6ba14506b6fce8c24699",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-AdqUJFSb.js"
+    },
+    {
+      "revision": "ce30730dc078a29fcc9b6b4586bef693",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-B5vKs6re.js"
+    },
+    {
+      "revision": "6fd084c39d6f1cb385a18a2a41baac59",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-B8qFFe1I.js"
+    },
+    {
+      "revision": "98a2d52ad7dd90733772cc2b210fcd4f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-BcUwi6cG.js"
+    },
+    {
+      "revision": "ac1ff4a9ed3a097e348b8d580059cd32",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-BjLaqN0d.js"
+    },
+    {
+      "revision": "bd1c56a7b481c8aad446666e950d87d6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-BmSKEVnY.js"
+    },
+    {
+      "revision": "4dfef138807c90b3508c574570db2ca1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-BoU41gXJ.js"
+    },
+    {
+      "revision": "8ba41a9d26471f15c91a2666b51f9e43",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-BRLF0d9P.js"
+    },
+    {
+      "revision": "973a70199eac663b5fdecbdb6e3fa289",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-BrXtJi36.js"
+    },
+    {
+      "revision": "2d9526042035703b10ba38933a1aede1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-BTXr2KNH.js"
+    },
+    {
+      "revision": "2d5c99f542a8ddd7251f1afc6e6aeb6b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-BxzHvpFn.js"
+    },
+    {
+      "revision": "99fd659719356ebfd68977b019bc7b42",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-C-rP1y0J.js"
+    },
+    {
+      "revision": "941fb2cfc8d58e52597becc22e9e8e62",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-C5GkTxDj.js"
+    },
+    {
+      "revision": "63b60c9ed4fdbd4d0d1b6ebe0778cc37",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-C7wHWyOU.js"
+    },
+    {
+      "revision": "ddc717c7f0809ec1744863bb9548e1dd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-C9WIC1tt.js"
+    },
+    {
+      "revision": "0fb327df681bb7f21516d56f1e514fa4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-CAWLQbBm.js"
+    },
+    {
+      "revision": "59879a78740795f66f93d0eb0efa1e72",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-CGQpDrwN.js"
+    },
+    {
+      "revision": "38c79c0a4efa4f69727aee40b98c41f1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-CoKvvvc4.js"
+    },
+    {
+      "revision": "e525546add6273f1b3486a84e095a841",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-CQt87BvI.js"
+    },
+    {
+      "revision": "aa5362c24128b1135aac6570dd2a6ac9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-CT2H9_cC.js"
+    },
+    {
+      "revision": "4ab4331624a5b470465877cb9d01b1f4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-CU5HDlj3.js"
+    },
+    {
+      "revision": "f6c442096c52da702810b5bee5839065",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-CYV_7jY2.js"
+    },
+    {
+      "revision": "5e0374099ac5897a1fb091e34351da64",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-D7SaxOK2.js"
+    },
+    {
+      "revision": "e9e7a783ecc7c4ce52800f00a8e93b5a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-DjO7x3ei.js"
+    },
+    {
+      "revision": "ddda57f4f15cfcd839bc9f67224c4d17",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-DJrBfqx9.js"
+    },
+    {
+      "revision": "95d89cb31d63a5782f47c9644cdc97a7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-DkPR2H-h.js"
+    },
+    {
+      "revision": "7665968ebb54ab4750cd273e5ff2ec23",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-Dli_GyiS.js"
+    },
+    {
+      "revision": "6968a6d87ec487b7db1ef97ca5a4a363",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-DqLDKWhF.js"
+    },
+    {
+      "revision": "e5b4c9750885b5d20e6547e6bc3c6f42",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-DsGfP1mw.js"
+    },
+    {
+      "revision": "46666833c320b10f310db9eaadc6be4b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-DSTW7bOk.js"
+    },
+    {
+      "revision": "9818be5359f098bad74bebbfc859b072",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-DX9msizg.js"
+    },
+    {
+      "revision": "8cb48a3e6e51205b2e3188579b0d9760",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-e4s_OjiU.js"
+    },
+    {
+      "revision": "c41299b8273fcc42b75edae37c17a11a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-eQ-Nx7O-.js"
+    },
+    {
+      "revision": "e78c3cc190a55cfd5c5ac423e2c3b4cd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-idbNBnVm.js"
+    },
+    {
+      "revision": "67336a7c6c95619f8f89791365fbbb4e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-kJ0nhYeA.js"
+    },
+    {
+      "revision": "99ffe02e9754809921914abcbeb375ba",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-KUSz2kqr.js"
+    },
+    {
+      "revision": "ec72ed4dece6e8e31af59a2a9338e1c0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-om7wfwka.js"
+    },
+    {
+      "revision": "ca30906b8bce3fbb287cd1cfe5e85e72",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-oN0__SGm.js"
+    },
+    {
+      "revision": "1bb80a3a7051deae178bbb9baf05775d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-rjO1Vxfx.js"
+    },
+    {
+      "revision": "14dad101a08b22a2c437e88c4ae14ed5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-wkSSq2MA.js"
+    },
+    {
+      "revision": "7a814150000545713fe066e211231cec",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index-X7gGT7Ej.js"
+    },
+    {
+      "revision": "43dc654fd4c67eeaf430f3588bbd187d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/index.html-CJXIUdeZ.js"
+    },
+    {
+      "revision": "9198f773b71cb73f0e72452387247bcb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/IndvCompetitorWithFlag-BffSLEBw.js"
+    },
+    {
+      "revision": "5e81eb7b5ffb57ddf868c33308569c23",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/inform7-B4M_bifg.js"
+    },
+    {
+      "revision": "a86dd07d3a690219b61cbed78bf622cf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ini-AdwqF2Yc.js"
+    },
+    {
+      "revision": "0cb108ffea427ca0ee860343a51624d7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/InlineAssetPreview-B7uQOhCT.js"
+    },
+    {
+      "revision": "9ca52a766f7ab45162f8fb044ba589fc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/InlineCitationCaption-BY3_94a4.js"
+    },
+    {
+      "revision": "46e61b0029f7d0b49316a72d520c36a6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/InlineNavSideSheet-BVk4CC9M.js"
+    },
+    {
+      "revision": "1564592dd605a7a9e2823da960753473",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/InputPillBanner-tUqtimDQ.js"
+    },
+    {
+      "revision": "6795a48869d29be0d8afe13e185659d8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/InstallGateModal-CMX9ZpnX.js"
+    },
+    {
+      "revision": "17d090fd29bb058d541c516062f74f46",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Interstitial-Dy1IBcyq.js"
+    },
+    {
+      "revision": "ea8bc9a5bf51bc9d6238bc4ca9c83d3a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/IntlPhoneInput-C5Iq5FTb.css"
+    },
+    {
+      "revision": "97c214e33729b1a60c2508c0677794f9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/IntlPhoneInput-crZ80kYm.js"
+    },
+    {
+      "revision": "1b1a881a2a450dc116b9cfff2baab8b4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/io-CdqXhlWZ.js"
+    },
+    {
+      "revision": "68de5fe6e4b15c506aaf5e3edc2134fc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/j-BBLJs7dh.js"
+    },
+    {
+      "revision": "484d69d241130791c9f457dcf3348caf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/java-B3yiTmqL.js"
+    },
+    {
+      "revision": "fa98218d65939a29c7df543ae33eb82b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/java-BxMbkJZ_.js"
+    },
+    {
+      "revision": "93b97db6e8bb830595dca69528682959",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/javadoc-AjL2qQlC.js"
+    },
+    {
+      "revision": "5eb292639ccaf318e3ac94124d35bf4e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/javadoclike-Bra4azar.js"
+    },
+    {
+      "revision": "5201d3faed6f37fbf7b7cf1d4f1dafea",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/javadoclike-myFApC35.js"
+    },
+    {
+      "revision": "372b62f27380a9da59d1064d2fe1e071",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/javascript-D8vYUPHd.js"
+    },
+    {
+      "revision": "eef1146d7ceb23c170c29fac4af2b986",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/javascript-DYmTrftJ.js"
+    },
+    {
+      "revision": "5a5f6a8f76057a39e6b5fc76acc4c79e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/javastacktrace-NpzKwXyu.js"
+    },
+    {
+      "revision": "a51622dcb2c0ff62dbf3e66f57ec9da0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/jexl-UxUVTmPR.js"
+    },
+    {
+      "revision": "338e1552455a246575ff1f4442808392",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/JobsMode-Co0oZCqj.js"
+    },
+    {
+      "revision": "1c684dc322ae7dd5ffa72a78a97f587d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/jolie-C9K0GcYZ.js"
+    },
+    {
+      "revision": "41a06f92385e511a29b68884acd1bd94",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/jq-j0tfBDV5.js"
+    },
+    {
+      "revision": "a0e565298fdf5c06d3c70a04cd4e5d90",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/js-extras-DSemggfY.js"
+    },
+    {
+      "revision": "130a06f122cc3e637725fb016ed032d6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/js-templates-CW_m4msF.js"
+    },
+    {
+      "revision": "7db9f553010818a1c5c76bb79a97fe1e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/jsdoc-DTi6XxbD.js"
+    },
+    {
+      "revision": "733358caa88b4a58f27e965dbe717dcc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/json-BESjz4hO.js"
+    },
+    {
+      "revision": "786eb667e5b043360af26dfddec84180",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/json-CUUtzUa9.js"
+    },
+    {
+      "revision": "e32d059f29f6ab1e3318ef65973a14b9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/json5-MaNyLSct.js"
+    },
+    {
+      "revision": "bb53e8d4240679b5c276f8c87d422b8c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/jsonp-Ba2ILMub.js"
+    },
+    {
+      "revision": "1356f69bed8b886d0dbdf9f2e0b0cb57",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/jsstacktrace-CUS_1_hx.js"
+    },
+    {
+      "revision": "3022f33cd8a5e9ac3b37fbf9782839b2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/jsx-CWP8P1mH.js"
+    },
+    {
+      "revision": "d80d212c6dd46c7f7a44fc85c5ea9204",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/jsx-YqC1A-dJ.js"
+    },
+    {
+      "revision": "d9ddc0c9da8f8ea5fa9155e392b999f9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/julia-DoxaacZG.js"
+    },
+    {
+      "revision": "af54b87bd40c38573bbefea3a762c414",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/justifiedPackingAlgorithm-DWuk_EW3.js"
+    },
+    {
+      "revision": "d02edc66891e79f54956755c8af81070",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/katex-apyuGzJm.css"
+    },
+    {
+      "revision": "1673d8f45ffe24dc79ae5b5c33e8080c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/katex-C8dCldO_.js"
+    },
+    {
+      "revision": "ff03c65d3732c5e1e8a7705b52ad939b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/keepalived-DxXEqqWs.js"
+    },
+    {
+      "revision": "7d13c0bc215f61046770ceca8efcfce4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/KeyboardShortcutEditorModal-DBIH7dh3.js"
+    },
+    {
+      "revision": "1529dee7297f81b1e44a3f6eaba3ba4e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/KeyboardShortcutHelperModal-CZgVCPgN.js"
+    },
+    {
+      "revision": "df7ec2e824a9b19d1084d66e890ac029",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/keyman-zL9cBYYV.js"
+    },
+    {
+      "revision": "66f5f2da2bfa02cfd5394b1681113248",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/keys-RTbByh7S.js"
+    },
+    {
+      "revision": "d1ad904c6c149d928f37d388ab006952",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/koreanCompliance-KrriqHFM.js"
+    },
+    {
+      "revision": "cef9d624195b3335bfaee0ef50b3cb07",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/KoreanComplianceFooter-DMEyZCE9.js"
+    },
+    {
+      "revision": "e0d265c14e5bb79495b74ac19831af8b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/KoreanCompliancePopover-C_6BpU0C.js"
+    },
+    {
+      "revision": "4f2c04b57fce12111223b2328fe0832e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/kotlin-CdnVePFj.js"
+    },
+    {
+      "revision": "c0f3f345f3a5a61057f6ee2976778b1e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/kumir-Bw1hW-Oh.js"
+    },
+    {
+      "revision": "df2543c117dc5bf74bee0754f856505a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/kusto-C3Ox-miC.js"
+    },
+    {
+      "revision": "ea9013f344a9f146cb36c6e97e98ec02",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/languages-SB1nJuYm.js"
+    },
+    {
+      "revision": "1f072e7432fbc706b8e0e1428d0db927",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/latex-DBQmmQb-.js"
+    },
+    {
+      "revision": "7d0cb4417572f3a3b692464bdd7b2125",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/latte-DixWBZmF.js"
+    },
+    {
+      "revision": "226e36a77fb60b27b89a4daa0ff61177",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/layout-DBJAJZUN.js"
+    },
+    {
+      "revision": "9c739ce817de069557b93bc5f739999d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/layout-page-XLccEwC4.js"
+    },
+    {
+      "revision": "ae18b057a48602e492f5f7fed30b1749",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/layout-sidebar-CahkYjby.js"
+    },
+    {
+      "revision": "e40e83fffec867ddfd5e11047caad846",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/less-DC8WILFu.js"
+    },
+    {
+      "revision": "832fa6b39d17b633e47c5104f59d7124",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/lexical-CisD3zIW.js"
+    },
+    {
+      "revision": "bdfe8fd6602df955b1770ff0e4e71470",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/library-CWMuYrXB.js"
+    },
+    {
+      "revision": "301ed6178d030d53434da18cc203b37d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LibraryItemList-Ck9aP4Rz.js"
+    },
+    {
+      "revision": "a51c3d894a3131643a6c52218eef873f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LightboxImage-8DMCz0gT.js"
+    },
+    {
+      "revision": "9a1f153f4fdd52e9acc032e640fa7951",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LightboxVideo-DF9zGJTL.js"
+    },
+    {
+      "revision": "872db990eeaf334fd167467ef830ab76",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/lilypond-BcrTcVoz.js"
+    },
+    {
+      "revision": "6fecaf01f47fea87410a2d047c19ea5f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/limits-WG1SrQIQ.js"
+    },
+    {
+      "revision": "ee28dfea11e6ae074eb1411dbcb532ca",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Line-BRmk4hS-.js"
+    },
+    {
+      "revision": "72d37063bfe42e2b089db7418834fbdb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LinkCard-B6vqECHA.js"
+    },
+    {
+      "revision": "f2d25bd31c4f686f72a805648f417ca8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LinksSourceSection-D0KMBO_K.js"
+    },
+    {
+      "revision": "abef96e6c54f0a4c19c9551e20173aa1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/liquid-C6o7OSMM.js"
+    },
+    {
+      "revision": "e7a59451633c7f4f14dc9a552a1e5ef2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/lisp-D13jMjwW.js"
+    },
+    {
+      "revision": "74e556f04a5a722b36a4b76e7dda14c2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LiveBug-BnLR0jIf.js"
+    },
+    {
+      "revision": "c5b6e962b00c7461245c63c9c0146b84",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LiveIndicator-D2w0UJpa.js"
+    },
+    {
+      "revision": "1578499205dd6fd37508aa769e2c0f8f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/livekit-client.esm-CQq1GznS.js"
+    },
+    {
+      "revision": "221f23a635b53dbd13fdbe61bbe7ecfe",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/livescript-shXTL3DI.js"
+    },
+    {
+      "revision": "be0dee45617e9fd982d4642fbaffbaf5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/llvm-Dhd8j1UP.js"
+    },
+    {
+      "revision": "34c134b933b8ee6c83bce5b6ca0dff51",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/loading-Dpu5ZIMN.js"
+    },
+    {
+      "revision": "42af967dbcd4d867c04fa67d602b95a4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LocationPermissionModal-DhSi3p_l.js"
+    },
+    {
+      "revision": "b542b4446e671869f5808728aa2e362b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/log-CfKNpAor.js"
+    },
+    {
+      "revision": "80e2279659701fc92b8c2adcac7d37c0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LoginModal-DaJzJkin.js"
+    },
+    {
+      "revision": "a141418bcc2ed89b0950165832a9bbfc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LoginModalInner-Y4ojVlB6.js"
+    },
+    {
+      "revision": "eb44811281a60a8a1ab8a67df7b11551",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/LogoIcon-DPZrmHjv.js"
+    },
+    {
+      "revision": "2f32e9cbbb3218b4605d75fd94365531",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/lolcode-Bfke3MpQ.js"
+    },
+    {
+      "revision": "3f139fd183f199b2f0f7d7233b4441ec",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/loss-aversion-DSW1Q3DT.js"
+    },
+    {
+      "revision": "5e1160e02d9bce034a7067e31e42875c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/lua-DER4jxlW.js"
+    },
+    {
+      "revision": "5ca160fa93490cf6edd6dd121125e196",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/lua-DM0MJo1c.js"
+    },
+    {
+      "revision": "f080397e1a41debfbca1cda075330b95",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/magma-D2D5fAem.js"
+    },
+    {
+      "revision": "f41507127e8b9744f5f03acd2d6d6853",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/makefile-hJLGlvFF.js"
+    },
+    {
+      "revision": "f066dda2dba768c2f36cd9f022d548a5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/mapbox-gl-B9eh9OLo.css"
+    },
+    {
+      "revision": "0da4386620e0a1cd0221697eef1293be",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/mapbox-gl-hP4mwUdk.js"
+    },
+    {
+      "revision": "42a6fdab3fb352fd3c2166f80dde8f38",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MapboxURLs-4yEd9e3N.js"
+    },
+    {
+      "revision": "144add9993cfc627867fd618171e7d58",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MapModal-D6Tnljhe.js"
+    },
+    {
+      "revision": "964e72b86aec3701d9a873a47a5ccd6e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MapsMode-DxkbX3lL.js"
+    },
+    {
+      "revision": "07bc0298358dceb4a41543d3018903af",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/markdown-CdsWkm6D.js"
+    },
+    {
+      "revision": "d84f009c005f170a5ae1df557eedfa75",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/markdown-DSkbQtRU.js"
+    },
+    {
+      "revision": "f463e3219e82af41d906395dfa14e591",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MarkdownRenderer-DNIHOuj7.js"
+    },
+    {
+      "revision": "4cfe85c6db991f168237fefa26789c12",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MarkdownResponse-BYqleENh.js"
+    },
+    {
+      "revision": "98d20d0fd44fe49bbfa42bcbff49b8b6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MarkdownStreamer-BosmZqqt.js"
+    },
+    {
+      "revision": "8eeafbda5b3b27c6d18b8e9a13db0455",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MarkSpinner-CKuuIOSh.js"
+    },
+    {
+      "revision": "e6ce008d123c0248d8432524606cb87d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/markup-BONeskWm.js"
+    },
+    {
+      "revision": "331090557ba232cf6d570091255565fe",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/markup-G08YcbdB.js"
+    },
+    {
+      "revision": "4e37decd8fbcad21dfb636dd098ea597",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/markup-templating-BxAVv-bL.js"
+    },
+    {
+      "revision": "bd2948d49cbd27de74f43be94f757e5d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/markup-templating-Dt89yZug.js"
+    },
+    {
+      "revision": "c02a4013bf8be0b75b824e8d24a1b1a4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Masonry-Cx9HAT5Z.js"
+    },
+    {
+      "revision": "c7d5dd05386daa4c55590633fe1f07ac",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/matlab-mQjBRPWk.js"
+    },
+    {
+      "revision": "1cc0e458735dbe5ab8d5c3c8af708c6f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/maxscript-8_tEOdyO.js"
+    },
+    {
+      "revision": "87992b7715cc123f0fb0c326f0799b49",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MCPServerModal-BKBxmbA4.js"
+    },
+    {
+      "revision": "3620a1174a482632ab043d9f9052f9f6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MCPServiceToolsModal-Sqxn6Ode.js"
+    },
+    {
+      "revision": "a70b20d5be680c7bf75bba955548c621",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MeetingDefaultsModal-B-MuzCCI.js"
+    },
+    {
+      "revision": "698240c6c81b6d91488456e3ad2ca424",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MeetingPreferencesModal-DqYkh4Qv.js"
+    },
+    {
+      "revision": "98c29e5bb813ea3cdf8a67f912a0d305",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MeetingPreferencesSettings-BHZAcIJO.js"
+    },
+    {
+      "revision": "4de0de448b82ea85554002e2071d976b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/mel-DrXl-cFS.js"
+    },
+    {
+      "revision": "bc6458293c8aea1c1fa46d2514a19254",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/members-BGZR4Jla.js"
+    },
+    {
+      "revision": "620b086997f0d1700fa209fd29eaf62d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/members-BmegLl3m.js"
+    },
+    {
+      "revision": "d148ca6899ea8d85e8676311e63d5dd1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MemberSetTierModal-DPv2SzV7.js"
+    },
+    {
+      "revision": "f9e106d64b434de20f6231cd55e62483",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/memories-O0RsWWP3.js"
+    },
+    {
+      "revision": "b9b8c9acaea15df517eea179f4bf59a5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MemoryDetailModal-DTmuAd5X.js"
+    },
+    {
+      "revision": "a7afbfacabe896d97d236e3e126ab4e0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MemoryList-sozEyskm.js"
+    },
+    {
+      "revision": "050b77a342d8832f6d3b1f75d10d10df",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MemoryListModal-COnXC3Sl.js"
+    },
+    {
+      "revision": "f372317fe1124f470b231f8fb9580eb7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MemorySearchHistoryModal-CxIviMUq.js"
+    },
+    {
+      "revision": "ce158fe4d571bd324193e3b426836e56",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/mermaid-B6xO1q1s.js"
+    },
+    {
+      "revision": "5b333c27af031907cd9e198255cf62f6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MicrosoftFilePickerModal-Bn4qMSUn.js"
+    },
+    {
+      "revision": "87cf2a2e971f98e1e8de2fd48fd40d54",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/miscMutations-DRd3jOmE.js"
+    },
+    {
+      "revision": "ca6c6e0907b779d9145eb53c4b03dc66",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/mission-control-page-DmRD_0ZK.js"
+    },
+    {
+      "revision": "e99428a18e2976898123fc81ca4664dc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/mizar-D4YzNInY.js"
+    },
+    {
+      "revision": "298447b4a1fa07b412f4be8996e9bee6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MLBEventSchedule-C_ISs9pR.js"
+    },
+    {
+      "revision": "c59846abe4bc2637220ff88873d49562",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MobileProductHeader-mzcSBmGJ.js"
+    },
+    {
+      "revision": "5b3da24736f709b0d8a1bfd77e084594",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MobileSidebar-C9VW2XAm.js"
+    },
+    {
+      "revision": "72e76099f217c096b4591b1e76f6b95a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ModelChip-Bkew8yr9.js"
+    },
+    {
+      "revision": "bcfab90742d930e135b599b2381d095f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ModesNullState-CdDBDew5.js"
+    },
+    {
+      "revision": "889d4bf480dd02df0c8fd1cbb878cfb4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/mongodb-mdC3C9PP.js"
+    },
+    {
+      "revision": "9bf1e34c94f267c5a69527f9ae0af008",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/monkey-Bol81y4T.js"
+    },
+    {
+      "revision": "f6a2e5d2f497ccea768103ef151fd0c8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MonthTabs-B5qolkH9.js"
+    },
+    {
+      "revision": "f5c8af46ae0ab42f1e1328a81c8d2db3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/moonscript-CA1_dCeR.js"
+    },
+    {
+      "revision": "1383bfad5e999670ee10601a14b5b7f0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MoreInformationStep-BfNC9Hkh.js"
+    },
+    {
+      "revision": "b0238c06583428a25c2e17783c5d561e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MultiTeamSchedule-6SxlwzeY.js"
+    },
+    {
+      "revision": "eafaa98cd500472ff2b9cd6b8dcff1ef",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/MyConnectors-73wpcliR.js"
+    },
+    {
+      "revision": "de95bd6e74985da5bba33d8d6278e804",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/n1ql-DKT6kTPH.js"
+    },
+    {
+      "revision": "ea3eb4080c8e27f6db7fc0e89ffa1fa9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/n4js-CYp7Txry.js"
+    },
+    {
+      "revision": "f144764b326b9b29a557e3664ed9cf02",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/nand2tetris-hdl-C0MKhewA.js"
+    },
+    {
+      "revision": "bfb493a1f66e3fc027183efc075a8f45",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/naniscript-CAoviWmR.js"
+    },
+    {
+      "revision": "3a1c84720f524153860fab68a2e25d5f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/nasm-CqrtVyHe.js"
+    },
+    {
+      "revision": "0d4208b91eaf7fac6fa0525f8d439c3b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/NBAGamePlaySummary-C_3l5TRt.js"
+    },
+    {
+      "revision": "dcca3830e04650ca4262d00e5e20f252",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/NBASportsTeamSeasonComparison-CE4jPj0h.js"
+    },
+    {
+      "revision": "33a6f69aeea9ee2749e5d44035fc3bcc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/neon-gTJxNGWe.js"
+    },
+    {
+      "revision": "923c527f8421b7b8fcd30bd9d29f4684",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/nevod-0BAA2lQO.js"
+    },
+    {
+      "revision": "f25069b17ff8ba2fce78dc0ece0a5dc5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/NewsArticleCard-DHiWcvw9.js"
+    },
+    {
+      "revision": "333c9f81db2f6e6d45625f0980fe953e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/NewsMode-BorWFeP8.js"
+    },
+    {
+      "revision": "03aa762a7115cfc90463fa45f22fbb10",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/nginx-PPd8ykbx.js"
+    },
+    {
+      "revision": "ee27b970d2b50f3b37bda2eadb312bdf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/nim-Bz43FB9T.js"
+    },
+    {
+      "revision": "4dfde659125fe87e849bcae0f5f39e38",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/nix-DfVosA5J.js"
+    },
+    {
+      "revision": "084c24af704130f7f0d65cb4f0b9859c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/not-found-CORNh-f5.js"
+    },
+    {
+      "revision": "90a489b8ff9469a181311885b4f97525",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/NotFound-D5J7uuzO.js"
+    },
+    {
+      "revision": "3671fd9ebeff6bf1f3eb15dedc0f2bdd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/notificationKeys-D_nlP0Oz.js"
+    },
+    {
+      "revision": "15349044ae4a442e1beab26a0bee7d29",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/notifications-DS0Bbalf.js"
+    },
+    {
+      "revision": "bf5bb492aaaea2d97ad1bb74ddba8bb9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/nsis-D0V55pHH.js"
+    },
+    {
+      "revision": "4679fcab27348f68f635d7070b0262c0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ntp.html-BZukp6Kd.js"
+    },
+    {
+      "revision": "7aa150f9ac6d14c1c971337322cfcc06",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/NumberFlow-client-48rw3j0J-CGKB62Xb.js"
+    },
+    {
+      "revision": "1d9e69eb3c5277b6a7253368dd6b9824",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/OAuthConnectors-Cft6G5O8.js"
+    },
+    {
+      "revision": "c07f8b5ac13ed7c058100da699a661ef",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/objectivec-uuPMJDrE.js"
+    },
+    {
+      "revision": "a73bf17efa8de09263eaca33ed7ae95d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/objectWithoutPropertiesLoose-Dsqj8S3w.js"
+    },
+    {
+      "revision": "354f22b06f7c556e9238bce1998ea22f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ocaml-C0R8I6Qt.js"
+    },
+    {
+      "revision": "8a1539fca2a4545b00397b854863eccb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/omni-IsYs1exf.js"
+    },
+    {
+      "revision": "50777ddb5c3f713f60dd4c4eadb82266",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/opencl-xQzllStU.js"
+    },
+    {
+      "revision": "05adf202bdfe3a9a3052e4d65cbdfda6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/openqasm-C5r6TSqT.js"
+    },
+    {
+      "revision": "7a2cdd8548960f86d1490997a17bb9c0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/OrgBillingBanner-C7cfNEg7.js"
+    },
+    {
+      "revision": "bf0ba99fffefe59c9764e882ddb3f9e2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/OrgInvitationBanner-C-qRbBdr.js"
+    },
+    {
+      "revision": "c37632b33dcd8b3ebd9a628fd4dbdd13",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/OrgInviteModal-kymXoNsh.js"
+    },
+    {
+      "revision": "4452f48d184a045504807d1e5519fca8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/oz-Npq89Flx.js"
+    },
+    {
+      "revision": "e3256c123283c43328285b5ef45faf99",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/packingUtils-Dy3gRoKh.js"
+    },
+    {
+      "revision": "6f961da62d11af47b770eae9b61fa022",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/page-component-CiXOk8z5.js"
+    },
+    {
+      "revision": "7d28e58d728d34d71a37fb3947810f42",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/page-components-home-cHYCc41c.js"
+    },
+    {
+      "revision": "22fa07f05aa322fbf2a00e28e102bbb3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PageLayout-BsTPmxxZ.js"
+    },
+    {
+      "revision": "228f1b0978f32b03457572b815bc77f6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PageLoading-1QvaGLvt.js"
+    },
+    {
+      "revision": "e622060aeac811ebdf58cc8d6784a43b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/parigp-CGo5xhpc.js"
+    },
+    {
+      "revision": "f188bcbc4004f6035de0164999cae7b7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/parser-DMtH_7Kh.js"
+    },
+    {
+      "revision": "c0f439425ca6bb2275c5b22eec7e2b1c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PartnerBanner--n9gL65e.js"
+    },
+    {
+      "revision": "1d71d979e089d2688bcd9453a709c8bd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pascal-ZlHIBjXV.js"
+    },
+    {
+      "revision": "c0088140d257d7f46eebdc66d0ac6d22",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pascaligo-UEpmvicz.js"
+    },
+    {
+      "revision": "3ace9f5669d94533b7621dbb2525ba41",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/patents-CXj9N628.js"
+    },
+    {
+      "revision": "ddafa57567a7b3d7e31765bf00fde52a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PatentsSidebar-CynXpIYm.js"
+    },
+    {
+      "revision": "be5b3a1e33aef79ed1896f9aa748059b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PaymentMethodModal-DhraiPxn.js"
+    },
+    {
+      "revision": "a9f96924600dd5c3ec61b16e14542e44",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PaymentModal-CMGyQW8g.js"
+    },
+    {
+      "revision": "5631ad4ca15afc8232cc67630652c349",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pcaxis-COEbMcxD.js"
+    },
+    {
+      "revision": "fd813ff4994fac31780b9ba822591810",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PDFViewerCore-Bg0C65b0.js"
+    },
+    {
+      "revision": "cf48568fa71e269bf98d190a691e8daa",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/peoplecode-t-ZRYk3r.js"
+    },
+    {
+      "revision": "d541708bebb0262f2905b945260f3d1c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PerksList-CHR7d_li.js"
+    },
+    {
+      "revision": "42a71a5cf102900472b15826195f855f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/perl-CAWUX50D.js"
+    },
+    {
+      "revision": "9d1e00674514b28a07a5f78e249e4aa5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/permissions-BIBM1BA6.js"
+    },
+    {
+      "revision": "3f161dc77ce74834eee51738abda60b9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/perplexify_me-CZtgdreZ.js"
+    },
+    {
+      "revision": "417b410106eb317a5d80b20ada39393d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PerplexityEmoji-9Y2xKjQ5.js"
+    },
+    {
+      "revision": "96fcfd2ba70ec32b4cfe4d9d8e6e54cf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PerplexityMap-BKSWHG-m.js"
+    },
+    {
+      "revision": "cf8734d76312532033d2794fdbcc9d9c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PersonalInfoSettings-kB86_gmE.js"
+    },
+    {
+      "revision": "d9b0ecb3a134992b4a99bff4d6ea6383",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/personalize-CXw8DcoT.js"
+    },
+    {
+      "revision": "0ba25016d18b1752efd2c8bc1d9bed69",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/phoneNumberUtils-2CNvKPPc.js"
+    },
+    {
+      "revision": "32aee23fe18c3bbf1cf64faf685ab926",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/php-C915Ub0E.js"
+    },
+    {
+      "revision": "016fb0e6bc87722eba2bf6f0b91a4854",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/php-extras-fUTf3Ef6.js"
+    },
+    {
+      "revision": "b2bbfafbc841ed6c9833a7021975ecb7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/php-iTdQntIy.js"
+    },
+    {
+      "revision": "a36ca9059b394e55a5db69911fb6532b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/phpdoc-N6YA_Shn.js"
+    },
+    {
+      "revision": "edaa67ed1e8d559b6381b4359f2f3481",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PlaceModal-CnjF3Xbr.js"
+    },
+    {
+      "revision": "3367a14729e59eb5af39d74d14d3fda5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PlanDisplay-Fo_1UIv-.js"
+    },
+    {
+      "revision": "8b70b6dfd9dd29390ba2d594000f2143",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/platform-components-HjyCl-Eb.js"
+    },
+    {
+      "revision": "034686bc6d8cf70f5e5307d3e1d12df7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/platform-core-CZ-8UOca.js"
+    },
+    {
+      "revision": "d043feeee4b4e88d2b3010146aec3ff5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/player-C8EgX8V7.js"
+    },
+    {
+      "revision": "0e37102268c629794e8fcaacd52c9011",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/players-BmolwM8S.js"
+    },
+    {
+      "revision": "2d9465e0a0ca37b20b3743daec368e44",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/players-Dm6sEEsR.js"
+    },
+    {
+      "revision": "4b4f457e5fd3aadfbbb348fd1141812a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/playground-BmiWtYxa.js"
+    },
+    {
+      "revision": "c1d990024027fa5f5eb3c5dc1baa373b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/plsql-BodojQ9U.js"
+    },
+    {
+      "revision": "d255c339a3f1f1e208ad3064897b55fb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PortfolioUnmappedItemsModal-CLQPNEus.js"
+    },
+    {
+      "revision": "25b322c1c0036885d8fe359949ce0172",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/powerquery-C5-pJtIe.js"
+    },
+    {
+      "revision": "47f356753de89e949397b27b98eb7c31",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/powershell-C2Hu3h7C.js"
+    },
+    {
+      "revision": "456f87eb54ba384f269e64006dde9866",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pplx-icons-39c0BigS.js"
+    },
+    {
+      "revision": "03a9f4a56137cc0f02909ddae890491a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pplx-stream-DGCuFDs7.js"
+    },
+    {
+      "revision": "eed256de543ddbbf2b9e2df7b2699dd4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pptxgen.es-CCSff2Bb.js"
+    },
+    {
+      "revision": "9b46538a2170ae4f076bf9501b35a0c8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PredictionMarketChart-sSXRUnnO.js"
+    },
+    {
+      "revision": "8effab6468fc17599c12813630d988a9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/preferences-CYUpKIhv.js"
+    },
+    {
+      "revision": "5753690a89dc33b90992e07fcebafdcf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PremiumSourceLimitWarning-C1IQf2-h.js"
+    },
+    {
+      "revision": "f4fb793e55948fefce3b675e8097daee",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/priceAlerts-xdjYEqSi.js"
+    },
+    {
+      "revision": "7920e6984bca72d863853dd99773281b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PricingTableModal-BaiPwQjZ.js"
+    },
+    {
+      "revision": "3bed582ba767e93908dd9cd49c189f95",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PrivacyBadge-DoY7ZdUD.js"
+    },
+    {
+      "revision": "f65c5b1a5bfff6a5da61b776292803b5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pro-perks-a1KnBQAc.js"
+    },
+    {
+      "revision": "4550423858d128fafe92f7aeaa1d6586",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pro-perks-detail-KYAV0pSv.js"
+    },
+    {
+      "revision": "4ab5e3d6454afa27f4f6f93f260ef1a6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/processing-DCceEb2p.js"
+    },
+    {
+      "revision": "963add7aa883c6d943a7309054eeceff",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Progress-CD0zdweS.js"
+    },
+    {
+      "revision": "eb983bd9636f032f7da592856810e7eb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ProgressHeader-COd6MqwT.js"
+    },
+    {
+      "revision": "4a2fda2cb2252cd37f7f1a10ea7ee261",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/prolog-DH3qyEU9.js"
+    },
+    {
+      "revision": "54499e7accdf8420698d7d1b605ca59b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/promql-CXPqP_Hz.js"
+    },
+    {
+      "revision": "c3aa21941a7fa10977900dbab6584361",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/properties-DFQn30q2.js"
+    },
+    {
+      "revision": "5b46c59c13e983e19fa00a4af659e3da",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ProtectedSettingsPageGate-M5jUI9q1.js"
+    },
+    {
+      "revision": "80d3f2f837a03b2b99afd7948d1a64b9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/protobuf-4yJPqKqg.js"
+    },
+    {
+      "revision": "364abf176b848588f6548a4d2fc17fb2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/psl-WPOoB8nS.js"
+    },
+    {
+      "revision": "e60948939080592a6aa67c4e7e7ee5be",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pug-BApp7T0S.js"
+    },
+    {
+      "revision": "02d571614b0c530220536f5d3f03f58a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PulsingDot-tXuQvIpd.js"
+    },
+    {
+      "revision": "711afb477b756b0bd349bba79961ed2c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/puppet-pc7KJiEr.js"
+    },
+    {
+      "revision": "2451e1d99916588f612bf00a4367236d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PurchaseConfirmationModal-Z3SAjkIj.js"
+    },
+    {
+      "revision": "4c5f57e187f33c6aa723455f3f225a49",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/PurchaseDetailsModal-CO2ppx0R.js"
+    },
+    {
+      "revision": "f52372169a0c8d62643666cbb15802e0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/pure-DBA7cRd2.js"
+    },
+    {
+      "revision": "f358720818d45ccdc4d4e5045540a19e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/purebasic-Drq73yE_.js"
+    },
+    {
+      "revision": "2750c296103ce55372b4ad912ba316d8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/purescript-Lc1TCaKM.js"
+    },
+    {
+      "revision": "efe882274b3b9ebb8be4069e36d30049",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/python-C0OfAdjI.js"
+    },
+    {
+      "revision": "ef5f583738fd349dd7442435a3d2acac",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/q-D4k6Iu_-.js"
+    },
+    {
+      "revision": "0fdbaaa9d1e034b2cb9938c595fbc91a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/qml-DIX2GdMO.js"
+    },
+    {
+      "revision": "bb298b50605b4db5aabf0d0f0123eb98",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/qore-BRAmhICB.js"
+    },
+    {
+      "revision": "737a331382349ed4aea5c6cd9ddf0060",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/qrcode-DMmJ8YL5.js"
+    },
+    {
+      "revision": "6901a339eace9aaf96b18389f94aeabd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/qsharp-DNCSgmRW.js"
+    },
+    {
+      "revision": "c1ab937bdf5bf443cbe27cfc670a44da",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/QueryPrimerHomepageWidgetFactory-D2cAy-I4.js"
+    },
+    {
+      "revision": "5c2ff5568b7ffcc16a66081f541a9773",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/r-DbHTWm0g.js"
+    },
+    {
+      "revision": "0e997b30c90c84ef1c87f858e74e92dd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/racket-DTecE2WV.js"
+    },
+    {
+      "revision": "05f4c12b25a486c4870bc868793f7329",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/RadioCard-Z0GtRWNL.js"
+    },
+    {
+      "revision": "7d571097e936bd91009b9c6c8f5dfe80",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/react-query-47ljMDLZ.js"
+    },
+    {
+      "revision": "cc338d1172013b17583e8460b5aee676",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/react-stripe.esm-daWh4Pue.js"
+    },
+    {
+      "revision": "0146adf0f1501c7553ca6b9335feafa8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/react-textarea-autosize.browser.esm-DHHIeO0l.js"
+    },
+    {
+      "revision": "a9bf93bda1ed7dbd6df099e29bc9a6a9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/reason-kidthH34.js"
+    },
+    {
+      "revision": "f7ba232063fe223d569a21c1a5d4b25a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/RecentItems-CXxL0jOg.js"
+    },
+    {
+      "revision": "6a7e1891833d02cc2a111bd5ebe91292",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/regex-CG9O2ruR.js"
+    },
+    {
+      "revision": "44178ebad7ec46b51309dfb08fbc39e0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/rego-DrD-rHmd.js"
+    },
+    {
+      "revision": "c139d91e6cf2c0ad8172ffdbeaf30c83",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/RelatedContent-BYPYEyuY.js"
+    },
+    {
+      "revision": "23eaa82308079034fbe68d6560c9b8a1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/RelatedPlayers-DjhikxJ_.js"
+    },
+    {
+      "revision": "36ecbd9f5d0f0a059d70ff663db3f037",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/RelatedPrompts-gIhxz3CX.js"
+    },
+    {
+      "revision": "2ba653d8bb3a1a85e3a8e86fce136bd7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/RemovePlaidConnectionModal-BhkDYQrQ.js"
+    },
+    {
+      "revision": "f28654a7f89f17b2905b34c65cb5f9a2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/removeThreadFromCollectionReq-Bc3cLyGk.js"
+    },
+    {
+      "revision": "fc29baa67e86f695c9404378b4029f49",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/renpy-JoM0tUot.js"
+    },
+    {
+      "revision": "daeef8981a47692c86cb08ab40123588",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ReportModal-CrqTYBto.js"
+    },
+    {
+      "revision": "7fd46ab4660fc6f5139a767087d0c6f3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/RequestAccessModal-DrPKV8Lc.js"
+    },
+    {
+      "revision": "0f4e8465c4825b4551eb0f2f23bf7cb9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ReservationDetailsModal-CMU-JZEc.js"
+    },
+    {
+      "revision": "ae5933cab12d00bbd564dd751392e527",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ResizableInput-DAui9Jee.js"
+    },
+    {
+      "revision": "b0c3981503557539e8fa4158e8cbe7f8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ResponsiveHeader-DG3HCt9i.js"
+    },
+    {
+      "revision": "b23653f4ab781f594f98f95d782cbe05",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/rest-_5WhbF9S.js"
+    },
+    {
+      "revision": "804be0dca23c01e143654958154156d9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/RestaurantBookingModal-COg2s421.js"
+    },
+    {
+      "revision": "e41e8b7d534d931e33696b12476e7576",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Reviews-BdlCSHUf.js"
+    },
+    {
+      "revision": "885455616557edbb04b1028aa3bb1401",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/rip-Bopwd2Fg.js"
+    },
+    {
+      "revision": "e0a03249c9ed710cf09a47df87ec8912",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/roboconf-BWG3dpyn.js"
+    },
+    {
+      "revision": "c1bb87de037dcc7b8113e07ab47c7732",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/robotframework-DAWQas17.js"
+    },
+    {
+      "revision": "c3055e6f24854ff30d74cedf489734c1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ruby-BX33q1sv.js"
+    },
+    {
+      "revision": "a45a7c91307e53b872d5a2fbdd1659f7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ruby-DYsn9XfW.js"
+    },
+    {
+      "revision": "6cd054d4b22bec35f2bf24b4617c039e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/rust-DFlUhdqR.js"
+    },
+    {
+      "revision": "bd0f4f7f0c328e812aa1fb6ceb791407",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sas-DpPkXXmG.js"
+    },
+    {
+      "revision": "b0610e7a0df624d520b0c2e39b1c2fed",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sass-SDqjnJAM.js"
+    },
+    {
+      "revision": "94a9ca7e370516d3804d1c0a495edaeb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/saveEmailAssistantConfig-KVzJoLjO.js"
+    },
+    {
+      "revision": "c78092aa27284431a11b3fabe3c5ac88",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/saveUserAIProfile-BSUkxZJ8.js"
+    },
+    {
+      "revision": "549113bf0eb53044f400abb4d5c57850",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/saveUserSettings-B7zBNlmx.js"
+    },
+    {
+      "revision": "c1c9992f26e8514f2927fae8a84a7d7b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/scala-DJ3FherA.js"
+    },
+    {
+      "revision": "2416729c968da95c9b35bd90485ebc69",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/scheduleUtils-BD4W-1Eg.js"
+    },
+    {
+      "revision": "caff706f4c54763af110c157bb5b670d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/scheme-Cscf027c.js"
+    },
+    {
+      "revision": "492056f05521c94bba99a4101192001d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/scheme-Sd3ouM7P.js"
+    },
+    {
+      "revision": "e8148dddece29e6e1eff134d9c005c88",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/scrollTo-BbpcqQyi.js"
+    },
+    {
+      "revision": "35e88e0054bd7a85b2398835a0536bcc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ScrollToEntityProvider-DcBWTQuR.js"
+    },
+    {
+      "revision": "911d9fd831deb22602a34fbb8ade93fa",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/scss-D7zam6Qy.js"
+    },
+    {
+      "revision": "3a7da6ab61ada88b9a8a78c77a3971cd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/search-component-BxwDXppO.js"
+    },
+    {
+      "revision": "86dbdebe10be5ffe47b47866b2e6aca2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/search-component-mobile-CRfzMfPR.js"
+    },
+    {
+      "revision": "ceb2a583f07b08a52cf0ba293b7d40c4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/search-loading-component-DE-QLZfH.js"
+    },
+    {
+      "revision": "da153af9601222421c12bd88beeb4b4b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SearchFilterBar-V5sFo4wT.js"
+    },
+    {
+      "revision": "8fe256bf3e1ff0b5df09cc1f0496580d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SearchModeMenu-DPhNKPIG.js"
+    },
+    {
+      "revision": "e3fc26b731f92ee8a8acaf23e16915e1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SearchSuggestedRefiners-DCKFU559.js"
+    },
+    {
+      "revision": "0189cce90302df17809201e3b1badef9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sections-BbyV7clu.js"
+    },
+    {
+      "revision": "a0950fe76bc5860b554c2897e131b464",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SeeMoreCitations-gw1ywNwO.js"
+    },
+    {
+      "revision": "2d4ec30ad12a1e41277f17a0230bb419",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SegmentedControlOption-BtY9MVku.js"
+    },
+    {
+      "revision": "c60a6951b89b2a7672371d59ca610675",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Select-B_voigVZ.js"
+    },
+    {
+      "revision": "370c741f30f3c29f781d169046562b09",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SelectButton-BOI2Q1SJ.js"
+    },
+    {
+      "revision": "bb4ce9ca9580b1e7ef9c0bd0606926b8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sessionStorageKeys-DVXjLDnd.js"
+    },
+    {
+      "revision": "ea5077d219fd59cbe964d8367b765d88",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/settings-jn981d9t.js"
+    },
+    {
+      "revision": "b6b3c4cd7e2f6304b058bd12917ebfe8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/settingsAccess-B3vNntVt.js"
+    },
+    {
+      "revision": "27d8699b1a4ba34a5678e5967ff29375",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SettingsGroup-3Zu3AU3F.js"
+    },
+    {
+      "revision": "d929ee3b9b1d6a6bfb0bca7ac7a445c9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SettingsRow-B7OREQ8w.js"
+    },
+    {
+      "revision": "de6c236c4aff72900e8cdc0b6ca03bfc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/shared-BP1H8svM.js"
+    },
+    {
+      "revision": "241cb78914033829b848d24d5751378a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/shared-D954jXYB.js"
+    },
+    {
+      "revision": "59f4db23de938a3f5a018b29d76bd7a8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SharedAnswerModeMap-DLbVQ-gV.js"
+    },
+    {
+      "revision": "e4377baa70ddd1ba389bd85db48f093f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SharepointSiteModal-DUbOZPmp.js"
+    },
+    {
+      "revision": "c393480ea5b3c344a3556b22916dc54b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SharepointSiteSelector-BuScCWUt.js"
+    },
+    {
+      "revision": "f9f7d0fd62e6681155a3f079e694dbb9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SheerIDModal-B7R6A-1w.js"
+    },
+    {
+      "revision": "8de111a39df4c7bf7dc921c9811c99de",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SheerIdRedirectModal-xPdj-iWf.js"
+    },
+    {
+      "revision": "4ae8be36e39b04b344bd2a27816dbac2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SheetModal-wO_eAeWo.js"
+    },
+    {
+      "revision": "75154378adab6445b3e1bdac803991ab",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/shell-session-CuTU1M8j.js"
+    },
+    {
+      "revision": "7ba54396e46a78621b1f4f560ee96115",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Shimmer-CgKxBQDv.js"
+    },
+    {
+      "revision": "2c38e760ee17003700ab3312196bbc8f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Shimmer-D0d8Uv6P.js"
+    },
+    {
+      "revision": "110089fbcbb41313ab8bc5b0e03d697f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShopifyPurchaseModal-v4VFEeib.js"
+    },
+    {
+      "revision": "361d3304285d740372500275ddaac1ce",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/shopping-Dha5FA4V.js"
+    },
+    {
+      "revision": "9abb335654f5ed867528da2a44bbcbdf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/shopping-DjDclV2p.js"
+    },
+    {
+      "revision": "efafdf3288037a2ced22a8f4d303f434",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShoppingDetailsModal-DmRe4hBN.js"
+    },
+    {
+      "revision": "668852d17715eeb201952b64c8cb0776",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/shoppingKeys-Bzmcabpj.js"
+    },
+    {
+      "revision": "be41a805c6a7161aa76b77739378cf0b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShoppingMode-D9QTxaYh.js"
+    },
+    {
+      "revision": "6ca8aaf3ac18b9a7b619333836d8ff46",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShoppingModeWidget-DywxjZjR.js"
+    },
+    {
+      "revision": "ff09710311c5899e02b33588e11788ee",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShoppingOnboardingModal-Dh1fkm0O.js"
+    },
+    {
+      "revision": "788cbf6ee390a2207c42975cd5c5a51b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShoppingPaymentBillingBox-BpyTDwRk.js"
+    },
+    {
+      "revision": "9ff7e86316cdec7a36081749fa82c423",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShoppingPaymentInner-CBnmOiW7.js"
+    },
+    {
+      "revision": "125a0c3b478bc79fc192386a46b5c3f5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShoppingQuantityRow-B-DeNTKj.js"
+    },
+    {
+      "revision": "130a75ce0d3ed7e85ac090e7109d55a3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShoppingSidebar-CGdrHJSu.js"
+    },
+    {
+      "revision": "35d2e436349ff1d61f68dc4ab086a180",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShoppingTryOnOnboardingModal-ShXcdcUP.js"
+    },
+    {
+      "revision": "647618cd4248438f4bda9194eab931c1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ShortcutModal-tRWlyJKH.js"
+    },
+    {
+      "revision": "2bef44cc87a695ee12ff18343ff2de38",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/shortcuts-BKBBAABq.js"
+    },
+    {
+      "revision": "b7682eb7388d963297f9f87ad7ace84a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sidebar-bottom-OOD3Xube.js"
+    },
+    {
+      "revision": "631d19e03079e05737fd88fb5942039f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Sidebar-CSZa1Dma.js"
+    },
+    {
+      "revision": "f9be9292f46d8df9f48140b437416bd0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SidebarListLoader-Cgxhd5D4.js"
+    },
+    {
+      "revision": "fb11bd753b6ce9e9e8656d0cb79fcbff",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SidebarLite-B2uQSP7M.js"
+    },
+    {
+      "revision": "a128c0b427a64fcb5cd24011b30fd490",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SidebarMenu-C_M7To1G.js"
+    },
+    {
+      "revision": "cd4739814951d77404b0dd6b84c82685",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SidebarMobile-z-6oNOdQ.js"
+    },
+    {
+      "revision": "6a044c9aa706ac2a6892acce02a512e9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SidebarNotificationsListItem-BGvMrWSf.js"
+    },
+    {
+      "revision": "b0a6c5d4228fb41739417a4794cddaf5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SidebarSubMenu-09usEg15.js"
+    },
+    {
+      "revision": "9539dea9cb83f59bb772cd202327cb2d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SideBySideThreadContent-uJZlnw5K.js"
+    },
+    {
+      "revision": "605b1d554062369c6ac865b189ee98db",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SideCanvasViewer-uYqRrXld.js"
+    },
+    {
+      "revision": "45d1c5a9c803cdf7f5f640093cd5cbdb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SideContentBody-D5cEyIvv.js"
+    },
+    {
+      "revision": "7d4d5b87ead99eb05466fc17f1561483",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SideFileViewer-CYZUdRnM.js"
+    },
+    {
+      "revision": "0073baa2ff14ebe110fff25c23736787",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SideMeetingTranscriptViewer-GePSfa7X.js"
+    },
+    {
+      "revision": "605d595666b94ce64206c04d537ba17c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SidePDFViewer-CNZ0ZorA.js"
+    },
+    {
+      "revision": "54e599b1c8930f2d4917c2a4f839c32d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SingleTeamEventRow-C0VE9V-N.js"
+    },
+    {
+      "revision": "777409879e5c73eeb3b6693b17b16f5f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/singular-sdk-77vC0ODm.js"
+    },
+    {
+      "revision": "2ac11fc6cabc5627f671f4c642ac6e7d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/site-instructions-lPYe9aya.js"
+    },
+    {
+      "revision": "bd3619f29dfdad81434b0f1778b88843",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SiteBanner-CKX3dOLQ.js"
+    },
+    {
+      "revision": "60a31d860c19258a5dfcbb558c0d78f6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SiteTabs-De6vtpit.js"
+    },
+    {
+      "revision": "a6e553589f238d87e20118d02954ca23",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/slug-Daw74PE0.js"
+    },
+    {
+      "revision": "997cf34a82676bd80df67f4ceb616ec5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/slug-DeMabC8n.js"
+    },
+    {
+      "revision": "98393061a07d8d66904b21a57e0ba408",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/smali-BMhsdjd1.js"
+    },
+    {
+      "revision": "c73c2ed7d732b1e3a30edd027aef8a51",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/smalltalk-DNAbFdO4.js"
+    },
+    {
+      "revision": "1bbea70f60657c1f4d039f7ed0c9f153",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/smarty-CXk_im1S.js"
+    },
+    {
+      "revision": "b384cb3a07bf101ada57f0568f00be77",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sml-YZTCkXpQ.js"
+    },
+    {
+      "revision": "ef85c21f055c46790467fc51230f2271",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SocialShareLinks-Dmn1_tKH.js"
+    },
+    {
+      "revision": "401e525a5445f42b2a2ab729b5a86247",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/solidity-CP6FE-N7.js"
+    },
+    {
+      "revision": "14ac69e981d6fa5519e70c078031ee06",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/solution-file-BPgqM0Qt.js"
+    },
+    {
+      "revision": "a23f6ce7db1f2f8cb406ff480547d626",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sortable.esm-CNRLi1HN.js"
+    },
+    {
+      "revision": "33584af761c345df8fbf0ed739fa00d1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SourcesListContext-C0ryxib_.js"
+    },
+    {
+      "revision": "9ae6bbdd7170e07d59331280f2ac9c47",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SourcesTable-Dtn60V8r.js"
+    },
+    {
+      "revision": "eed577cd3b802c2976a2ac62ca4b7dca",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/soy-DdBy00PO.js"
+    },
+    {
+      "revision": "09afd330cd8cd52ac329568343ee675f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/spa-shell-CyHWMTPN.js"
+    },
+    {
+      "revision": "fa9da74cb07db0106a3e505c049c7ae7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SpaceSettingsModal-D6qH6tVK.js"
+    },
+    {
+      "revision": "ad9af0af0567963261008d06ab8fd627",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SpacesSidebar-mOBLQYov.js"
+    },
+    {
+      "revision": "be2353b2f0076fdcc3f37b4c5a23ae37",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sparql-Bz3yDP0t.js"
+    },
+    {
+      "revision": "ed6bf0371db2946bfdb5dc695dcd0221",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/splunk-spl-C0G4qcWz.js"
+    },
+    {
+      "revision": "600cec4165cc8da87d91385b73e353e3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsBlazeVideoHighlights-Cs-ytXo8.js"
+    },
+    {
+      "revision": "676c2fadada45ebcc9f5dd005c931af2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsCanonicalContainer-CZSGw6NL.js"
+    },
+    {
+      "revision": "273194804b4b48824799af4c4279dcf9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsCanonicalLinks-DSxkXLZp.js"
+    },
+    {
+      "revision": "2eaf2fa7156b55ad67be5b1334cdd6e7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsComparisonArcs-C0KMlpjN.js"
+    },
+    {
+      "revision": "9cd836f595151d8c9e17f591402b025e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsConferenceList-CO0XB9oQ.js"
+    },
+    {
+      "revision": "793c1737508fbbb06890b812fb70c979",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsDataTableComparison-BOstL5ts.js"
+    },
+    {
+      "revision": "e501be9748b5319d881eaaef53e70359",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsEventsWidget-DHnKh21r.js"
+    },
+    {
+      "revision": "6882562f5a388f9ac997ddcf8794687f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsGamePreviewHeader-C_gb0_Nv.js"
+    },
+    {
+      "revision": "9f08f322d8fad3f6029df330bf49cc7f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsGameRelatedGames-BgdNUcY7.js"
+    },
+    {
+      "revision": "a77e9a71731508a2eb883c2f3f40fcc7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsGameSummaryHeader-DilE9YQu.js"
+    },
+    {
+      "revision": "23a0041a03b4317a4c96640005b6e680",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsInjuryReport-DXliivek.js"
+    },
+    {
+      "revision": "b022fae5349b6fc4c5b01b165205bcbc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsIOSNotificationSub-Bny_iRYu.js"
+    },
+    {
+      "revision": "6e4fecf2f0798fa8ab0a7c337df60eea",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsMultiTeamSeasonLeadersStats-CgP5PI5R.js"
+    },
+    {
+      "revision": "5098bbadd3ca9dd41b35b3af327df096",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsPageHeader-B2BIBQcD.js"
+    },
+    {
+      "revision": "400f13e1da4062d85fb7998d03faaa71",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsSidebar-Cqf6Ss1p.js"
+    },
+    {
+      "revision": "805a787b172eed49581a54a07ae4ffa2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsStandingsTable-JoNzqQvx.js"
+    },
+    {
+      "revision": "0466843a0f075e5cef935805e8ec63b4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsTeamGameComparison-CNDITr9u.js"
+    },
+    {
+      "revision": "11637dfa39ae5de5af2485d7a371c86a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsTeamStandings-B_dDnzN_.js"
+    },
+    {
+      "revision": "87da33b8fe38918075f69753268803b2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsTournamentOdds-DEVAAq8m.js"
+    },
+    {
+      "revision": "738a150a1dbb470adc741c1e154e6ff5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SportsWhatsHappening-CjKfUSDI.js"
+    },
+    {
+      "revision": "a516322eea7297fbe84abc1542f7b93d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sqf-DjRkmW9b.js"
+    },
+    {
+      "revision": "d7c05c1f3f0799109125e0815affdf1a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sql-CJATM1Qp.js"
+    },
+    {
+      "revision": "26667c0466cedbf9114dc54d6fb9dfd0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sql-UsxIn5Rc.js"
+    },
+    {
+      "revision": "7de26ac716f3c9277773c50aede96995",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/squirrel-D1qIzN_m.js"
+    },
+    {
+      "revision": "1dbc9a244530ad8f6291f532fd44701b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/stackOffset-Q87vURf8.js"
+    },
+    {
+      "revision": "af6dc4cbe94e47d09355be7208697c34",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/stan-D8KLrE44.js"
+    },
+    {
+      "revision": "f70cf96e3d65bcf654089ce2bd976204",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/stats-DCXEsiNl.js"
+    },
+    {
+      "revision": "48f8dbb854ff6d155fdb1c51a47d0424",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/StepRenderer-BlKcstGn.js"
+    },
+    {
+      "revision": "7688fbb0779ba9f736b95e8c1d6289d6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/StepRenderer-BsDpYZHk.css"
+    },
+    {
+      "revision": "7b72d88d4ac3551455e8725d2827bbe0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/StripePaymentForm-CEYeW-dC.js"
+    },
+    {
+      "revision": "3142c8e1ae69bb3988a1d1d1845452ab",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/StructuredAnswerInlineBlock-ADX8AqAB.js"
+    },
+    {
+      "revision": "a7d2c9066006eef8d261ec29016bba0c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/stylus-K66K-whd.js"
+    },
+    {
+      "revision": "e37c9d774884659e6b283425069e7fe2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/sub-router-sEsKlKBI.js"
+    },
+    {
+      "revision": "46454d6cbeea438255674cf473025ee9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SubModalButton-BOTqjRmp.js"
+    },
+    {
+      "revision": "6788fe9c2efc8fe5359cf068edd3baac",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SubscriptionPromotionModal-DJwTikHr.js"
+    },
+    {
+      "revision": "1ba00138a7f2ffec890f03aac0798e62",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/SubSuccessModal-B4ZFFEWm.js"
+    },
+    {
+      "revision": "c62d17c96dcbf74def091bbe59997804",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Svg-B5vy_HsF.js"
+    },
+    {
+      "revision": "4c24979e25f9b5f04d8c89f72a325a7b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/swift-DWm_WzrV.js"
+    },
+    {
+      "revision": "5a3a6953b61f7432f0a3454fa8844b60",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/systemd-CY8xlO3I.js"
+    },
+    {
+      "revision": "5b73ee09dfbfb2777c05958d96e087ce",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/t4-cs-BiNCHzyc.js"
+    },
+    {
+      "revision": "5817debed02ea4b75f26da3a8939e942",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/t4-templating-B5EzSFYT.js"
+    },
+    {
+      "revision": "32d01db94c00493cfbe7b2df467fdbbd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/t4-templating-DTuVlbCj.js"
+    },
+    {
+      "revision": "26803f14811122fd2c9ae7ce1095de71",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/t4-vb-Df2leT2A.js"
+    },
+    {
+      "revision": "016fbf68efc02f0d9554eb5e99e6fc87",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TabBar-P_4Yg2q2.js"
+    },
+    {
+      "revision": "107f682e68a0d80d0a1e7117bf169003",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TablePagination-DcQYy-29.js"
+    },
+    {
+      "revision": "83fcf4bc1e54f4acf23e72b6c5fc5a03",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Tabs-Dx-erXqp.js"
+    },
+    {
+      "revision": "3a6cf639afbe0bf54968e62dd29fa2a6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/tap-W06pqOH_.js"
+    },
+    {
+      "revision": "335d4b109ec192619ee6e26b502a4bb4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TaskListItem-15IKRTWU.js"
+    },
+    {
+      "revision": "8649a2e0027dcc746b6e3573ee496f3d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TaskModal-DLmoLc9z.js"
+    },
+    {
+      "revision": "0f71c9db7ba1226fa0575d90a2b6244d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/tcl-Dr2JVm2Z.js"
+    },
+    {
+      "revision": "81ec65f88c960b2a6227eaef5ec160bf",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/team-B4Rb98KO.js"
+    },
+    {
+      "revision": "6fff767b36cab837dfe846efe05220de",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TeamLogo-Df1GseU0.js"
+    },
+    {
+      "revision": "3704928e5ef57375baf9dbb83138b746",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TeamPicker-CRCOHRib.js"
+    },
+    {
+      "revision": "62ede4d369055bc222a8de5cef5a37ab",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/teams-C1BkWsy0.js"
+    },
+    {
+      "revision": "1e537f72f931334cea33349f2e03ef1a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/teams-CylK8tOX.js"
+    },
+    {
+      "revision": "536a0d847a8e4d40f23d74020941c290",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/templates-CDVO0aYI.js"
+    },
+    {
+      "revision": "e62df8173a8b2098decdd47e3e418451",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TennisHeader-IV-RBx3T.js"
+    },
+    {
+      "revision": "a4359ae0ca5d7c8a3147504385ff2811",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TennisLaverCupSchedule-BvYJcO7C.js"
+    },
+    {
+      "revision": "9b3dbd083ddc022d9b8462a820fc38c5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TennisLeagueSchedule-Cn7Bzdr3.js"
+    },
+    {
+      "revision": "568bfcc2728e608ead0eb55b48306064",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TennisLineScores-c2ByLYzO.js"
+    },
+    {
+      "revision": "0b84502aef352eff7c5d7390c0c68409",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TennisTournamentBracket-BD3aflvb.js"
+    },
+    {
+      "revision": "6fb46d1cbf9f6b37000ebe412a889f7e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/test-ids-VnDwzMft.js"
+    },
+    {
+      "revision": "a8d3880b89d8ba75a65fd8538bf33668",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TextBlockSkeleton-CLITaSWz.js"
+    },
+    {
+      "revision": "a31a39645286c9319146c1bd3fdae51f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TextBlockThrobber-U2W38TeH.js"
+    },
+    {
+      "revision": "7ef61572cbe96ecb274c958a503961b8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/textile-DU4x4KIt.js"
+    },
+    {
+      "revision": "d1aaa341a8f973909b4347ef6ac80003",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ThirdPartyPersonalizationModal-C6grN7F5.js"
+    },
+    {
+      "revision": "7f6a9755336bba83b3f6088bfddcd63d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ThreadContentResponse-DciA4Kls.js"
+    },
+    {
+      "revision": "0ee60d6b2d07a6a50f50096773ee8208",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ThreadEntryContext-DFvQwaJ_.js"
+    },
+    {
+      "revision": "fc7e2fd1ef02ee03e74a3cabfac5a5bc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ThreadEntryFooter-CeVks4Uo.js"
+    },
+    {
+      "revision": "e2d03b5f1a43e1bc0d3c743cc3014f8f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ThreadInput-DxGpYaSb.js"
+    },
+    {
+      "revision": "f81b890f52964949241137947850dfdb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ThreadLossAversionModal-LKloIFva.js"
+    },
+    {
+      "revision": "d99927f6a252576a4c9a3a53f672e4f6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/threadMutations-Dm3te_Na.js"
+    },
+    {
+      "revision": "65bba32f344488c285fdc76c7920330c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ThreadOverflowDropdown-B6vR3Kk0.js"
+    },
+    {
+      "revision": "24af42591c51d3b01cb4fe0f225fd8ff",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ThreadTitleEditModal-DEaLmHIZ.js"
+    },
+    {
+      "revision": "fd31e226b1c323e8963d10ac2d1af041",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ThreadUpsell-DGyRS65U.js"
+    },
+    {
+      "revision": "47eac1cec23c35b6bd32cc2a52e30707",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/three-Dn-P7XLu.js"
+    },
+    {
+      "revision": "a2511d0f2b3732552b0d354b3f469007",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TierCardLayoutRedesign-BM61ylJr.js"
+    },
+    {
+      "revision": "99e94c9bab7fcbf17091dc1d64b9b58c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/time-likaoK5X.js"
+    },
+    {
+      "revision": "e840837187410f68491d2e81c0879e16",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TimeAgoTooltip-Dmoo9rBG.js"
+    },
+    {
+      "revision": "73bd4837caf1100dd0d92a4c4a9b51da",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/title-CFGHEJSM.js"
+    },
+    {
+      "revision": "dadf06ebb18a9a441c22345b6b385299",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ToggleGroup-B-GctM7t.js"
+    },
+    {
+      "revision": "732e31e09dfb32a31ae6ab00e6f18118",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/ToggleTip-CIRGXnpc.js"
+    },
+    {
+      "revision": "c45ea1d503b44567489c1f377276efd9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/toml-C6N40hXW.js"
+    },
+    {
+      "revision": "80b1abceb7a55799de268bbc9676d836",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TooltipWithBounds-BqpQrOPS.js"
+    },
+    {
+      "revision": "4e395a1ce396348412211de460bf5948",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/tournament-BDE27XhU.js"
+    },
+    {
+      "revision": "2b312886d75014afd2c37985984b6785",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TournamentInfo-DF9Cmv9A.js"
+    },
+    {
+      "revision": "c2e436ba573f43fb3625a3062f99f70c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/tournaments-CjaEjrdZ.js"
+    },
+    {
+      "revision": "01c76678c0cfca7fcc8e1404231ca134",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TranslationModal-BG5D3VnB.js"
+    },
+    {
+      "revision": "75bf2384e6b2df2cbf1a0ecacd0aac9e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-ar-SA-KWCRPxs_.js"
+    },
+    {
+      "revision": "7935eebe83c1a805cdb25ae4b17e6cce",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-bn-BD-CnM1jvyZ.js"
+    },
+    {
+      "revision": "815bcd214928c9da1b6d12f9bef30fb5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-cs-CZ-DfQrh7DH.js"
+    },
+    {
+      "revision": "47b05fc06cd3e8dc3c635d4761ca0939",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-de-DE-BMOloABG.js"
+    },
+    {
+      "revision": "a13651461058d7c1f9704c1b2e8cd97c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-DmT0ukvb.js"
+    },
+    {
+      "revision": "a486e80b456a855ea660838ea99ba1d6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-el-GR-BJ1bviQJ.js"
+    },
+    {
+      "revision": "2d587faefd96fefb9e9be028df1d3f2d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-es-ES-eetSDb5X.js"
+    },
+    {
+      "revision": "b53798d4bc1988fd3b1e3d32c710fa6b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-fr-FR-DJO7pTh0.js"
+    },
+    {
+      "revision": "7646806791c42de94279146b59fccaa9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-hi-IN-CNFfUh-r.js"
+    },
+    {
+      "revision": "6a27db977fa872d4d1ffc5925a7e08be",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-hr-HR-DbqTf2uP.js"
+    },
+    {
+      "revision": "4c615034a4413da0ab95cec2fcf8bd10",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-hu-HU-BhtltKkT.js"
+    },
+    {
+      "revision": "6014dd2373883ed35f0f2a0750a5c80f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-id-ID-CZONbpAa.js"
+    },
+    {
+      "revision": "f1566119d1bfece92fb928fe0df1af51",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-it-IT-CDTSJPRJ.js"
+    },
+    {
+      "revision": "5442aa9183629b42c5c52221ccae6b32",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-ja-JP-CiO1QaUk.js"
+    },
+    {
+      "revision": "7fd73a8fc655e09b13f2d355be029374",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-kk-KZ-CcB99JMP.js"
+    },
+    {
+      "revision": "e154090963ed3c9402fa51cf163b4483",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-kn-IN-DCyDJmXK.js"
+    },
+    {
+      "revision": "789830de1dbdf29a181b786b4decc959",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-ko-KR-BO04nEVI.js"
+    },
+    {
+      "revision": "5bcdf6e8feb38ee41dbb6b68029f7c0a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-ml-IN-DlvSox09.js"
+    },
+    {
+      "revision": "4303ba9658b20f7d5dc4ab9c1b58cc72",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-mr-IN-Drt5_5dg.js"
+    },
+    {
+      "revision": "cc9c7d52ec027fe31e4874572f7bc0c3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-nl-NL-Bo0KR8YX.js"
+    },
+    {
+      "revision": "48fac23a533039af19bef0871d4b3d67",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-pl-PL-DEHWObGW.js"
+    },
+    {
+      "revision": "869a3ab2c61d447fdf0ed9315b3eeadb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-pt-BR-Cre6aHMn.js"
+    },
+    {
+      "revision": "f24b0afab9ec8b69bcffab1f4406557d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-pt-PT-BO2WW02y.js"
+    },
+    {
+      "revision": "a110c358820bc5560979fb035b47ec86",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-ro-RO-D6VxJkla.js"
+    },
+    {
+      "revision": "e64107452056bf876bfaf5c7c493786f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-ru-RU-G-2LDak-.js"
+    },
+    {
+      "revision": "6229af78a4e93bb2dd01334c555839ae",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-sk-SK-BFIfnlFO.js"
+    },
+    {
+      "revision": "5f9886820330e377acc09b0752e4a526",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-sr-Cyrl-ME-IjbQMojn.js"
+    },
+    {
+      "revision": "e22fd553f022fda9cffc8f54a14941c2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-ta-IN-C_S2Klxd.js"
+    },
+    {
+      "revision": "d46d00456b11bd28565cd6d38a6e6332",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-te-IN-_Rg5aSd0.js"
+    },
+    {
+      "revision": "dad7d4ddb9287f454b8f8aabbeb0a1e8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-uk-UA-DYFbJWFV.js"
+    },
+    {
+      "revision": "aaba8f0a4d4a8940f7d2995df9b95233",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-zh-CN-BgKK-ySz.js"
+    },
+    {
+      "revision": "4b65c52770937f0f1a14138262c86a25",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/translations-zh-TW-DMIyXrhS.js"
+    },
+    {
+      "revision": "4655400dbe6e753484328dc512e6b26e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/travel-Bb7lTyFY.js"
+    },
+    {
+      "revision": "07b18115ea06d649d75b7f747fb0b002",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/travel-CfS7a2TJ.js"
+    },
+    {
+      "revision": "65f3f6f576eca6cd1f62a04917ce554f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/travelKeys-CKCRu7rq.js"
+    },
+    {
+      "revision": "6833a66c37879cecf80b03ac2a0f4050",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TravelSidebar-BdM-6fxr.js"
+    },
+    {
+      "revision": "fe3db7f3f8593d6461731982fde63b1c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/tremor-BmsHr1yB.js"
+    },
+    {
+      "revision": "9d76eeabfaadeeeae8122b16960bc992",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Triangle-B97GTBvS.js"
+    },
+    {
+      "revision": "363e16da1ef8ebf15795116aee36eb16",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/TruncatedContent-BPeb-ocG.js"
+    },
+    {
+      "revision": "23529338635f4854ac7610e376af8ac7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/tsx-KjJN5uXK.js"
+    },
+    {
+      "revision": "d50308a31e9a1169b36d5c8bea6e1003",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/tt2-DM7WctZE.js"
+    },
+    {
+      "revision": "812c2dc8cff503c019c2b6ab8e392032",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/turtle-DjjB8Inl.js"
+    },
+    {
+      "revision": "ac13c4c8d42396f340099ba06d3652d9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/turtle-Ro1R6Je7.js"
+    },
+    {
+      "revision": "34f74c2a0487908789beb4a0ca7fbcd4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/twig-DshRPbGU.js"
+    },
+    {
+      "revision": "b9c5b32dc885b61cc6d0e378b2bc5ae9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/types-BsOM465j.js"
+    },
+    {
+      "revision": "25ae51e152b7b647973ce5ed8db36357",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/types-Q1WDPSzs.js"
+    },
+    {
+      "revision": "31c6dd62eefb46e277ceb2d73d6ea9f3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/typescript-BIPKlxFX.js"
+    },
+    {
+      "revision": "560f1190d5d1ebcb5926b1f3e8729660",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/typescript-CVO-8GEc.js"
+    },
+    {
+      "revision": "72fb3edbbbed0790c75bdf40ce7ff60d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/typoscript-37yf3EOY.js"
+    },
+    {
+      "revision": "70ea8d71eb5da0e1312635b9a24dd314",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/unrealscript-CqzvMvwY.js"
+    },
+    {
+      "revision": "67de444cc0886eac29cc3517cf7eccfa",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/uorazor-BDUxmZLn.js"
+    },
+    {
+      "revision": "6fe4a492057debaec018f61c673ed75f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/updateUserTask-CT9UOGxi.js"
+    },
+    {
+      "revision": "5b8a1da3454b86b9ae96a189eaab4bd2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/UpgradeModal-BkJjwm5B.js"
+    },
+    {
+      "revision": "8af203055775a55b2b4f741b40f87b08",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/uri-BV-AU4Id.js"
+    },
+    {
+      "revision": "4068ee71290b967a8e4874423c96f7e5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/USDSpan-DDU7-axs.js"
+    },
+    {
+      "revision": "6aba872cfecfe889f1b045e2686585f0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useAddLink-BZjUQi_Y.js"
+    },
+    {
+      "revision": "d3e8ba2a428ac6fc99552715638183cd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useAddToCollectionModal-BRQMbYw1.js"
+    },
+    {
+      "revision": "ec3d3a96b0319af7f7fcca416a242e79",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useAPIAdmin-kSAKOTrt.js"
+    },
+    {
+      "revision": "516c64deb450ff17ad0cd0f5ee4ff18c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useAPIGroups-NYGbp0VD.js"
+    },
+    {
+      "revision": "7908b811f4950c1be791e9adfa64fd87",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useAPIGroupSettingsEnabled-Dqr1EXJp.js"
+    },
+    {
+      "revision": "bab8c472a02878ee9b85e3dd01c22350",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useAsiUbbConfigVariation-BIzzr1Kn.js"
+    },
+    {
+      "revision": "edc4fb13e7759647552d9cd717c8ac1a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useAudioElement-DwS3Jz5y.js"
+    },
+    {
+      "revision": "cc30843afef49f27736b1eb68d97cc21",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useAutomationConfiguration-DvOff8BB.js"
+    },
+    {
+      "revision": "c15ea7e2ace76a9ff5414288cb3a4aa9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useBookmarksQuery-BZV9i2VB.js"
+    },
+    {
+      "revision": "a97bbfe388f96c77f93939d83040f29a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useCheckSources-lQ3ODX5v.js"
+    },
+    {
+      "revision": "aa30377e0562a6ee6fcd832c81b299ca",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useCitationClickHandler-BCd_4hQQ.js"
+    },
+    {
+      "revision": "30f32e79b5c38c14c7f66fd01793468b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useCitations-CPd9IwFx.js"
+    },
+    {
+      "revision": "2583bcb6ae7f2525de7d1251e1365b69",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useClickOutside-DraKOGdN.js"
+    },
+    {
+      "revision": "dbbe3189e2e88098ff0eb03f0a7af77d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useCollectionsQuery-DsfoDZX8.js"
+    },
+    {
+      "revision": "52de92abcf2d5dd631eb9515d5157450",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useCometFirstRequiredSystemPermission-Efz7C47l.js"
+    },
+    {
+      "revision": "a06e11163b4e08bc8d10aa08583a817c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useCometSystemPermissionsForServer-BfmSgeK7.js"
+    },
+    {
+      "revision": "997c4a0aacd2028221d70c7d5fbad238",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useConnectorCapabilityPermissions-CWpuQXUE.js"
+    },
+    {
+      "revision": "467e35a4cd4d3220d2c27f2e7ed27c1d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useConnectorConnection-BbpsO92h.js"
+    },
+    {
+      "revision": "4e221becf8e23b6863c95cde0b951403",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useCreateSetupIntentAndCustomerSession-ByROoiHN.js"
+    },
+    {
+      "revision": "145eb323115df7891bfa1bb56bcdf111",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useDownloadFile-zw8AGttB.js"
+    },
+    {
+      "revision": "9ac027ffbd7a98e53e93ac26abfd7eec",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useDownloadS3FileAsset-BEB4_8T8.js"
+    },
+    {
+      "revision": "ee07f3cc0027b8c9c94d0ee31bd5b695",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useDropboxPickerUpload-DswrVReb.js"
+    },
+    {
+      "revision": "460050269d56289a52bc22f1f10cc9d8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useEnterpriseAnalytics-C4mg9-iY.js"
+    },
+    {
+      "revision": "66bddfc1ad74b41fb24cbdaf57fc3647",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useEnterpriseCometMvpAdminControlVariation-BobablIF.js"
+    },
+    {
+      "revision": "4fa00819f9354860ecaa9b5c358b0705",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useEnterpriseEnableMemoryAdminToggleVariation-B22WIOVd.js"
+    },
+    {
+      "revision": "4c898e860cc8e66e7016f1eabd4bcca2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useEnterpriseMaxFeatures-BcNzd-N8.js"
+    },
+    {
+      "revision": "006b7b49f98b42524ffa3f59df612a38",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useEnterprisePremiumSecureEnabled-DAxM6x_t.js"
+    },
+    {
+      "revision": "ae36f1b5568920d0f7610ceb0e3166ba",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useEnterpriseProFeatures-Bf7lxLhe.js"
+    },
+    {
+      "revision": "ba47bcf655cc334ec7730d256f0cb4eb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useEntryEvents-CK1vPwTR.js"
+    },
+    {
+      "revision": "167b185ad2b35e0c65c89134114650b5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useExport-CE5q2HmQ.js"
+    },
+    {
+      "revision": "535296df21ca3cc50a6f53be06a7184b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useFailedImagesStore-CaIruoFw.js"
+    },
+    {
+      "revision": "ea82718ac7e065b3d5f6f30420565001",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useFileDirectory-rmn9hZ7A.js"
+    },
+    {
+      "revision": "7ba9e2321214f4563c300bdde37190af",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useFileSearchActions-ChvLf27c.js"
+    },
+    {
+      "revision": "76606dd026dcb3ea1002cb60cf75abe1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useFirstTimeBookmark-DKrVDmH9.css"
+    },
+    {
+      "revision": "fc0e0b0c0b59ea10bb7c0fec3c48f38f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useFirstTimeBookmark-DnFfJEQK.js"
+    },
+    {
+      "revision": "8bc8c0322468273ef1bafee31b17870e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useGenerateShoppingReviewSummary-DE0TgwaT.js"
+    },
+    {
+      "revision": "17104ea5d11b6e7178fbdfc56f656438",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useGenerativeRefinement-CzqJHFzW.js"
+    },
+    {
+      "revision": "b3af45ba1d2e349f2a5df3dc3beeff8d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useGetCustomerShoppingInfo-B-9rR6MC.js"
+    },
+    {
+      "revision": "86c93b7f645383fabf2aa83bda9ebea1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useGetPreferMetric-DY05YNOs.js"
+    },
+    {
+      "revision": "100e00599ca6fcaa0f0762e09e919e86",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useGetPrices-7SaDsb65.js"
+    },
+    {
+      "revision": "c4b16be75544a521f543233dcd3dab55",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useGetRecentItemsWithActiveStreams-BSy0I8yQ.js"
+    },
+    {
+      "revision": "37c61a3a863b8f01c9a4ee1a81118732",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useGetUserTryOnPhoto-DLVxUrcG.js"
+    },
+    {
+      "revision": "ae8abc415587b72a7b62f747211a0f56",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useHasConnectorsAccess-D4xRIaxf.js"
+    },
+    {
+      "revision": "df0a9f7395ac92c6241baf86d28ac203",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useHealthFilesPreview-DJDmRQ3T.js"
+    },
+    {
+      "revision": "7e6089fe7279acd1eafb4b90111ff5ac",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useHotelBookingEnabled-CCmXIF1B.js"
+    },
+    {
+      "revision": "2bb0a800a717052fe83e192513f434d9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useHotelData-DyoW3F7D.js"
+    },
+    {
+      "revision": "74132c704a2bf3c796127a1b30bbff07",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useHotelLowestRates-CbnjWdk2.js"
+    },
+    {
+      "revision": "a17071cd4f6fd0685750441954541714",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useInViewEffect-mEmMapyZ.js"
+    },
+    {
+      "revision": "8d74ca77d161dce35491472e64c33ada",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useIsHealthEnabled-Bej1ozIR.js"
+    },
+    {
+      "revision": "6b62871743da0b5731e681022351e8c1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useKeyboardShortcuts-BxkXqVxg.js"
+    },
+    {
+      "revision": "b8a4eeefcb97d38016c5026c6a04bd37",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useMediaSearch-B24qt5UQ.js"
+    },
+    {
+      "revision": "0c58fbe06bf09aea1e2ef6c0fd959183",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useMoveCitationsToParagraphEnd-_CwGUJ7j.js"
+    },
+    {
+      "revision": "96c0eec2eec95f1260a4ab729271a5df",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useOaiRealtimeSettings-wa7LbRdV.js"
+    },
+    {
+      "revision": "14501cffebb0e7b9484f24c5790f242a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useOpenMemorySearchHistoryModal-CTEkEh3_.js"
+    },
+    {
+      "revision": "3a353b339ee37ea5adaf816b3cc62502",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useOrgBilling-B9hsPYRY.js"
+    },
+    {
+      "revision": "70818d5db901a8108feea8a7d02ee891",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useOrgPremiumSecureFeatures-BUt1wlJE.js"
+    },
+    {
+      "revision": "e74b63f7a64777cdaecc46ff8ce3f96d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useOrgUsers-aVHnr2Ey.js"
+    },
+    {
+      "revision": "5fbb8c0cc11482ce5d9134e2156a369e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useParsedHealthAttributes-soQFYQxO.js"
+    },
+    {
+      "revision": "78af6501be10802c93b951dfca49b42c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/usePasteShortcutQuery-CqzJN7vd.js"
+    },
+    {
+      "revision": "e519afa7c92b77cbc63c4fb5db2e1b11",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/usePriceAlertMutations-DsPq6QvI.js"
+    },
+    {
+      "revision": "f24b8e097cd8f7f0af31e359f64d0f94",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/usePriceAlertQuery-C-HZHdDd.js"
+    },
+    {
+      "revision": "cc90721401a0c861ebe2e92f0c5f0859",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useProFeatures-plAcDjEs.js"
+    },
+    {
+      "revision": "0501d2eb3ead7751305c6fb628f52519",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/user-agent-parser-D42wIGRt.js"
+    },
+    {
+      "revision": "7000b4c0e85d521e4e1e7ef6bce643da",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/UserClarificationStep-x8P8X8SP.js"
+    },
+    {
+      "revision": "65c7ce5c24ee9d4fd6f2916ea20fd8bb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useRecentItemsQuery-q_7cWH7e.js"
+    },
+    {
+      "revision": "5c6868330b8e864b4a893ab82aeb31df",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useRecentThreadUpdates-DlMyx9s1.js"
+    },
+    {
+      "revision": "009b5550158422ec4d3708600b564603",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useRemoveMediaItemFromSectionSelectedImages-vANo1gWO.js"
+    },
+    {
+      "revision": "95b9518ae7a51f89d91e3b9f2dd99646",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useRemoveThreadFromCollection-BjW5fz0W.js"
+    },
+    {
+      "revision": "265c35a9840b365afff97425d12ed5c6",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useRemoveWatchlistSubscription-CKQi_nn7.js"
+    },
+    {
+      "revision": "a5e55da4fbf64cf82d591f695a1445af",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/UsernameModal-Ds-s_nnp.js"
+    },
+    {
+      "revision": "cd0f5188580c6965e82abf7e0332648c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useScheduledTaskMutations-0VaoUOiu.js"
+    },
+    {
+      "revision": "c9bf9f18e0dd024f6feded3faf0bfdc5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useScrollBarSize-Blkn0M7z.js"
+    },
+    {
+      "revision": "ead8b5ddc79ee088a765724902c0db0d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useScrollPositionPersistence-RGPAj5T5.js"
+    },
+    {
+      "revision": "6210543cb82c69b2b5ec4396b740d9b1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useScrollToUrlHash-BSrTUx2K.js"
+    },
+    {
+      "revision": "5aef9763ccd6a790670ff4e171907f91",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useSelectedAPIGroupCustomerInfo-OtFb9hcH.js"
+    },
+    {
+      "revision": "7f1419d28d4a3b1ea6048112829bc3ee",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useSessionOrgUUID-CX543HfA.js"
+    },
+    {
+      "revision": "a4969fd476a79a87dabc385a364bc281",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useSetThreadAccess-B_HyJtmI.js"
+    },
+    {
+      "revision": "7c096915bcdfe70676460553e5683a59",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useShoppingTryOn-89FiXzxj.js"
+    },
+    {
+      "revision": "26937d92108eb2ca8b8f1b49e2d04592",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useShoppingWidget-DS2Cd1U3.js"
+    },
+    {
+      "revision": "7504329a4bf3845a95321912d532d55d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useSonarFileSearchGateEnabled-DpKWKEcc.js"
+    },
+    {
+      "revision": "6a4c24ab0797411412db50fa051e90f2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useSpacesBookmarking-CMgCHF41.js"
+    },
+    {
+      "revision": "9503579e560f20a73ccd8ee7f2c8f16d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useSpaceTemplates-DX0qniEN.js"
+    },
+    {
+      "revision": "5349ea282a24135471fdf69199bf2bf9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useSports-B6Cpf-6y.js"
+    },
+    {
+      "revision": "8174a63358840ff633935988cd49b3fb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useSportsEvent-DJVEnxI5.js"
+    },
+    {
+      "revision": "0a326153e14b66c5385220bbf26357c1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useStripeAppearance-DDBFRRJ6.js"
+    },
+    {
+      "revision": "a072473b94d0ccdc8d21376c0615967e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useStripePromise-DlqfX-vj.js"
+    },
+    {
+      "revision": "7090e8669c5a16ac378cdadb42b21121",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useSwapThreadCollection-NXwrJHCX.js"
+    },
+    {
+      "revision": "4719a162309d38412142264677fdf712",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useTeamSelection-Bx9C0Phh.js"
+    },
+    {
+      "revision": "b7f2c62d87eefbd0c21b11b77b89e2d2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useThreadAssets-CDlO-_13.js"
+    },
+    {
+      "revision": "540368c6aba7a3baca9f44f8195a7205",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useThreadHeaderActions-gIe2kzB2.js"
+    },
+    {
+      "revision": "1e4154cc8fb90290d4068d1220f94dd0",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useThreadMutations-CQV_zMOi.js"
+    },
+    {
+      "revision": "c042983d80317c9f3abe9c59d7543c73",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useTimeAgoTranslations-D2Wn7Kif.js"
+    },
+    {
+      "revision": "3dfdae27ad1580d342c71d86d90df14b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useTooltip-DyW_Pe0-.js"
+    },
+    {
+      "revision": "d84db49e358676fb135165621bb842bb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useTrackGeneratedAssetView-DqGbdHpn.js"
+    },
+    {
+      "revision": "58ea2ad5b1089c38734edd3698ca155c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useUpdateAutoTopupMutation-B0fF-mXU.js"
+    },
+    {
+      "revision": "36f6f57a89c8638a9f2ac65bf2dd3641",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useUpdateThreadAccess-CcYcNqyQ.js"
+    },
+    {
+      "revision": "624602b3da218c69f70d6bee9d52032a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useUserPreviousSubscriptionQuery-DG5mkpJF.js"
+    },
+    {
+      "revision": "734c12a97c3b4ab7ad7ac6bc5ea2a417",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useVersioningChain-DIXixdrk.js"
+    },
+    {
+      "revision": "1624dd23bc705ac3b603ad5b25f07f88",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/useWatchlistQuery-CZsMvT-E.js"
+    },
+    {
+      "revision": "14533f33eac4c26eb573fd83ca369892",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/UTCDate-X0j4GFGV.js"
+    },
+    {
+      "revision": "8406bf6dd6342e1d2ab7e04da99b28d1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/util-TkwrISu2.js"
+    },
+    {
+      "revision": "adc5d6ed8e8454bcd1a9a21cd7adf666",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/utils-B83VU6lD.js"
+    },
+    {
+      "revision": "51e8483a82509ee18b4b0520b4ab5427",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/utils-BnY6MmTq.js"
+    },
+    {
+      "revision": "acc8a4294c238adca86096b2fc15caf8",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/utils-BqATbKE3.js"
+    },
+    {
+      "revision": "269fe99e059bd9a6a133053cd48e71b7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/utils-CxmkOkrN.js"
+    },
+    {
+      "revision": "d6eedc0f86e8bf0dfccf65e569aa8b8e",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/utils-DNdoAnOi.js"
+    },
+    {
+      "revision": "13215d748f0a4f1e4c2ce2a68141be99",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/utils-DvTxBm29.js"
+    },
+    {
+      "revision": "97ae281d1d8f3e034449fadc9a9521ab",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/v-B9_nGxKh.js"
+    },
+    {
+      "revision": "ac0970e3a5566a9ac4acb0e708f6feb2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/vala-Bl6F7BwF.js"
+    },
+    {
+      "revision": "7056beefd6832611ab8533a3cdbb6386",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/vbnet-BhrUc4aD.js"
+    },
+    {
+      "revision": "82a680a97f1bd7808c262083b81b4342",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/vbnet-DLrcq9u4.js"
+    },
+    {
+      "revision": "3b57697c4d584c706036f10e9d11895f",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/velocity-Wo69Cvl9.js"
+    },
+    {
+      "revision": "ee997ed6f3cac454a2570c205bb636e2",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/vendors-bqg7Hkg3.js"
+    },
+    {
+      "revision": "8a9c1b0b57c2c1649f8b47d8445733dd",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/verilog-C68xWgtf.js"
+    },
+    {
+      "revision": "2f92f093cd58fefd3eb2d8fd77be3fb9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/VersionDropdown-mCXiV1xL.js"
+    },
+    {
+      "revision": "f515d879dcb2ebed3fee1f77a8f8d5d7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/vertical-finance.html-By36ZKpQ.js"
+    },
+    {
+      "revision": "0b2bd38166ce2e1add5a1e09d3c8b83c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/VerticalSearchBar-BcV79F3a.js"
+    },
+    {
+      "revision": "8d44f38d6594020a1e3c7827ab47ea5b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/VerticalSearchContainer-BPbH_LFS.js"
+    },
+    {
+      "revision": "8627e9455ead2057ca496ab856d42e61",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/vhdl-B1Rg-Gh2.js"
+    },
+    {
+      "revision": "e57de5191504c2f17d8539e956b26c2a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/VideoPlayer-DYzOTB5W.js"
+    },
+    {
+      "revision": "6dffb2effd40fdd453cc6574a5fd3029",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/VideosMode-Be8RE-sT.js"
+    },
+    {
+      "revision": "9d9e51b4dfcb7a89943749e581898196",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/vim-CfcRNGQH.js"
+    },
+    {
+      "revision": "be782c76aa488530e430ae4d19a86bbb",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/visual-basic-DSy92J26.js"
+    },
+    {
+      "revision": "a11cde5b4d2b67c5a88e130669d919ee",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/vite-h6ohMMGa.js"
+    },
+    {
+      "revision": "903a21ca2898183df4eaacaded46cd6a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/VoiceToVoiceModal-CwifjsDN.js"
+    },
+    {
+      "revision": "cdca24599aab7fa10b9bd7347ca3c8c7",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/WakeScheduleBanner-CvHrYybc.js"
+    },
+    {
+      "revision": "b162a77bacf4758f29880ed5ee6a8fec",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/warpscript-rrvBTP_J.js"
+    },
+    {
+      "revision": "0aa06bbc3891cd206867ad6beedae39c",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/wasm-TDc_N9ay.js"
+    },
+    {
+      "revision": "539eccd6d05e50b472ae3cbc119e0e2a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/WatchlistModal-O5IsNDCb.js"
+    },
+    {
+      "revision": "d11887c033328a42398e024a15fe7f84",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/WatchlistSelections-541IX7Io.js"
+    },
+    {
+      "revision": "5e4802c41b70e280983f1fdc0f067f4d",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/web-idl-9WtmM4xp.js"
+    },
+    {
+      "revision": "cbb78ce43f9d0aa1437c2dec515f5b13",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/WelcomeOverlay-BrwwsbMX.js"
+    },
+    {
+      "revision": "b450576093ac325538a51592985ef8ee",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/WhatsHappeningHorizontal-BAe0amK1.js"
+    },
+    {
+      "revision": "b3ef142f0df154d13067106a63c174ce",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/widgetGrouping-Bb3oCGCo.js"
+    },
+    {
+      "revision": "9234ec67d9eacaf08166564d4c020dd4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/widgets-home-DIa5Z8bM.js"
+    },
+    {
+      "revision": "2bbe6b2c0ec62998220831b3e3e501c1",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/wiki-1kcaX5IK.js"
+    },
+    {
+      "revision": "76014f9e0faf7554ca81fb4c3a21b15b",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/WithMenu-CivEkZHk.js"
+    },
+    {
+      "revision": "58d817b58154262c252f8189b43face3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/wolfram-DI1xiVjy.js"
+    },
+    {
+      "revision": "66e96b49da04623dda15f1459d42f483",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/workbox-window.prod.es5-CwtvwXb3.js"
+    },
+    {
+      "revision": "b3f65915f4cfb87fe0bb8e2c6436f6d3",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/Workflow-BOBq_svz.js"
+    },
+    {
+      "revision": "355dd350f6b001145ac8161a2c47e3cc",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/WorkflowControl-CwT3VO82.js"
+    },
+    {
+      "revision": "67fedad92ec2f988c7d9109b0e5fd013",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/WorkflowLight-Bfs6NgN7.js"
+    },
+    {
+      "revision": "713b37f285de1b516dee388b28991568",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/wren-DT51RZvf.js"
+    },
+    {
+      "revision": "c8199e9dde813cf1c86994a7870555c4",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/WSCStoryById-BNbBbC-y.js"
+    },
+    {
+      "revision": "21ead4dd501c665668300b0d6d1feee5",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/xeora-Bj36CKtq.js"
+    },
+    {
+      "revision": "80c4db60561c3573e7851ec5b0da5e61",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/xml-doc-CZFjTH8w.js"
+    },
+    {
+      "revision": "e21eac6cc137d55c60ef30ee3310e374",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/xojo-CqjYR9HH.js"
+    },
+    {
+      "revision": "6b19fb9bfd396196e7eb76266c599d3a",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/xquery-OSxYyjWy.js"
+    },
+    {
+      "revision": "20a8353bc4feab59180fab6edc4f9ec9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/yaml-BL4nXEt5.js"
+    },
+    {
+      "revision": "541124a5b6cbf36002d59392f2fc92e9",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/yaml-pHjxJgpq.js"
+    },
+    {
+      "revision": "a6e43d77d4c88032bbe1047f4852fa74",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/yang-YPp3_JnJ.js"
+    },
+    {
+      "revision": "0971007d1dfbfa9eb87efe8165c43b72",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/YoutubeVideoPlayer-Cx9lDTNa.js"
+    },
+    {
+      "revision": "471fd075f67243a7b935c357762ba271",
+      "url": "https://pplx-next-static-public.perplexity.ai/_spa/assets/zig-bM6z51aK.js"
+    }
+  ],
+  "totalChunks": 1118,
+  "extractedAt": "2026-02-21T04:06:53.644Z",
+  "serviceWorkerUrl": "https://www.perplexity.ai/service-worker.js"
+}
