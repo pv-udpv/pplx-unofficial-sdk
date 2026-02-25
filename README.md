@@ -16,6 +16,7 @@ This repository contains a **comprehensive enterprise-level monorepo** combining
 - 📊 **Schema-Driven Development** - OpenAPI specifications as source of truth
 - 🏗️ **Production Infrastructure** - Docker, Kubernetes, CI/CD pipelines
 - 🔬 **Research Tools** - Traffic analysis, reverse engineering, code generation
+- 🚀 **Browser Userscripts** - Enhance Perplexity.ai web interface
 
 ### Quick Links
 
@@ -23,6 +24,7 @@ This repository contains a **comprehensive enterprise-level monorepo** combining
 - 🏗️ [Architecture Overview](docs/architecture.md) - System design
 - 🚀 [Getting Started](#-quick-start-enterprise-workspace) - One-command setup
 - 📖 [Original SDK Documentation](#-typescript-sdk) - TypeScript SDK usage
+- 🎨 [Userscripts](#-browser-userscripts) - Browser automation tools
 
 ---
 
@@ -88,6 +90,7 @@ make clean     # Clean build artifacts
 │   ├── collected/        # Captured traffic
 │   └── tools/            # Schema tools
 ├── src/                   # Original TypeScript SDK
+├── userscripts/           # Browser userscripts (NEW)
 ├── data/                  # Persistent data
 ├── scripts/               # Utility scripts
 ├── infra/                 # Infrastructure (Docker, K8s)
@@ -152,7 +155,7 @@ npm install @pplx-unofficial/sdk
 # or
 yarn add @pplx-unofficial/sdk
 # or
-pnpm add @pplx-unofficial/sdk
+pnpm add @pplx-unofficial-sdk
 ```
 
 ## 🚀 Quick Start
@@ -372,6 +375,84 @@ pplx-bot research "GraphQL vs REST" --depth 3
 
 See [sdk-consumer-bot/README.md](sdk-consumer-bot/README.md) for full documentation.
 
+---
+
+## 🎨 Browser Userscripts
+
+Enhance Perplexity.ai web interface with Tampermonkey/Greasemonkey userscripts.
+
+### 🚀 YOLO MCP (Auto-Approve)
+
+**Automatically bypass MCP tool confirmation prompts for seamless AI workflows.**
+
+#### Quick Install
+
+[![Install](https://img.shields.io/badge/Install-Userscript-blue?logo=tampermonkey)](https://raw.githubusercontent.com/pv-udpv/pplx-unofficial-sdk/main/userscripts/perplexity-yolo-mcp.user.js)
+
+**[Click here to install](https://raw.githubusercontent.com/pv-udpv/pplx-unofficial-sdk/main/userscripts/perplexity-yolo-mcp.user.js)** (requires [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/))
+
+#### Features
+
+- ✅ **Zero-Click Approval** - Automatically approves all MCP tool executions
+- ✅ **Fetch Interception** - Hooks into API requests at document start
+- ✅ **Flag Modification** - Sets `should_ask_for_mcp_tool_confirmation: false`
+- ✅ **Minimal Overhead** - Lightweight with zero performance impact
+- ✅ **Debug Logging** - Console output for troubleshooting
+- ✅ **Browser Compatible** - Chrome, Firefox, Edge, Safari
+
+#### How It Works
+
+```javascript
+// Intercepts fetch() calls to Perplexity API
+window.fetch = async function(...args) {
+  // Detect MCP-related requests
+  if (resource.includes('/rest/sse/perplexity_ask')) {
+    // Modify confirmation flag in request body
+    bodyObj.params.should_ask_for_mcp_tool_confirmation = false;
+  }
+  return originalFetch.apply(this, args);
+}
+```
+
+#### Security Warning
+
+⚠️ **Use with caution!** This script disables safety confirmations. Only use if:
+- You trust all configured MCP servers completely
+- You understand what each MCP tool does
+- You accept full responsibility for automated actions
+
+MCP tools can execute code, modify files, and access external services.
+
+#### Installation Steps
+
+1. **Install Userscript Manager**
+   - [Tampermonkey](https://www.tampermonkey.net/) (Chrome, Edge, Firefox, Safari)
+   - [Violentmonkey](https://violentmonkey.github.io/) (Chrome, Firefox, Edge)
+
+2. **Install Script**
+   - Click [install link](https://raw.githubusercontent.com/pv-udpv/pplx-unofficial-sdk/main/userscripts/perplexity-yolo-mcp.user.js)
+   - Confirm installation in userscript manager
+
+3. **Verify Installation**
+   - Navigate to [perplexity.ai](https://www.perplexity.ai)
+   - Open browser console (F12)
+   - Look for: `✅ [YOLO MCP] Userscript loaded`
+
+4. **Test Functionality**
+   - Trigger any MCP tool action
+   - Check console: `🚀 [YOLO MCP] Auto-approve enabled`
+
+#### Documentation
+
+See [userscripts/README.md](userscripts/README.md) for:
+- Detailed technical explanation
+- Security considerations
+- Troubleshooting guide
+- Development instructions
+- Contributing guidelines
+
+---
+
 ## 🔒 Security
 
 - **CSRF Protection** - State parameter in OAuth flow
@@ -459,6 +540,7 @@ Next.js application:
 | Auth Service | ✅ Complete | Python/FastAPI |
 | Knowledge API | ✅ Complete | Python/FastAPI |
 | TypeScript SDK | 🔄 Maintained | TypeScript |
+| Browser Userscripts | ✅ Complete | JavaScript |
 | Infrastructure | ✅ Complete | Docker/K8s |
 | Documentation | ✅ Complete | Markdown |
 | CI/CD Pipelines | ✅ Complete | GitHub Actions |
