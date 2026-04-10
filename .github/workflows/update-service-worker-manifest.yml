@@ -66,7 +66,20 @@ jobs:
           PPLX_SW_CACHE_MODE: auto
         run: node scripts/fetch-sw-manifest.mjs
 
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No manifest changes detected"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Manifest changes detected:"
+            git diff --stat
+          fi
+
       - name: Create pull request
+        if: steps.changes.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           branch: automation/sw-manifest
@@ -78,3 +91,7 @@ jobs:
 
             - Updates: `spa-assets/metadata/service-worker-manifest.latest.json`
             - Stats: `spa-assets/metadata/service-worker-manifest.stats.latest.json`
+
+            > **Note:** If this action fails with a permissions error, enable
+            > "Allow GitHub Actions to create and approve pull requests" in
+            > Settings > Actions > General > Workflow permissions.

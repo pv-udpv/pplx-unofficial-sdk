@@ -4,7 +4,7 @@ version = "0.1.0"
 requires-python = ">=3.12"
 description = "Enterprise-level workspace for Perplexity.ai API research and development"
 authors = [
-    {name = "pv-udpv", email = ""}
+    {name = "pv-udpv"}
 ]
 dependencies = [
     "fastapi>=0.110.0",

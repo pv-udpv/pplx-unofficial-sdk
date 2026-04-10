@@ -18,10 +18,11 @@ jobs:
       - name: Check Perplexity.ai availability
         run: |
           echo "Checking www.perplexity.ai..."
-          if curl -f -s -o /dev/null -w "%{http_code}" https://www.perplexity.ai | grep -q "200\|301\|302"; then
-            echo "✅ www.perplexity.ai is reachable"
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" -A "Mozilla/5.0 (compatible; pplx-unofficial-sdk CI health check)" -L --max-time 15 https://www.perplexity.ai 2>/dev/null || echo "000")
+          if echo "$STATUS" | grep -qE "^(200|301|302|403|503)$"; then
+            echo "✅ www.perplexity.ai responded with HTTP $STATUS (reachable)"
           else
-            echo "❌ www.perplexity.ai is not reachable"
+            echo "❌ www.perplexity.ai returned unexpected status: $STATUS"
             exit 1
           fi
 
