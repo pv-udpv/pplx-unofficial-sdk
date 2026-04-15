@@ -8,10 +8,10 @@ sys.path.insert(
     0, str(Path(__file__).parent.parent.parent.parent / "packages" / "shared-python" / "src")
 )
 
-from config import BaseSettings  # type: ignore
+from config import BaseSettings
 
 
-class GatewaySettings(BaseSettings):
+class GatewaySettings(BaseSettings):  # type: ignore[misc]
     """Gateway service settings."""
 
     host: str = "0.0.0.0"

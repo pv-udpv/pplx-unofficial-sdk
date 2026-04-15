@@ -4,7 +4,7 @@ version = "0.1.0"
 requires-python = ">=3.12"
 description = "Enterprise-level workspace for Perplexity.ai API research and development"
 authors = [
-    {name = "pv-udpv", email = ""}
+    {name = "pv-udpv"}
 ]
 dependencies = [
     "fastapi>=0.110.0",
@@ -33,6 +33,15 @@ extend = "ruff.toml"
 
 [tool.mypy]
 python_version = "3.12"
+explicit_package_bases = true
+# Directories with hyphens in their names cannot form valid Python module paths.
+# mypy resolves their `src/` subdirectories to the top-level `src` module,
+# creating duplicate-module errors when multiple such services are checked together.
+# Excluding them here avoids the conflict; gateway (no hyphen) is checked normally.
+exclude = [
+    "^services/auth-service/",
+    "^services/knowledge-api/",
+]
 strict = true
 warn_return_any = true
 warn_unused_configs = true
@@ -55,6 +64,7 @@ addopts = [
     "--strict-config",
     "--showlocals",
     "-ra",
+    "--import-mode=importlib",
 ]
 
 [tool.coverage.run]
