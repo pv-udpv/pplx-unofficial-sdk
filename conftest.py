@@ -16,7 +16,7 @@ import pytest
 
 # Provide a safe default secret key for auth-service tests so that
 # AuthSettings() does not raise during module-level initialisation.
-os.environ.setdefault("AUTH_SECRET_KEY", "test-only-insecure-key-do-not-use-in-production")
+os.environ.setdefault("AUTH_SECRET_KEY", "test-only-secret-key-32-characters!")
 
 
 @pytest.fixture(autouse=True)
