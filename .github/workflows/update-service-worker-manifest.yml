@@ -69,13 +69,14 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet; then
+          status="$(git status --porcelain)"
+          if [ -z "$status" ]; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No manifest changes detected"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "Manifest changes detected:"
-            git diff --stat
+            printf '%s\n' "$status"
           fi
 
       - name: Create pull request

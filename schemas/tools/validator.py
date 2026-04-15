@@ -8,7 +8,7 @@ from typing import Any
 # Add packages to path (go up 3 levels to repo root, then into packages)
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / "packages" / "shared-python" / "src"))
 
-from logger import get_logger  # type: ignore
+from logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -29,7 +29,7 @@ def validate_schema(schema_file: Path) -> bool:
             # Try to determine file type by extension
             if schema_file.suffix in [".yaml", ".yml"]:
                 try:
-                    import yaml
+                    import yaml  # type: ignore[import-untyped]
 
                     schema: dict[str, Any] = yaml.safe_load(f)
                 except ImportError:

@@ -33,6 +33,11 @@ extend = "ruff.toml"
 
 [tool.mypy]
 python_version = "3.12"
+explicit_package_bases = true
+exclude = [
+    "^services/auth-service/",
+    "^services/knowledge-api/",
+]
 strict = true
 warn_return_any = true
 warn_unused_configs = true
@@ -55,6 +60,7 @@ addopts = [
     "--strict-config",
     "--showlocals",
     "-ra",
+    "--import-mode=importlib",
 ]
 
 [tool.coverage.run]
