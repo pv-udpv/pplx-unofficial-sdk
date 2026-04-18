@@ -27,3 +27,45 @@ updates:
       - npm
     commit-message:
       prefix: "deps(npm)"
+
+  - package-ecosystem: "npm"
+    directory: "/sdk-consumer-bot"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Moscow"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - npm
+    commit-message:
+      prefix: "deps(npm)"
+
+  - package-ecosystem: "npm"
+    directory: "/packages/code-graph"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Moscow"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - npm
+    commit-message:
+      prefix: "deps(npm)"
+
+  - package-ecosystem: "npm"
+    directory: "/packages/shared-ts"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Moscow"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - npm
+    commit-message:
+      prefix: "deps(npm)"
