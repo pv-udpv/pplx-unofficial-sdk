@@ -1,0 +1,6 @@
+event: message
+data: {"text": "{\"answer\": \"Paris\", \"web_results\": [{\"title\": \"Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/Paris\", \"snippet\": \"Capital of France\"}]}", "final": false, "backend_uuid": "abc-123"}
+
+event: message
+data: {"text": "{\"answer\": \"Paris is the capital of France.\", \"web_results\": [{\"title\": \"Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/Paris\", \"snippet\": \"Capital of France\"}, {\"title\": \"Britannica\", \"url\": \"https://www.britannica.com/place/Paris\"}], \"final\": true}", "final": true, "backend_uuid": "abc-123"}
+
