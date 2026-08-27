@@ -49,7 +49,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.changes.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "chore: update API schemas"
           title: "Update API Schemas"
