@@ -6,11 +6,27 @@ on:
       - 'spa-assets/**'
       - 'scripts/verify_integrity.py'
       - 'scripts/update_asset_index.py'
+      - 'scripts/*sw-manifest*'
+      - 'scripts/service-worker-client.test.mjs'
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+      - '.github/workflows/verify-spa-assets.yml'
+      - '.github/workflows/update-service-worker-manifest.yml'
   pull_request:
     paths:
       - 'spa-assets/**'
       - 'scripts/verify_integrity.py'
       - 'scripts/update_asset_index.py'
+      - 'scripts/*sw-manifest*'
+      - 'scripts/service-worker-client.test.mjs'
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+      - '.github/workflows/verify-spa-assets.yml'
+      - '.github/workflows/update-service-worker-manifest.yml'
   workflow_dispatch:
 
 jobs:
@@ -26,6 +42,24 @@ jobs:
         with:
           lfs: true
       
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test service worker tooling
+        run: node --test scripts/sw-manifest-utils.test.mjs scripts/service-worker-client.test.mjs
+
+      - name: Validate manifest snapshots
+        run: node scripts/validate-sw-manifest.mjs
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
