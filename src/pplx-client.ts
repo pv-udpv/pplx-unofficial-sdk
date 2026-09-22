@@ -163,32 +163,32 @@ export interface Entry {
   uuid: string;                    // frontend_uuid
   backend_uuid: string;
   context_uuid: string;            // thread_id
-  
+
   // Query info
   query_str: string;
   thread_url_slug?: string;
-  
+
   // Content
   blocks: Block[];                 // Rich content blocks
   status: StreamStatus | string;   // Support both enum and legacy string
   final: boolean;
-  
+
   // Sources
   sources_list?: Source[];
-  
+
   // Metadata
   mode?: SearchMode | string;      // Support both enum and legacy string
   model?: SearchModel | string;    // Support both enum and legacy string
   role?: "user" | "assistant";
   text?: string;                   // Plain text fallback
-  
+
   // CTA & UI
   ctas?: CallToAction[];           // Upgrade prompts, etc.
   placement?: UXPlacement;         // IN_THREAD, SIDEBAR, MODAL
-  
+
   // Assets
   assets?: Asset[];                // CODE_ASSET, CHART, GENERATED_IMAGE
-  
+
   // Error handling
   error?: {
     message: string;
@@ -197,12 +197,12 @@ export interface Entry {
 }
 
 export type UserPermission = "read" | "write" | "admin";
-export type SearchFocus = 
-  | "internet" 
-  | "scholar" 
-  | "writing" 
-  | "wolfram" 
-  | "youtube" 
+export type SearchFocus =
+  | "internet"
+  | "scholar"
+  | "writing"
+  | "wolfram"
+  | "youtube"
   | "reddit"
   | "social"
   | "news";
@@ -227,6 +227,10 @@ export interface SSEClientOptions {
   debug?: boolean;
   /** Overrides the configured logger for this request's debug metadata only. */
   debugLogger?: DebugLogSink;
+  /** Cancel this request, including body streaming. */
+  signal?: AbortSignal;
+  /** Resume cursor, when supplied by the server. */
+  cursor?: string;
   mode?: SearchMode | string;
   focus?: SearchFocus;
   model?: SearchModel | string;
@@ -262,8 +266,11 @@ export interface SSERequestParams extends SSERequest {
   source: string;
 }
 
-export type JsonPatchOperation = any;
-export type DiffBlock = any;
+export type JsonPatchOperation =
+  | { op: "add" | "replace" | "test"; path: string; value: any }
+  | { op: "remove"; path: string }
+  | { op: "move" | "copy"; path: string; from: string };
+export interface DiffBlock { field: string; patches: JsonPatchOperation[]; }
 export type Source = any;
 export type SocialInfo = any;
 export type CollectionInfo = any;
@@ -393,68 +400,32 @@ interface SSEEvent {
 }
 
 class SSEParser {
-  private buffer: string = "";
+  private buffer = "";
+  private event: SSEEvent = {};
 
-  /**
-   * Parse SSE chunk and yield events
-   */
-  *parse(chunk: string): Generator<SSEEvent> {
+  *parse(chunk: string, final = false): Generator<SSEEvent> {
     this.buffer += chunk;
-    const lines = this.buffer.split("\n");
-    
-    // Keep the last incomplete line in buffer
-    this.buffer = lines.pop() || "";
-
-    let currentEvent: SSEEvent = {};
-
-    for (const line of lines) {
-      if (line.trim() === "") {
-        // Empty line signals end of event
-        if (Object.keys(currentEvent).length > 0) {
-          yield currentEvent;
-          currentEvent = {};
-        }
+    while (true) {
+      const end = this.buffer.search(/[\r\n]/);
+      if (end < 0 || (!final && this.buffer[end] === "\r" && end === this.buffer.length - 1)) return;
+      const line = this.buffer.slice(0, end);
+      const width = this.buffer.slice(end, end + 2) === "\r\n" ? 2 : 1;
+      this.buffer = this.buffer.slice(end + width);
+      if (line === "") {
+        const event = this.event;
+        this.event = {};
+        if (event.data !== undefined) yield event;
         continue;
       }
-
-      if (line.startsWith(":")) {
-        // Comment line, ignore
-        continue;
-      }
-
-      const colonIndex = line.indexOf(":");
-      if (colonIndex === -1) {
-        continue;
-      }
-
-      const field = line.substring(0, colonIndex);
-      let value = line.substring(colonIndex + 1);
-      
-      // Remove leading space if present
-      if (value.startsWith(" ")) {
-        value = value.substring(1);
-      }
-
-      switch (field) {
-        case "event":
-          currentEvent.event = value;
-          break;
-        case "data":
-          // Join multiple data lines with a newline as required by the SSE spec
-          currentEvent.data = currentEvent.data ? currentEvent.data + "\n" + value : value;
-          break;
-        case "id":
-          currentEvent.id = value;
-          break;
-        case "retry":
-          currentEvent.retry = parseInt(value, 10);
-          break;
-      }
+      if (line.startsWith(":")) continue;
+      const colon = line.indexOf(":");
+      const field = colon < 0 ? line : line.slice(0, colon);
+      const raw = colon < 0 ? "" : line.slice(colon + 1);
+      const value = raw.startsWith(" ") ? raw.slice(1) : raw;
+      if (field === "data") {
+        this.event.data = this.event.data === undefined ? value : this.event.data + "\n" + value;
+      } else if (field === "event") this.event.event = value;
     }
-  }
-
-  reset() {
-    this.buffer = "";
   }
 }
 
@@ -515,7 +486,7 @@ export class PplxClient {
    * Check if status indicates completion
    */
   private isCompletedStatus(status: any): boolean {
-    return status === StreamStatus.COMPLETED || 
+    return status === StreamStatus.COMPLETED ||
            status === "completed" ||
            String(status).toLowerCase() === "completed";
   }
@@ -540,312 +511,119 @@ export class PplxClient {
     });
   }
 
-  /**
-   * Stream search results from Perplexity AI
-   * 
-   * @param query - The search query
-   * @param options - Optional search parameters
-   * @yields Entry objects as they stream in
-   */
-  async *search(
-    query: string,
-    options?: SSEClientOptions
-  ): AsyncGenerator<Entry> {
-    const url = `${this.baseUrl}/rest/sse/perplexity_ask`;
-    
-    const requestBody: SSERequestParams = {
-      version: "2.18",
-      source: "default",
-      query: query,
-      ...options,
-      frontend_uuid: options?.frontend_uuid || this.generateUuid(),
-    };
-
-    this.logger.info("Starting SSE search", { query, url });
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
-
-    try {
-      let response: Response;
-      try {
-        response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "text/event-stream",
-            ...this.headers,
-          },
-          body: JSON.stringify(requestBody),
-          signal: controller.signal,
-        });
-      } catch (networkErr) {
-        clearTimeout(timeoutId);
-        if (isOfflineError(networkErr)) {
-          throw new ApiClientsError("Network is offline or unreachable", 0, { isOffline: true });
-        }
-        throw networkErr;
-      }
-
-      clearTimeout(timeoutId);
-
-      const requestId = response.headers.get("x-request-id") ?? undefined;
-
-      if (!response.ok) {
-        const body = await response.text().catch(() => "");
-        throw buildApiClientsError(response.status, response.statusText, body, requestId);
-      }
-
-      if (!response.body) {
-        throw new PplxStreamError("Response body is null");
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      // Create a new parser instance for this search to avoid shared state
-      const parser = new SSEParser();
-
-      let done = false;
-      let lastEntry: Entry | null = null;
-
-      while (!done) {
-        const { value, done: streamDone } = await reader.read();
-        done = streamDone;
-
-        if (value) {
-          const chunk = decoder.decode(value, { stream: true });
-          
-          for (const event of parser.parse(chunk)) {
-            if (event.data) {
-              try {
-                const data = JSON.parse(event.data);
-                
-                // Handle different event types
-                if (data.status === "error") {
-                  this.logger.error("Stream error", data);
-                  throw new FetcherError(data.message || "Stream error occurred");
-                }
-
-                // Construct Entry object
-                const entry: Entry = {
-                  uuid: data.uuid || data.frontend_uuid || "",
-                  backend_uuid: data.backend_uuid || "",
-                  context_uuid: data.context_uuid || "",
-                  query_str: data.query_str || query,
-                  blocks: data.blocks || [],
-                  status: this.normalizeStatus(data.status),
-                  final: data.final || this.isCompletedStatus(data.status) || false,
-                  sources_list: data.sources_list || data.sources || [],
-                  mode: data.mode,
-                  role: data.role,
-                  text: data.text,
-                  thread_url_slug: data.thread_url_slug,
-                  model: data.model,
-                  ctas: data.ctas,
-                  placement: data.placement,
-                  assets: data.assets,
-                  error: data.error,
-                };
-
-                lastEntry = entry;
-                yield entry;
-
-                // Stop if this is the final entry
-                if (entry.final) {
-                  this.logger.info("Stream completed", { backend_uuid: entry.backend_uuid });
-                  return;
-                }
-              } catch (parseError) {
-                if (parseError instanceof PplxError) {
-                  throw parseError;
-                }
-                this.logger.warn("Failed to parse SSE event data", { 
-                  error: parseError, 
-                  data: event.data 
-                });
-                throw new ParseError(
-                  `SSE parse error: ${(parseError as Error).message}`,
-                  event.data
-                );
-              }
-            }
-          }
-        }
-      }
-
-      // If stream ended without a final entry, yield a new final entry
-      if (lastEntry && !lastEntry.final) {
-        const finalEntry: Entry = {
-          ...lastEntry,
-          final: true,
-          status: StreamStatus.COMPLETED,
-        };
-        yield finalEntry;
-      }
-
-      this.logger.info("Stream ended");
-    } catch (error: any) {
-      clearTimeout(timeoutId);
-      
-      if (error.name === "AbortError") {
-        throw new FetcherError(`Request timeout after ${this.timeout}ms`);
-      }
-      
-      if (error instanceof PplxError) {
-        throw error;
-      }
-      
-      this.logger.error("Stream error", error);
-      throw new FetcherError(`Stream error: ${error.message}`);
+  async *search(query: string, options: SSEClientOptions = {}): AsyncGenerator<Entry> {
+    const { signal, debug = false, debugLogger, ...params } = options;
+    const diagnostics = new DebugLogger(debug, debugLogger ?? this.logger);
+    for await (const entry of this.streamRequest("/rest/sse/perplexity_ask", {
+      version: "2.18", source: "default", query, ...params,
+      frontend_uuid: options.frontend_uuid || this.generateUuid(),
+    }, signal)) {
+      diagnostics.logTrace(entry);
+      yield entry;
     }
   }
 
-  /**
-   * Reconnect to an existing stream
-   * 
-   * @param resumeEntryUuid - The entry UUID to resume from
-   * @param query - The original query
-   * @param options - Optional search parameters
-   */
-  async *reconnect(
-    resumeEntryUuid: string,
-    query: string,
-    options?: SSEClientOptions
-  ): AsyncGenerator<Entry> {
-    const url = `${this.baseUrl}/rest/sse/perplexity_ask/reconnect/${resumeEntryUuid}`;
-    
-    this.logger.info("Reconnecting to stream", { resumeEntryUuid, query });
+  /** Continue an existing conversation using its context UUID. */
+  async *followUp(query: string, contextUuid: string, options: SSEClientOptions = {}): AsyncGenerator<Entry> {
+    yield* this.search(query, { ...options, context_uuid: contextUuid });
+  }
 
-    // Use similar logic to search() but with reconnect endpoint
-    const requestBody: SSERequestParams = {
-      version: "2.18",
-      source: "default",
-      query: query,
-      ...options,
-      backend_uuid: resumeEntryUuid,  // Resume from this entry
-    };
+  /** Resume a server entry; the second argument remains the original query. */
+  async *reconnect(resumeEntryUuid: string, query: string, options: SSEClientOptions = {}): AsyncGenerator<Entry> {
+    const { signal, debug = false, debugLogger, ...params } = options;
+    const diagnostics = new DebugLogger(debug, debugLogger ?? this.logger);
+    for await (const entry of this.streamRequest(`/rest/sse/perplexity_ask/reconnect/${encodeURIComponent(resumeEntryUuid)}`, {
+      version: "2.18", source: "default", query, ...params, backend_uuid: resumeEntryUuid,
+    }, signal)) {
+      diagnostics.logTrace(entry);
+      yield entry;
+    }
+  }
 
+  private async *streamRequest(path: string, request: SSERequestParams, signal?: AbortSignal): AsyncGenerator<Entry> {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
-
+    let timedOut = false;
+    const timeoutId = setTimeout(() => { timedOut = true; controller.abort(); }, this.timeout);
+    const abort = () => controller.abort();
+    signal?.addEventListener("abort", abort, { once: true });
+    if (signal?.aborted) abort();
+    let reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
     try {
       let response: Response;
       try {
-        response = await fetch(url, {
+        response = await fetch(`${this.baseUrl}${path}`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "text/event-stream",
-            ...this.headers,
-          },
-          body: JSON.stringify(requestBody),
-          signal: controller.signal,
+          headers: { "Content-Type": "application/json", Accept: "text/event-stream", ...this.headers },
+          body: JSON.stringify(request), signal: controller.signal,
         });
-      } catch (networkErr) {
-        clearTimeout(timeoutId);
-        if (isOfflineError(networkErr)) {
-          throw new ApiClientsError("Network is offline or unreachable", 0, { isOffline: true });
-        }
-        throw networkErr;
-      }
-
-      clearTimeout(timeoutId);
-
-      const requestId = response.headers.get("x-request-id") ?? undefined;
-
-      if (!response.ok) {
-        const body = await response.text().catch(() => "");
-        throw buildApiClientsError(response.status, response.statusText, body, requestId);
-      }
-
-      if (!response.body) {
-        throw new FetcherError("Response body is null");
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      // Create a new parser instance for this reconnect to avoid shared state
-      const parser = new SSEParser();
-
-      let done = false;
-      let lastEntry: Entry | null = null;
-
-      while (!done) {
-        const { value, done: streamDone } = await reader.read();
-        done = streamDone;
-
-        if (value) {
-          const chunk = decoder.decode(value, { stream: true });
-          
-          for (const event of parser.parse(chunk)) {
-            if (event.data) {
-              try {
-                const data = JSON.parse(event.data);
-                
-                const entry: Entry = {
-                  uuid: data.uuid || data.frontend_uuid || "",
-                  backend_uuid: data.backend_uuid || "",
-                  context_uuid: data.context_uuid || "",
-                  query_str: data.query_str || query,
-                  blocks: data.blocks || [],
-                  status: this.normalizeStatus(data.status),
-                  final: data.final || this.isCompletedStatus(data.status) || false,
-                  sources_list: data.sources_list || data.sources || [],
-                  mode: data.mode,
-                  role: data.role,
-                  text: data.text,
-                  thread_url_slug: data.thread_url_slug,
-                  model: data.model,
-                  ctas: data.ctas,
-                  placement: data.placement,
-                  assets: data.assets,
-                  error: data.error,
-                };
-
-                lastEntry = entry;
-                yield entry;
-
-                if (entry.final) {
-                  return;
-                }
-              } catch (parseError) {
-                if (parseError instanceof PplxError) {
-                  throw parseError;
-                }
-                this.logger.warn("Failed to parse reconnect event data", { 
-                  error: parseError 
-                });
-                throw new ParseError(
-                  `SSE reconnect parse error: ${(parseError as Error).message}`,
-                  event.data
-                );
-              }
-            }
-          }
-        }
-      }
-
-      // If stream ended without a final entry, yield a new final entry
-      if (lastEntry && !lastEntry.final) {
-        const finalEntry: Entry = {
-          ...lastEntry,
-          final: true,
-          status: StreamStatus.COMPLETED,
-        };
-        yield finalEntry;
-      }
-    } catch (error: any) {
-      clearTimeout(timeoutId);
-      
-      if (error.name === "AbortError") {
-        throw new FetcherError(`Reconnect timeout after ${this.timeout}ms`);
-      }
-      
-      if (error instanceof PplxError) {
+      } catch (error) {
+        if (isOfflineError(error)) throw new ApiClientsError("Network is offline or unreachable", 0, { isOffline: true });
         throw error;
       }
-      
-      throw new FetcherError(`Reconnect error: ${error.message}`);
+      const requestId = response.headers.get("x-request-id") ?? undefined;
+      if (!response.ok) {
+        throw buildApiClientsError(response.status, response.statusText, await response.text().catch(() => ""), requestId);
+      }
+      if (!response.body) throw new FetcherError("Response body is null", requestId);
+      reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      const parser = new SSEParser();
+      let current: Entry | undefined;
+      while (true) {
+        const { value, done } = await reader.read();
+        for (const event of parser.parse(decoder.decode(value, { stream: !done }), done)) {
+          if (!event.data) continue;
+          if (event.data === "[DONE]") {
+            if (current && !current.final) yield { ...structuredClone(current), final: true, status: StreamStatus.COMPLETED };
+            return;
+          }
+          try {
+            const data = JSON.parse(event.data);
+            if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("Expected an SSE entry object");
+            if (event.event === "error" || data.status === "error") throw new FetcherError(data.message || "Stream error occurred", requestId);
+            if (data.diff_block) {
+              if (!current) throw new Error("Received diff_block before initial entry");
+              const { field, patches } = data.diff_block as DiffBlock;
+              if (typeof field !== "string" || !field) throw new Error("Invalid diff_block field");
+              const parts = field.split(".");
+              const pointer = "/" + parts.map(part => part.replace(/~/g, "~0").replace(/\//g, "~1")).join("/");
+              const target = readPatchPath(current, pointerParts(pointer));
+              current = applyJsonPatch(current, [{ op: "replace", path: pointer, value: applyJsonPatch(target, patches) }]);
+            } else {
+              const previous = current;
+              current = {
+                ...previous, ...data,
+                uuid: data.uuid ?? data.frontend_uuid ?? previous?.uuid ?? "",
+                backend_uuid: data.backend_uuid ?? previous?.backend_uuid ?? "",
+                context_uuid: data.context_uuid ?? previous?.context_uuid ?? "",
+                query_str: data.query_str ?? previous?.query_str ?? request.query,
+                blocks: data.blocks ?? previous?.blocks ?? [],
+                status: this.normalizeStatus(data.status ?? previous?.status),
+                final: data.final ?? this.isCompletedStatus(data.status ?? previous?.status),
+                sources_list: data.sources_list ?? data.sources ?? previous?.sources_list ?? [],
+              };
+            }
+            yield structuredClone(current!);
+            if (current!.final) return;
+          } catch (error) {
+            if (error instanceof PplxError) throw error;
+            throw new ParseError(`SSE parse error: ${(error as Error).message}`, event.data, requestId);
+          }
+        }
+        if (done) break;
+      }
+      if (current && !current.final) yield { ...structuredClone(current), final: true, status: StreamStatus.COMPLETED };
+    } catch (error) {
+      if (error instanceof PplxError) throw error;
+      if (error instanceof Error && error.name === "AbortError") {
+        throw new FetcherError(timedOut ? `Request timeout after ${this.timeout}ms` : "Request aborted");
+      }
+      throw new FetcherError(`Stream error: ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      clearTimeout(timeoutId);
+      signal?.removeEventListener("abort", abort);
+      await reader?.cancel().catch(() => {});
+      reader?.releaseLock();
     }
   }
 }
@@ -862,12 +640,91 @@ export function createPplxClient(config?: PplxClientConfig): PplxClient {
 // UTILITY FUNCTIONS
 // ============================================================================
 
-export function createSSEStream(): any {
-  throw new Error("createSSEStream is deprecated - use PplxClient.search() instead");
+/** Convenience wrapper using the same request shape and transport as search(). */
+export function createSSEStream(request: SSERequest, config?: PplxClientConfig): AsyncGenerator<Entry> {
+  const { query, ...options } = request;
+  return createPplxClient(config).search(query, options);
 }
 
-export function applyJsonPatch(): any {
-  throw new Error("applyJsonPatch is not implemented");
+function pointerParts(path: string): string[] {
+  if (typeof path !== "string" || (path !== "" && !path.startsWith("/"))) throw new Error("Invalid JSON pointer");
+  return path === "" ? [] : path.slice(1).split("/").map(part => {
+    if (/~(?![01])/.test(part)) throw new Error("Invalid JSON pointer escape");
+    const decoded = part.replace(/~1/g, "/").replace(/~0/g, "~");
+    if (["__proto__", "prototype", "constructor"].includes(decoded)) throw new Error("Unsafe JSON pointer");
+    return decoded;
+  });
+}
+
+function arrayIndex(key: string, length: number, add = false): number {
+  if (add && key === "-") return length;
+  if (!/^(0|[1-9][0-9]*)$/.test(key)) throw new Error("Invalid array index");
+  const index = Number(key);
+  if (!Number.isSafeInteger(index) || index >= length + (add ? 1 : 0)) throw new Error("Array index out of bounds");
+  return index;
+}
+
+function readPatchPath(document: any, parts: string[]): any {
+  let value = document;
+  for (const key of parts) {
+    if (value === null || typeof value !== "object") throw new Error("JSON pointer parent does not exist");
+    if (Array.isArray(value)) arrayIndex(key, value.length);
+    if (!Object.prototype.hasOwnProperty.call(value, key)) throw new Error("JSON pointer does not exist");
+    value = value[key];
+  }
+  return value;
+}
+
+function patchValue(document: any, parts: string[], op: "add" | "replace" | "remove", value?: any): any {
+  if (!parts.length) return op === "remove" ? undefined : structuredClone(value);
+  const parent = readPatchPath(document, parts.slice(0, -1));
+  if (parent === null || typeof parent !== "object") throw new Error("Invalid JSON pointer parent");
+  const key = parts[parts.length - 1];
+  if (Array.isArray(parent)) {
+    const index = arrayIndex(key, parent.length, op === "add");
+    if (op === "add") parent.splice(index, 0, structuredClone(value));
+    else if (op === "remove") parent.splice(index, 1);
+    else parent[index] = structuredClone(value);
+  } else {
+    if (op !== "add" && !Object.prototype.hasOwnProperty.call(parent, key)) throw new Error("JSON pointer does not exist");
+    if (op === "remove") delete parent[key];
+    else parent[key] = structuredClone(value);
+  }
+  return document;
+}
+
+function jsonEqual(a: any, b: any): boolean {
+  if (a === b) return true;
+  if (!a || !b || typeof a !== "object" || typeof b !== "object" || Array.isArray(a) !== Array.isArray(b)) return false;
+  const keys = Object.keys(a);
+  return keys.length === Object.keys(b).length && keys.every(key => Object.prototype.hasOwnProperty.call(b, key) && jsonEqual(a[key], b[key]));
+}
+
+/** Apply RFC 6902 operations atomically to a clone; unsafe prototype paths are rejected. */
+export function applyJsonPatch(document: any, patches: JsonPatchOperation[]): any {
+  if (!Array.isArray(patches)) throw new Error("JSON patch must be an array");
+  let result = structuredClone(document);
+  for (const patch of patches) {
+    const parts = pointerParts(patch.path);
+    switch (patch.op) {
+      case "add": case "replace":
+        if (!Object.prototype.hasOwnProperty.call(patch, "value")) throw new Error("Missing patch value");
+        result = patchValue(result, parts, patch.op, patch.value); break;
+      case "remove": result = patchValue(result, parts, "remove"); break;
+      case "test":
+        if (!Object.prototype.hasOwnProperty.call(patch, "value") || !jsonEqual(readPatchPath(result, parts), patch.value)) throw new Error("JSON patch test failed");
+        break;
+      case "move": case "copy": {
+        const from = pointerParts(patch.from);
+        if (patch.op === "move" && parts.length > from.length && from.every((part, i) => parts[i] === part)) throw new Error("Cannot move a value into its child");
+        const value = structuredClone(readPatchPath(result, from));
+        if (patch.op === "move") result = patchValue(result, from, "remove");
+        result = patchValue(result, parts, "add", value); break;
+      }
+      default: throw new Error("Unsupported JSON patch operation");
+    }
+  }
+  return result;
 }
 
 // ============================================================================
