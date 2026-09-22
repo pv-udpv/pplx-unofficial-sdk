@@ -82,8 +82,6 @@ export class TypeScriptParser {
         'typescript',
         'jsx',
         'decorators-legacy',
-        'classProperties',
-        'dynamicImport',
       ],
     });
 
