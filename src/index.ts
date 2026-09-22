@@ -237,3 +237,6 @@ export default PplxSDK;
 export const SDK_VERSION = "1.0.0";
 export const PROTOCOL_VERSION = "2.18";
 export const SDK_NAME = "@pplx-unofficial/sdk";
+// Optional metadata-only diagnostics for SSE responses.
+export { DebugLogger, getDebugTraceLinks, formatMetricName, detectEnvironment } from "./debug";
+export type { MessageDebugData, PerformanceEvent, PerformanceTimer, DebugLogSink, DebugTraceLinks } from "./debug";
