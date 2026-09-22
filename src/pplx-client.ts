@@ -1,3 +1,8 @@
+import { DebugLogger } from "./debug";
+import type { MessageDebugData, DebugLogSink } from "./debug";
+export { DebugLogger, getDebugTraceLinks, formatMetricName, detectEnvironment } from "./debug";
+export type { MessageDebugData, PerformanceEvent, PerformanceTimer, DebugLogSink, DebugTraceLinks } from "./debug";
+
 // ============================================================================
 // Perplexity SSE Streaming Client
 // Full implementation of Server-Sent Events streaming for Perplexity AI
@@ -152,6 +157,8 @@ export type RecencyFilter = "hour" | "day" | "week" | "month" | "year";
 
 // Enhanced Entry interface matching production stream state
 export interface Entry {
+  /** Metadata supplied by the server, independent of local debug logging. */
+  debug_data?: MessageDebugData;
   // Core identifiers
   uuid: string;                    // frontend_uuid
   backend_uuid: string;
@@ -216,6 +223,10 @@ export interface Logger {
 }
 
 export interface SSEClientOptions {
+  /** Enable metadata-only logging locally for this stream request. */
+  debug?: boolean;
+  /** Overrides the configured logger for this request's debug metadata only. */
+  debugLogger?: DebugLogSink;
   mode?: SearchMode | string;
   focus?: SearchFocus;
   model?: SearchModel | string;
@@ -227,6 +238,9 @@ export interface SSEClientOptions {
   language?: string;
   recency?: RecencyFilter;         // Added: hour, day, week, month, year
 }
+
+/** Search uses the same options as reconnect and follow-up streaming. */
+export type SearchOptions = SSEClientOptions;
 
 export interface SSERequest {
   query: string;

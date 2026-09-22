@@ -129,3 +129,26 @@ test('reconnect and follow-up preserve metadata and use per-request logger', asy
   assert.deepEqual((await collect(client.followUp('query', 'observed-context', options)))[0].debug_data, metadata);
   assert.equal(calls.length, 2);
 });
+
+test('debug uses the configured sink without logging content or credentials', async (t) => {
+  const original = globalThis.fetch;
+  t.after(() => { globalThis.fetch = original; });
+  globalThis.fetch = async () => sseResponse([{ text: 'private answer', query_str: 'private query', debug_data: metadata, final: true }]);
+  const calls = [];
+  const client = new PplxClient({
+    headers: { authorization: 'Bearer private-token' },
+    logger: { debug: (...args) => calls.push(args), info() {}, warn() {}, error() {} },
+  });
+  await collect(client.search('private query', { debug: true }));
+  assert.equal(calls.length, 1);
+  assert.doesNotMatch(JSON.stringify(calls), /private|Bearer/);
+});
+
+test('default debug sink is silent even when logging is enabled', (t) => {
+  const original = console.debug;
+  const calls = [];
+  console.debug = (...args) => calls.push(args);
+  t.after(() => { console.debug = original; });
+  new DebugLogger(true).logTrace({ debug_data: metadata });
+  assert.deepEqual(calls, []);
+});

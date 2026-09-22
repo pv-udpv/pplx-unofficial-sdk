@@ -44,6 +44,7 @@ export type {
   PplxClientConfig,
   Logger,
   SSEClientOptions,
+  SearchOptions,
   Block,
   Asset,
   CallToAction,
