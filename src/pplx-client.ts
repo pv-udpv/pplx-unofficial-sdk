@@ -487,21 +487,18 @@ export class PplxClient {
   }
 
   /**
-   * Generate a simple UUID v4
+   * Use Web Crypto in browsers and the Node crypto module on older Node runtimes.
    */
-  private generateUuid(): string {
-    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
-      const r = (Math.random() * 16) | 0;
-      const v = c === "x" ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
+  private async generateUuid(): Promise<string> {
+    if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+    return (await import("node:crypto")).randomUUID();
   }
 
   async *search(query: string, options: SSEClientOptions = {}): AsyncGenerator<Entry> {
     const { signal, ...params } = options;
     yield* this.streamRequest("/rest/sse/perplexity_ask", {
       version: "2.18", source: "default", query, ...params,
-      frontend_uuid: options.frontend_uuid || this.generateUuid(),
+      frontend_uuid: options.frontend_uuid || await this.generateUuid(),
     }, signal);
   }
 
@@ -527,6 +524,7 @@ export class PplxClient {
     if (signal?.aborted) abort();
     let reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
     try {
+      if (controller.signal.aborted) throw new DOMException("Request aborted", "AbortError");
       let response: Response;
       try {
         response = await fetch(`${this.baseUrl}${path}`, {
