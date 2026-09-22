@@ -1,0 +1,37 @@
+{
+  "versions": [
+    {
+      "date": "2026-01-21",
+      "protocol_version": "2.18",
+      "snapshot_path": "spa-assets/snapshots/2026-01-21/",
+      "endpoints_count": 96,
+      "modules_count": 752,
+      "har_entries_total": 786,
+      "source": "21012026_2003.www.perplexity.ai.har.json",
+      "notable_changes": [
+        "Initial snapshot with protocol version 2.18",
+        "96 REST endpoints cataloged",
+        "752 JavaScript modules extracted",
+        "SSE streaming protocol documented"
+      ],
+      "breaking_changes": false,
+      "sdk_impact": "None - Initial baseline",
+      "extraction_metadata": {
+        "js_modules_vendor": 322,
+        "js_modules_app": 430,
+        "source_codes_included": 397,
+        "size_mb": 3.37
+      }
+    }
+  ],
+  "statistics": {
+    "total_versions_tracked": 1,
+    "date_range": {
+      "first": "2026-01-21",
+      "last": "2026-01-21"
+    },
+    "total_endpoints_added": 96,
+    "total_endpoints_removed": 0,
+    "breaking_changes_count": 0
+  }
+}

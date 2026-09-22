@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: Perplexity AI Research API
+  version: 2.17.0
+  description: Enterprise API for Perplexity.ai research and development
+
+servers:
+  - url: https://www.perplexity.ai
+    description: Production server
+  - url: http://localhost:8000
+    description: Local development
+
+paths:
+  /api/search:
+    post:
+      summary: Perform AI search
+      description: Search with AI-powered responses
+      operationId: search
+      tags:
+        - Search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+
+  /health:
+    get:
+      summary: Health check
+      description: Check service health
+      operationId: health
+      tags:
+        - System
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: healthy
+
+components:
+  schemas:
+    SearchRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: Search query
+        focus:
+          type: string
+          enum: [internet, academic, writing, wolfram, youtube, reddit]
+          description: Search focus
+        model:
+          type: string
+          enum: [sonar, sonar-pro]
+          description: AI model to use
+
+    SearchResponse:
+      type: object
+      properties:
+        answer:
+          type: string
+          description: AI-generated answer
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Source'
+
+    Source:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        snippet:
+          type: string
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []

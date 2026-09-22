@@ -1,0 +1,421 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Perplexity AI Unofficial API",
+    "version": "1.0.0-beta",
+    "description": "Reverse-engineered REST API for Perplexity AI with internal SPA schemas from PR #49",
+    "contact": {
+      "name": "pv-udpv/perplexity-ai-unofficial",
+      "url": "https://github.com/pv-udpv/perplexity-ai-unofficial"
+    },
+    "license": {
+      "name": "MIT"
+    },
+    "x-generated-at": "2026-01-23T03:03:00.687120",
+    "x-source-assets": {
+      "har_file": "0145-230125-www.perplexity.ai.har.json",
+      "har_size_mb": 48.7,
+      "total_http_entries": 1140,
+      "js_assets_extracted": 1012,
+      "js_total_size_mb": 13.0,
+      "assets_with_apis": 159,
+      "analysis_date": "2026-01-23T03:00:00Z",
+      "top_api_modules": [
+        {
+          "filename": "sub-router-CKL_sJH-.js",
+          "size_bytes": 329054,
+          "hash": "291254833613",
+          "endpoints_found": 46
+        },
+        {
+          "filename": "spa-shell-zOEFzF8l.js",
+          "size_bytes": 250038,
+          "endpoints_found": 29
+        },
+        {
+          "filename": "index-BM3KhhUE.js",
+          "size_bytes": 6561,
+          "endpoints_found": 19
+        },
+        {
+          "filename": "slug-B3q_F30C.js",
+          "size_bytes": 123523,
+          "endpoints_found": 14
+        },
+        {
+          "filename": "layout-sidebar-B3ef7khs.js",
+          "size_bytes": 208227,
+          "endpoints_found": 11
+        },
+        {
+          "filename": "bootstrap-LvFLrCvP.js",
+          "size_bytes": 356024,
+          "endpoints_found": 10
+        },
+        {
+          "filename": "StepRenderer-Bl2mgzKE.js",
+          "size_bytes": 244138,
+          "endpoints_found": 7
+        },
+        {
+          "filename": "useCollectionMutations-wVFsxHIu.js",
+          "size_bytes": 17949,
+          "endpoints_found": 7
+        },
+        {
+          "filename": "AskInput-BCgXoQlT.js",
+          "size_bytes": 38950,
+          "endpoints_found": 6
+        },
+        {
+          "filename": "threadMutations-4HD7D0sF.js",
+          "size_bytes": 2265,
+          "endpoints_found": 6
+        }
+      ]
+    },
+    "x-reverse-engineering": {
+      "methodology": "HAR file analysis + JS bundle static analysis with regex AST parsing",
+      "tools": [
+        "Python 3.12",
+        "regex patterns",
+        "HAR parser",
+        "base64 decoder"
+      ],
+      "source_repo": "https://github.com/pv-udpv/perplexity-ai-unofficial",
+      "related_issues": [
+        "#59 - HAR Analysis Pipeline"
+      ],
+      "related_prs": [
+        "#49 - Internal Pydantic Schemas"
+      ],
+      "confidence_level": "high",
+      "validation_method": "Production traffic capture from live Perplexity.ai session"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.perplexity.ai",
+      "description": "Production"
+    }
+  ],
+  "tags": [
+    {
+      "name": "SSE",
+      "description": "Server-Sent Events streaming"
+    },
+    {
+      "name": "Threads",
+      "description": "Conversation thread management"
+    },
+    {
+      "name": "User",
+      "description": "User profile and settings"
+    },
+    {
+      "name": "Connectors",
+      "description": "MCP & OAuth integrations"
+    },
+    {
+      "name": "Collections",
+      "description": "Collections and spaces"
+    },
+    {
+      "name": "Files",
+      "description": "File repository operations"
+    },
+    {
+      "name": "Realtime",
+      "description": "Voice transcription"
+    }
+  ],
+  "paths": {
+    "/rest/sse/perplexity_ask": {
+      "post": {
+        "tags": [
+          "SSE"
+        ],
+        "summary": "Primary SSE streaming query endpoint",
+        "operationId": "post_rest_sse_perplexity_ask",
+        "x-found-in": [
+          "spa-shell-zOEFzF8l.js",
+          "AskInput-BCgXoQlT.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/rest/sse/pro_search_step_result": {
+      "post": {
+        "tags": [
+          "SSE"
+        ],
+        "summary": "Pro Search step-by-step results",
+        "operationId": "post_rest_sse_pro_search_step_result",
+        "x-found-in": [
+          "StepRenderer-Bl2mgzKE.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/rest/thread": {
+      "get": {
+        "tags": [
+          "Threads"
+        ],
+        "summary": "Get thread by query param",
+        "operationId": "get_rest_thread",
+        "x-found-in": [
+          "sub-router-CKL_sJH-.js",
+          "threadMutations-4HD7D0sF.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/rest/thread/export": {
+      "post": {
+        "tags": [
+          "Threads"
+        ],
+        "summary": "Export thread",
+        "operationId": "post_rest_thread_export",
+        "x-found-in": [
+          "useExport-B5Ok-Mwc.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/rest/user/info": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get user info",
+        "operationId": "get_rest_user_info",
+        "x-found-in": [
+          "spa-shell-zOEFzF8l.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/rest/user/settings": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get user settings",
+        "operationId": "get_rest_user_settings",
+        "x-found-in": [
+          "spa-shell-zOEFzF8l.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/rest/connectors/remote": {
+      "post": {
+        "tags": [
+          "Connectors"
+        ],
+        "summary": "Add remote MCP connector",
+        "operationId": "post_rest_connectors_remote",
+        "x-found-in": [
+          "sub-router-CKL_sJH-.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/rest/collections/create-collection": {
+      "post": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Create collection",
+        "operationId": "post_rest_collections_create-collection",
+        "x-found-in": [
+          "useCollectionMutations-wVFsxHIu.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/rest/file-repository/upload": {
+      "post": {
+        "tags": [
+          "Files"
+        ],
+        "summary": "Upload file",
+        "operationId": "post_rest_file-repository_upload",
+        "x-found-in": [
+          "fileUploadUtils-CD-ymFRq.js",
+          "sub-router-CKL_sJH-.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/rest/realtime/v2/session": {
+      "post": {
+        "tags": [
+          "Realtime"
+        ],
+        "summary": "Create realtime session v2",
+        "operationId": "post_rest_realtime_v2_session",
+        "x-found-in": [
+          "AskInput-BCgXoQlT.js"
+        ],
+        "x-reverse-engineered": true,
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "CookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "Secure-next-auth.session-token",
+        "description": "NextAuth session cookie (JWT)"
+      }
+    },
+    "schemas": {
+      "Entry": {
+        "type": "object",
+        "description": "Single turn in conversation (User Query + AI Response)",
+        "required": [
+          "backend_uuid",
+          "frontend_uuid",
+          "role",
+          "mode",
+          "text"
+        ],
+        "properties": {
+          "backend_uuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "frontend_uuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "context_uuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "assistant",
+              "user"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "search",
+              "chat",
+              "article",
+              "reasoning"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "CookieAuth": []
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "last_verified": "2026-01-23T13:27:00Z",
+  "algorithm": "SHA-256",
+  "files": {
+    "spa-assets/snapshots/2026-01-21/full_spec.json": "d3a2a292d1d0e29875081ffa2a484e598d7511943c88bd39699cfccd5a53ee97",
+    "spa-assets/snapshots/2026-01-21/endpoints.json": "fc499ae13f86d107bb71c38c2600cf7afd5013923b4f9f562f292217d23a5fdc",
+    "spa-assets/snapshots/2026-01-21/metadata.json": "b0b187cb4ec5f49fd67bd06087bc60965782f2f57441092c3327a940384d9f6b",
+    "spa-assets/metadata/asset-index.json": "pending",
+    "spa-assets/metadata/version-history.json": "pending"
+  }
+}

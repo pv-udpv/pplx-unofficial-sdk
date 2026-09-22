@@ -1,0 +1,21 @@
+# Default owners for everything
+*       @pv-udpv
+
+# Python services
+/services/**/*.py @pv-udpv
+/packages/shared-python/ @pv-udpv
+
+# TypeScript/Frontend
+/services/frontend/ @pv-udpv
+/packages/shared-ts/ @pv-udpv
+/src/ @pv-udpv
+
+# Infrastructure
+/.github/ @pv-udpv
+/infra/ @pv-udpv
+
+# Schemas
+/schemas/ @pv-udpv
+
+# Documentation
+/docs/ @pv-udpv

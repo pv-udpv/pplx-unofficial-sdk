@@ -1,0 +1,28 @@
+{
+  "last_updated": "2026-01-23T16:07:28Z",
+  "total_snapshots": 1,
+  "total_workbox_versions": 0,
+  "total_vite_versions": 0,
+  "total_diffs": 0,
+  "assets": [
+    {
+      "type": "snapshot",
+      "date": "2026-01-21",
+      "path": "spa-assets/snapshots/2026-01-21/",
+      "files": {
+        "metadata.json": {
+          "size": 374,
+          "endpoints_count": 96,
+          "modules_count": 752,
+          "protocol_version": "2.18"
+        },
+        "full_spec.json": {
+          "size": 2007087
+        },
+        "endpoints.json": {
+          "size": 28249
+        }
+      }
+    }
+  ]
+}

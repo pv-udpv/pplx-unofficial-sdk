@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Dev Environment",
+      "type": "shell",
+      "command": "make dev",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run Python Tests",
+      "type": "shell",
+      "command": "make test-python",
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Run TypeScript Tests",
+      "type": "shell",
+      "command": "make test-ts",
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Format Code",
+      "type": "shell",
+      "command": "make format",
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint Code",
+      "type": "shell",
+      "command": "make lint",
+      "problemMatcher": []
+    }
+  ]
+}

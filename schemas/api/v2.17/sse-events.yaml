@@ -1,0 +1,29 @@
+openapi: 3.1.0
+info:
+  title: SSE Events Specification
+  version: 2.17.0
+  description: Server-Sent Events for real-time streaming
+
+paths:
+  /api/stream:
+    post:
+      summary: SSE streaming endpoint
+      description: Stream AI responses in real-time
+      responses:
+        '200':
+          description: SSE stream
+          content:
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/SSEEvent'
+
+components:
+  schemas:
+    SSEEvent:
+      type: object
+      properties:
+        event:
+          type: string
+          enum: [started, streaming, completed, error]
+        data:
+          type: object
