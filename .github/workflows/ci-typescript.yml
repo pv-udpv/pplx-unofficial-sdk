@@ -10,6 +10,8 @@ on:
       - "src/**/*.ts"
       - "package.json"
       - "tsconfig.json"
+      - "scripts/**"
+      - ".github/workflows/ci-typescript.yml"
   pull_request:
     branches: [main, develop]
     paths:
@@ -19,6 +21,8 @@ on:
       - "src/**/*.ts"
       - "package.json"
       - "tsconfig.json"
+      - "scripts/**"
+      - ".github/workflows/ci-typescript.yml"
 
 jobs:
   lint-and-test:
@@ -46,9 +50,11 @@ jobs:
       - name: Type check with TypeScript
         run: npm run typecheck
 
-      - name: Run tests
-        run: npm test
-        continue-on-error: true
-
       - name: Build
         run: npm run build
+
+      - name: Run offline tests
+        run: npm test
+
+      - name: Verify published exports
+        run: node scripts/verify-package-exports.mjs

@@ -167,3 +167,18 @@ test('offline errors retain ApiClientsError classification', async t => {
   t.mock.method(globalThis, 'fetch', async () => { throw new TypeError('Failed to fetch'); });
   await assert.rejects(collect(new PplxClient().search('q')), error => error instanceof ApiClientsError && error.isOffline);
 });
+
+test('request UUIDs use cryptographic randomness and preserve explicit IDs', async t => {
+  const requests = [];
+  t.mock.method(Math, 'random', () => { throw new Error('insecure randomness used'); });
+  t.mock.method(globalThis, 'fetch', async (_url, options) => {
+    requests.push(JSON.parse(options.body));
+    return response(frame({ final: true }));
+  });
+  await collect(new PplxClient().search('first'));
+  await collect(new PplxClient().search('second'));
+  await collect(new PplxClient().search('third', { frontend_uuid: 'caller-id' }));
+  assert.match(requests[0].frontend_uuid, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  assert.notEqual(requests[0].frontend_uuid, requests[1].frontend_uuid);
+  assert.equal(requests[2].frontend_uuid, 'caller-id');
+});

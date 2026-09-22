@@ -1,0 +1,51 @@
+name: Shared TypeScript CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'packages/shared-ts/**'
+      - 'scripts/finalize-declarations.mjs'
+      - 'scripts/verify-package-exports.mjs'
+      - 'tsconfig.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/ci-shared-ts.yml'
+  pull_request:
+    paths:
+      - 'packages/shared-ts/**'
+      - 'scripts/finalize-declarations.mjs'
+      - 'scripts/verify-package-exports.mjs'
+      - 'tsconfig.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/ci-shared-ts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-exports:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20', '24.11']
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            packages/shared-ts/package-lock.json
+      - run: npm ci
+      - run: npm ci
+        working-directory: packages/shared-ts
+      - run: npm run build
+        working-directory: packages/shared-ts
+      - run: npm run typecheck
+        working-directory: packages/shared-ts
+      - run: node ../../scripts/verify-package-exports.mjs
+        working-directory: packages/shared-ts

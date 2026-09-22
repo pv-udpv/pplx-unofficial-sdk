@@ -65,7 +65,7 @@
   "scripts": {
     "build": "tsup src/index.ts src/pplx-client.ts src/pplx-rest-client.ts src/pplx-connectors-client.ts src/pplx-service-worker-client.ts --format cjs,esm --clean && tsc --emitDeclarationOnly --declarationMap false && node scripts/finalize-declarations.mjs",
     "dev": "tsup src/index.ts --watch",
-    "test": "vitest",
+    "test": "node --test scripts/*.test.mjs",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
     "typecheck": "tsc --noEmit",
