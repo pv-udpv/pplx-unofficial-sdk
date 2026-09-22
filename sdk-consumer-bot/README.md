@@ -1,3 +1,5 @@
+> Runtime requirement: Node.js 22.12 or newer (Commander 15 uses ESM).
+
 # Perplexity SDK Consumer Bot
 
 > An intelligent bot that demonstrates the full capabilities of `@pplx-unofficial/sdk`
