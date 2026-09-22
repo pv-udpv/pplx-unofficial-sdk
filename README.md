@@ -321,6 +321,36 @@ console.log(`JavaScript files: ${stats.byExtension.js}`);
 console.log(`Restricted features: ${stats.byCategory.restricted}`);
 ```
 
+### SSE debug metadata
+
+Server-provided `entry.debug_data` is preserved on streamed entries, including
+when logging is disabled. It may contain `dd_trace_id` and
+`dd_request_id: { request_id, datetime }`; the SDK never fabricates these values.
+
+```typescript
+const client = createPplxClient();
+for await (const entry of client.search("quantum computing", {
+  debug: true,
+  debugLogger: { debug: (message, links) => console.debug(message, links) },
+})) {
+  if (entry.final) break;
+}
+```
+
+`debug` enables local diagnostics for that request only. It does not request
+additional server permissions or guarantee debug metadata will be returned.
+The SDK is silent by default: supply `debugLogger` per request or configure the
+client's `logger.debug` sink to receive output. The sink receives only Datadog
+trace/log URLs derived from recognized metadata, never query text, headers,
+response content, or unknown metadata fields. Datadog log links cover twenty
+minutes before and after the server timestamp. Access to those links depends on
+your Datadog account permissions.
+
+The same options work for reconnect and follow-up streams. Concurrent streams
+keep their logging settings independent. `DebugLogger`, `getDebugTraceLinks`,
+`formatMetricName`, and `detectEnvironment` are exported alongside the metadata
+and performance metric types. See [the example](examples/debug-mode.ts).
+
 ## 🏗️ Architecture
 
 ```

@@ -1,3 +1,8 @@
+import { DebugLogger } from "./debug";
+import type { MessageDebugData, DebugLogSink } from "./debug";
+export { DebugLogger, getDebugTraceLinks, formatMetricName, detectEnvironment } from "./debug";
+export type { MessageDebugData, PerformanceEvent, PerformanceTimer, DebugLogSink, DebugTraceLinks } from "./debug";
+
 // ============================================================================
 // Perplexity SSE Streaming Client
 // Full implementation of Server-Sent Events streaming for Perplexity AI
@@ -152,6 +157,8 @@ export type RecencyFilter = "hour" | "day" | "week" | "month" | "year";
 
 // Enhanced Entry interface matching production stream state
 export interface Entry {
+  /** Metadata supplied by the server, independent of local debug logging. */
+  debug_data?: MessageDebugData;
   // Core identifiers
   uuid: string;                    // frontend_uuid
   backend_uuid: string;
@@ -216,6 +223,10 @@ export interface Logger {
 }
 
 export interface SSEClientOptions {
+  /** Enable metadata-only logging locally for this stream request. */
+  debug?: boolean;
+  /** Overrides the configured logger for this request's debug metadata only. */
+  debugLogger?: DebugLogSink;
   /** Cancel this request, including body streaming. */
   signal?: AbortSignal;
   /** Resume cursor, when supplied by the server. */
@@ -231,6 +242,9 @@ export interface SSEClientOptions {
   language?: string;
   recency?: RecencyFilter;         // Added: hour, day, week, month, year
 }
+
+/** Search uses the same options as reconnect and follow-up streaming. */
+export type SearchOptions = SSEClientOptions;
 
 export interface SSERequest {
   query: string;
@@ -495,11 +509,15 @@ export class PplxClient {
   }
 
   async *search(query: string, options: SSEClientOptions = {}): AsyncGenerator<Entry> {
-    const { signal, ...params } = options;
-    yield* this.streamRequest("/rest/sse/perplexity_ask", {
+    const { signal, debug = false, debugLogger, ...params } = options;
+    const diagnostics = new DebugLogger(debug, debugLogger ?? this.logger);
+    for await (const entry of this.streamRequest("/rest/sse/perplexity_ask", {
       version: "2.18", source: "default", query, ...params,
       frontend_uuid: options.frontend_uuid || await this.generateUuid(),
-    }, signal);
+    }, signal)) {
+      diagnostics.logTrace(entry);
+      yield entry;
+    }
   }
 
   /** Continue an existing conversation using its context UUID. */
@@ -509,10 +527,14 @@ export class PplxClient {
 
   /** Resume a server entry; the second argument remains the original query. */
   async *reconnect(resumeEntryUuid: string, query: string, options: SSEClientOptions = {}): AsyncGenerator<Entry> {
-    const { signal, ...params } = options;
-    yield* this.streamRequest(`/rest/sse/perplexity_ask/reconnect/${encodeURIComponent(resumeEntryUuid)}`, {
+    const { signal, debug = false, debugLogger, ...params } = options;
+    const diagnostics = new DebugLogger(debug, debugLogger ?? this.logger);
+    for await (const entry of this.streamRequest(`/rest/sse/perplexity_ask/reconnect/${encodeURIComponent(resumeEntryUuid)}`, {
       version: "2.18", source: "default", query, ...params, backend_uuid: resumeEntryUuid,
-    }, signal);
+    }, signal)) {
+      diagnostics.logTrace(entry);
+      yield entry;
+    }
   }
 
   private async *streamRequest(path: string, request: SSERequestParams, signal?: AbortSignal): AsyncGenerator<Entry> {
