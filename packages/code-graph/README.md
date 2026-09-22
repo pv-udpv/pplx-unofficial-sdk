@@ -13,6 +13,9 @@
 
 ## Installation
 
+Requires Node.js 22.18.x or newer in the 22.x line, or Node.js 24.11+.
+Babel parser, traverse and AST types are upgraded together to version 8.
+
 ```bash
 npm install @pplx-unofficial/code-graph
 ```
