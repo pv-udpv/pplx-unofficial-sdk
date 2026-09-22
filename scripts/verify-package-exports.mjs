@@ -17,7 +17,7 @@ try {
   const installed = path.join(temporary, 'node_modules', manifest.name);
   await mkdir(installed, { recursive: true });
   run('tar', ['-xzf', path.join(temporary, filename), '--strip-components=1', '-C', installed]);
-  const specifiers = Object.keys(manifest.exports ?? { '.': null }).map(
+  const specifiers = Object.keys(manifest.exports ?? { '.': null }).filter(key => !key.includes('*')).map(
     (subpath) => manifest.name + (subpath === '.' ? '' : subpath.slice(1)),
   );
   const consumer = specifiers.map((specifier, index) =>
