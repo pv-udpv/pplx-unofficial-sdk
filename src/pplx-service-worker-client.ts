@@ -8,7 +8,7 @@
 // ============================================================================
 
 /**
- * Constants for chunk categorization
+ * Filename/path heuristics for chunk categorization, not verified feature labels
  */
 const CHUNK_CATEGORIES = {
   RESTRICTED: "_restricted",
@@ -79,11 +79,11 @@ export interface ChunkFilterOptions {
   extension?: string;
   /** Filter by URL pattern (regex) */
   urlPattern?: RegExp;
-  /** Filter restricted features only */
+  /** Match the case-insensitive pathname heuristic for restricted chunks */
   restrictedOnly?: boolean;
-  /** Filter translations only */
+  /** Match the case-insensitive pathname heuristic for translations */
   translationsOnly?: boolean;
-  /** Filter modal-related chunks only */
+  /** Match the case-insensitive pathname heuristic for modal-related chunks */
   modalsOnly?: boolean;
 }
 
@@ -304,7 +304,7 @@ export class PplxServiceWorkerClient {
 
       clearTimeout(timeoutId);
 
-      if (response.status === 304 && cachedSw) {
+      if (response.status === 304 && cacheMode === "auto" && cachedSw) {
         return cachedSw;
       }
 
@@ -460,8 +460,13 @@ export class PplxServiceWorkerClient {
     return manifest;
   }
 
+  private getChunkPath(url: string): string {
+    return new URL(url, this.config.baseUrl).pathname.toLowerCase();
+  }
+
   /**
-   * Gets filtered list of chunks based on criteria
+   * Gets filtered chunks. Category filters match pathname heuristics independently;
+   * combining filters selects chunks matching all requested categories.
    */
   async getChunks(filter?: ChunkFilterOptions): Promise<ServiceWorkerChunk[]> {
     const manifest = await this.getManifest();
@@ -473,8 +478,9 @@ export class PplxServiceWorkerClient {
 
     // Filter by extension
     if (filter.extension) {
-      const ext = filter.extension.startsWith(".") ? filter.extension : `.${filter.extension}`;
-      chunks = chunks.filter((chunk) => chunk.url.endsWith(ext));
+      const extension = filter.extension.toLowerCase();
+      const ext = extension.startsWith(".") ? extension : `.${extension}`;
+      chunks = chunks.filter((chunk) => this.getChunkPath(chunk.url).endsWith(ext));
     }
 
     // Filter by URL pattern
@@ -484,24 +490,31 @@ export class PplxServiceWorkerClient {
 
     // Filter restricted features
     if (filter.restrictedOnly) {
-      chunks = chunks.filter((chunk) => chunk.url.includes(CHUNK_CATEGORIES.RESTRICTED));
+      chunks = chunks.filter((chunk) =>
+        this.getChunkPath(chunk.url).includes(CHUNK_CATEGORIES.RESTRICTED)
+      );
     }
 
     // Filter translations
     if (filter.translationsOnly) {
-      chunks = chunks.filter((chunk) => chunk.url.includes(CHUNK_CATEGORIES.TRANSLATIONS));
+      chunks = chunks.filter((chunk) =>
+        this.getChunkPath(chunk.url).includes(CHUNK_CATEGORIES.TRANSLATIONS)
+      );
     }
 
     // Filter modals
     if (filter.modalsOnly) {
-      chunks = chunks.filter((chunk) => chunk.url.includes(CHUNK_CATEGORIES.MODAL));
+      chunks = chunks.filter((chunk) =>
+        this.getChunkPath(chunk.url).includes(CHUNK_CATEGORIES.MODAL)
+      );
     }
 
     return chunks;
   }
 
   /**
-   * Gets statistics about the chunk manifest
+   * Gets statistics about the chunk manifest. Categories are pathname heuristics,
+   * counted exclusively with precedence: restricted, translations, modals, other.
    */
   async getStatistics(): Promise<{
     total: number;
@@ -522,19 +535,20 @@ export class PplxServiceWorkerClient {
     let other = 0;
 
     for (const chunk of manifest.chunks) {
-      // Count by extension
-      const match = chunk.url.match(/\.([^.]+)$/);
+      const pathname = this.getChunkPath(chunk.url);
+      // Count by extension, excluding URL query strings and fragments.
+      const match = pathname.match(/\.([^./]+)$/);
       if (match) {
         const ext = match[1];
         byExtension[ext] = (byExtension[ext] || 0) + 1;
       }
 
       // Count by category
-      if (chunk.url.includes(CHUNK_CATEGORIES.RESTRICTED)) {
+      if (pathname.includes(CHUNK_CATEGORIES.RESTRICTED)) {
         restricted++;
-      } else if (chunk.url.includes(CHUNK_CATEGORIES.TRANSLATIONS)) {
+      } else if (pathname.includes(CHUNK_CATEGORIES.TRANSLATIONS)) {
         translations++;
-      } else if (chunk.url.includes(CHUNK_CATEGORIES.MODAL)) {
+      } else if (pathname.includes(CHUNK_CATEGORIES.MODAL)) {
         modals++;
       } else {
         other++;
