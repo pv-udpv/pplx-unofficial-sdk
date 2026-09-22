@@ -35,5 +35,5 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run build
-      - run: node --test tests/parser.test.mjs
+      - run: npm test -- --run
       - run: node dist/cli/index.js --help
