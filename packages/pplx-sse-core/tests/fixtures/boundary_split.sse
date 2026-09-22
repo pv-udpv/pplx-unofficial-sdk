@@ -1,0 +1,9 @@
+event: message
+data: {"text": "{\"answer\": \"Hello\", \"web_results\": []}", "final": false, "backend_uuid": "test-1"}
+
+event: message
+data: {"text": "{\"answer\": \"Hello world\", \"web_results\": [{\"title\": \"Example\", \"url\": \"https://example.com\"}]}", "final": false, "backend_uuid": "test-1"}
+
+event: message
+data: {"text": "{\"answer\": \"Hello world!\", \"web_results\": [{\"title\": \"Example\", \"url\": \"https://example.com\"}], \"final\": true}", "final": true, "backend_uuid": "test-1"}
+

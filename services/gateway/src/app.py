@@ -10,7 +10,7 @@ sys.path.insert(
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from logger import get_logger  # type: ignore
+from logger import get_logger
 
 from .config import settings
 

@@ -19,31 +19,30 @@ Usage:
 """
 
 import json
-import sqlite3
-import hashlib
-from pathlib import Path
-from dataclasses import dataclass, asdict
-from typing import Dict, List, Optional, Tuple, Set
-from datetime import datetime, timedelta
-from collections import defaultdict, Counter
 import re
+import sqlite3
+from dataclasses import asdict, dataclass
+from datetime import datetime, timedelta
+from pathlib import Path
 
 
 @dataclass
 class Pattern:
     """Learned API pattern"""
+
     pattern: str
     category: str
     confidence: float  # 0.0 - 1.0
     first_seen: str
     last_seen: str
     occurrence_count: int
-    sources: List[str]  # Asset hashes где встречался
+    sources: list[str]  # Asset hashes где встречался
 
 
 @dataclass
 class APIEndpointIntel:
     """Enriched API endpoint с intelligence"""
+
     path: str
     method: str
     category: str
@@ -51,9 +50,9 @@ class APIEndpointIntel:
     stability_score: float  # Насколько стабилен (часто встречается)
     first_discovered: str
     last_seen: str
-    version_history: List[str]  # Изменения паттерна
+    version_history: list[str]  # Изменения паттерна
     deprecation_risk: float  # Риск deprecation
-    related_endpoints: List[str]  # Связанные endpoints
+    related_endpoints: list[str]  # Связанные endpoints
 
 
 class KnowledgeBase:
@@ -130,7 +129,8 @@ class KnowledgeBase:
         """Обучение на новом паттерне"""
         cursor = self.conn.cursor()
 
-        cursor.execute("""
+        cursor.execute(
+            """
             INSERT INTO patterns (pattern, category, confidence, first_seen, last_seen, occurrence_count, sources)
             VALUES (?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(pattern) DO UPDATE SET
@@ -138,15 +138,17 @@ class KnowledgeBase:
                 occurrence_count = occurrence_count + 1,
                 confidence = MIN(1.0, confidence + 0.05),  -- Increase confidence
                 sources = excluded.sources
-        """, (
-            pattern.pattern,
-            pattern.category,
-            pattern.confidence,
-            pattern.first_seen,
-            pattern.last_seen,
-            pattern.occurrence_count,
-            json.dumps(pattern.sources)
-        ))
+        """,
+            (
+                pattern.pattern,
+                pattern.category,
+                pattern.confidence,
+                pattern.first_seen,
+                pattern.last_seen,
+                pattern.occurrence_count,
+                json.dumps(pattern.sources),
+            ),
+        )
 
         self.conn.commit()
 
@@ -154,9 +156,10 @@ class KnowledgeBase:
         """Обучение на endpoint"""
         cursor = self.conn.cursor()
 
-        cursor.execute("""
-            INSERT INTO endpoints (path, method, category, confidence, stability_score, 
-                                  first_discovered, last_seen, version_history, 
+        cursor.execute(
+            """
+            INSERT INTO endpoints (path, method, category, confidence, stability_score,
+                                  first_discovered, last_seen, version_history,
                                   deprecation_risk, related_endpoints)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(path) DO UPDATE SET
@@ -164,59 +167,69 @@ class KnowledgeBase:
                 confidence = MIN(1.0, confidence + 0.03),
                 stability_score = (stability_score + excluded.stability_score) / 2,
                 version_history = excluded.version_history
-        """, (
-            endpoint.path,
-            endpoint.method,
-            endpoint.category,
-            endpoint.confidence,
-            endpoint.stability_score,
-            endpoint.first_discovered,
-            endpoint.last_seen,
-            json.dumps(endpoint.version_history),
-            endpoint.deprecation_risk,
-            json.dumps(endpoint.related_endpoints)
-        ))
+        """,
+            (
+                endpoint.path,
+                endpoint.method,
+                endpoint.category,
+                endpoint.confidence,
+                endpoint.stability_score,
+                endpoint.first_discovered,
+                endpoint.last_seen,
+                json.dumps(endpoint.version_history),
+                endpoint.deprecation_risk,
+                json.dumps(endpoint.related_endpoints),
+            ),
+        )
 
         self.conn.commit()
 
-    def get_learned_patterns(self, min_confidence: float = 0.7) -> List[Pattern]:
+    def get_learned_patterns(self, min_confidence: float = 0.7) -> list[Pattern]:
         """Получить изученные паттерны"""
         cursor = self.conn.cursor()
-        cursor.execute("""
-            SELECT pattern, category, confidence, first_seen, last_seen, 
+        cursor.execute(
+            """
+            SELECT pattern, category, confidence, first_seen, last_seen,
                    occurrence_count, sources
             FROM patterns
             WHERE confidence >= ?
             ORDER BY confidence DESC, occurrence_count DESC
-        """, (min_confidence,))
+        """,
+            (min_confidence,),
+        )
 
         patterns = []
         for row in cursor.fetchall():
-            patterns.append(Pattern(
-                pattern=row[0],
-                category=row[1],
-                confidence=row[2],
-                first_seen=row[3],
-                last_seen=row[4],
-                occurrence_count=row[5],
-                sources=json.loads(row[6])
-            ))
+            patterns.append(
+                Pattern(
+                    pattern=row[0],
+                    category=row[1],
+                    confidence=row[2],
+                    first_seen=row[3],
+                    last_seen=row[4],
+                    occurrence_count=row[5],
+                    sources=json.loads(row[6]),
+                )
+            )
 
         return patterns
 
-    def detect_deprecations(self, days_threshold: int = 30) -> List[APIEndpointIntel]:
+    def detect_deprecations(self, days_threshold: int = 30) -> list[APIEndpointIntel]:
         """Детект возможных deprecated endpoints"""
         cursor = self.conn.cursor()
         threshold_date = (datetime.now() - timedelta(days=days_threshold)).isoformat()
 
-        cursor.execute("""
+        cursor.execute(
+            """
             SELECT path, method, category, confidence, stability_score,
                    first_discovered, last_seen, version_history,
                    deprecation_risk, related_endpoints
             FROM endpoints
             WHERE last_seen < ?
             ORDER BY deprecation_risk DESC
-        """, (threshold_date,))
+        """,
+            (threshold_date,),
+        )
 
         deprecated = []
         for row in cursor.fetchall():
@@ -230,7 +243,7 @@ class KnowledgeBase:
                 last_seen=row[6],
                 version_history=json.loads(row[7]),
                 deprecation_risk=row[8],
-                related_endpoints=json.loads(row[9])
+                related_endpoints=json.loads(row[9]),
             )
             deprecated.append(intel)
 
@@ -246,50 +259,59 @@ class KnowledgeBase:
 
         if result:
             endpoint_id = result[0]
-            cursor.execute("""
+            cursor.execute(
+                """
                 INSERT INTO feedback (endpoint_id, feedback_type, comment, created_at)
                 VALUES (?, ?, ?, ?)
-            """, (endpoint_id, feedback_type, comment, datetime.now().isoformat()))
+            """,
+                (endpoint_id, feedback_type, comment, datetime.now().isoformat()),
+            )
 
             # Adjust confidence based on feedback
-            if feedback_type == 'correct':
-                cursor.execute("""
-                    UPDATE endpoints 
+            if feedback_type == "correct":
+                cursor.execute(
+                    """
+                    UPDATE endpoints
                     SET confidence = MIN(1.0, confidence + 0.1)
                     WHERE id = ?
-                """, (endpoint_id,))
-            elif feedback_type == 'false_positive':
-                cursor.execute("""
-                    UPDATE endpoints 
+                """,
+                    (endpoint_id,),
+                )
+            elif feedback_type == "false_positive":
+                cursor.execute(
+                    """
+                    UPDATE endpoints
                     SET confidence = MAX(0.0, confidence - 0.2)
                     WHERE id = ?
-                """, (endpoint_id,))
+                """,
+                    (endpoint_id,),
+                )
 
             self.conn.commit()
 
-    def get_stats(self) -> Dict:
+    def get_stats(self) -> dict:
         """Статистика knowledge base"""
         cursor = self.conn.cursor()
 
         stats = {}
 
         cursor.execute("SELECT COUNT(*) FROM patterns")
-        stats['total_patterns'] = cursor.fetchone()[0]
+        stats["total_patterns"] = cursor.fetchone()[0]
 
         cursor.execute("SELECT COUNT(*) FROM patterns WHERE confidence >= 0.8")
-        stats['high_confidence_patterns'] = cursor.fetchone()[0]
+        stats["high_confidence_patterns"] = cursor.fetchone()[0]
 
         cursor.execute("SELECT COUNT(*) FROM endpoints")
-        stats['total_endpoints'] = cursor.fetchone()[0]
+        stats["total_endpoints"] = cursor.fetchone()[0]
 
         cursor.execute("SELECT COUNT(*) FROM endpoints WHERE confidence >= 0.8")
-        stats['high_confidence_endpoints'] = cursor.fetchone()[0]
+        stats["high_confidence_endpoints"] = cursor.fetchone()[0]
 
         cursor.execute("SELECT COUNT(*) FROM analysis_history")
-        stats['total_analyses'] = cursor.fetchone()[0]
+        stats["total_analyses"] = cursor.fetchone()[0]
 
         cursor.execute("SELECT AVG(quality_score) FROM analysis_history")
-        stats['avg_quality_score'] = cursor.fetchone()[0] or 0.0
+        stats["avg_quality_score"] = cursor.fetchone()[0] or 0.0
 
         return stats
 
@@ -303,14 +325,14 @@ class HARAgent:
     def __init__(self, knowledge_db: str = "har_agent_knowledge.db"):
         self.kb = KnowledgeBase(knowledge_db)
         self.current_session = {
-            'har_file': None,
-            'started_at': datetime.now().isoformat(),
-            'discoveries': [],
-            'anomalies': [],
-            'quality_metrics': {}
+            "har_file": None,
+            "started_at": datetime.now().isoformat(),
+            "discoveries": [],
+            "anomalies": [],
+            "quality_metrics": {},
         }
 
-    def analyze_har(self, har_path: str, learn: bool = True) -> Dict:
+    def analyze_har(self, har_path: str, learn: bool = True) -> dict:
         """
         Анализ HAR файла с применением накопленных знаний
 
@@ -318,20 +340,21 @@ class HARAgent:
             har_path: путь к HAR файлу
             learn: обновлять knowledge base после анализа
         """
-        print(f"\n🤖 HAR Agent starting analysis...")
+        print("\n🤖 HAR Agent starting analysis...")
         print(f"📁 HAR file: {har_path}")
 
-        self.current_session['har_file'] = har_path
+        self.current_session["har_file"] = har_path
 
         # 1. Базовый анализ (используем существующий HARAnalyzer)
         from har_analyzer import HARAnalyzer
+
         analyzer = HARAnalyzer(har_path)
         har_data = analyzer.load_har()
         analyzer.extract_js_assets(har_data)
         analyzer.extract_api_endpoints()
 
         # 2. Применяем знания
-        print(f"\n🧠 Applying learned patterns...")
+        print("\n🧠 Applying learned patterns...")
         learned_patterns = self.kb.get_learned_patterns(min_confidence=0.7)
         print(f"   Using {len(learned_patterns)} high-confidence patterns")
 
@@ -356,7 +379,7 @@ class HARAgent:
 
         # 6. Learn from this analysis
         if learn:
-            print(f"\n📚 Learning from analysis...")
+            print("\n📚 Learning from analysis...")
             self._learn_from_analysis(enriched_endpoints, analyzer.js_assets)
 
         # 7. Quality assessment
@@ -368,32 +391,33 @@ class HARAgent:
             len(analyzer.js_assets),
             len(enriched_endpoints),
             len(new_discoveries),
-            quality_score
+            quality_score,
         )
 
         # Report
         report = {
-            'summary': {
-                'js_assets': len(analyzer.js_assets),
-                'endpoints_found': len(enriched_endpoints),
-                'new_discoveries': len(new_discoveries),
-                'anomalies': len(anomalies),
-                'deprecated_risk': len(deprecated),
-                'quality_score': quality_score
+            "summary": {
+                "js_assets": len(analyzer.js_assets),
+                "endpoints_found": len(enriched_endpoints),
+                "new_discoveries": len(new_discoveries),
+                "anomalies": len(anomalies),
+                "deprecated_risk": len(deprecated),
+                "quality_score": quality_score,
             },
-            'enriched_endpoints': [asdict(e) for e in enriched_endpoints],
-            'new_discoveries': [asdict(e) for e in new_discoveries],
-            'anomalies': anomalies,
-            'deprecated': [asdict(d) for d in deprecated],
-            'knowledge_stats': self.kb.get_stats()
+            "enriched_endpoints": [asdict(e) for e in enriched_endpoints],
+            "new_discoveries": [asdict(e) for e in new_discoveries],
+            "anomalies": anomalies,
+            "deprecated": [asdict(d) for d in deprecated],
+            "knowledge_stats": self.kb.get_stats(),
         }
 
         self._print_report(report)
 
         return report
 
-    def _enrich_endpoint(self, path: str, sources: List[dict], 
-                         learned_patterns: List[Pattern]) -> APIEndpointIntel:
+    def _enrich_endpoint(
+        self, path: str, sources: list[dict], learned_patterns: list[Pattern]
+    ) -> APIEndpointIntel:
         """Обогащение endpoint intelligence"""
         now = datetime.now().isoformat()
 
@@ -408,7 +432,7 @@ class HARAgent:
                 break
 
         # Stability score (как часто встречается в разных sources)
-        stability_score = min(1.0, len(set(s['hash'] for s in sources)) / 10.0)
+        stability_score = min(1.0, len({s["hash"] for s in sources}) / 10.0)
 
         # Deprecation risk (пока простая эвристика)
         deprecation_risk = 0.1 if confidence > 0.8 else 0.3
@@ -423,58 +447,54 @@ class HARAgent:
             last_seen=now,
             version_history=[],
             deprecation_risk=deprecation_risk,
-            related_endpoints=[]
+            related_endpoints=[],
         )
 
     def _detect_category(self, path: str) -> str:
         """Category detection"""
-        if '/sse/' in path:
-            return 'SSE'
-        elif '/rest/' in path:
-            return 'REST'
-        elif '/realtime/' in path:
-            return 'Realtime'
-        elif '/threads/' in path:
-            return 'Threads'
-        elif '/auth/' in path or '/login' in path:
-            return 'Auth'
+        if "/sse/" in path:
+            return "SSE"
+        elif "/rest/" in path:
+            return "REST"
+        elif "/realtime/" in path:
+            return "Realtime"
+        elif "/threads/" in path:
+            return "Threads"
+        elif "/auth/" in path or "/login" in path:
+            return "Auth"
         else:
-            return 'Other'
+            return "Other"
 
     def _infer_method(self, path: str) -> str:
         """HTTP method inference"""
-        if '/create' in path or '/add' in path:
-            return 'POST'
-        elif '/update' in path or '/edit' in path:
-            return 'PUT'
-        elif '/delete' in path or '/remove' in path:
-            return 'DELETE'
+        if "/create" in path or "/add" in path:
+            return "POST"
+        elif "/update" in path or "/edit" in path:
+            return "PUT"
+        elif "/delete" in path or "/remove" in path:
+            return "DELETE"
         else:
-            return 'GET'
+            return "GET"
 
-    def _detect_anomalies(self, endpoints: List[APIEndpointIntel]) -> List[Dict]:
+    def _detect_anomalies(self, endpoints: list[APIEndpointIntel]) -> list[dict]:
         """Anomaly detection"""
         anomalies = []
 
         # Странные паттерны
         for ep in endpoints:
             if len(ep.path) > 200:  # Слишком длинный
-                anomalies.append({
-                    'type': 'unusual_length',
-                    'endpoint': ep.path,
-                    'severity': 'medium'
-                })
+                anomalies.append(
+                    {"type": "unusual_length", "endpoint": ep.path, "severity": "medium"}
+                )
 
-            if '${' in ep.path or '{{' in ep.path:  # Template не resolved
-                anomalies.append({
-                    'type': 'unresolved_template',
-                    'endpoint': ep.path,
-                    'severity': 'low'
-                })
+            if "${" in ep.path or "{{" in ep.path:  # Template не resolved
+                anomalies.append(
+                    {"type": "unresolved_template", "endpoint": ep.path, "severity": "low"}
+                )
 
         return anomalies
 
-    def _learn_from_analysis(self, endpoints: List[APIEndpointIntel], js_assets: List):
+    def _learn_from_analysis(self, endpoints: list[APIEndpointIntel], js_assets: list):
         """Обучение на результатах анализа"""
         for ep in endpoints:
             self.kb.learn_endpoint(ep)
@@ -487,20 +507,22 @@ class HARAgent:
                 first_seen=ep.first_discovered,
                 last_seen=ep.last_seen,
                 occurrence_count=1,
-                sources=[]
+                sources=[],
             )
             self.kb.learn_pattern(pattern)
 
     def _extract_pattern(self, path: str) -> str:
         """Извлечение regex pattern из конкретного path"""
         # Заменяем UUID, числа на placeholders
-        pattern = re.sub(r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}', 
-                        '{uuid}', path)
-        pattern = re.sub(r'\d+', '{id}', pattern)
+        pattern = re.sub(
+            r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", "{uuid}", path
+        )
+        pattern = re.sub(r"\d+", "{id}", pattern)
         return pattern
 
-    def _assess_quality(self, endpoints: List[APIEndpointIntel], 
-                       new_discoveries: List, anomalies: List) -> float:
+    def _assess_quality(
+        self, endpoints: list[APIEndpointIntel], new_discoveries: list, anomalies: list
+    ) -> float:
         """Quality assessment"""
         score = 1.0
 
@@ -513,26 +535,36 @@ class HARAgent:
 
         return max(0.0, min(1.0, score))
 
-    def _save_analysis_history(self, har_file: str, js_count: int, 
-                               endpoints_count: int, new_patterns: int, quality: float):
+    def _save_analysis_history(
+        self, har_file: str, js_count: int, endpoints_count: int, new_patterns: int, quality: float
+    ):
         """Save to history"""
         cursor = self.kb.conn.cursor()
-        cursor.execute("""
-            INSERT INTO analysis_history 
+        cursor.execute(
+            """
+            INSERT INTO analysis_history
             (har_file, analyzed_at, js_assets_count, endpoints_found, new_patterns, quality_score)
             VALUES (?, ?, ?, ?, ?, ?)
-        """, (har_file, datetime.now().isoformat(), js_count, endpoints_count, 
-              new_patterns, quality))
+        """,
+            (
+                har_file,
+                datetime.now().isoformat(),
+                js_count,
+                endpoints_count,
+                new_patterns,
+                quality,
+            ),
+        )
         self.kb.conn.commit()
 
-    def _print_report(self, report: Dict):
+    def _print_report(self, report: dict):
         """Pretty print report"""
-        print(f"\n" + "="*80)
-        print(f"🤖 HAR AGENT ANALYSIS REPORT")
-        print(f"="*80)
+        print("\n" + "=" * 80)
+        print("🤖 HAR AGENT ANALYSIS REPORT")
+        print("=" * 80)
 
-        s = report['summary']
-        print(f"\n📊 Summary:")
+        s = report["summary"]
+        print("\n📊 Summary:")
         print(f"  JS Assets: {s['js_assets']}")
         print(f"  Endpoints Found: {s['endpoints_found']}")
         print(f"  🆕 New Discoveries: {s['new_discoveries']}")
@@ -540,33 +572,33 @@ class HARAgent:
         print(f"  🗑️  Deprecation Risk: {s['deprecated_risk']}")
         print(f"  ⭐ Quality Score: {s['quality_score']:.2f}")
 
-        kb_stats = report['knowledge_stats']
-        print(f"\n🧠 Knowledge Base Stats:")
+        kb_stats = report["knowledge_stats"]
+        print("\n🧠 Knowledge Base Stats:")
         print(f"  Total Patterns: {kb_stats['total_patterns']}")
         print(f"  High Confidence: {kb_stats['high_confidence_patterns']}")
         print(f"  Total Endpoints: {kb_stats['total_endpoints']}")
         print(f"  Analyses Run: {kb_stats['total_analyses']}")
 
-        if report['new_discoveries']:
-            print(f"\n🆕 New Discoveries (top 5):")
-            for disc in report['new_discoveries'][:5]:
+        if report["new_discoveries"]:
+            print("\n🆕 New Discoveries (top 5):")
+            for disc in report["new_discoveries"][:5]:
                 print(f"  - {disc['path']} (confidence: {disc['confidence']:.2f})")
 
-        if report['anomalies']:
-            print(f"\n⚠️  Anomalies:")
-            for anom in report['anomalies'][:5]:
+        if report["anomalies"]:
+            print("\n⚠️  Anomalies:")
+            for anom in report["anomalies"][:5]:
                 print(f"  - [{anom['severity']}] {anom['type']}: {anom['endpoint'][:60]}")
 
     def train_interactive(self):
         """Interactive training mode"""
-        print(f"\n🎓 Interactive Training Mode")
-        print(f"="*80)
+        print("\n🎓 Interactive Training Mode")
+        print("=" * 80)
 
         cursor = self.kb.conn.cursor()
         cursor.execute("""
-            SELECT path, confidence FROM endpoints 
-            WHERE confidence < 0.7 
-            ORDER BY RANDOM() 
+            SELECT path, confidence FROM endpoints
+            WHERE confidence < 0.7
+            ORDER BY RANDOM()
             LIMIT 10
         """)
 
@@ -576,17 +608,17 @@ class HARAgent:
 
             feedback = input("   Feedback (c=correct/f=false/m=missed/s=skip): ").strip().lower()
 
-            if feedback == 'c':
-                self.kb.add_feedback(path, 'correct')
+            if feedback == "c":
+                self.kb.add_feedback(path, "correct")
                 print("   ✓ Marked as correct, confidence increased")
-            elif feedback == 'f':
-                self.kb.add_feedback(path, 'false_positive')
+            elif feedback == "f":
+                self.kb.add_feedback(path, "false_positive")
                 print("   ✗ Marked as false positive, confidence decreased")
-            elif feedback == 'm':
+            elif feedback == "m":
                 comment = input("   What was missed? ")
-                self.kb.add_feedback(path, 'missed', comment)
+                self.kb.add_feedback(path, "missed", comment)
                 print("   📝 Feedback recorded")
-            elif feedback == 's':
+            elif feedback == "s":
                 continue
             else:
                 print("   Skipped")
@@ -596,13 +628,13 @@ class HARAgent:
         patterns = self.kb.get_learned_patterns(min_confidence=0.6)
 
         export_data = {
-            'exported_at': datetime.now().isoformat(),
-            'total_patterns': len(patterns),
-            'patterns': [asdict(p) for p in patterns],
-            'stats': self.kb.get_stats()
+            "exported_at": datetime.now().isoformat(),
+            "total_patterns": len(patterns),
+            "patterns": [asdict(p) for p in patterns],
+            "stats": self.kb.get_stats(),
         }
 
-        with open(output_path, 'w') as f:
+        with open(output_path, "w") as f:
             json.dump(export_data, f, indent=2)
 
         print(f"✓ Exported {len(patterns)} patterns to {output_path}")
@@ -628,7 +660,7 @@ Usage:
     agent = HARAgent()
 
     try:
-        if command == 'analyze':
+        if command == "analyze":
             if len(sys.argv) < 3:
                 print("Error: HAR file path required")
                 sys.exit(1)
@@ -637,20 +669,20 @@ Usage:
 
             # Save report
             report_path = f"har_agent_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-            with open(report_path, 'w') as f:
+            with open(report_path, "w") as f:
                 json.dump(report, f, indent=2)
             print(f"\n💾 Report saved: {report_path}")
 
-        elif command == 'train':
+        elif command == "train":
             agent.train_interactive()
 
-        elif command == 'export':
-            output = sys.argv[2] if len(sys.argv) > 2 else 'learned_patterns.json'
+        elif command == "export":
+            output = sys.argv[2] if len(sys.argv) > 2 else "learned_patterns.json"
             agent.export_learned_patterns(output)
 
-        elif command == 'stats':
+        elif command == "stats":
             stats = agent.kb.get_stats()
-            print(f"\n📊 Knowledge Base Statistics:")
+            print("\n📊 Knowledge Base Statistics:")
             for key, value in stats.items():
                 print(f"  {key}: {value}")
 

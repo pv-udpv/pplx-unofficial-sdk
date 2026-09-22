@@ -6,15 +6,19 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sync-schemas:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -33,9 +37,19 @@ jobs:
         run: |
           python schemas/tools/validator.py schemas/api/v2.17/openapi.yaml || true
 
+      - name: Check for changes
+        id: changes
+        run: |
+          status="$(git status --porcelain)"
+          if [ -z "$status" ]; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Create Pull Request
-        if: always()
-        uses: peter-evans/create-pull-request@v6
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "chore: update API schemas"
           title: "Update API Schemas"

@@ -65,7 +65,7 @@ def check_python_imports() -> bool:
     sys.path.insert(0, str(Path("packages/shared-python/src")))
 
     try:
-        from config import BaseSettings  # type: ignore
+        from config import BaseSettings  # type: ignore  # noqa: F401
 
         print("  ✓ shared-python.config")
     except ImportError as e:
@@ -73,7 +73,7 @@ def check_python_imports() -> bool:
         return False
 
     try:
-        from logger import get_logger  # type: ignore
+        from logger import get_logger  # type: ignore  # noqa: F401
 
         print("  ✓ shared-python.logger")
     except ImportError as e:
