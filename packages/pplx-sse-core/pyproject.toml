@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pplx-sse-core"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.0"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=5",
+    "mypy>=1.11",
+    "ruff>=0.6",
+    "hatchling>=1.25",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pplx_sse_core"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP", "SIM", "N", "RUF"]
+
+[tool.mypy]
+strict = true
+python_version = "3.11"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "--cov=pplx_sse_core --cov-report=term-missing --cov-fail-under=95"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["pplx_sse_core"]
