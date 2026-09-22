@@ -13,6 +13,7 @@ on:
       - "package-lock.json"
       - "tsconfig.json"
       - "docs/SERVICE-WORKER-GUIDE.md"
+      - ".github/workflows/update-service-worker-manifest.yml"
 
 permissions:
   contents: write
@@ -52,6 +53,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Test service worker tooling
+        run: node --test scripts/sw-manifest-utils.test.mjs scripts/service-worker-client.test.mjs
+
       - name: Cache SW (node)
         uses: actions/cache@v4
         with:
@@ -63,18 +67,22 @@ jobs:
       - name: Fetch SW manifest
         env:
           PPLX_SW_CACHE_DIR: ~/.cache/pplx-unofficial-sdk/sw
-          PPLX_SW_CACHE_MODE: auto
+          PPLX_SW_CACHE_MODE: refresh
+          PPLX_SW_SUMMARY_PATH: ${{ runner.temp }}/sw-manifest-summary.md
         run: node scripts/fetch-sw-manifest.mjs
+
+      - name: Validate manifest snapshots
+        run: node scripts/validate-sw-manifest.mjs
 
       - name: Check for changes
         id: changes
         run: |
-          status="$(git status --porcelain)"
+          status="$(git status --porcelain -- spa-assets/metadata/service-worker-manifest.latest.json spa-assets/metadata/service-worker-manifest.stats.latest.json)"
           if [ -z "$status" ]; then
-            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No manifest changes detected"
           else
-            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Manifest changes detected:"
             printf '%s\n' "$status"
           fi
@@ -87,12 +95,7 @@ jobs:
           delete-branch: true
           title: "chore(spa-assets): update service worker manifest"
           commit-message: "chore(spa-assets): update service worker manifest"
-          body: |
-            Automated update of Perplexity `service-worker.js` manifest snapshots.
-
-            - Updates: `spa-assets/metadata/service-worker-manifest.latest.json`
-            - Stats: `spa-assets/metadata/service-worker-manifest.stats.latest.json`
-
-            > **Note:** If this action fails with a permissions error, enable
-            > "Allow GitHub Actions to create and approve pull requests" in
-            > Settings > Actions > General > Workflow permissions.
+          add-paths: |
+            spa-assets/metadata/service-worker-manifest.latest.json
+            spa-assets/metadata/service-worker-manifest.stats.latest.json
+          body-path: ${{ runner.temp }}/sw-manifest-summary.md
