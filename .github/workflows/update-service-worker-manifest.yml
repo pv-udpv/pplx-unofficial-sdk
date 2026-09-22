@@ -57,7 +57,7 @@ jobs:
         run: node --test scripts/sw-manifest-utils.test.mjs scripts/service-worker-client.test.mjs
 
       - name: Cache SW (node)
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ runner.temp }}/pplx-sw-cache
           key: sw-cache-${{ runner.os }}-${{ github.ref_name }}
