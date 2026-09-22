@@ -13,6 +13,44 @@ This is useful for:
 - **Tracking translations** and localization assets
 - **Understanding the SPA architecture**
 
+## Automated manifest snapshots
+
+The scheduled update builds the client and fetches `service-worker.js` with
+`forceRefresh: true`. Publication fails on fetch errors instead of falling back
+to a stale disk cache. The SDK's optional `auto` cache mode remains available
+for interactive consumers.
+
+The generator compares sorted URL/revision pairs and the source URL before
+replacing the manifest. If content is unchanged, it preserves the existing
+snapshot bytes and `extractedAt`; that timestamp means when the recorded content
+was extracted, not the last successful freshness check. Statistics can be
+repaired independently when classification changes.
+
+Categories are case-insensitive URL-path heuristics, not verified product
+features. Statistics use exclusive precedence: `_restricted`, `translations`,
+`modal`, then `other`. Filters remain independent, so a restricted modal may
+match both filters while counting only as restricted in statistics.
+
+After installing dependencies, run the offline checks with:
+
+```bash
+npm run build
+node --test scripts/sw-manifest-utils.test.mjs scripts/service-worker-client.test.mjs
+node scripts/validate-sw-manifest.mjs
+```
+
+The validator checks schema, nonempty unique HTTPS asset URLs on the expected
+CDN, revision strings, counts, and recomputed statistics. It does not download
+asset bundles. To refresh and produce a Markdown change summary:
+
+```bash
+PPLX_SW_SUMMARY_PATH=/tmp/sw-manifest-summary.md node scripts/fetch-sw-manifest.mjs
+```
+
+Automation uses that summary as the PR body and commits only the manifest and
+statistics JSON files. URL additions/removals and naming changes are evidence
+of asset churn; they do not prove feature additions or removals.
+
 ## 📦 Installation
 
 ```bash
