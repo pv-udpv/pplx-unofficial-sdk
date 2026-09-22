@@ -1,0 +1,39 @@
+name: Code Graph CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/code-graph/**'
+      - 'tsconfig.json'
+      - '.github/workflows/ci-code-graph.yml'
+  pull_request:
+    paths:
+      - 'packages/code-graph/**'
+      - 'tsconfig.json'
+      - '.github/workflows/ci-code-graph.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['22.18.0', '24.11.0']
+    defaults:
+      run:
+        working-directory: packages/code-graph
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: packages/code-graph/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - run: node --test tests/parser.test.mjs
+      - run: node dist/cli/index.js --help
