@@ -59,14 +59,14 @@ jobs:
       - name: Cache SW (node)
         uses: actions/cache@v4
         with:
-          path: ~/.cache/pplx-unofficial-sdk/sw
+          path: ${{ runner.temp }}/pplx-sw-cache
           key: sw-cache-${{ runner.os }}-${{ github.ref_name }}
           restore-keys: |
             sw-cache-${{ runner.os }}-
 
       - name: Fetch SW manifest
         env:
-          PPLX_SW_CACHE_DIR: ~/.cache/pplx-unofficial-sdk/sw
+          PPLX_SW_CACHE_DIR: ${{ runner.temp }}/pplx-sw-cache
           PPLX_SW_CACHE_MODE: refresh
           PPLX_SW_SUMMARY_PATH: ${{ runner.temp }}/sw-manifest-summary.md
         run: node scripts/fetch-sw-manifest.mjs
