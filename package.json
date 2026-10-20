@@ -55,6 +55,16 @@
         "types": "./dist/pplx-service-worker-client.d.ts",
         "default": "./dist/pplx-service-worker-client.js"
       }
+    },
+    "./workspace-research": {
+      "import": {
+        "types": "./dist/workspace-research.d.mts",
+        "default": "./dist/workspace-research.mjs"
+      },
+      "require": {
+        "types": "./dist/workspace-research.d.ts",
+        "default": "./dist/workspace-research.js"
+      }
     }
   },
   "files": [
@@ -63,7 +73,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsup src/index.ts src/pplx-client.ts src/pplx-rest-client.ts src/pplx-connectors-client.ts src/pplx-service-worker-client.ts --format cjs,esm --clean && tsc --emitDeclarationOnly --declarationMap false && node scripts/finalize-declarations.mjs",
+    "build": "tsup src/index.ts src/pplx-client.ts src/pplx-rest-client.ts src/pplx-connectors-client.ts src/pplx-service-worker-client.ts src/workspace-research.ts --format cjs,esm --clean && tsc --emitDeclarationOnly --declarationMap false && node scripts/finalize-declarations.mjs",
     "dev": "tsup src/index.ts --watch",
     "test": "node --test scripts/*.test.mjs",
     "lint": "eslint src --ext .ts",
