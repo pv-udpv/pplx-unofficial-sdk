@@ -8,8 +8,8 @@ import {
   defaultStrategies,
   runWorkspaceResearch,
   supabaseEmitter,
+  uniqueSourcePaths,
 } from '../dist/workspace-research.mjs';
-import { uniqueSourcePaths } from '../dist/workspace-research.mjs';
 
 const up = o => o;
 const rec = (o, file_state = 'COMPLETE') => ({ file_state, ...o });

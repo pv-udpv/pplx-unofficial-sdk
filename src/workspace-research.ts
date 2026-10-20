@@ -1,5 +1,7 @@
 import { uniqueSourcePaths } from './workspace-search.js';
 
+export { uniqueSourcePaths } from './workspace-search.js';
+
 // ---------------------------------------------------------------------------
 // Indexing
 // ---------------------------------------------------------------------------
