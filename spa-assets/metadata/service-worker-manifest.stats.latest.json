@@ -1,14 +1,14 @@
 {
-  "total": 1856,
+  "total": 2124,
   "byExtension": {
-    "js": 1855,
+    "js": 2123,
     "css": 1
   },
   "byCategory": {
-    "restricted": 126,
+    "restricted": 129,
     "translations": 0,
-    "modals": 236,
-    "other": 1494
+    "modals": 261,
+    "other": 1734
   },
   "totalSize": "N/A"
 }
