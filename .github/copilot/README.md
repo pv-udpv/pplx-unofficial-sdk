@@ -1,26 +1,24 @@
-# GitHub Copilot Skills
+# GitHub Copilot Customizations
 
-This directory contains custom skills for GitHub Copilot to improve code generation and assistance within this workspace.
+The Markdown files under `.github/copilot/skills/` are existing workspace reference notes. For supported repository customizations, use `.github/agents/` for custom agents and `.github/skills/<skill-name>/SKILL.md` for reusable Agent Skills.
 
-## Available Skills
-
-Skills are loaded lazily to provide context-aware assistance for specific tasks.
-
-### Workspace Skills
+## Existing Workspace Notes
 
 - **Python Microservices**: FastAPI service patterns, pydantic-settings, async/await
 - **Schema-Driven Development**: OpenAPI spec generation, validation, code generation
 - **Testing Patterns**: pytest fixtures, FastAPI TestClient, async test patterns
 - **Service Configuration**: Environment-based config with pydantic-settings
 
-## Usage
-
-Copilot automatically loads relevant skills based on the file you're editing and the task context.
-
 ## Adding New Skills
 
-To add a new skill:
+To add a new reusable Agent Skill:
 
-1. Create a new `.md` file in the `skills/` directory
-2. Document the skill with examples
-3. Skills are automatically available to Copilot
+1. Create `.github/skills/<skill-name>/SKILL.md` with `name` and `description` frontmatter.
+2. Document the skill's workflow and relevant examples.
+3. Add custom agents under `.github/agents/*.agent.md`.
+
+## REA
+
+- Select the `rea` agent in `.github/agents/rea.agent.md` for authorized local reverse-engineering analysis.
+- The agent registers the REA MCP server only for that profile, pinned to `rea-agents@6.8.0`.
+- The reusable `reverse-engineer-anything` skill is in `.github/skills/reverse-engineer-anything/SKILL.md`.
