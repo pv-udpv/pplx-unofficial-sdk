@@ -1,10 +1,9 @@
-# GitHub Copilot Skills
+# GitHub Copilot Customizations
 
-This directory contains custom skills for GitHub Copilot to improve code generation and assistance within this workspace.
+The files under `.github/copilot/skills/` are workspace reference notes. Supported
+repository Agent Skills live under `.github/skills/<skill-name>/SKILL.md`.
 
-## Available Skills
-
-Skills are loaded lazily to provide context-aware assistance for specific tasks.
+## Available Reference Notes
 
 ### Workspace Skills
 
@@ -13,14 +12,19 @@ Skills are loaded lazily to provide context-aware assistance for specific tasks.
 - **Testing Patterns**: pytest fixtures, FastAPI TestClient, async test patterns
 - **Service Configuration**: Environment-based config with pydantic-settings
 
-## Usage
+## REA Agent and Skill
 
-Copilot automatically loads relevant skills based on the file you're editing and the task context.
+- Select [rea](../agents/rea.agent.md) for authorized local SDK/protocol artifact
+  analysis. Its agent-scoped MCP server runs `npx -y rea-agents@6.8.0 mcp`.
+- The reusable [reverse-engineer-anything skill](../skills/reverse-engineer-anything/SKILL.md)
+  connects evidence to SSE, REST, connector, schema, and bundle-analysis code.
+- Node.js/npm must be available to the host. Initial launch may download the
+  pinned package; analysis providers have separate prerequisites.
+- Agent-scoped MCP configuration is not used by IDE custom agents. This setup
+  does not change global settings, install providers, or establish runtime readiness.
 
 ## Adding New Skills
 
-To add a new skill:
-
-1. Create a new `.md` file in the `skills/` directory
-2. Document the skill with examples
-3. Skills are automatically available to Copilot
+1. Create `.github/skills/<skill-name>/SKILL.md` with `name` and `description` YAML frontmatter.
+2. Document when to use the skill, its workflow, and verification requirements.
+3. Place custom agents under `.github/agents/*.agent.md` and link related skills.
